@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Лабораторная работа "Программирование быстрого преобразования Фурье с прореживанием по частоте"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle" align="center"><a name="sub0"></a>ЛАБОРАТОРНАЯ РАБОТА № 7</div>
+	<div class="mainTitle" align="center">ПРОГРАММИРОВАНИЕ БЫСТРОГО ПРЕОБРАЗОВАНИЯ ФУРЬЕ С ПРОРЕЖИВАНИЕМ ПО ЧАСТОТЕ</div>
+	<div class="mainSubTitle"><a name="sub1"></a>7.1. ЦЕЛЬ РАБОТЫ</div>
+	<div class="mainSubContent">
+	Разработка программы БПФ для алгоритма с замещением данных и прореживанием по частоте на ассемблере процессора TMS320VC5402 и её отладка на лабораторном макете TMS320VC5402 DSP Starter Kit (DSK).
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>7.2. ТЕОРЕТИЧЕСКИЕ СВЕДЕНИЯ</div>
+	<div class="mainSubTitle1">7.2.1. Алгоритмы быстрого преобразования Фурье с замещением и прореживанием по частоте</div>
+	<div class="mainSubContent">
+	  <p>Как и в  паре алгоритмов с прореживанием по времени, так и в паре алгоритмов с  прореживанием по частоте один является основным и соответствует рис.&nbsp;5.2, а второй получается перестановкой входных и выходных  данных, чтобы поменять прямой порядок данных на двоично-инверсный и наоборот.<br>
+	    Ниже  приведены граф-схема (рис.&nbsp;7.1) и таблица индексов (табл.&nbsp;7.1) 8-точечного БПФ, а также обобщенная  схема алгоритма БПФ с прореживанием по частоте и прямым расположением входных  данных (рис.&nbsp;7.2). Далее приведены граф-схема (рис.&nbsp;7.3) и таблица индексов (табл.&nbsp;7.2) 8-точечного БПФ, а также обобщенная  схема алгоритма БПФ с прореживанием по частоте и двоично-инверсным  расположением входных данных (рис.&nbsp;7.4).<br>
+	    Граф-схемы,  таблицы индексов и схемы двух алгоритмов БПФ с прореживанием по частоте очень  похожи друг на друга и алгоритмы БПФ с прореживанием по времени. Основное их различие  заключается в начальных значениях приращений адресов и индексов, а также в направлении  их изменения (увеличение или уменьшение). При этом в дополнительном алгоритме  изменяется также порядок следования поворачивающих множителей с прямого на  двоично-инверсный, что незначительно усложняет алгоритм.<br>
+	    При частоте используются такие же константы и  переменные, как и при программировании алгоритма БПФ с прореживанием по времени.<br>
+	    Для получения поворачивающих множителей используется  таблица одного периода синуса длиной <strong>N</strong> отсчетов. Реально  необходимо только три четверти таблицы, так как необходимы только  поворачивающие множители на половине периода. Поэтому первая и вторая четверти  таблицы используются для получения синуса, а вторая и третья четверти &ndash;  косинуса. Для перехода от синуса к косинусу и необходимо содержимое ячейки &ndash; <strong>QUARTN</strong> (четверть <strong>N</strong>).<br>
+	    Поскольку входные и выходные данные БПФ для удобства  обработки должны располагаться в обычном порядке, то в зависимости от алгоритма  перед вычислением БПФ или после вычисления необходимо выполнить  двоично-инверсную перестановку данных.<br></p>
+<h3 align="center"><img src="../../../images/lb_ris0701.gif" alt="Рис.7.1" width="610" height="439"></h3>
+<h3 align="center">Рисунок 7.1 &ndash; Граф-схема БПФ с прореживанием по частоте<br>и прямым порядком входных данных</h3>
+      <p align="center">Таблица 7.1 - Изменение индексов  для БПФ с прореживанием по частоте и прямым порядком входных данных</p>
+      <table border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="83" valign="center" align="center">№ п/п</td>
+          <td width="72" valign="center" align="center">N2</td>
+          <td width="72" valign="center" align="center">IE</td>
+          <td width="72" valign="center" align="center">J</td>
+          <td width="72" valign="center" align="center">I</td>
+          <td width="72" valign="center" align="center">I + N2</td>
+          <td width="72" valign="center" align="center">K</td>
+          <td width="83" valign="center" align="center">Цикл</td>
+          <td width="83" valign="center" align="center">Переход</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="83" valign="center" align="center">2</td>
+          <td width="83" rowspan="3" valign="center" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">5</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="83" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="83" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">7</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="83" valign="center" align="center">2</td>
+          <td width="83" rowspan="2" valign="center" align="left">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">5</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+          <td width="83" rowspan="2" valign="center" align="left">&nbsp;2</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">7</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">8</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">5</td>
+          <td width="72" valign="center" align="center">7</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+          <td width="83" rowspan="2" valign="center" align="left">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">9 </td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">10 </td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+          <td width="83" rowspan="3" valign="center" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">11 </td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">5</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">12 </td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">7</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+      </table>
+<h3 align="center"><img src="../../../images/lb_ris0702.gif" alt="Рис.7.2" width="602" height="818"></h3>
+<h3 align="center">Рисунок 7.2 &ndash; Схема алгоритма БПФ с прореживанием по частоте<br>и прямым порядком входных данных</h3>
+<h3 align="center"><img src="../../../images/lb_ris0703.gif" alt="Рис.7.3" width="610" height="440"></h3>
+<h3 align="center">Рисунок 7.3 &ndash; Граф-схема БПФ с прореживанием по частоте<br>и двоично-инверсным порядком входных данных</h3>
+      <p align="center">Таблица 7.2 - Изменение индексов  для БПФ с прореживанием по частоте<br>
+        и двоично-инверсным порядком входных данных</p>
+      <table border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="83" valign="center" align="center">№ п/п</td>
+          <td width="72" valign="center" align="center">N2</td>
+          <td width="72" valign="center" align="center">IE</td>
+          <td width="72" valign="center" align="center">J</td>
+          <td width="72" valign="center" align="center">I</td>
+          <td width="72" valign="center" align="center">I + N2</td>
+          <td width="72" valign="center" align="center">K</td>
+          <td width="83" valign="center" align="center">Цикл</td>
+          <td width="83" valign="center" align="center">Переход</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="83" valign="center" align="center">2</td>
+          <td width="83" rowspan="3" valign="center" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="83" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">5</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="83" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">7</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="83" valign="center" align="center">2</td>
+          <td width="83" rowspan="2" valign="center" align="left">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">5</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+          <td width="83" rowspan="2" valign="center" align="left">&nbsp;2</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">7</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">8</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">5</td>
+          <td width="72" valign="center" align="center">7</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+          <td width="83" rowspan="2" valign="center" align="left">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">9 </td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="72" valign="center" align="center">4</td>
+          <td width="72" valign="center" align="center">0</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">10 </td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">1</td>
+          <td width="72" valign="center" align="center">5</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+          <td width="83" rowspan="3" valign="center" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">11 </td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">2</td>
+          <td width="72" valign="center" align="center">6</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="83" valign="center" align="center">12 </td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="72" valign="center" align="center">3</td>
+          <td width="72" valign="center" align="center">7</td>
+          <td width="72" valign="center" align="center">&nbsp;</td>
+          <td width="83" valign="center" align="center">1</td>
+        </tr>
+      </table>
+<h3 align="center"><img src="../../../images/lb_ris0704.gif" alt="Рис.7.4" width="601" height="818"></h3>
+<h3 align="center">Рисунок 7.4 &ndash; Схема алгоритма БПФ с прореживанием по частоте<br>и двоично-инверсным порядком входных данных</h3>
+	</div>
+	<div class="mainSubTitle1">7.2.2. Проверка программы быстрого преобразования Фурье на тестовых сигналах</div>
+	<div class="mainSubContent">
+	  <p>Для проверки правильности работы программ БПФ можно  использовать различные сигналы &ndash; импульс, ступенька, синусоида. Поскольку такие  сигналы легко формировать, а их изображение Фурье также простое и известное, то  с их помощью легко проверяется правильность работы программы БПФ.<br>
+	    Так, изображением импульсного во временной области  сигнала в частотной области будет прямая линия, так как это широкополосный  сигнал, состоящий из суммы всех частот от 0 до частоты Найквиста.<br>
+	    Для постоянного сигнала (прямая линия во временной  области) в частотной области изображение будет в виде импульса, т.&nbsp;е.  постоянная составляющая и никаких частот.<br>
+	    И, наконец, для синусоидального сигнала частотой</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><em>F</em><sub>с</sub> = <em>F</em><sub>д</sub>&middot;<em>k/N</em>,</td>
+          <td width="50" valign="center" align="right">(7.1)</td>
+        </tr>
+      </table>
+      <p>где <em>F</em><sub>с</sub> &ndash; частота  сигнала; <em>F</em><sub>д</sub> &ndash; частота дискретизации; <em>k</em> &ndash; номер гармоники;<br>
+        <em>N</em> &ndash; размер выборки для БПФ, изображение будет содержать  значения на соответствующей частоте и нули на остальных частотах. При этом  соотношение между действительной и мнимой частями изображения будет  определяться фазой анализируемого сигнала. Например, для синуса будет только  мнимая часть, а для косинуса &ndash; только действительная.<br>
+        Если частота сигнала не равна (7.1), то энергия такого сигнала размывается между ближайшими  частотными отсчетами, и вместо одного отсчета получается несколько отсчетов с  постепенно убывающей амплитудой.<br>
+        Для получения обратного БПФ достаточно только  поменять знак у функции синуса.</p>
+	</div>
+	<div class="mainSubTitle"><a name="sub3"></a>7.3. ПОРЯДОК ВЫПОЛНЕНИЯ РАБОТЫ</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Изучить теоретические сведения по теме лабораторной работы <a href="#sub2">(подразд.&nbsp;7.2)</a>.</li>
+		<li>Получить у преподавателя задание для выполнения практической части работы.</li>
+		<li>Согласно заданию написать, оттранслировать и выполнить программу.</li>
+		<li>Продемонстрировать результат трансляции и работы программы преподавателю.</li>
+		<li>Оформить и защитить отчет по лабораторной работе.</li>
+	</ol>
+	</div>
+	<div class="mainSubTitle"><a name="sub4"></a>7.4. СОДЕРЖАНИЕ ОТЧЕТА</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Цель работы и исходные данные.</li>
+		<li>Описание алгоритма работы программы.</li>
+		<li>Листинг программы с комментариями.</li>
+		<li>Выводы по работе.</li>
+	</ol>
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbspНазад&nbsp;&nbsp" onClick="document.location.href ='../LZ6/lab_6.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем лабораторных работ" onClick="document.location.href ='../lb.html'" />
+	<input type="button" class="buttonManage" value="&nbspВперед&nbsp" onClick="document.location.href ='../LZ8/lab_8.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+</BODY></HTML>

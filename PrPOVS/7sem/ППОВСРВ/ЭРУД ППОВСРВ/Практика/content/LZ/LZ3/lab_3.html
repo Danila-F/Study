@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Лабораторная работа "Программирование цифрового рекурсивного фильтра"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+</table>
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle" align="center"><a name="sub0"></a>ЛАБОРАТОРНАЯ РАБОТА № 3</div>
+	<div class="mainTitle" align="center">ПРОГРАММИРОВАНИЕ ЦИФРОВОГО РЕКУРСИВНОГО ФИЛЬТРА</div>
+	<div class="mainSubTitle"><a name="sub1"></a>3.1. ЦЕЛЬ РАБОТЫ</div>
+	<div class="mainSubContent">
+	Изучение алгоритмов программирования цифровых фильтров на процессоре цифровой обработки сигналов, разработка и отладка программы цифрового рекурсивного фильтра на базе лабораторного макета TMS320VC5402 DSP Starter Kit (DSK).
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>3.2. ТЕОРЕТИЧЕСКИЕ СВЕДЕНИЯ</div>
+	<div class="mainSubTitle1">3.2.1. Цифровые рекурсивные и нерекурсивные фильтры</div>
+	<div class="mainSubContent">
+	  <p>Как известно, уравнение цифрового фильтра (ЦФ) во  временной области описывается выражением (прямая форма 1):</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0301.gif" alt="Фор.3.1" width="312" height="57"><br></td>
+          <td width="50" valign="center" align="right">(3.1)</td>
+        </tr>
+      </table>
+      <p>Если все коэффициенты b<sub>k</sub> равны нулю, мы получаем уравнение  цифрового нерекурсивного фильтра (ЦНФ), или фильтра с конечной импульсной характеристикой  (КИХ или FIR &ndash; Finite Impulse Response):</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0302.gif" alt="Фор.3.2" width="196" height="57"><br></td>
+          <td width="50" valign="center" align="right">(3.2)</td>
+        </tr>
+      </table>
+      <p>где  коэффициенты a<sub>k</sub>  из предыдущей формулы обозначены как h(k) (коэффициенты импульсной характеристики  фильтра).<br>
+        Такой  фильтр N-го порядка может быть представлен следующей схемой (рис.&nbsp;3.1): <br></p>
+<h3 align="center"><img src="../../../images/lb_ris0301.gif" alt="Рис.3.1" width="630" height="141"></h3>
+<h3 align="center">Рисунок 3.1 &ndash; Граф-схема цифрового нерекурсивного фильтра</h3>
+      <p>Передаточная характеристика этого  фильтра описывается уравнением</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0303.gif" alt="Фор.3.3" width="330" height="59"><br></td>
+          <td width="50" valign="center" align="right">(3.3)</td>
+        </tr>
+      </table>
+      <p>Передаточная функция цифрового рекурсивного фильтра (ЦРФ)  или фильтра с бесконечной импульсной характеристикой (БИХ или IIR &ndash; Infinite Impulse Response) в Z-области  записывается уравнением</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0304.gif" alt="Фор.3.4" width="243" height="114"><br></td>
+          <td width="50" valign="center" align="right">(3.4)</td>
+        </tr>
+      </table>
+      <p>Кроме прямой формы (3.1) имеется и другая форма (называемая канонической)  уравнения ЦРФ с использованием промежуточных переменных d:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0305.gif" alt="Фор.3.5" width="232" height="116"><br></td>
+          <td width="50" valign="center" align="right">(3.5)</td>
+        </tr>
+      </table>
+      <p>Обе эти  формы (3.1) и (3.5) для случая N = M могут быть представлены следующими  схемами (рис.&nbsp;3.2):<br></p>
+<h3 align="center"><img src="../../../images/lb_ris0302.gif" alt="Рис.3.2" width="649" height="326"></h3>
+<h3 align="center">Рисунок 3.2 &ndash; Граф-схемы цифровых рекурсивных фильтров</h3>
+      <p>Прямая форма требует 2N+1 коэффициентов и 2N+1  рабочих ячеек для переменных X, Y (переменные x(n), y(n) могут храниться в  одной ячейке памяти). При канонической реализации число переменных в два раза  меньше (N+2).</p>
+	</div>
+	<div class="mainSubTitle1">3.2.2. Каскадное соединение цифровых рекурсивных фильтров</div>
+	<div class="mainSubContent">
+	  <p>Сложный  фильтр высокого порядка (рис.&nbsp;3.3) может быть реализован с помощью комбинации простых полосовых  или режекторных фильтров (обычно 2-го порядка). При этом режекторные фильтры  соединяются последовательно и каждый следующий вычитает из сигнала свою  составляющую в заданной спектральной полосе (рис.&nbsp;3.4).<br></p>
+<h3 align="center"><img src="../../../images/lb_ris0303.gif" alt="Рис.3.3" width="184" height="148"></h3>
+<h3 align="center">Рисунок 3.3 &ndash; Передаточная характеристика цифрового фильтра</h3>
+<h3 align="center"><img src="../../../images/lb_ris0304.gif" alt="Рис.3.4" width="680" height="239"></h3>
+<h3 align="center">Рисунок 3.4 &ndash; Последовательное соединение фильтров</h3>
+      <p>Передаточная функция ЦРФ при  последовательном соединении описывается уравнением</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0306.gif" alt="Фор.3.6" width="309" height="62"><br></td>
+          <td width="50" valign="center" align="right">(3.6)</td>
+        </tr>
+      </table>
+      <p>Уравнение одного фильтра во  временной области в канонической форме записывается как</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><br>
+			d<sub>k</sub>(n) = y<sub>k-1</sub>(n) &ndash; &beta;<sub>1k</sub> d<sub>k</sub>(n-1) &ndash; &beta;<sub>2k</sub> d<sub>k</sub>(n-2) ,<br>
+			y<sub>k</sub>(n) = &alpha;<sub>0k</sub> d<sub>k</sub>(n) + &alpha;<sub>1k</sub> d<sub>k</sub>(n-1) + &alpha;<sub>2k</sub> d<sub>k</sub>(n-2) ,<br><br></td>
+          <td width="50" valign="center" align="right">(3.7)</td>
+        </tr>
+      </table>
+      <p>где  k изменяется от 1 до (М-1)/2. Входное значение y<sub>0</sub>(n) = x(n), выходное значение y<sub>(M-1)/2</sub>(n) = y(n), а структура такого  фильтра для двух каскадов представлена в следующем виде (рис.&nbsp;3.5).<br></p>
+<h3 align="center"><img src="../../../images/lb_ris0305.gif" alt="Рис.3.5" width="535" height="180"></h3>
+<h3 align="center">Рисунок 3.5 &ndash; Последовательное соединение цифровых рекурсивных фильтров (каноническая форма)</h3>
+      <p>Для прямой формы  реализации структура этого же фильтра выглядит следующим образом (рис.&nbsp;3.6):<br></p>
+<h3 align="center"><img src="../../../images/lb_ris0306.gif" alt="Рис.3.6" width="592" height="171"></h3>
+<h3 align="center">Рисунок 3.6 &ndash; Последовательное соединение цифровых рекурсивных фильтров (прямая форма)</h3>
+      <p>Учитывая, что  данные предыстории между каскадами совпадают<br>
+        (y<sub>1</sub>(n-k)=x<sub>1</sub>(n-k)), структура фильтра может быть  преобразована к следующему виду (рис.&nbsp;3.7).<br></p>
+<h3 align="center"><img src="../../../images/lb_ris0307.gif" alt="Рис.3.7" width="532" height="172"></h3>
+<h3 align="center">Рисунок 3.7 &ndash; Последовательное соединение цифровых рекурсивных фильтров (модифицированная прямая форма)</h3>
+      <p>При такой реализации сразу  исчезает недостаток прямой формы, связанный с двойным количеством ячеек  предыстории. В данной реализации общее число ячеек предыстории при прямой форме  только на 3 больше, чем при канонической. При программной реализации такого  фильтра необходимо учитывать то, что сдвигать по памяти нужно только отсчеты  предыстории входных значений, поскольку выходные значения будут сдвинуты при  работе следующего каскада (в котором они становятся входными) и только после  последнего каскада необходимо сдвинуть два значения y(n-1) и y(n).</p>
+      <p>Рекомендуемое  расположение промежуточных данных в памяти показано на рис.&nbsp;3.8.</p>
+<h3 align="center"><img src="../../../images/lb_ris0308.gif" alt="Рис.3.8" width="555" height="232"></h3>
+<h3 align="center">Рисунок 3.8 &ndash; Расположение промежуточных данных в памяти</h3>
+	</div>
+	<div class="mainSubTitle1">3.2.3. Программная реализация цифровых рекурсивных фильтров</div>
+	<div class="mainSubContent">
+	  <pre>
+; Линейная программа ЦРФ (каноническая форма) 4-го порядка
+; с последовательным соединением 2-х каскадов
+	.data	
+D2N	.WORD	0
+	.  .  .
+D1NM2	.WORD	0
+A01	.WORD	0
+A11	.WORD	0
+A21	.WORD	0
+B11	.WORD	0
+B21	.WORD	0
+A02	.WORD	0
+	.  .  .
+B22	.WORD	0
+XN	.WORD	0
+	.text
+START	LD	#XN, DP	; текущая страница с XN
+	SSBX	FRCT		; режим умножения дробных чисел
+	RSBX	OVM		; нет коррекции переполн. в АЛУ
+	ORM	#1, PMST	; коррекция перепол. при записи
+	STM	#D2NM1, AR2	; AR2:= адрес d(n-(N-1))
+	RPTZ	A, #4		; А:=0 и повторить 5 раз
+	STL	A, *AR2+	; обнуление предыстории di(n-k)
+	RPT	#10-1		; повторить 10 раз,AR2:=адр.a01
+	MVPD	CA01, *AR2+	; пересылка коэффициентов
+WAIT	BC	WAIT, BIO	; ожидание готовности
+	PORTR	PA2, XN	; ввод из порта x(n)
+	; вычисление d1(n)
+	LD	XN, 16, A	; x(n) в старшую часть акк.А
+	LD	D1NM1, T	; Т:=d1(n-1)
+	MAS	B11, A		; A:=A-T*b11=A-b11*d1(n-1)
+	LD	D1NM2, T	; T:=d1(n-2)
+	MASR	B21, A		; A:=A-T*b21=A-b21*d1(n-2)
+	STH	A, D1N		; d1(n)
+	; вычисление y1(n)
+	MPY	A21, A		; A:=T*a21=a21*d1(n-2)
+	LTD	D1NM1		; T:=d1(n-1), d1(n-1) -> d1(n-2)
+	MAC	A11, A		; A:=A+T*a11=A+a11*d1(n-1)
+	LTD	D1N		; T:=d1(n), d1(n) -> d1(n-1)
+	MAC	A01, A		; A:=A+T*a01=A+a01*d1(n)=y1(n)
+	; вычисление d2(n)
+	LD	D2NM1, T	; Т:=d2(n-1)
+	MAS	B12, A		; A:=A-T*b12=A-b12*d2(n-1)
+	LD	D2NM2, T	; T:=d1(n-2)
+	MASR	B22, A		; A:=A-T*b22=A-b22*d2(n-2)
+	STH	A, D2N		; d2(n)
+	; вычисление y(n)
+	MPY	A22, A		; A:=T*a22=a22*d2(n-2)
+	LTD	D2NM1		; T:=d2(n-1), d2(n-1) -> d2(n-2)
+	MAC	A12, A		; A:=A+T*a12=A+a12*d2(n-1)
+	LTD	D2N		; T:=d2(n), d2(n) -> d2(n-1)
+	MAC	A02, A		; A:=A+T*a02=A+a02*d2(n)=y(n)
+	STH	B, XN		; y(n) -> x(n)
+	BD	WAIT		; задержанный переход на WAIT
+	PORTW	XN, PA2	;2w вывод в порт y(n)
+; коэффициенты в памяти программ
+CA01	.WORD	01F05h		; 0.242342
+CA11	.WORD	02B75h		; 0.339521
+CA21	.WORD	01EFDh		; 0.242117
+CB11	.WORD	0394Dh		; 0.447687
+CB21	.WORD	0D889h		;-0.308310
+CA02	.WORD	062F1h		; 0.772990
+CA12	.WORD	026DBh		; 0.303581
+CA22	.WORD	062EDh		; 0.772887
+CB12	.WORD	0FEF7h		;-0.008080
+CB22	.WORD	090EEh		;-0.867723
+	  </pre>
+	</div>
+	<div class="mainSubTitle"><a name="sub3"></a>3.3. ПОРЯДОК ВЫПОЛНЕНИЯ РАБОТЫ</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Изучить теоретические сведения по теме лабораторной работы <a href="#sub2">(подразд.&nbsp;3.2)</a>.</li>
+		<li>Получить у преподавателя задание для выполнения практической части работы.</li>
+		<li>Согласно заданию написать, оттранслировать и выполнить программу.</li>
+		<li>Продемонстрировать результат трансляции и работы программы преподавателю.</li>
+		<li>Оформить и защитить отчет по лабораторной работе.</li>
+	</ol>
+	</div>
+	<div class="mainSubTitle"><a name="sub4"></a>3.4. СОДЕРЖАНИЕ ОТЧЕТА</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Цель работы и исходные данные.</li>
+		<li>Описание алгоритма работы программы.</li>
+		<li>Листинг программы с комментариями.</li>
+		<li>Выводы по работе.</li>
+	</ol>
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbspНазад&nbsp;&nbsp" onClick="document.location.href ='../LZ2/lab_2.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем лабораторных работ" onClick="document.location.href ='../lb.html'" />
+	<input type="button" class="buttonManage" value="&nbspВперед&nbsp" onClick="document.location.href ='../LZ4/lab_4.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+</BODY></HTML>

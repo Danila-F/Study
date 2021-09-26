@@ -1,0 +1,1252 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 3.18</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 3.  Программирование различных задач цифровой обработки сигналов на  проблемно-ориентированных процессорах</strong></h3>
+      <p><strong>3.1&nbsp;&nbsp;&nbsp; Организация вычислений с плавающей запятой  (точкой) на процессорах использующих арифметико-логические устройства с  фиксированной запятой (точкой) (4 часа)</strong><br>
+        <strong><em>Лекция № 3.18</em></strong><br>
+        Стандарт IEEE754.<br>
+        Реализация операций с плавающей запятой  (ПЗ) на процессорах использующих арифметико-логические устройства с  фиксированной запятой (ФЗ). Представление чисел в форматах с ПЗ. Основные  форматы чисел с ПЗ, используемые в микропроцессорных устройствах.<br>
+        Реализация операции сложения чисел с ПЗ.  Выравнивание порядков и сложение мантисс. Реализация вычитания с ПЗ.<br>
+        Реализация операции умножения чисел с  плавающей запятой. Сложение порядков и умножение 24-разрядных мантисс.<br>
+      </p>
+</div>
+
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK17/lk_17.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK19/lk_19.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+	<div class="Text_Style">
+	  <h1> Организация вычислений с плавающей запятой<br>на процессорах использующих арифметико-логические устройства с  фиксированной запятой</h1>
+      <h2>Стандарт IEEE754</h2>
+      <p>Если количество возможных форматов представления чисел в форм с фиксированной запятой относительно невелико (их количество определяется возможным положением виртуальной запятой внутри, либо за пределами, разрядной сетки компьютера) и, по сути дела, реально сводится к двум типам форматов для универсальных компьютеров:
+      целые числа без знака и целые числа со знаком длиной кратной в байтах целой степени числа 2, или четырем типам форматов (добавляется два формата представления дробных чисел со знаком и без знака) для проблемно-ориентированных компьютеров цифровой обработки сигналов, то возможное представление чисел с плавающей запятой обладает существенно большей вариативностью. Поэтому, с целью унификации форматов чисел с плавающей запятой, для совместимости систем передачи данных, программных и аппаратных интерфейсов без использования дополнительных блоков преобразования данных, были разработаны стандарты кодирования данных в форме с плавающей запятой.  <br> 
+      IEEE Standard for Floating-Point Arithmetic - стандарт IEEE754 служит для регламентирования форматов устройств использующих вычисления с плавающей запятой и ,конечно, носит рекомендательный характер, но если вы собираетесь использовать ваши программы и устройства в коммерческих целях, то вы неукоснительно должны придерживаться рекомендаций определяемых стандартами.<br>
+       Необходимо отметить, что рекомендации стандарта IEEE754 больше относятся к системам хранения, передвчи данных и интерфейсам, чем к внутренним форматам, используемым при вычислениях с плавающей запятой, которые могут быть адаптированы под конкретную систему с целбю оптимизации ее параметров (например быстродействия).<br></p>
+      <h3 align="center"><a href="../../../Файлы/IEEE-754-2008.pdf" title="Стандарт IEEE754" target="_blank"><img src="../../images/IEEE754.gif" width="55%"  border="1" align="center"></a></h3></div>
+<h3 align="center">Рисунок 3.1.1 &ndash; Стандарт представления чисел для арифметики с плавающей запятой IEEE754</h3>
+
+	<div class="Text_Style">
+	  <h2>Простые форматы представления чисел в форме с плавающей запятой</h2>
+	</div>
+ 	
+	<p>Применяются несколько форматов чисел с ПЗ. При этом  в любом формате обязательно присутствуют мантисса и порядок. Транслятор <strong>dska</strong> поддерживает четыре формата: два простых и два IEEE (с обычной и повышенной  точностью).<br>
+Простые форматы (мантисса в дополнительном коде и обычный порядок):<br>
+с обычной точностью (2  слова): <strong>.efloat (m16&middot;2<sup>p16</sup>)</strong></p>
+<table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">мл</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">-2<sup>0</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-8</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-9</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-10</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-11</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-12</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-13</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-14</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-15</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">m14</td>
+        <td width="4%" valign="center" align="center">m13</td>
+        <td width="4%" valign="center" align="center">m12</td>
+        <td width="4%" valign="center" align="center">m11</td>
+        <td width="4%" valign="center" align="center">m10</td>
+        <td width="4%" valign="center" align="center">m9</td>
+        <td width="4%" valign="center" align="center">m8</td>
+        <td width="4%" valign="center" align="center">m7</td>
+        <td width="4%" valign="center" align="center">m6</td>
+        <td width="4%" valign="center" align="center">m5</td>
+        <td width="4%" valign="center" align="center">m4</td>
+        <td width="4%" valign="center" align="center">m3</td>
+        <td width="4%" valign="center" align="center">m2</td>
+        <td width="4%" valign="center" align="center">m1</td>
+        <td width="4%" valign="center" align="center">m0</td>
+      </tr>
+    </table>
+<table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">ст</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">-2<sup>15</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>14</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>13</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>12</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>11</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>10</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>9</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>8</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>0</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">ps</td>
+        <td width="4%" valign="center" align="center">p14</td>
+        <td width="4%" valign="center" align="center">p13</td>
+        <td width="4%" valign="center" align="center">p12</td>
+        <td width="4%" valign="center" align="center">p11</td>
+        <td width="4%" valign="center" align="center">p10</td>
+        <td width="4%" valign="center" align="center">p9</td>
+        <td width="4%" valign="center" align="center">p8</td>
+        <td width="4%" valign="center" align="center">p7</td>
+        <td width="4%" valign="center" align="center">p6</td>
+        <td width="4%" valign="center" align="center">p5</td>
+        <td width="4%" valign="center" align="center">p4</td>
+        <td width="4%" valign="center" align="center">p3</td>
+        <td width="4%" valign="center" align="center">p2</td>
+        <td width="4%" valign="center" align="center">p1</td>
+        <td width="4%" valign="center" align="center">p0</td>
+      </tr>
+    </table>
+    <p>с повышенной точностью (3 слова):<strong> .bfloat(m32&middot;2<sup>p16</sup>)</strong></p>
+<table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">мл</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">2<sup>-16</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-17</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-18</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-19</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-20</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-21</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-22</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-23</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-24</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-25</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-26</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-27</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-28</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-29</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-30</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-31</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">m15</td>
+        <td width="4%" valign="center" align="center">m14</td>
+        <td width="4%" valign="center" align="center">m13</td>
+        <td width="4%" valign="center" align="center">m12</td>
+        <td width="4%" valign="center" align="center">m11</td>
+        <td width="4%" valign="center" align="center">m10</td>
+        <td width="4%" valign="center" align="center">m9</td>
+        <td width="4%" valign="center" align="center">m8</td>
+        <td width="4%" valign="center" align="center">m7</td>
+        <td width="4%" valign="center" align="center">m6</td>
+        <td width="4%" valign="center" align="center">m5</td>
+        <td width="4%" valign="center" align="center">m4</td>
+        <td width="4%" valign="center" align="center">m3</td>
+        <td width="4%" valign="center" align="center">m2</td>
+        <td width="4%" valign="center" align="center">m1</td>
+        <td width="4%" valign="center" align="center">m0</td>
+      </tr>
+    </table>
+<table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">-2<sup>0</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-8</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-9</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-10</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-11</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-12</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-13</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-14</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-15</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">m30</td>
+        <td width="4%" valign="center" align="center">m29</td>
+        <td width="4%" valign="center" align="center">m28</td>
+        <td width="4%" valign="center" align="center">m27</td>
+        <td width="4%" valign="center" align="center">m26</td>
+        <td width="4%" valign="center" align="center">m25</td>
+        <td width="4%" valign="center" align="center">m24</td>
+        <td width="4%" valign="center" align="center">m23</td>
+        <td width="4%" valign="center" align="center">m22</td>
+        <td width="4%" valign="center" align="center">m21</td>
+        <td width="4%" valign="center" align="center">m20</td>
+        <td width="4%" valign="center" align="center">m19</td>
+        <td width="4%" valign="center" align="center">m18</td>
+        <td width="4%" valign="center" align="center">m17</td>
+        <td width="4%" valign="center" align="center">m16</td>
+      </tr>
+    </table>
+<table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">ст</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">-2<sup>15</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>14</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>13</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>12</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>11</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>10</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>9</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>8</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>0</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">ps</td>
+        <td width="4%" valign="center" align="center">p14</td>
+        <td width="4%" valign="center" align="center">p13</td>
+        <td width="4%" valign="center" align="center">p12</td>
+        <td width="4%" valign="center" align="center">p11</td>
+        <td width="4%" valign="center" align="center">p10</td>
+        <td width="4%" valign="center" align="center">p9</td>
+        <td width="4%" valign="center" align="center">p8</td>
+        <td width="4%" valign="center" align="center">p7</td>
+        <td width="4%" valign="center" align="center">p6</td>
+        <td width="4%" valign="center" align="center">p5</td>
+        <td width="4%" valign="center" align="center">p4</td>
+        <td width="4%" valign="center" align="center">p3</td>
+        <td width="4%" valign="center" align="center">p2</td>
+        <td width="4%" valign="center" align="center">p1</td>
+        <td width="4%" valign="center" align="center">p0</td>
+      </tr>
+    </table>
+</div>
+<div class="Text_Style">
+	  <h2>Форматы IEEE представления чисел в форме с плавающей запятой</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Форматы IEEE (нормализованная мантисса в прямом коде, порядок со  смещением и знак мантиссы): <br>
+с обычной точностью (2  слова): <strong>.float ((1+m23&middot;2<sup>p8-127</sup>)</strong></p>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">мл</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">2<sup>-8</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-9</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-10</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-11</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-12</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-13</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-14</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-15</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-16</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-17</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-18</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-19</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-20</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-21</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-22</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-23</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">m15</td>
+        <td width="4%" valign="center" align="center">m14</td>
+        <td width="4%" valign="center" align="center">m13</td>
+        <td width="4%" valign="center" align="center">m12</td>
+        <td width="4%" valign="center" align="center">m11</td>
+        <td width="4%" valign="center" align="center">m10</td>
+        <td width="4%" valign="center" align="center">m9</td>
+        <td width="4%" valign="center" align="center">m8</td>
+        <td width="4%" valign="center" align="center">m7</td>
+        <td width="4%" valign="center" align="center">m6</td>
+        <td width="4%" valign="center" align="center">m5</td>
+        <td width="4%" valign="center" align="center">m4</td>
+        <td width="4%" valign="center" align="center">m3</td>
+        <td width="4%" valign="center" align="center">m2</td>
+        <td width="4%" valign="center" align="center">m1</td>
+        <td width="4%" valign="center" align="center">m0</td>
+      </tr>
+    </table>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">ст</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">&nbsp;</td>
+        <td width="4%" valign="center" align="center">2<sup>7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>0</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-7</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">p7</td>
+        <td width="4%" valign="center" align="center">p6</td>
+        <td width="4%" valign="center" align="center">p5</td>
+        <td width="4%" valign="center" align="center">p4</td>
+        <td width="4%" valign="center" align="center">p3</td>
+        <td width="4%" valign="center" align="center">p2</td>
+        <td width="4%" valign="center" align="center">p1</td>
+        <td width="4%" valign="center" align="center">p0</td>
+        <td width="4%" valign="center" align="center">m22</td>
+        <td width="4%" valign="center" align="center">m21</td>
+        <td width="4%" valign="center" align="center">m20</td>
+        <td width="4%" valign="center" align="center">m19</td>
+        <td width="4%" valign="center" align="center">m18</td>
+        <td width="4%" valign="center" align="center">m17</td>
+        <td width="4%" valign="center" align="center">m16</td>
+      </tr>
+    </table>
+    <p>с повышенной точностью (4 слова):<strong> .double((1+m52)&middot;2<sup>p11-1023</sup>)</strong></p>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">мл</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">2<sup>-37</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-38</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-39</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-40</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-41</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-42</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-43</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-44</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-45</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-46</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-47</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-48</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-49</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-50</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-51</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-52</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">m15</td>
+        <td width="4%" valign="center" align="center">m14</td>
+        <td width="4%" valign="center" align="center">m13</td>
+        <td width="4%" valign="center" align="center">m12</td>
+        <td width="4%" valign="center" align="center">m11</td>
+        <td width="4%" valign="center" align="center">m10</td>
+        <td width="4%" valign="center" align="center">m9</td>
+        <td width="4%" valign="center" align="center">m8</td>
+        <td width="4%" valign="center" align="center">m7</td>
+        <td width="4%" valign="center" align="center">m6</td>
+        <td width="4%" valign="center" align="center">m5</td>
+        <td width="4%" valign="center" align="center">m4</td>
+        <td width="4%" valign="center" align="center">m3</td>
+        <td width="4%" valign="center" align="center">m2</td>
+        <td width="4%" valign="center" align="center">m1</td>
+        <td width="4%" valign="center" align="center">m0</td>
+      </tr>
+    </table>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">2<sup>-21</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-22</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-23</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-24</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-25</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-26</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-27</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-28</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-29</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-30</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-31</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-32</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-33</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-34</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-35</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-36</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">m31</td>
+        <td width="4%" valign="center" align="center">m30</td>
+        <td width="4%" valign="center" align="center">m29</td>
+        <td width="4%" valign="center" align="center">m28</td>
+        <td width="4%" valign="center" align="center">m27</td>
+        <td width="4%" valign="center" align="center">m26</td>
+        <td width="4%" valign="center" align="center">m25</td>
+        <td width="4%" valign="center" align="center">m24</td>
+        <td width="4%" valign="center" align="center">m23</td>
+        <td width="4%" valign="center" align="center">m22</td>
+        <td width="4%" valign="center" align="center">m21</td>
+        <td width="4%" valign="center" align="center">m20</td>
+        <td width="4%" valign="center" align="center">m19</td>
+        <td width="4%" valign="center" align="center">m18</td>
+        <td width="4%" valign="center" align="center">m17</td>
+        <td width="4%" valign="center" align="center">m16</td>
+      </tr>
+    </table>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">2<sup>-5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-8</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-9</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-10</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-11</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-12</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-13</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-14</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-15</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-16</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-17</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-18</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-19</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-20</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">m47</td>
+        <td width="4%" valign="center" align="center">m46</td>
+        <td width="4%" valign="center" align="center">m45</td>
+        <td width="4%" valign="center" align="center">m44</td>
+        <td width="4%" valign="center" align="center">m43</td>
+        <td width="4%" valign="center" align="center">m42</td>
+        <td width="4%" valign="center" align="center">m41</td>
+        <td width="4%" valign="center" align="center">m40</td>
+        <td width="4%" valign="center" align="center">m39</td>
+        <td width="4%" valign="center" align="center">m38</td>
+        <td width="4%" valign="center" align="center">m37</td>
+        <td width="4%" valign="center" align="center">m36</td>
+        <td width="4%" valign="center" align="center">m35</td>
+        <td width="4%" valign="center" align="center">m34</td>
+        <td width="4%" valign="center" align="center">m33</td>
+        <td width="4%" valign="center" align="center">m32</td>
+      </tr>
+    </table>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">ст</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">&nbsp;</td>
+        <td width="4%" valign="center" align="center">2<sup>10</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>9</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>8</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>0</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-4</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">p10</td>
+        <td width="4%" valign="center" align="center">p9</td>
+        <td width="4%" valign="center" align="center">p8</td>
+        <td width="4%" valign="center" align="center">p7</td>
+        <td width="4%" valign="center" align="center">p6</td>
+        <td width="4%" valign="center" align="center">p5</td>
+        <td width="4%" valign="center" align="center">p4</td>
+        <td width="4%" valign="center" align="center">p3</td>
+        <td width="4%" valign="center" align="center">p2</td>
+        <td width="4%" valign="center" align="center">p1</td>
+        <td width="4%" valign="center" align="center">p0</td>
+        <td width="4%" valign="center" align="center">m51</td>
+        <td width="4%" valign="center" align="center">m50</td>
+        <td width="4%" valign="center" align="center">m49</td>
+        <td width="4%" valign="center" align="center">m48</td>
+      </tr>
+    </table>
+</div>
+<div class="Text_Style">
+  <h2>Специальный формат представления чисел в форме с плавающей запятой</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Для выполнения операций  формат IEEE не очень  удобен, т.к. в нем в одном слове данных находится и порядок и мантисса, а также  в мантиссе имеется скрытая единица. Поэтому можно применить дополнительный  формат, в котором все компоненты числа с ПЗ (знак мантиссы, мантисса и порядок)  сохраняются в отдельных словах. К такому формату могут быть сведены все  вышеперечисленные форматы, и он имеет следующий вид:</p>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="605" colspan="16" valign="center" align="center">Знак числа (все 0 или 1)</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+        <td width="4%" valign="center" align="center">ms</td>
+      </tr>
+    </table>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="302" colspan="8" valign="center" align="center">Экспонента от &ndash;127 до +128</td>
+        <td width="4%" valign="center" align="center">2<sup>7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>0</sup></td>
+      </tr>
+      <tr>
+        <td width="302" colspan="8" valign="center" align="center">Свободные разряды = 0</td>
+        <td width="4%" valign="center" align="center">p7</td>
+        <td width="4%" valign="center" align="center">p6</td>
+        <td width="4%" valign="center" align="center">p5</td>
+        <td width="4%" valign="center" align="center">p4</td>
+        <td width="4%" valign="center" align="center">p3</td>
+        <td width="4%" valign="center" align="center">p2</td>
+        <td width="4%" valign="center" align="center">p1</td>
+        <td width="4%" valign="center" align="center">p0</td>
+      </tr>
+    </table>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">&nbsp;ст&nbsp;&nbsp;</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">0</td>
+        <td width="4%" valign="center" align="center">2<sup>-1</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-2</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-3</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-4</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-5</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-6</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-7</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-8</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-9</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-10</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-11</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-12</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-13</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-14</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-15</sup></td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">&nbsp;</td>
+        <td width="4%" valign="center" align="center">m23</td>
+        <td width="4%" valign="center" align="center">m22</td>
+        <td width="4%" valign="center" align="center">m21</td>
+        <td width="4%" valign="center" align="center">m20</td>
+        <td width="4%" valign="center" align="center">m19</td>
+        <td width="4%" valign="center" align="center">m18</td>
+        <td width="4%" valign="center" align="center">m17</td>
+        <td width="4%" valign="center" align="center">m16</td>
+        <td width="4%" valign="center" align="center">m15</td>
+        <td width="4%" valign="center" align="center">m14</td>
+        <td width="4%" valign="center" align="center">m13</td>
+        <td width="4%" valign="center" align="center">m12</td>
+        <td width="4%" valign="center" align="center">m11</td>
+        <td width="4%" valign="center" align="center">m10</td>
+        <td width="4%" valign="center" align="center">m9</td>
+      </tr>
+    </table>
+    <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="4%" rowspan="3" valign="center" align="center">мл</td>
+        <td width="4%" valign="center" align="center">D15</td>
+        <td width="4%" valign="center" align="center">D14</td>
+        <td width="4%" valign="center" align="center">D13</td>
+        <td width="4%" valign="center" align="center">D12</td>
+        <td width="4%" valign="center" align="center">D11</td>
+        <td width="4%" valign="center" align="center">D10</td>
+        <td width="4%" valign="center" align="center">D9</td>
+        <td width="4%" valign="center" align="center">D8</td>
+        <td width="4%" valign="center" align="center">D7</td>
+        <td width="4%" valign="center" align="center">D6</td>
+        <td width="4%" valign="center" align="center">D5</td>
+        <td width="4%" valign="center" align="center">D4</td>
+        <td width="4%" valign="center" align="center">D3</td>
+        <td width="4%" valign="center" align="center">D2</td>
+        <td width="4%" valign="center" align="center">D1</td>
+        <td width="4%" valign="center" align="center">D0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">0</td>
+        <td width="4%" valign="center" align="center">2<sup>-16</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-17</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-18</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-19</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-20</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-21</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-22</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-23</sup></td>
+        <td width="4%" valign="center" align="center">2<sup>-24</sup></td>
+        <td width="4%" valign="center" align="center">0</td>
+        <td width="4%" valign="center" align="center">0</td>
+        <td width="4%" valign="center" align="center">0</td>
+        <td width="4%" valign="center" align="center">0</td>
+        <td width="4%" valign="center" align="center">0</td>
+        <td width="4%" valign="center" align="center">0</td>
+      </tr>
+      <tr>
+        <td width="4%" valign="center" align="center">&nbsp;</td>
+        <td width="4%" valign="center" align="center">m8</td>
+        <td width="4%" valign="center" align="center">m7</td>
+        <td width="4%" valign="center" align="center">m6</td>
+        <td width="4%" valign="center" align="center">m5</td>
+        <td width="4%" valign="center" align="center">m4</td>
+        <td width="4%" valign="center" align="center">m3</td>
+        <td width="4%" valign="center" align="center">m2</td>
+        <td width="4%" valign="center" align="center">m1</td>
+        <td width="4%" valign="center" align="center">m0</td>
+        <td width="227" colspan="6" valign="center" align="center">Свободные разряды</td>
+      </tr>
+    </table>
+    <p>Данный формат, который  может быть представлен как 0.1F•2<sup>(E+1)</sup>,  легко преобразуется в формат IEEE  представляемый как 1.F•2<sup>E</sup>.</p>
+</div>
+
+	<div class="Text_Style">
+	  <h1>Реализация операций сложения и вычитания чисел с плавающей запятой</h1>
+	<h2>Алгоритм сложения и вычитания чисел с плавающей запятой</h2></div>
+ 	<div class="Text_Style">
+	<p>Основу алгоритма операции сложения составляет  выравнивание порядков слагаемых, а затем выполнение операции с нормализацией результата  и коррекцией переполнения.<br>
+В общем виде число с плавающей запятой  представляется в виде f =  m &middot; b<sup>e</sup><br>
+где m - мантисса, b - основание, e - порядок.<br>
+Тогда алгоритм сложения/вычитания двух чисел f<sub>1</sub> = m<sub>1</sub> &middot; b<sup>e1</sup>  и f<sub>2</sub> = m<sub>2</sub>  &middot; b<sup>e2</sup> может быть записан следующим образом:<br>
+f<sub>1</sub>  &plusmn; f<sub>2</sub> = (m<sub>1</sub> &plusmn; m<sub>2</sub> &middot; b<sup>-(e1-e2)</sup>) &middot; b<sup>e1</sup> , e1&ge;e2<br>
+f<sub>1</sub>  &plusmn; f<sub>2</sub> = (m<sub>1</sub> &middot; b<sup>-(e2-e1)</sup> &plusmn; m<sub>2</sub>) &middot; b<sup>e2</sup> , e1&lt;e2<br>
+Схема алгоритма сложения двух чисел с плавающей  запятой А и В с формированием результата в С (все числа в вышеприведенном  формате) представлена ниже (рис. 3.1.2).<br>
+<h3 align="center"><a name="fig1"></a><img src="../../images/ris020702_a.gif" alt="Рис.3.1.2" width="631" height="914"></h3>
+<h3 align="center">Рисунок 3.1.2 &ndash; Алгоритм сложения чисел с плавающей запятой</h3>
+	</div>
+	<div class="Text_Style"> 
+	  <h2>Программная реализация сложения чисел с плавающей запятой</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Пример программы с прямой адресацией вычисления суммы двух чисел с плавающей запятой приведен ниже. При реализации операции вычитания во втором слагаемом достаточно поменять знак мантиссы на пртивоположный.</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+; ППО ЭВС РВ Лекции Сложение с ПЗ
+; (c) Клюс В.Б. 16/11/04 21:00
+	.mmregs				; Определение регистров
+	.def	_c_int00			; Метка начала программы
+	.align	80h			; Выровнять на начало страницы
+_c_int00:
+	ld	#ASIGN, DP			; Текущая страница
+	ssbx	SXM				; Расширение знака
+	rsbx	OVM				; Запрет коррекции переполнения
+	call	ADDFLT
+	nop
+
+ADDFLT	stm	#ASIGN, ar2	; Адрес 1-го операнда
+;	rpt	#7
+;	portr	PA0, *ar2+
+UP	ld	AEXP, a			; Определение большего числа
+	sub	BEXP, a			; acc A = D
+	bc	AEQB, aeq
+	bc	ALTB, alt
+AGTB	neg	a
+	add	#16, a			; D = (16-D)
+	bcd	A1, aleq			; D > 15
+; разность порядков < 16
+	stlm	a, T				;1w
+	nop					;1w
+	ld	BHI, TS, a			;
+	sth	a, BHI			; сдвиг BHI вправо на D
+	stl	a, TEMP			; выдвигаемые биты BHI
+	ld	BLO, TS, a			; сдвиг вправо BLO на D
+	sftl	a, -15, a			; убираем старший 0 в BLO
+	bd	A2
+	or	TEMP, a			;1w объединение с битами BHI
+	stl	a, BLO			;1w новое значение BLO
+; разность порядков > 15
+A1	add	#16, a			; D = (32-D)
+	bcd	A3, aleq			; D > 31
+	stlm	a, T				;1w
+	nop					;1w
+	ld	BHI, TS, a
+	sth	a, BLO			; сдвиг BHI вправо на D (в BLO)
+	ld	#0, a
+	stl	a, BHI			; обнуление BHI
+A2	ld	ASIGN, a			; A > B
+	stl	a, CSIGN			; CSIGN = ASIGN
+	ld	ALO, 1, a
+	bd	CHKSGN
+	stl	a, ALO			;1w убираем старший 0 в ALO
+	ld	AEXP, a			;1w CEXP = AEXP
+; A >> B -> C = A	
+A3	ld	ASIGN, a			; A >> B
+	stl	a, CSIGN			; CSIGN = ASIGN
+	ld	AHI, a
+	stl	a, CHI			; CHI = AHI
+	ld	ALO, 1, a
+	bd	AROUND
+	stl	a, СLO			;1w CLO = ALO (без старшего 0)
+	ld	AEXP, a			;1w CEXP = AEXP
+; порядки А и В равны
+AEQB	ld	ASIGN, a			; AEXP = BEXP
+	stl	a, CSIGN			; для одинаковых знаков
+	ld	ALO, 1, a
+	stl	a, ALO			; убираем старший 0 в ALO
+	ld	BLO, 1, a
+	bd	CHKSGN
+	stl	a, BLO			;1w убираем старший 0 в BLO
+	ld	AEXP, a			;1w CEXP = AEXP
+ALTB	add	#16, a			; D = (16-D)
+	bcd	B1, aleq			; D > 15
+; разность порядков < 16
+	stlm	a, T				;1w
+	nop					;1w
+	ld	AHI, TS, a
+	sth	a, AHI			; сдвиг AHI вправо на D
+	stl	a, TEMP			; выдвигаемые биты AHI
+	ld	ALO, TS, a			; сдвиг вправо ALO на D
+	sftl	a, -15, a			; убираем старший 0 в ALO
+	bd	B2
+	or	TEMP, a			;1w объединение с битами AHI
+	stl	a, ALO			;1w новое значение ALO
+; разность порядков > 15
+B1	add	#16, a			; D = (32-D)
+	bcd	B3, aleq			; D > 31
+	stlm	a, T				;1w
+	nop					;1w
+	ld	AHI, TS, a
+	sth	a, ALO			; сдвиг AHI вправо на D (в ALO)
+	ld	#0, a
+	stl	a, AHI			; обнуление AHI
+B2	ld	BSIGN, a			; B > A
+	stl	a, CSIGN			; CSIGN = ASIGN
+	ld	BLO, 1, a
+	bd	CHKSGN
+	stl	a, BLO			;1w убираем старший 0 в ALO
+	ld	BEXP, a			;1w CEXP = AEXP
+; B >> A -> C = B	
+B3	ld	BSIGN, a			; A >> B
+	stl	a, CSIGN			; CSIGN = BSIGN
+	ld	BHI, a
+	stl	a, CHI			; CHI = BHI
+	ld	BLO, 1, a
+	bd	AROUND
+	stl	a, СLO			;1w CLO = BLO (без старшего 0)
+	ld	BEXP, a			;1w CEXP = BEXP
+;
+CHKSGN	stl	a, CEXP		; новый порядок
+	ld	ASIGN, a 
+	sub	BSIGN, a			; сравнение знаков
+	bcd	ADNOW, aeq			; одинаковые знаки SUB
+	ld	ASIGN, b			;1w
+	stl	b, CSIGN			;1w
+	bc	AISNEG, alt
+BISNEG					; |A|-|B| если A>0, B<0 
+	dld	AHI, a			; старший в двойном слове
+	dsub	BHI, a
+	bcd	CZERO, aeq
+	dst	a, CHI			;1w
+	nop					;1w
+	bc	CNEG, alt
+CPOS	bd	NORMAL	
+	ld	#0, a				;1w
+	nop					;1w
+AISNEG					; |B|-|A| если A<0, B>0 
+	dld	BHI, a			; старший в двойном слове
+	dsub	AHI, a
+	bc	CZERO, aeq
+	dst	a, CHI			;1w
+	nop					;1w
+	bc	CPOS, agt
+CNEG	abs	a
+	dst	a, CHI
+	bd	NORMAL	
+	ld	#-1, a			;2w
+CZERO	bd	AROUND
+	stl	a, CSIGN			;1w acc A = 0
+	nop					;1w		
+ADNOW	dld	AHI, a			; старший в двойном слове
+	dadd	BHI, a
+	bc	CZERO, aeq
+	dst	a, CHI			;1w
+	nop					;1w
+	bcd	AROUND1, anov
+	sftl	a, -1				;1w
+	nop					;1w
+; переполнение при сложении
+OVFLOW	dst	a, CHI		;
+	ld	AEXP, a			; AEXP = BEXP
+	bd	AROUND
+	add	#1, a				;2w
+NORMAL	dld	CHI, b
+	exp	b
+	stl	a, CSIGN			;
+	ldm	T, a
+	neg	a
+	norm	b
+	bd	AROUND 
+	dst	b, CHI			;1w
+	add	AEXP, a			;1w
+AROUND1	ld	AEXP, a		; AEXP = BEXP
+AROUND	stl	a, CEXP		; новый порядок
+;	rpt	#7
+;	portw	*ar2+, PA0
+	ret
+	.align	80h			; Выровнять на начало страницы
+ASIGN	.word	0				; 1-й операнд
+AEXP	.word	0
+AHI	.word	5555h				; двойное слово
+ALO	.word	2222h				; с четного адреса
+BSIGN	.word	-1				; 2-й операнд
+	.   .   .   .   .
+СLO	.word	0				; с четного адреса
+TEMP	.word	0
+	.end					; Конец программы
+
+
+ONE	.word	0
+	</pre>
+      </blockquote>
+	  </blockquote>
+	<p>В данном примере нет проверки на специальные случаи еС и формат выходных данных несколько отличается от формата входных. Младшая часть суммы содержит данные без знака во всех разрядах CLO.<br>
+	Для округления результата и приведения его в соответствие с форматом входных данных необходимо перед выводом данных (перед командой RPT) добавить следующие команды:
+.</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+AROUND	stl	a, CEXP		; новый порядок
+	dld	CHI, a
+	add	ONE, 6, a
+	bcd	NOFL, anov
+	sth	a, CHI			;1w
+	sfta	a, -1				;1w
+	sth	a, CHI
+	sfta	a, -1
+	addm	#1, CEXP
+NOFL	and	#7FC0h,a
+	stl	a, CLO
+;	rpt	#7
+	</pre>
+      </blockquote>
+	  </blockquote>
+</div>
+
+	<div class="Text_Style"><h1>Реализация операции умножения чисел с плавающей запятой</h1>
+	<h2>Алгоритм умножения чисел с плавающей запятой</h2></div>
+ 	<div class="Text_Style">
+	<p>Основу алгоритма операции сложения составляет  выравнивание порядков слагаемых, а затем выполнение операции с нормализацией результата  и коррекцией переполнения.<br>
+Основу алгоритма операции  умножения составляет попарное перемножение старших и младших частей мантисс  сомножителей с последующим их суммированием с соответствующим сдвигом и  суммированием порядков.<br>
+Тогда алгоритм умножения чисел f<sub>1</sub> = m<sub>1</sub> &middot; b<sup>e1</sup>  и f<sub>2</sub> = m<sub>2</sub>  &middot; b<sup>e2</sup> может быть записан следующим образом:<br>
+f<sub>1</sub>  &middot; f<sub>2</sub> = m<sub>1</sub> &middot; m<sub>2</sub> &middot; b<sup>(e1+e2)</sup><br>
+Процесс перемножения  мантисс можно проиллюстрировать следующим рисунком (рис.&nbsp;3.1.3):<br>
+<h3 align="center"><a name="fig1"></a><img src="../../images/ris020703_a.gif" alt="Рис.3.1.3" width="384" height="423"></h3>
+<h3 align="center">Рисунок 3.1.3 &ndash; Принцип умножения 32-разрядных мантисс</h3>
+    <p>При этом учитывая, что  первое произведение выходит за пределы 32-х старших разрядов и практически не  влияет на результат, его можно не вычислять.<br>
+      Учитывая что значения сомножителей равны A = AHI + ALO&middot;2<sup>-15</sup>  и B = BHI + BLO&middot;2<sup>-15</sup>,  результат умножения формируется следующим образом A&middot;B = AHI&middot;BHI + (AHI&middot;BLO+ALO&middot;BHI)&middot;2<sup>-15</sup> + ALO&middot;BLO&middot;2<sup>-30</sup>.<br>
+      Схема алгоритма умножения двух чисел с плавающей  запятой А и В с формированием результата в С представлена на рисунке 3.1.4.<br>
+<h3 align="center"><a name="fig2"></a><img src="../../images/ris020703_b.gif" alt="Рис.3.1.4" width="669" height="695"></h3>
+<h3 align="center">Рисунок 7.3 &ndash; Алгоритм умножения чисел с плавающей запятой</h3>
+	</div>
+	<div class="Text_Style">
+	  <h2>Программная реализация умножения чисел с плавающей запятой</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Пример программы с прямой адресацией вычисления произведения двух чисел с плавающей запятой представлен ниже.</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+; ППО ЭВС РВ Лекции
+; (c) Клюс В.Б. 22/11/04 21:00
+; Умножение с ПЗ
+	.mmregs				; Определение регистров
+	.def	_c_int00			; Метка начала программы
+	.align	80h			; Выровнять на начало страницы
+_c_int00:
+	ld	#ASIGN, DP			; Текущая страница
+	stm	#ASIGN, SP			; Указатель стека
+	st	#1, ONE
+	ssbx	SXM				; Расширение знака
+	rsbx	OVM				; Запрет коррекции переполнения
+	call	MULFLT
+	nop
+	nop
+	nop
+	nop
+MULFLT	stm	#ASIGN, ar2	; Адрес 1-го операнда
+	stm	#AHI, ar3			; Адрес AHI
+;	rpt	#6
+;	portr	PA0, *ar2+
+;	portr	PA0, *ar2			; ar2 -> BLO
+UP	ld	AEXP, a			; Суммирование порядков
+	add	BEXP, a			; 
+	stl	a, CEXP
+	ld	*ar2-, T			; T = BLO
+	mpyu	*ar3+, a			; a = BLO * AHI
+	macsu	*ar2, *ar3-, a		; a + BHI * ALO
+	sftl	a, -15, a
+	macsu	*ar2+, *ar3, a		; a + BHI * AHI
+	sftc	a
+	bcd	OK, aeq
+	dst	a, CHI			;1w
+	mar	*ar2+				;1w
+
+	bcd	SIGN, ntc
+	ld	CEXP, 16, a		;1w
+	or	ASIGN, a			;1w
+
+	sub	ONE, 16, a
+SIGN	xor	BSIGN, a
+OK	dst	a, CEXP			; CEXP | CSIGN
+;	rpt	#7
+;	portw	*ar2+, PA0
+	ret
+	.align	80h			; Выровнять на начало страницы
+ASIGN	.word	0				; 1-й операнд
+AEXP	.word	0
+AHI	.word	5555h				; двойное слово
+ALO	.word	2222h				; с четного адреса
+BSIGN	.word	-1				; 2-й операнд
+	.   .   .   .   .
+CLO	.word	0				; с четного адреса
+ONE	.word	0
+	.end					; Конец программы
+	</pre>
+      </blockquote>
+	  </blockquote>
+</div>
+    
+    
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK17/lk_17.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK19/lk_19.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>

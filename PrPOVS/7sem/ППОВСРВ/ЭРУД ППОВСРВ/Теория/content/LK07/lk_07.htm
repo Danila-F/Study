@@ -1,0 +1,379 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 2.7</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 2.  Программная реализация основных алгоритмов цифровой обработки сигналов:  формирование сигналов, цифровая фильтрация, быстрое преобразование Фурье</strong>      </h3>
+      <p><strong>2.1&nbsp;&nbsp;&nbsp; Программирование синусоидальных сигналов  аналитическими и табличными методами (4 часа)</strong><br>
+        <strong><em>Лекция № 2.7</em></strong><br>
+      Алгоритмы и программы для формирования  гармонических и полигармонических процессов с изменяющейся частотой.</p>
+</div>
+
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK06/lk_06.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK08/lk_08.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+<div class="Text_Style">
+  <h1>Структура устройства для реализации алгоритма формирования синусоидального сигнала</h1>
+</div>
+<div class="Text_Style">
+  <p>Рассмотрим подробно реализацию алгоритма формирования синусоидального сигнала табличным методом с линейной интерполяцией. Для этого выделяем регистр фазы, содержащий целую и дробную часть фазы. Согласно частоте дискретизации осуществляется линейное приращение фазы, чем осуществляется формирование фазы сигнала требуемой частоты. Формирование сигнала требуемой частоты регулируется величиной приращения хранящегося в регистре частоты. Целая чачть фазы определяет базовый отсчет синусоиды, хранящийся в ПЗУ синуса. Этот отсчет определяет нижнюю границу отсчета вычисляемого сигнала. Верхняя граница отсчета вычисляемого синусоидального сигнала с требуемой частотой также извлекается из ПЗУ синуса по следующему адресу, то есть по адресу на единицу большему, чем целая часть содержимого регистра фазы. Интерполяция осуществляется путем вычисления поправки и добавления ее к нижней границе отсчета вычисляемого сигнала извлекаемого из ПЗУ синуса. Поправка вычмсляется путем умножения разности верхней и нижней границ на дробную часть фазы. Структура устройства для реализации алгоритма формирования синусоидального сигнала представлена на рисунке 2.1.5.</p>
+  <p>&nbsp; </p>
+</div>
+
+<div>
+<h3 align="center"><a name="Рис2.1.5"><img src="../../images/ris020105.gif" width="572" height="533"></a></h3>
+<h3 align="center">Рисунок 2.1.5 &ndash; Структура устройства для реализации алгоритма формирования синусоидального сигнала</h3>
+</div> 
+
+	<div class="Text_Style">
+	<p>Программная реализация алгоритма представлена ниже. Формирование макроопределения для реализации единичного генератора подробно описывается в лекции 1.3. </p>
+
+<blockquote>
+    <blockquote>
+	    <p> .mmregs<br>
+	      .def	_c_int00	; Определяем переменную, определяющую стартовый адрес<br>
+	      .text				; Начинаем сегмент кода<br>
+	      _c_int00: </p>
+	    <p> ;		инициализация<br>
+	      ld		#faza, DP<br>
+	      rsbx	sxm<br>
+	      rsbx	frct<br>
+	      ; адрес коэффициента для интерполяции <br>
+	      stm		#faza+1, AR3 <br>
+	      ; абсолютная разность между значениями i+1 и i<br>
+	      stm		#delta, AR4</p>
+	    <p> stm		#sine_bufer, AR5<br>
+	      stm		#4096-1, BRC</p>
+	    <p> rptb	end_block<br>
+      </p>
+	    <p> ;	вычисление синуса<br>
+	      <br>
+	      dld		faza, A<br>
+	      ;		stlm	A, T<br>
+	      and		#0x0FFF, 16, A<br>
+	      add		#sine_table, 16, A<br>
+	      sftl	A, -16, A<br>
+	      stlm	A, AR2<br>
+	      nop<br>
+	      nop<br>
+  <br>
+	      ld		*AR2+, 16, B<br>
+	      ld		*AR2, 16, A<br>
+	      sub		B, A<br>
+	      sth		A, *AR4<br>
+	      sfta	B, 1, B<br>
+	      macsu	*AR3, *AR4, B<br>
+	      sfta	B, -1, B<br>
+	      ;	значение синуса 32 разряда в акуммуляторе B</p>
+	    <p> ;	вычисление следующее значение фазы<br>
+	      dld		faza, A<br>
+	      dadd	freq, A<br>
+	      dst		A, faza <br>
+	      end_block<br>
+	      sth		B, *AR5+</p>
+	    <p> nop<br>
+      </p>
+	    <p> .data<br>
+	      faza	.long		4096*3*65536/360<br>
+	      freq	.long		3*65536+30000 <br>
+	      delta	.word		0</p>
+	    <p>sine_table <br>
+	      .include	&quot;sine_table1.asm&quot;<br>
+	      sine_bufer<br>
+	      .space		4096*16 <br>
+  <br>
+	      .end</p>
+	    <pre>&nbsp;</pre>
+    </blockquote>
+	  </blockquote>
+</div>
+
+<div class="Text_Style"> <p>Результат формирования синусоидального сигнала гармоники 3.48 представлен на рисунке 2.1.5а. (половина выборки - 2048 отсчетов из 4096)</p></div>
+
+<div>
+<h3 align="center"><a name="Рис2.1.5а"></a><img src="../../images/Ris03_1.jpg" width="90%"></h3>
+<h3 align="center">Рисунок 2.1.5а &ndash; Синусоидальный сигнал гармоники 3.48 </h3>
+</div> 
+
+<div class="Text_Style">
+  <h1>Структура устройства для реализации алгоритма формирования полигармонического сигнала</h1>
+</div>
+
+<div class="Text_Style">
+  <p>Полигармонический сигнал представляет сумму отдельных гармоник. Сформировав макроопределение для генерирования гармонмческого сигнала произвольной частоты можно без затруднений сформировать полигармонический сигнал, как сумму отдельных гармонических составляющих. Структура устройства для реализации алгоритма формированияполигармонического  сигнала представлена на рисунке 2.1.6.</p>
+  <p>&nbsp; </p>
+</div>
+
+
+<div>
+<h3 align="center"><a name="Рис2.1.6"><img src="../../images/ris020106.gif" width="490" height="381"></a></h3>
+<h3 align="center">Рисунок 2.1.6 &ndash; Структура устройства для реализации алгоритма формирования полигармонического сигнала</h3>
+</div> 
+
+	<div class="Text_Style">
+	<p>Программная реализация алгоритма представлена ниже. Формирование макроопределения  для реализации единичного генератора синусоидального сигнала и запись его в библиотеку, подробно описывается в лекции 1.3. </p>
+
+<blockquote>
+    <blockquote>
+	    <p> .mmregs<br>
+.mlib	&quot;mylib.lib&quot;</p>
+	    <p> .def	_c_int00	; Определяем переменную, определяющую стартовый адрес<br>
+	      .text<br>
+  <br>
+      </p>
+	    <p> ; Начинаем сегмент кода<br>
+	      _c_int00: <br>
+	      stm		#sine_bufer, AR5<br>
+	      stm		#4096-1, BRC<br>
+	      rptb	end_block<br>
+  <br>
+	      sine_gen	20*65536+50000, 4096*0*65536/360, 1<br>
+	      sine_gen	7*65536+16384, 4096*90*65536/360, 2<br>
+	      sine_gen	100*65536+578, 4096*180*65536/360, 3<br>
+	      sine_gen	0*65536+578, 4096*20*65536/360, 4<br>
+  <br>
+	      ssbx	sxm<br>
+	      nop<br>
+	      ld		sin_val1, B<br>
+	      add		sin_val2, B<br>
+	      add		sin_val3, B<br>
+	      add		sin_val3, B <br>
+	      sfta	B, -2, B </p>
+	    <p>end_block<br>
+	      stl		B, *AR5+</p>
+	    <p> nop</p>
+      <p> .data<br>
+      </p>
+	    <p>sine_table <br>
+	      .include	&quot;sine_table1.asm&quot;<br>
+	      sine_bufer<br>
+	      .space		4096*16 <br>
+  <br>
+	      .end</p>
+      <p>&nbsp;</p>
+    </blockquote>
+	  </blockquote>
+</div>
+
+<div class="Text_Style"> <p>Результат формирования сложного полигармонического сигнала представлен на рисунке 2.1.6а. </p></div>
+
+<div>
+<h3 align="center"><a name="Рис2.1.5а"></a><img src="../../images/Ris03_7.jpg" width="90%"></h3>
+<h3 align="center">Рисунок 2.1.6а &ndash; Пример формирования сложного полигармонического сигнала</h3>
+</div> 
+
+
+<!; *******************************************************************>
+
+<div class="Text_Style">
+  <h1>Структура устройства для реализации алгоритма формирования синусоидального сигнала изменяющейся частоты</h1>
+</div>
+<div class="Text_Style">
+  <p>На базе  устройства для реализации алгоритма формирования синусоидального сигнала табличным методом с линейной интерполяцией можно сформировать синусоидальный сигнал с частотой изменяющейся по определенному закону. Наиболее просто сформировать сигнал частота которого изменяется по линейному закону. Для этого устройство реализующее алгоритм генерирования синусоидального сигнала дополняется регистром скорости изменения частоты.  Согласно частоте дискретизации осуществляется линейное приращение частоты генерируемого сигнала как в сторону увеличения частоты, так и в сторону уменьшения генерируемой частоты. Направление изменения частоты определяется суммированием или вычитанием содержимого  регистра скорости изменения частоты с содержимым регистра частоты. В остальном принцип работы генератора не отличается от принципа работы генератора синусоидального сигнала.  Структура устройства для реализации алгоритма формирования синусоидального сигнала с изменяющейся частотой представлена на рисунке 2.1.7.</p>
+  <p>&nbsp; </p>
+</div>
+
+<div>
+<h3 align="center"><a name="Рис2.1.7"><img src="../../images/ris020107.gif" width="573" height="646"></a></h3>
+<h3 align="center">Рисунок 2.1.7 &ndash; Структура устройства для реализации алгоритма формирования синусоидального сигнала с изменяющейся частотой</h3>
+</div> 
+
+	<div class="Text_Style">
+	<p>Программная реализация алгоритма представлена ниже. В программе приведено макроопределение, предназначенное для построения  единичного генератора синусоидального сигнала с изменяющейся частотой, постороенное на базе макроопределения для единичного генератора синусоидального сигнала, подробно рассмотренного выше. </p>
+
+<blockquote>
+    <blockquote>
+	    <p> .mmregs<br>
+.mlib	&quot;mylib.lib&quot;</p>
+	    <p> .def	_c_int00	; Определяем переменную, определяющую стартовый адрес<br>
+	      .text<br>
+	      sine_gen_speed		.macro	freq_c, faza_c, speed_c, n </p>
+	    <p> sine_gen	freq_c, faza_c, n </p>
+	    <p> ;	вычисление следующее значение фазы<br>
+	      dld		freq:n:, A<br>
+	      dadd	speed:n:, A<br>
+	      dst		A, freq:n:<br>
+  <br>
+	      .data<br>
+	      .align		2<br>
+	      speed:n:	.long		speed_c <br>
+  <br>
+	      .text<br>
+	      .endm</p>
+	    <p> ; Начинаем сегмент кода<br>
+	      _c_int00: <br>
+	      stm		#sine_bufer, AR5<br>
+	      stm		#4096-1, BRC<br>
+	      rptb	end_block<br>
+  <br>
+	      sine_gen_speed 7*65536+16384, 4096*90*65536/360, 500, 1<br>
+  <br>
+	      ssbx	sxm<br>
+	      nop<br>
+	      ld		sin_val1, B</p>
+	    <p>end_block<br>
+	      stl		B, *AR5+</p>
+	    <p> nop</p>
+	    <p> .data<br>
+      </p>
+	    <p>sine_table <br>
+	      .include	&quot;sine_table1.asm&quot;<br>
+	      sine_bufer<br>
+	      .space		4096*16 <br>
+  <br>
+	      .end<br>
+      </p>
+    </blockquote>
+	  </blockquote>
+</div>
+
+<div class="Text_Style"> <p>Результат формирования синусоидального сигнала с изменяющейся частотой, начиная с гармоники 7.25  и скоростью измененя частоты 31.25х, представлен на рисунке 2.1.7а. </p></div>
+
+<div>
+<h3 align="center"><a name="Рис2.1.7а"></a><img src="../../images/Ris03_8.jpg" width="90%"></h3>
+<h3 align="center">Рисунок 2.1.7а &ndash; Синусоидальный сигнал с изменяющейся частотой </h3>
+</div> 
+
+
+<div class="Text_Style">
+  <h1>Структура устройства для реализации алгоритма формирования полигармонического сигнала из изменяющихся по частоте синусоидальных сигналов</h1>
+</div>
+
+
+
+<div class="Text_Style">
+  <p>Полигармонический сигнал представляет сумму отдельных гармоник. Сформировав макроопределение для генерирования гармонмческого сигнала с изменяющейся частотой можно талже, без особых затруднений, сформировать полигармонический сигнал, как сумму отдельных гармонических составляющих с изменяющейся частотой. Структура устройства для реализации алгоритма формированияполигармонического  сигнала представлена на рисунке 2.1.8.</p>
+  <p>&nbsp; </p>
+</div>
+
+
+<div>
+<h3 align="center"><a name="Рис2.1.8"><img src="../../images/ris020108.gif" width="490" height="381"></a></h3>
+<h3 align="center">Рисунок 2.1.8 &ndash; Структура устройства для реализации алгоритма формирования полигармонического сигнала из гармоник с изменяющейся частотой</h3>
+</div> 
+
+	<div class="Text_Style">
+	<p>Программная реализация алгоритма представлена ниже. Используется макроопределение  для реализации единичного генератора синусоидального сигнала с изменяющейсЯ частотой представленное выше. </p>
+
+<blockquote>
+    <blockquote>
+	    <p> .mmregs<br>
+.mlib	&quot;mylib.lib&quot;</p>
+	    <p> .def	_c_int00	; Определяем переменную, определяющую стартовый адрес<br>
+	      .text<br>
+	      sine_gen_speed		.macro	freq_c, faza_c, speed_c, n </p>
+	    <p> sine_gen	freq_c, faza_c, n </p>
+	    <p> ;	вычисление следующее значение фазы<br>
+	      dld		freq:n:, A<br>
+	      dadd	speed:n:, A<br>
+	      dst		A, freq:n:<br>
+  <br>
+	      .data<br>
+	      .align		2<br>
+	      speed:n:	.long		speed_c <br>
+  <br>
+	      .text<br>
+	      .endm</p>
+	    <p> ; Начинаем сегмент кода<br>
+	      _c_int00: <br>
+	      stm		#sine_bufer, AR5<br>
+	      stm		#4096-1, BRC<br>
+	      rptb	end_block<br>
+  <br>
+	      sine_gen_speed	  7*65536+16384, 4096*90*65536/360, -100, 1<br>
+	      sine_gen_speed	  7*65536+16384, 4096*90*65536/360, 100, 2 <br>
+	      ssbx	sxm<br>
+	      nop<br>
+	      ld		sin_val1, B<br>
+	      add		sin_val2, B<br>
+	      sfta	B, -1, B</p>
+	    <p>end_block<br>
+	      stl		B, *AR5+</p>
+      <p> nop</p>
+	    <p> .data<br>
+      </p>
+	    <p>sine_table <br>
+	      .include	&quot;sine_table1.asm&quot;<br>
+	      sine_bufer<br>
+	      .space		4096*16 <br>
+  <br>
+      .end</p>
+    </blockquote>
+	  </blockquote>
+</div>
+
+<div class="Text_Style"> <p>Результат формирования сложного полигармонического сигнала из синусоидальных сигналов с изменяющейся частотой представлен на рисунке 2.1.8а. </p></div>
+
+<div>
+<h3 align="center"><a name="Рис2.1.8а"></a><img src="../../images/Ris03_9.jpg" width="90%"></h3>
+<h3 align="center">Рисунок 2.1.8а &ndash; Пример формирования сложного полигармонического сигнала из синусоидальных сигналов с изменяющейся частотой</h3>
+</div> 
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK06/lk_06.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK08/lk_08.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>

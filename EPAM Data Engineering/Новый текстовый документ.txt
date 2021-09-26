@@ -1,0 +1,10 @@
+SELECT Type FROM Sushy WHERE Price > 10;
+
+SELECT Surname, Name, MAX(Date) FROM Clients JOIN Orders ON Clients.Number = Client_num
+GROUP BY Surname;
+
+SELECT * FROM Clients WHERE Clients.Number NOT IN(SELECT Client_num FROM Orders);
+
+SELECT Name, Surname, Phone, Clients.Number
+FROM Clients JOIN Orders
+ON Clients.Number = Orders.Client_num;

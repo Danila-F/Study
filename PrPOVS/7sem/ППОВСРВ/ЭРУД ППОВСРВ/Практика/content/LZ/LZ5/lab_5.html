@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Лабораторная работа "Программирование базовой операции алгоритмов быстрого преобразования Фурье"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle" align="center"><a name="sub0"></a>ЛАБОРАТОРНАЯ РАБОТА № 5</div>
+	<div class="mainTitle" align="center">ПРОГРАММИРОВАНИЕ БАЗОВОЙ ОПЕРАЦИИ АЛГОРИТМОВ БЫСТРОГО ПРЕОБРАЗОВАНИЯ ФУРЬЕ</div>
+	<div class="mainSubTitle"><a name="sub1"></a>5.1. ЦЕЛЬ РАБОТЫ</div>
+	<div class="mainSubContent">
+	Знакомство с различными алгоритмами быстрого преобразования Фурье (БПФ), разработка подпрограмм для реализации базовых операций («бабочек») для алгоритмов БПФ с прореживанием по времени и частоте на ассемблере процессора TMS320VC5402 и их отладка на лабораторном макете TMS320VC5402 DSP Starter Kit (DSK).
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>5.2. ТЕОРЕТИЧЕСКИЕ СВЕДЕНИЯ</div>
+	<div class="mainSubTitle1">5.2.1. Алгоритм быстрого преобразования Фурье с прореживанием по времени</div>
+	<div class="mainSubContent">
+	  <p>Алгоритм БПФ с  прореживанием по времени с учетом симметрии поворачивающих множителей <strong><em>W</em></strong> можно описать следующими  уравнениями:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0501.gif" alt="Фор.5.1" width="365" height="64"><br></td>
+          <td width="50" valign="center" align="right">(5.1)</td>
+        </tr>
+      </table>
+      <p>где <em>F<sub>K</sub></em> &ndash; БПФ исходной  последовательности; <em>G<sub>K</sub></em> и <em>H<sub>K</sub></em> &ndash; БПФ последовательностей из четных и нечетных  элементов соответственно, а</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0502_1.gif" alt="Фор.5.2" width="391" height="63"><br></td>
+          <td width="50" valign="center" align="right">(5.2)</td>
+        </tr>
+      </table>
+      <p>поворачивающие множители.<br>
+        Суть  алгоритма БПФ с прореживанием по времени заключается в разбиении входной  последовательности на четные и нечетные элементы, выполнение над ними БПФ в два  раза меньшей размерности и объединение полученных результатов снова в одну  последовательность по формулам (5.1) (рис.&nbsp;5.1).<br></p>
+      <p>&nbsp;</p>
+<h3 align="center"><img src="../../../images/lb_ris0501.gif" alt="Рис.5.1" width="384" height="215"></h3>
+<h3 align="center">Рисунок 5.1 &ndash; Принцип БПФ с прореживанием по времени</h3>
+      <p>Выражения (5.1) описывают базовую операцию алгоритма БПФ с прореживанием  по времени, которую иногда называют &laquo;бабочкой&raquo; из-за ее графической  интерпретации.<br>
+        Поскольку процессор TMS320VC5402 не имеет команд для работы с комплексными числами, то  действительная и мнимая части комплексного числа хранятся в паре соседних ячеек  памяти, и все операции с ними выполняются отдельно. С учетом раздельного  выполнения операций над действительной и мнимой частями двух элементов  &laquo;бабочки&raquo; (переменные <strong><em>P</em></strong> и <strong><em>Q</em></strong>) алгоритм вычисления &laquo;бабочки&raquo;  для БПФ с замещением и прореживанием по времени можно записать в следующем  виде:<br>
+	<div align="center">
+	<em>P<sub>m+1</sub> = P<sub>m</sub> + Q<sub>m</sub></em>&times;<em>W<sub>N</sub></sup>k</sup></em>,<br>
+	<em>Q<sub>m+1</sub> = P<sub>m</sub> &ndash; Q<sub>m</sub></em>&times;<em>W<sub>N</sub></sup>k</sup></em>,
+	</div>
+        где <em>P<sub>m</sub></em> = <em>PR</em> + <em>j</em>&times;<em>PI</em>; <em>Q</sub>m</sub></em> = <em>QR</em> + <em>j</em>&times;<em>QI</em>; <em>W<sub>N</sub></sup>k</sup></em> = cos(<em>x</em>) &ndash; <em>j</em>&times;sin(<em>x</em>); <em>x</em> = (2&Pi;/<em>N</em>)&times;<em>k</em>; <em>j</em> = <img  align="top"  src="../../../images/lb_for0504.gif" alt="Корень" width="33" height="18">; откуда получим <br>
+	<em>P<sub>m+1</sub></em> = <em>PR + j</em>&times;<em>PI + </em>(<em>QR + j</em>&times;<em>QI</em>)&times;[cos(<em>x</em>)<em> &ndash; j</em>&times;sin(<em>x</em>)] =<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <em>PR + j</em>&times;<em>PI + </em>[<em>QR</em>&times;cos(<em>x</em>)<em> + QI</em>&times;sin(<em>x</em>)]<em> + j</em>&times;[<em>QI</em>&times;cos(<em>x</em>)<em> &ndash; QR</em>&times;sin(<em>x</em>)] =<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [<em><u>PR + QR</u></em><u>&times;</u><u>cos(<em>x</em>)<em> + QI</em></u><u>&times;</u><u>sin(<em>x</em>)</u>]<em> + j</em>&times;[<em><u>PI +QI</u></em><u>&times;</u><u>cos(<em>x</em>)<em> &ndash; QR</em></u><u>&times;</u><u>sin(<em>x</em>)</u>];<br>
+  <em>Q<sub>m+1</sub></em> = </em>PR + j</em>&times;<em>PI &ndash; </em>(<em>QR + j</em>&times;<em>QI</em>)&times;[cos(<em>x</em>)<em> &ndash; j</em>&times;sin(<em>x</em>)] =<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <em>PR + j</em>&times;<em>PI &ndash; </em>[<em>QR</em>&times;cos(<em>x</em>)<em> + QI</em>&times;sin(<em>x</em>)]<em> &ndash; j</em>&times;[<em>QI</em>&times;cos(<em>x</em>)<em> &ndash; QR</em>&times;sin(<em>x</em>)] =<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [<em><u>PR &ndash; QR</u></em><u>&times;</u><u>cos(<em>x</em>)<em> &ndash; QI</em></u><u>&times;</u><u>sin(<em>x</em>)</u>]<em> + j</em>&times;[<em><u>PI &ndash;QI</u></em><u>&times;</u><u>cos(<em>x</em>)<em> + QR</em></u><u>&times;</u><u>sin(<em>x</em>)</u>].</p>
+	</div>
+	<div class="mainSubTitle1">5.2.2. Алгоритм быстрого преобразования Фурье с прореживанием по частоте</div>
+	<div class="mainSubContent">
+	  <p>Алгоритм БПФ с прореживанием по частоте описывается следующими  уравнениями:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0503.gif" alt="Фор.5.3" width="195" height="59"><br></td>
+          <td width="50" valign="center" align="right">(5.3)</td>
+        </tr>
+      </table>
+      <p>Суть БПФ с  прореживанием по частоте заключается в разбиении входной последовательности на две  по формулам (5.3) и выполнении над ними БПФ в два раза меньшей  размерности, что можно проиллюстрировать рисунком (для 8-точечного БПФ) (рис.&nbsp;5.2).<br></p>
+<h3 align="center"><img src="../../../images/lb_ris0502.gif" alt="Рис.5.2" width="384" height="215"></h3>
+<h3 align="center">Рисунок 5.2 &ndash; Принцип БПФ с прореживанием по частоте</h3>
+       <p>Выражения (5.3) описывают базовую операцию алгоритма БПФ с прореживанием по частоте.<br>
+        С учетом раздельного выполнения операций над  действительной и мнимой частями переменных <strong><em>P</em></strong> и <strong><em>Q</em></strong> алгоритм вычисления &laquo;бабочки&raquo;  для БПФ с замещением и прореживанием по частоте может быть записан следующим  образом:<br>
+	<div align="center">
+  <em>P<sub>m+1</sub></em> = <em>P<sub>m</sub> + Q<sub>m</sub> </em>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  <em>Q<sub>m+1</sub></em> = (<em>P<sub>m</sub>  &ndash; Q<sub>m</sub></em>)&times;<em>W<sub>N</sub></sup>k</sup></em>,<br>
+	</div>
+        и соответственно <br>
+  <em>P<sub>m+1</sub></em> = <em>PR + j</em>&times;<em>PI + QR + j</em>&times;<em>QI = </em>[<em><u>PR + QR</u></em>]<em> + j</em>&times;[<em><u>PI + QI</u></em>];<br>
+  <em>Q<sub>m+1</sub></em> = (<em>PR + j</em>&times;<em>PI &ndash; QR &ndash; j</em>&times;<em>QI</em>)&times;[cos(<em>x</em>)<em> &ndash; j</em>&times;sin(<em>x</em>)] =<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <em>PR</em>&times;<em>cos(x)  + j</em>&times;<em>PI</em>&times;cos(<em>x</em>)<em> &ndash; QR</em>&times;cos(<em>x</em>)<em> &ndash; j</em>&times;<em>QI</em>&times;cos(<em>x</em>) &ndash;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&ndash; <em>j</em>&times;<em>PR</em>&times;sin(<em>x</em>)<em> + PI</em>&times;sin(<em>x</em>)<em> + j</em>&times;<em>QR</em>&times;sin(<em>x</em>)<em> &ndash; QI</em>&times;sin(<em>x</em>) =<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [<u>(<em>PR &ndash; QR</em>)</u><u>&times;</u><u>cos(<em>x</em>)<em> + </em>(<em>PI &ndash; QI</em>)</u><u>&times;</u><u>sin(<em>x</em>)</u>]<em> + j</em>&times;<u>(<em>PI &ndash;QI</em>)</u><u>&times;</u><u>cos(<em>x</em>)<em> &ndash; </em>(<em>PR &ndash; QR</em>)</u><u>&times;</u><u>sin(<em>x</em>)</u>].</p>
+  </div>
+	<div class="mainSubTitle1">5.2.3. Программная реализация базовых операций БПФ</div>
+	<div class="mainSubContent">
+	  <p>Ниже в качестве примера приводятся фрагменты  программ с использованием прямой адресацией для вычисления &laquo;бабочки&raquo; в  алгоритмах БПФ с замещением и прореживанием по времени и частоте соответственно.</p>
+      <pre>
+* DIT FFT Programm for TMS320C5402 DSP Starter Kit 
+* Direct Addressing	12/11/09 20:20:00
+	.data
+*	данные
+PR	.word	0h		; действительная часть P
+PI	.word	0h		; мнимая часть P
+QR	.word	0h		; действительная часть Q
+QI	.word	0h		; мнимая часть Q
+COS	.word	0h		; действительная часть W
+SIN	.word	0h		; мнимая часть W
+	.text
+*	инициализация
+INIT	ld	#PR, DP	; текущая страница данных
+	ssbx	sxm		; расширение знака
+	ssbx	frct		; умножение дробных чисел
+*	«бабочка»
+BTRFLY	ld	QR, T		; T = QR
+	mpy	COS, a		; A = QR*cos
+	ld	QI, T		; T = QI
+	mac	SIN, a		; A = QR*cos+QI*sin = XR
+	mpy	COS, b		; B = QI*cos
+	ld	QR, T		; T = QR
+	sth	a, QR		; QR = a = XR
+	mas	SIN, b		; B = QI*cos-QR*sin = XI
+	sth	b, QI		; QI = b = XI
+	ld	PI, 15, a	; A = 1/2 PI
+	add	QI, 15, a	; A = 1/2 (PI+XI)
+	sth	a, PI		; PI = 1/2 new PI
+	sub	QI, 16, a	; A = 1/2 (PI-XI)
+	sth	a, QI		; QI = 1/2 new QI
+	ld	QR, 15, a	; A = 1/2 XR
+	add	PR, 15, a	; A = 1/2 (PR+XR)
+	sth	a, PR		; PR = 1/2 new PR
+	sub	QR, 16, a	; A = 1/2 (PR-XR)
+	sth	a, QR		; QR = 1/2 new QR
+* DIF FFT Programm for TMS320C5402 DSP Starter Kit 
+* Direct Addressing	12/11/09 20:30:00
+	.data
+*	данные
+PR	.word	0h		; действительная часть P
+PI	.word	0h		; мнимая часть P
+QR	.word	0h		; действительная часть Q
+QI	.word	0h		; мнимая часть Q
+COS	.word	0h		; действительная часть W
+SIN	.word	0h		; мнимая часть W
+	.text
+*	инициализация
+INIT	ld	#PR, DP	; текущая страница данных
+	ssbx	sxm		; расширение знака
+	ssbx	frct		; умножение дробных чисел
+*	«бабочка»
+BTRFLY	ld	PR, 15, a	; A = 1/2 PR
+	add	QR, 15, a	; A = 1/2 (PR+QR)
+	sth	a, PR		; PR = 1/2 new PR
+	sub	QR, 16, a	; A = XR = 1/2 (PR-QR)
+	sth	a, QR		; QR = a = XR
+	ld	QI, 15, a	; A = 1/2 QI
+	add	PI, 15, a	; A = 1/2 (PI+QI)
+	sth	a, PI		; PI = 1/2 new PI
+	sub	QI, 16, a	; A = XI = 1/2 (PI-QI)
+	sth	a, QI		; QI = a = XI
+	ld	QR, T		; T = QR = 1/2 (PR-QR)
+	mpy	COS, a		; A = 1/2 (PR-QR)*cos
+	ld	QI, T		; T = QI = 1/2 (PI-QI)
+	mac	SIN, a		; A =1/2[(PR-QR)cos+(PI-QI)sin]
+	mpy	COS, b		; B = 1/2 (PI-QI)*cos
+	ld	QR, T		; T = QR = 1/2 (PR-QR)
+	sth	a, QR		; QR = 1/2 new QR
+	mas	SIN, b		; B =1/2[(PI-QI)cos-(PR-QR)sin]
+	sth	b, QI		; QI = 1/2 new QI
+	  </pre>
+	  <p>При вычислении &laquo;бабочки&raquo;  для исключения переполнения все выходные значения делятся на два.</p>
+      <p>При реализации программ БПФ прямая адресация данных  должна быть заменена на косвенную адресацию с соответствующей модификацией  адреса: переход от действительной части переменной (<strong>PR</strong> или <strong>QR</strong>) к мнимой части переменной (<strong>PI</strong> или <strong>QI</strong>) и обратно выполняется с использованием адресации <strong>*ARx+</strong> и <strong>*ARx</strong>&ndash; соответственно.  Переход от действительной или мнимой части переменной <strong>P</strong> к аналогичной части переменной <strong>Q</strong> и обратно  &ndash; с использованием адресации <strong>*ARx+0</strong> и <strong>*ARx&ndash;0</strong> соответственно. При этом подразумевается, что  действительная и мнимая части каждого числа хранятся в соседних ячейках памяти  (т.&nbsp;е. в двойном слове), а число ячеек между переменными <strong>P</strong> и <strong>Q</strong> находится в регистре <strong>AR0</strong>.</p>
+	</div>
+	<div class="mainSubTitle"><a name="sub3"></a>5.3. ПОРЯДОК ВЫПОЛНЕНИЯ РАБОТЫ</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Изучить теоретические сведения по теме лабораторной работы <a href="#sub2">(подразд.&nbsp;5.2)</a>.</li>
+		<li>Получить у преподавателя задание для выполнения практической части работы.</li>
+		<li>Согласно заданию написать, оттранслировать и выполнить программу.</li>
+		<li>Продемонстрировать результат трансляции и работы программы преподавателю.</li>
+		<li>Оформить и защитить отчет по лабораторной работе.</li>
+	</ol>
+	</div>
+	<div class="mainSubTitle"><a name="sub4"></a>5.4. СОДЕРЖАНИЕ ОТЧЕТА</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Цель работы и исходные данные.</li>
+		<li>Описание алгоритма работы программы.</li>
+		<li>Листинг программы с комментариями.</li>
+		<li>Выводы по работе.</li>
+	</ol>
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbspНазад&nbsp;&nbsp" onClick="document.location.href ='../LZ4/lab_4.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем лабораторных работ" onClick="document.location.href ='../lb.html'" />
+	<input type="button" class="buttonManage" value="&nbspВперед&nbsp" onClick="document.location.href ='../LZ6/lab_6.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->
+<<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+</BODY></HTML>

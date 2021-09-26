@@ -1,0 +1,343 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 2.17</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 2.  Программная реализация основных алгоритмов цифровой обработки сигналов:  формирование сигналов, цифровая фильтрация, быстрое преобразование Фурье</strong>      </h3>
+      <p><strong>2.5&nbsp;&nbsp;&nbsp; Программирование алгоритмов БПФ с  прореживанием по частоте (4 часа)</strong><br>
+        <br>
+        <strong><em>Лекция № 2.17</em></strong><br>
+        Программная реализация алгоритма БПФ с  поблочно-плавающей запятой. Основные преимущества данного метода.<br>
+      Программная реализация алгоритма  векторного БПФ. Одновременная обработка нескольких процессов. Организация  памяти данных и циклов для векторного БПФ. </p>
+</div>
+
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK16/lk_16.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK18/lk_18.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+	<div class="Text_Style">
+	  <h1>Алгоритм БПФ с поблочно-плавающей запятой</h1>
+	<h2> Принцип поблочно-плавающей запятой</h2></div>
+ 	<div class="Text_Style">
+	<p>Одним из недостатков рассмотренных выше программ является то, что на каждой итерации выходные значения делятся пополам. В результате для широкополосных сигналов после БПФ получаются значения изображения Фурье с малым динамическим диапазоном. Увеличить динамический диапазон сигнала можно при использовании арифметики с плавающей запятой. Но реализация арифметики с плавающей запятой на процессорах с фиксированной запятой требует неоправданно высоких вычислительных затрат.<br>
+Существует способ совместить достоинства фиксированной и плавающей запятой – поблочно-плавающая запятая. В этом случае значения чисел представляются дробной мантиссой и одним общим порядком. В случае возникновения переполнения все мантиссы делятся пополам, а общий порядок увеличивается на 1. Использование этого метода позволяет получить максимальный диапазон при минимальных затратах. В этом случае максимальная мантисса будет находиться в диапазоне от 0,5 до 1,0.<br>
+Применить арифметику с поблочно-плавающей запятой можно к любой из рассмотренных ранее программ. Пример такой программы БПФ с прореживанием по частоте и прямым расположением входных данных приводится ниже. В этой программе после всех операций типа суммирование/вычитание производится проверка на переполнение и в случае переполнения все данные (уже обработанные и еще не обработанные) делятся пополам, и увеличивается счетчик переполнения, после чего повторяется вычисление «бабочки», на которой произошло переполнение. Для этого в программе выделены две ячейки промежуточных результатов (XR и XI), которые хранят новые значения до завершения вычисления «бабочки».</p>
+	</div>
+	<div class="Text_Style">
+	  <h2>Программная реализация алгоритма БПФ</h2>
+	</div>
+  <div class="Text_Style">
+	<p>Ниже приведен пример подпрограммы для реализации алгоритма БПФ с поблочно-плавающей запятой, прореживанием по частоте и прямым порядком входных данных.</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+* DIF FFT Programm for TMS320C5402 DSP Starter Kit
+* direct -> reverce addres (Cooley-Tuke) 10/11/04 12:20:00
+	.data
+HOLDN   .word    64h
+QUARTN  .word    65h
+N1      .word    66h
+N2      .word    67h
+J       .word    68h
+IADDR   .word    69h
+SINTBL  .word    6Ah
+SIN     .word    6Bh
+COS     .word    6Ch
+I       .word    6Dh
+IE      .word    6Eh
+NOF	.word    6Fh
+XR	.word    70h
+XI	.word    71h
+	.text
+FFT	ld	#N, 16, a
+	sth	a, HOLDN		; N
+	sth	a, -2, QUARTN	; N/4
+	st	#1, IE		; IE=1 !!!
+	sth	a, N2			; N2=N !!!
+	stl	a, NOF
+	st	#XFFT, IADDR
+	stm	#M, AR1		; число итераций - 1
+IELOOP	st	#sint, SINTBL	; K=0
+	ld	N2, a			; N <= 16384
+	sth	a, J			; J=0
+	stl	a, -1, N2		; N2=N2/2
+	mvdm	N2, AR2
+	stl	a, N1			; N1=2N2
+	mar	*AR2-			; AR2=N2-1
+JLOOP	ld	J, 1, a
+	stl	a, I			; I=J (2J)
+	ld	SINTBL, a
+	reada	SIN
+	add	QUARTN, a
+	reada	COS			; W(K)
+ILOOP	ld	IADDR, a
+	add	I, a
+BUTT	stlm	a, AR3		; (I)
+	mvdm	N1, AR0		; N2 (N1=2N2)
+	nop				;PPC1 ar0
+	ld	*AR3+0, 16, a	; A = PR
+	sub	*AR3-0, 16, a	; A = XR = (PR-QR)
+	bcd	SCAL, aov
+	mar	*AR3+			;1w PI
+	ld	*AR3+0, 16, b	;1w B = PI
+	sub	*AR3-0, 16, b	; B = XI = (PI-QI)
+	bcd	SCAL, bov
+	sth	a, XR			;1w XR
+	ld	XR, T			;1w T = XR = (PR-QR)
+	sth	b, XI			; XI
+	mpy	COS, a		; A = (PR-QR)cos
+	ld	XI, T			; T = XI = (PI-QI)
+	mac	SIN, a		; A = (PR-QR)cos+(PI-QI)sin
+	mpy	COS, b		; B = (PI-QI)cos
+	ld	XR, T			; T = XR = (PR-QR)
+	sth	a, XR			; new QR
+	mas	SIN, b		; B = (PI-QI)cos-(PR-QR)sin
+  	sth	b, XI			; new QI
+	ld	*AR3+0, 16, a	; A = PI
+	add	*AR3-, 16, a	; A = new PI = (PI+QI)
+	bcd	SCAL, aov
+	ld	*AR3-0, 16, b	;1w B = QR
+	add	*AR3, 16, b	;1w B = new PR = (PR+QR)
+	bcd	SCAL, bov
+	or	XI, a			;1w PI | QI
+	or	XR, b			;1w PR | QR
+	sth	b, *AR3+0		; PR
+	stl	b, *AR3+		; QR
+	stl	a, *AR3-0		; QI
+	sth	a, *AR3-		; PI
+	ld	I, a
+	add	N1, 1, a		; 2N1
+	stl	a, I			; I=I+2N2 (2N1=4N2)
+	sub	HOLDN, 1, a
+	bcd	ILOOP, alt		; I < N (< 2N=2HOLDN)
+	ld	SINTBL, b		;1w
+	add	IE, b			;1w
+	stl	b, SINTBL		; K=K+IE
+	banzd	JLOOP, *AR2-	; J < N2
+	addm	#1, J			;2w J=J+1
+	ld	IE, a
+	banzd	IELOOP, *AR1-	; IE < N
+	stl	a, 1, IE		;2w IE=2IE
+DRC2	stm	#N-1, AR1
+	mvdm	IADDR, AR3
+	mvdm	IADDR, AR2
+LOOPD	mvmm	AR3, AR0
+	cmpr	LT, AR2
+	bcd	NODRC, NTC
+	mvdm	HOLDN, AR0		;2w
+	dld	*AR2, a
+	dld	*AR3, b
+	dst	b, *AR2
+	dst	a, *AR3
+NODRC	mar	*AR2+
+	banzd	LOOPD, *AR1-
+	mar	*AR2+ 		;1w
+	mar	*AR3+0B		;1w
+	retd
+	ld	NOF, b		;1w
+	nop				;1w
+SCAL	stm	#2*N-1, BRC
+	mvdm	IADDR, AR3
+	rptbd	LOOPM-1
+	addm	#1, NOF		;2w
+	ld	*AR3, 15, a
+	sth	a, *AR3+
+LOOPM	bd	BUTT
+	ld	IADDR, a		;1w
+	add	I, a			;1w
+	</pre>
+      </blockquote>
+    </blockquote>
+</div>
+
+
+<div class="Text_Style"><h1>Реализация алгоритма векторного БПФ</h1>
+	<h2>Одновременная обработка двух действительных сигналов</h2></div>
+ 	<div class="Text_Style">
+	<p>При обработке реальных физических сигналов они  заносятся в действительные части комплексных чисел временного процесса, а  мнимые части при этом обнуляются. Но с помощью одной программы БПФ можно  обработать сразу два действительных сигнала. Для этого необходимо использовать  эти два действительных сигнала для задания действительной и мнимой частей  временного процесса. Если {x<sub>1</sub>(n)} и {x<sub>2</sub>(n)} действительные  последовательности длины N, X<sub>1</sub>(k) и X<sub>2</sub>(k), k = <sub><img src="../../images/for010504_k.gif" width="51" height="24"></sub> их ДПФ  соответственно, а U(k) = Re[U(k)] + j Im[U(k)], k = <sub><img src="../../images/for010504_k.gif" width="51" height="24"></sub> ДПФ комплексной последовательности</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center">z(n) = x<sub>1</sub>(n) + j x<sub>2</sub>(n), n = <sub><img src="../../images/for010504_k.gif" width="51" height="24"></sub>,<br><br></td>
+<td width="10%" valign="center" align="right">(2.5.1)</td></tr></table>
+<!--end   formula-->
+    <p>то:</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010504_a.gif" alt="Фор.5.2" width="372" height="172"><br><br></td>
+<td width="10%" valign="center" align="right">(2.5.2)</td></tr></table>
+<!--end   formula-->
+    <p>где X<sub>1</sub> , X<sub>2</sub> &ndash; изображения первого и второго  действительных процессов, U &ndash; изображение комплексного процесса, полученное с помощью  БПФ.<br>
+      Преобразовав выражения (2.5.2) для расчета U(k) по  изображениям двух действительных процессов X<sub>1</sub> , X<sub>2</sub>, мы сможем вычислить обратное БПФ и получить временные реализации двух  независимых действительных сигналов (2.5.3).</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010504_b.gif" alt="Фор.5.3" width="340" height="101"><br><br></td>
+<td width="10%" valign="center" align="right">(2.5.3)</td></tr></table>
+<!--end   formula-->
+	</div>
+    
+	<div class="Text_Style">
+	  <h2>Одновременная обработка нескольких пар действительных сигналов</h2>
+	</div>
+	<div class="Text_Style">
+	<p>При обработке реальных многомерных физических  сигналов к парам можно применить преобразование (2.5.1) и затем несколько раз выполнить обычное БПФ. А можно  модифицировать алгоритм БПФ таким образом, чтобы он обрабатывал базовые  операции с одинаковыми поворачивающими множителями для всех пар сигналов  (внутренний короткий цикл). При этом число итераций остается тем же, что и для  одной пары сигналов. После вычисления БПФ необходимо произвести разделение  полученного изображения комплексного процесса на два изображения действительных  процессов в соответствии с формулами (2.5.2).<br>
+Возьмем для примера алгоритм Формана для БПФ с  прореживанием по времени, без замещения и не требующий двоично-инверсной  перестановки данных:</p>
+	<p><br>
+	  A<sub>m</sub>(J) = A<sub>m-1</sub>(IP) + A<sub>m-1</sub>(IQ) W<sup>JK</sup> <br>
+	  A<sub>m</sub>(L) = A<sub>m-1</sub>(IP) &ndash; A<sub>m-1</sub>(IQ) W<sup>JK</sup> .</p>
+	<p><br>
+	  Для получения алгоритма векторного БПФ необходимо  выполнить следующую модификацию индексов:</p>
+	<p><br>
+	  JK  = J &ndash; MOD [ J, IM ] &ndash; NK ,<br>
+	  IP  = J + JK , IQ = JP + IM ,<br>
+	  W =  exp ( &ndash;j2&Pi;/N ) , IM = 2<sup>a-m</sup> ,<br>
+	  N =  2<sup>a</sup> &ndash; длина выборки, a &ndash; число итераций, m = 1, 2, &hellip;, a &ndash; номер  итерации,<br>
+	  J =  NK, 1+NK, 2+NK, &hellip;, (N/2-1)+NK ,<br>
+	  L =  N/2+NK, N/2+1+NK, N/2+2+NK, &hellip;, (N-1)+NK ,<br>
+	  NK  = 0, 1, &hellip;, r/2 &ndash; 1, r &ndash; мерность процесса .</p>
+    <p>Пример  программы приведен ниже.</p>
+    <blockquote>
+      <blockquote>
+        <pre>
+type	COMPLEX = record
+	RE, IM : real
+	End;
+type	VECT = array [ 1 .. N ] of COMPLEX ;
+type	MATR1 = array [ 1 .. R ] of VECT ;
+
+procedure FFFTM ( N, M, INV : integer ; var WXS : MATR1 ) ;
+var
+	I, L, IP, IQ, JK, IM, N2, K, K1 : integer ;
+	sign, AR, ARG, F : real ;
+	T2 : MATR1 ;
+	W : VECT ;
+	A, B, W1 : COMPLEX ;
+	SW : boolean ;
+label	1, 2 ;
+begin
+SW := true ;
+N2 := N div 2 ;
+SIGN := -1 ;
+if INV = 0 then SIGN := 1 ;
+AR := 3,14159 / N2 ;
+ARG := 0 ;
+for I := 1 to N2 do ;
+   begin 
+   W[I].RE := cos(ARG) ; W[I].IM := SIGN * sin(ARG) ;
+   ARG := ARG + AR ;
+   end ;
+IM := N2 ;
+1:
+for K := 1 to N2 do ;
+   begin 
+   K1 := K – 1 ; JK := K – K1 mod IM ;
+   W1 := W[JK] ;
+   for I := 1 to M do ;
+      begin 
+      L := K + N2 ;
+      IP := K + JK – 1 ; IQ := IP + IM ;
+      if SW then
+         begin 
+         A := WXS[I][IP] ;
+         B.Re := WXS[I][IQ].Re * W1.Re – WXS[I][IQ].Im * W1.Im ;
+         B.Im := WXS[I][IQ].Re * W1.Im + WXS[I][IQ].Im * W1.Re ;
+         T2[I][K].Re := A.Re  + B.Re ;
+         T2[I][K].Im := A.Im  + B.Im ;
+         T2[I][L].Re := A.Re  – B.Re ;
+         T2[I][L].Im := A.Im  – B.Im ;
+         end
+            else
+         begin 
+         A := T2[I][IP] ;
+         B.Re := T2[I][IQ].Re * W1.Re – T2[I][IQ].Im * W1.Im ;
+         B.Im := T2[I][IQ].Re * W1.Im + T2[I][IQ].Im * W1.Re ;
+         WXS[I][K].Re := (A.Re  + B.Re) /2 ;
+         WXS[I][K].Im := (A.Im  + B.Im) /2 ;
+         WXS[I][L].Re := (A.Re  – B.Re) /2 ;
+         WXS[I][L].Im := (A.Im  – B.Im) /2 ;
+         end ;
+      end ;
+
+   end ;
+IM := IM div 2 ; SW := not SW ;
+if IM <> 0 then goto 1 ;
+if SW then goto 2 ;
+F := 1 ; if INV = 0 then F := 2 ;
+for I := 1 to M do ;
+   begin 
+   for K := 1 to N do ;
+      begin 
+      WXS[I][K].Re := T2[I][K].Re / F ;
+      WXS[I][K].Im := T2[I][K].Im / F ;
+      end ;
+   end ;
+2: end;
+    </pre>
+      </blockquote>
+    </blockquote>
+</div>
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK16/lk_16.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK18/lk_18.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>

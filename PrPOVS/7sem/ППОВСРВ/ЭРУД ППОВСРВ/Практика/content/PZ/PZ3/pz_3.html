@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Практическое занятие "Расчет полной мощности синусоидального сигнала и мощности основной гармоники для сравнения точности прямого и интерполяционного методов программирования синусоиды"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle"><a name="sub0"></a>3. Расчет полной мощности синусоидального сигнала и мощности основной гармоники для сравнения точности прямого и интерполяционного методов программирования синусоиды.</div>
+	<div class="mainSubTitle"><a name="sub1"></a>1) Принципы расчета полной мощности и мощности основной гармоники синусоидального сигнала</div>
+ 	<div class="mainSubContent">
+Расчет энергии сигнала необходимо вести на интервале,  включающем целое число гармоник. Например при шаге &Delta;=1,5 и длине таблицы 128 число  обрабатываемых отсчетов n должно быть таким, чтобы  величина n&times;&Delta; была кратна 128.  Минимальное значение n=256 (256&times;1,5=384=128&times;3). В общем случае, если &Delta;=А/В, где А и В целые  числа, минимальное значение  n будет  равно B&times;N точек. Полная энергия сигнала считается по формуле
+	<h3 align="center"><img src="../../../images/pz_for0301.gif" alt="Фор.3.1" width="219" height="69">,</h3>
+      а энергия основной гармоники по формуле
+	<h3 align="center"><img src="../../../images/pz_for0302.gif" alt="Фор.3.2" width="535" height="54">,</h3>
+      где  X(k) &ndash; изображение Фурье k-й  гармоники
+	<h3 align="center"><img src="../../../images/pz_for0303.gif" alt="Фор.3.3" width="295" height="69">.</h3>
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>2) Рекомендации по программированию</div>
+ 	<div class="mainSubContent">
+	Для вычисления полной энергия сигнала можно использовать команду вычисления суммы квадратов, а для повышения точности не выполнять масштабирование. Наличие в аккумуляторе 8 защитных разрядов позволяет просуммировать без переполнения 256 квадратов, а с выключенным битом FRCT - 512.<br>
+    Для вычисления энергия основной гармоники можно использовать команду умножения со сложением и второй аккумулятор, а для повышения точности не выполнять масштабирование, как и для полной мощности. В этом случае полная мощность и мощность основной гармоники будут находиться в двух аккумуляторах в одинаковом масштабе.
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbsp;Назад&nbsp;&nbsp;" onClick="document.location.href ='../PZ2/pz_2.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем практических занятий" onClick="document.location.href ='../pz.html'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../PZ4/pz_4.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->			
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+</body></html>

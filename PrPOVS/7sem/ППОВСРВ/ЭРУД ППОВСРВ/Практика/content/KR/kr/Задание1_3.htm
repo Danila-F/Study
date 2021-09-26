@@ -1,0 +1,249 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<LINK rel=stylesheet href="../../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title> Задания по программированию алгоритма БПФ к контрольной работе №1 по учебной дисциплине ППО ВС РВ </title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+
+    <td width="12%" rowspan=3 align="center" ></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <a href="../../../../Практика/practice.htm">Практика</a> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var></var>
+     </td>
+  <tr>
+</table></div>
+
+
+<!--start-->
+	<div class="Text_Style" align="center">
+	  <h1>Задания по программированию алгоритма БПФ к контрольной работе №1 по учебной дисциплине ППО ВС РВ</h1>
+	  <p>&nbsp;</p>
+	</div>
+	<div class="Text_Style">
+ <p>Написать программу БПФ, отладить ее и проверить ее работу на трех стандартных сигналах: импульс (первое значение 7FFF16, остальные 0), постоянная (все значения 7FFF16) и синусоида (заданная гармоника) в соответствие с вариантом из таблицы. Представить листинг программы с комментариями и результаты работы программы в виде трех пар графиков изображения Фурье (действительная и мнимая часть).</p></div>
+ 
+ 	<div class="Text_Style">
+ </p>
+ <table width="73%" border="1" align="center" cellpadding="2" cellspacing="2">
+   <tr>
+     <td width="14%" rowspan="2" align="center" valign="top"><p align="center">№<br>
+       варианта</p></td>
+     <td colspan="3" align="center" valign="top"><p align="center">Параметры БПФ</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">Синусоида</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">Размерность</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">Прореживание</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">Порядок входных данных</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">Номер гармоники</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">1</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">128</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">3</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">2</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">128</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">5</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">3</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">128</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">7</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">4</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">128</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">9</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">5</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">256</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">11</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">6</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">256</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">13</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">7</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">256</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">15</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">8</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">256</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">17</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">9</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">512</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">19</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">10</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">512</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">21</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">11</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">512</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">23</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">12</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">512</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">25</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">13</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">128</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">4</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">14</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">128</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">6</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">15</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">128</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">8</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">16</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">128</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">10</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">17</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">256</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">12</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">18</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">256</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">14</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">19</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">256</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">16</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">20</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">256</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">18</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">21</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">512</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">20</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">22</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">512</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по времени</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">22</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">23</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">512</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">прямой</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">24</p></td>
+   </tr>
+   <tr>
+     <td width="14%" align="center" valign="top"><p align="center">24</p></td>
+     <td width="14%" align="center" valign="top"><p align="center">512</p></td>
+     <td width="16%" align="center" valign="top"><p align="center">по частоте</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">двоично-инверсный</p></td>
+     <td width="28%" align="center" valign="top"><p align="center">26</p></td>
+   </tr>
+ </table>
+<p>Внимание!</p>
+<p>1)  При написании программы использовать методичку по лабораторным работам:</p>
+<p><a href="Задание1_3доп_1.htm" title="Программирование  проблемно-ориентированных вычислительных средств реального времени : лаб.  практикум для студ. спец. 1-40 02 02 «Электронные вычислительные средства»  днев. формы обуч. В 2 ч. Ч. 2 / В. Б. Клюс, М. В. Качинский, А. Б. Давыдов. &ndash;  Минск : БГУИР, 2011." target="_self">Программирование  проблемно-ориентированных вычислительных средств реального времени : лаб.  практикум для студ. спец. 1-40 02 02 «Электронные вычислительные средства»  днев. формы обуч. В 2 ч. Ч. 2 / В. Б. Клюс, М. В. Качинский, А. Б. Давыдов. &ndash;  Минск : БГУИР, 2011.</a></p>
+<p>2)  <a href="Задание1_3доп_2.htm" title="Таблицы функции синус" target="_blank">При написании программы можно использовать прилагаемые таблицы функции синуса:</a></p>
+<p><a href="Задание1_3доп_2.htm#Table128"  title="Table128" target="_blank">а)  на 128 отсчетов (файл SIN128.TAB);</a></p>
+<p><a href="Задание1_3доп_2.htm#Table256" title="Table256" target="_blank">б)  на 256 отсчетов (файл SIN256.TAB);</a> </p>
+<p><a href="Задание1_3доп_2.htm#Table512" title="Table512" target="_blank">в)  на 512 отсчетов (файл SIN512.TAB).</a> </p>
+<p>&nbsp;</p>
+  </div>
+
+ <div class="Header_Style">
+  <table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <a href="../../../../Практика/practice.htm">Практика</a> |<A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+  <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С)  БГУИР</a></td>
+  </tr>
+</table>
+</div>
+
+</BODY></HTML>

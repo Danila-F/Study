@@ -1,0 +1,459 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 3.19</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 3.  Программирование различных задач цифровой обработки сигналов на  проблемно-ориентированных процессорах</strong></h3>
+      <p><strong>3.1&nbsp;&nbsp;&nbsp; Организация вычислений с плавающей запятой  (точкой) на процессорах использующих арифметико-логические устройства с  фиксированной запятой (точкой) (4 часа)</strong><br>
+        <strong><em>Лекция № 3.19</em></strong><br>
+        Реализация операции деления чисел с  плавающей запятой. Вычитание порядков и деление 24-разрядных мантисс.<br>
+        Реализация операции извлечения  квадратного корня из чисел представленных в форме с ПЗ.<br>
+      Реализация операции вычисления функции  арктангенса из чисел представленных в форме с ПЗ. </p>
+</div>
+
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK18/lk_18.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK20/lk_20.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+	<div class="Text_Style">
+	  <h1>Реализация операции деления чисел с плавающей запятой</h1>
+	  <h2>Алгоритм деления чисел с плавающей запятой</h2></div>
+ 	<div class="Text_Style">
+	<p>Основу алгоритма операции деления составляет  разложение частного от деления мантисс в ряд с определенной точностью и  вычитание порядков.<br>
+Тогда алгоритм умножения чисел f<sub>1</sub> = m<sub>1</sub> &middot; b<sup>e1</sup>  и f<sub>2</sub> = m<sub>2</sub>  &middot; b<sup>e2</sup> может быть записан следующим образом:<br>
+f<sub>1</sub>  &middot; f<sub>2</sub> = m<sub>1</sub> / m<sub>2</sub> &middot; b<sup>(e1&ndash;e2)</sup><br>
+Для пояснения данного  алгоритма представим мантиссы в следующем виде:<br>
+делимое &ndash; &nbsp;A = AHI + &epsilon;&middot;ALO<br>
+делитель &ndash; B = BHI + &epsilon;&middot;BLO<br>
+где &epsilon; = 1/2<sup>длина младшей части</sup> = 1/2<sup>16</sup><br>
+Тогда процесс деления может быть описан выражением<br>    
+	<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for020704_a.gif" alt="Фор.7.a" width="592" height="197"><br></td>
+          <td width="10%" valign="center" align="right">&nbsp;</td>
+      </tr>
+      </table>
+    <p>Обозначив первое частное  через новую переменную Q,  которая может быть записана как  QHI+&epsilon;&middot;QLO и учитывая что &epsilon;2 &lt;&lt; 0,  получим окончательное выражение для алгоритма деления
+    </p>
+    <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for020704_b.gif" alt="Фор.7.b" width="364" height="45"><br></td>
+          <td width="10%" valign="center" align="right">&nbsp;</td>
+      </tr>
+      </table>
+    <p>Схема алгоритма деления двух чисел с плавающей  запятой А и В с формированием результата в С представлена ниже (рис.&nbsp;3.1.5).<br>
+    </p>
+    <h3 align="center"><a name="fig1"></a><img src="../../images/ris020704_a.gif" alt="Рис.3.1.5" width="640" height="682"></h3>
+<h3 align="center">Рисунок 3.1.5 &ndash; Алгоритм деления чисел с плавающей запятой</h3>
+	</div>
+	<div class="Text_Style"><h2>Программная реализация деления чисел с плавающей запятой</h2></div>
+	<div class="Text_Style">
+	<p>Пример программы с прямой адресацией деления двух чисел с плавающей запятой представлен ниже.</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+ 
+; ППО ЭВС РВ Лекции
+; (c) Клюс В.Б. 22/11/04 21:00
+; Деление с ПЗ
+	.mmregs				; Определение регистров
+	.def	_c_int00			; Метка начала программы
+	.align	80h			; Выровнять на начало страницы
+_c_int00:
+	ld	#ASIGN, DP			; Текущая страница
+	stm	#ASIGN, SP			; Указатель стека
+	st	#1, ONE
+	ssbx	SXM				; Расширение знака
+	rsbx	OVM				; Запрет коррекции переполнения
+	call	DIVFLT
+	nop
+	nop
+	nop
+	nop
+DIVFLT	stm	#ASIGN, ar2	; Адрес 1-го операнда
+;	rpt	#7
+;	portr	PA0, *ar2+
+UP	ld	ASIGN, a			; Определение знака
+	xor	BSIGN, a			; 
+	stl	a, CSIGN
+	ld	AHI, 14, a			; Сдвиг А вправо на 1,
+	add	ALO, -1, a			; защита от переполнения
+;	dld	AHI, a
+;	sftl	a, -2
+; проверка на 0
+	bcd	NEXT, aneq
+	dld	BHI, b			;1w
+	nop					;1w
+;	rpt	#3
+;	portw	ALO, PA0
+	ret
+NEXT	bc	STRT, bneq
+;	rpt	#3
+;	portw	ONE, PA0
+	ret
+STRT
+	rpt	#15				; <- & 14 if ALO(0)=0
+	subc	BHI, a
+	stl	a, CHI
+	and	#7FFFh, 16, a		; остаток
+	rpt	#15
+	subc	BHI, a
+	stl	a, CLO
+	ld	CHI, T
+	mpy	BLO, a
+	rpt	#14
+	subc	BHI, a
+	stl	a, TEMP
+	dld	CHI, a
+	subs	TEMP, a
+	sftc	a
+	bcd	NORMAL, ntc
+	dst	a, CHI			;1w
+	ld	AEXP, a			;1w
+
+	add	ONE, a
+NORMAL	stl	a, CEXP
+;	rpt	#3
+;	portw	*ar2+, PA0
+	ret
+	.align	80h			; Выровнять на начало страницы
+ASIGN	.word	0				; 1-й операнд
+AEXP	.word	0
+AHI	.word	5555h				; двойное слово
+ALO	.word	2222h				; с четного адреса
+BSIGN	.word	-1				; 2-й операнд
+BEXP	.word	0
+BHI	.word	5000h				; двойное слово
+BLO	.word	1111h				; с четного адреса
+CSIGN	.word	0				; результат
+CEXP	.word	0
+CHI	.word	0				; двойное слово
+CLO	.word	0				; с четного адреса
+TEMP	.word	0
+ONE	.word	0
+	.end					; Конец программы
+	</pre>
+      </blockquote>
+	  </blockquote>
+</div>
+
+	<div class="Text_Style">
+	  <h1>Реализация операции извлечения квадратного корня из чисел с плавающей запятой</h1>
+	  <h2>Алгоритм извлечения квадратного корня из чисел с плавающей запятой</h2></div>
+<div class="Text_Style">
+
+  <p> 
+Множество математических операций над комплексными числами значительно легче осуществляется, если числа представлены в тригонометрической форме. К ним относятся в частности операции умножения, деления, извлечения корня квадратного. <br>
+Корнем  n-ой степени из комплексного числа   z называется такое комплексное число   w,   n-я степень которого равна  z, то есть  <img src="../../images/ris19_1.png" width="52" height="14">.
+Корень  n-ой степени из комплексного числа   обозначается символом  <img src="../../images/ris19_2.png" width="21" height="17"> и на множестве комплексных чисел имеет ровно   n значений.
+Если комплексное число   задано в тригонометрической форме:  <img src="../../images/ris19_3.png" width="157" height="17">, то все значения корня  n-ой степени вычисляются по формуле Муавра (Абрахам де Муавр (1667 - 1754) - английский математик):</p>
+<br><h3 align="center"><img src="../../images/ris19_4b.png" width="550" height="67"></h3>
+<br>
+<p>Геометрически все значения корня лежат на окружности радиуса   с центром в начале координат и образуют правильный  n - угольник.<br>В случае извлечения корня квадратного из комплексного числа в общем случае будут получены два корня, которые расположены на одном отрезке:  </p>
+<br><h3 align="center"><img src="../../images/ris19_5a.png" width="550" height="133"></h3>
+<p>Важной задачей, возникающей при создании  программ, реализующих алгоритмы цифровой обработки сигналов, является задача  преобразования комплексных чисел из алгебраической формы представления в  тригонометрическую форму представления и наоборот. Для решения этих задач  требуется обеспечить возможность вычисления функций извлечения корня  квадратного и арктангенса. Алгоритмы вычисления функций синуса и косинуса были  рассмотрены в предыдущих лекциях.<br>
+  Учитывая тот факт, что скорость  выполнения операций сложения, вычитания и умножения в процессорах цифровой  обработки сигналов одинакова, можно использовать алгоритм класса цифра за  цифрой, заключающийся в том, что результат получается в процессе выполнения  последовательных итераций. Значение подкоренного выражения находится в  диапазоне [0,25 .. 1[. Принимаем значение первой итерации корня квадратного равным  весу старшего значащего разряда равного 0,5. Далее возводим значение первой  итерации корня квадратного в квадрат и сравниваем с подкоренным выражением. Если  полученный результат больше чем реальное значение подкоренного выражения, то  соответствующий разряд в итерации обнуляем. Если полученный результат меньше  или равен реальному подкоренному выражению, то соответствующий разряд в  итерации оставляем установленным в единицу. Далее приступаем к следующей  итерации, добавив в подкоренное выражение вес следующего, более младшего  разряда, значение которого равно 0,25. В результате выполнения каждой итерации  мы определяем значение следующего разряда искомого результата вычисления корня  квадратного. Таким образом, появляется возможность выполнения вычислений для  определения результата с требуемой точностью.</p>
+<p>Алгоритм для вычисления корня квадратноого в форме с плаваюшей запятой представлен на рисунке 3.1.6. Используется формат данных float (32 разрядное представление числа с плавающей запятой согласно стандарта IEEE754).</p>
+
+ <h3 align="center"><a name="Рис3.1.6"></a><img src="../../images/Ris19_6.gif" alt="Рис.3.1.6" width="550" height="1641"></h3>
+<h3 align="center">Рисунок 3.1.6 &ndash; Алгоритм вычисления корня квадратноого для чисел с плавающей запятой</h3>
+</div>
+	<div class="Text_Style">
+	  <h2>Программная реализация вычисления корня квадратноого для чисел с плавающей запятой</h2>
+</div>
+	<div class="Text_Style">
+	<p>Пример программы  вычисления корня квадратноого для чисел с плавающей запятой в формате float IEEE754.</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+              .mmregs
+              .def	_c_int00			; Определяем переменную, которая будет в дальнейшем использоваться как глобальная в других файлах
+              .text						; Начинаем сегмент кода
+_c_int00:		 						; Метка начала программы
+              ld		#Q, DP
+              stm		#Stack_Array, SP
+              dld		Q,  A			; загружаем подкоренное выражение в формате IEEE754 в аккумулятор A
+              
+              ssbx		FRCT			; устанавливаем режим работы с дробными числами
+              ssbx		SXM				; устанавливаем режим работы с дробными числами со знаком
+
+              ld		A, 7, B 	    ; выделяем мантиссу и восстанавливаем мантиссу, приводим мантиссу к диапазону ]0 .. 1[ 
+              stl		B, M+1
+              and		#0x7FFF, 16, B
+              or		#0x4000, 16, B
+              sth		B, M
+              dld		M, B				
+              
+              ld		A, 1, A			; выделяем характеристику
+              and		#0xFF00, 16, A
+
+              sub		#0x7E00, 16, A	; преобразуем характеристику в порядок
+              
+              stm		#P, AR5			; проверяем порядок на четность
+              sth		A, *AR5
+              bit		*AR5, 15-8		; если порядок нечетный, то корректируем мантиссу и порядок, устанавливая четный порядок
+              bc		p_even, NTC
+              add		#0x0100, 16, A				
+              sfta		B, -1				
+p_even:       sfta		A, -1			; порядок делим на два и сохраняем его в в памяти (переменная P)
+              sth		A, *AR5				
+              dst		B, M			; мантиссу сохраняем в памяти
+              
+              ld		#0x4000, 16, A
+              dst		A, iter
+              dst		A, mask
+
+              stm		#15-1, BRC		; Выполняем первые пятнадцать итераций требующих только умножения 16*16 разрядов	
+              rptb		end_b1
+              
+              squrs		iter, B
+            
+              dld		mask, A
+              sftl		A, -1
+              dst		A, mask
+              xc		1, BLT					 				
+              neg		A
+              dadd		iter, A
+              dst		A, iter
+end_b1:	      dld		M, B
+
+              squrs		iter, B			; Удаляем постоянный член результата возведения итерации в квадрат из мантиссы 
+              dst		B, M
+
+			; ltd		*(iter)
+
+              stm		#10-1, BRC		; Выполняем оставшиеся 10 итераций требующих умножения 24*24 разрядов	
+              rptb		end_b2
+              
+              mpyu		iter+1, A
+	      	  sub		A, -15, B
+              dld		mask, A
+              sftl		A, -1
+              dst		A, mask
+              xc		1, BLT					 				
+              neg		A
+              dadd		iter, A
+              dst		A, iter
+end_b2:       dld		M, B
+
+              ld		*AR5, 16, B		; Выполняем загрузку порядка
+              dld		mask, A			; Выполняем округление мантиссы
+              sftl		A, 1
+              dadd		iter, A
+              bc		rounded_end, ALT
+              
+              sftl		A, 1
+              sub		#0x0100, 16, B
+rounded_end:  sftl		A, 1
+              add		#0x7F00, 16, B	; Формируем характеристику
+
+              sftl		A, -9			; Формируем число в формате IEEE754	
+              sftl		B, -1
+              or		B, A
+              
+              dst		A, SQRT  		; записываем корень квадратный в формате IEEE754 в поле SQRT
+              
+              
+						
+            .align
+            .data
+Q	    	.float	0.0000371
+SQRT	    .float	1	
+iter	    .long	0x40000000
+mask	    .long	0x40000000
+M	    	.long	0x00000000
+P           .word	0
+Stack_Array .bes	128*16
+
+	    	.end
+    </pre>
+      </blockquote>
+	  </blockquote>
+</div>
+
+<div class="Text_Style">
+	  <h1>Реализация операции вычисления функции арктангенса из чисел представленных в форме с плавающей запятой</h1>
+	  <h2>Алгоритм вычисления функции арктангенса из чисел представленных в форме с плавающей запятой</h2></div>
+<div class="Text_Style">
+<p>Быстрые и точные методы вычисления арктангенса  отношения мнимой и действительной частей комплексного числа Z = P + i Q исследовались весьма активно, так  как оценка аргумента&nbsp; комплексного  значения находит множество применений в цифровой обработке сигналов. Аргумент &phi; комплексного числа Z определяется как &phi; = arctg (Q / P). <br>
+  Основной сложностью вычисления функции арктангенса  является его высокая нелинейность в окрестности значения функции &phi;  стремящемуся к значениям &pi;/2 и - &pi;/2 с обеих сторон. <br>
+  Максимальной скорости вычисления арктангенса можно  добиться используя табличные методы вычисления, в которых значение Q / P задает адрес ячейки ПЗУ,  содержащей значение аргумента &phi;. <br>
+  Для того чтобы уйти от необходимости вычисления  функции arctan  в диапазонах большого значения аргумента функции &phi;, можно использовать свойство  зеркальной симметрии функций arctan  и arccotan  относительно точек &pi;/4 и -&pi;/4, которое сводится к следующим формулам 3.1.1: </p>
+    <!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for030101a.png" width="319" height="133"><br><br></td>
+<td width="10%" valign="center" align="right">(3.1.1)</td></tr></table>
+<!--end   formula-->
+
+  <p>Для повышении точности вычислений, реализуют  вычисление приближенного значения аргумента с помощью алгебраических полиномов  высокого порядка, при этом наиболее популярными являются полиномы Чебышева и  ряд Тейлора. (К сожалению, из-за своей нелинейности арктангенс плохо поддается  аппроксимации с помощью полиномов разумного порядка. Поэтому для вычисления  арктангенса можно мспользовать метод наименьшего ухудшения.) <br>
+  Можно оценить аргумент&nbsp; комплексного числа &phi;  = P  + i Q  в радианах, используя следующую аппроксимацию функции арктангенса:</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for030102a.png" width="628" height="144"><br><br></td>
+<td width="10%" valign="center" align="right">(3.1.2)</td></tr></table>
+<!--end   formula-->
+
+  
+  <p>    Величина &phi;&nbsp; лежит в пределах от -45&deg; до +45&deg; (-&pi;  /4 &lt; &nbsp;&phi; &lt; &nbsp;+ &pi; /4 радиан). <br>
+    Выражение 3.1.2 обеспечивает  удивительно хорошее приближение. <br>
+    Судя по рисунку 3.1.7, максимальная ошибка  аппроксимации при&nbsp; <br>
+    использовании выражения 3.1.2 составляет 0,26&deg;, если  угол в находится в пределах от -45&deg; до +45&deg;.</p>
+  <h3 align="center"><a name="Рис3.1.7"></a><img  src="../../images/ris030107.png" width="870" height="300"></h3>
+<h3 align="center">Рисунок 3.1.7 &ndash; Ошибка оценки угла в градусах</h3>
+    <p>Привлекательность этой аппроксимации состоит в том,  что формулу можно записать в виде: </p>
+
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"  ><img src="../../images/for030103a.png" width="230" height="73"><br><br></td>
+<td width="10%" valign="center" align="right">(3.1.3)</td></tr></table>
+<!--end   formula-->
+<br>
+   <p> устранив операцию деления Q/P за  счет двух дополнительных умножений. Другая особенность zzzz заключается в том, что одну  операцию умножения можно заменить двоичным сдвигом вправо. Произведение 0.28125  Q<sup>2</sup> &mdash; это (1/4 + 1/32) Q<sup>2</sup>, так что можно вычислить  произведение, прибавляя Q<sup>2</sup>, сдвинутое вправо на два бита, к Q<sup>2</sup>,  сдвинутому вправо на пять бит. Эта схема вычисления арктангенса. Расширить  диапазон углов, в котором работает эта аппроксимация можно, если разбить  окружность на восемь октантов по 45&deg;, первый из которых соответствует углам от  0&deg; до 45&deg;, можно вычислить арктангенс для углов в любом октанте. <br>
+     <br>
+   </p>
+
+</div>
+
+<div class="Text_Style"><table align="center" border="1" cellspacing="2" cellpadding="2" width="80%">
+  <tr>
+    <td colspan="6"  align="left" valign="middle"><p>Таблица 3.1.1. Расположение октантов и соответствующие формулы для арктангенса </p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">Октант</p></td>
+    <td width="15%" valign="middle"><p align="center">Диапазон функции</p></td>
+    <td width="10%" valign="middle"><p align="center">P </p></td>
+    <td width="10%" valign="middle"><p align="center">Q</p></td>
+    <td width="10%" valign="middle"><p align="center">P, Q</p></td>
+    <td width="25%" valign="middle"><p align="center">Аппроксимация арктангенса</p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">1</p></td>
+    <td width="15%" valign="middle"><p>[    0 .. &pi;    /4 ]</p></td>
+    <td width="10%" valign="middle"><p>P &gt;= 0</p></td>
+    <td width="10%" valign="middle"><p>Q &gt;= 0</p></td>
+    <td width="10%" valign="middle"><p>| P | &gt;= | Q |</p></td>
+    <td width="25%" valign="middle"><p>&phi;' = |P||Q|/(P<sup>2</sup> + 0.28125Q<sup>2</sup>)</p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">2</p></td>
+    <td width="15%" valign="middle"><p>] &pi;    /4 .. &pi; /2 ] </p></td>
+    <td width="10%" valign="middle"><p>P &gt;= 0</p></td>
+    <td width="10%" valign="middle"><p>Q &gt;= 0</p></td>
+    <td width="10%" valign="middle"><p>| P | &lt; | Q | </p></td>
+    <td width="25%" valign="middle"><p>&phi;' = &pi; /2 - |P||Q|/(Q<sup>2</sup> + 0.28125P<sup>2</sup>)</p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">3</p></td>
+    <td width="15%" valign="middle"><p>] &pi;    /2 .. 3&pi; /4[ </p></td>
+    <td width="10%" valign="middle"><p>P &lt; 0</p></td>
+    <td width="10%" valign="middle"><p>Q &gt;= 0 </p></td>
+    <td width="10%" valign="middle"><p>| P | &lt; | Q | </p></td>
+    <td width="25%" valign="middle"><p>&phi;' = &pi; /2 + |P||Q|/(Q<sup>2</sup> + 0.28125P<sup>2</sup>)</p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">4</p></td>
+    <td width="15%" valign="middle"><p>[ - 3&pi;    /4 .. - &pi; ] </p></td>
+    <td width="10%" valign="middle"><p>P &lt; 0</p></td>
+    <td width="10%" valign="middle"><p>Q &gt;= 0 </p></td>
+    <td width="10%" valign="middle"><p>| P | &gt;= | Q | </p></td>
+    <td width="25%" valign="middle"><p>&phi;' = &pi; &nbsp;- |P||Q|/(P<sup>2</sup> + 0.28125Q<sup>2</sup>)</p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">5</p></td>
+    <td width="15%" valign="middle"><p>[ - 3&pi;    /4 .. - &pi; ] </p></td>
+    <td width="10%" valign="middle"><p>P &lt; 0</p></td>
+    <td width="10%" valign="middle"><p>Q &lt; 0</p></td>
+    <td width="10%" valign="middle"><p>| P | &gt;= | Q | </p></td>
+    <td width="25%" valign="middle"><p>&phi;' = - &pi; &nbsp;+ |P||Q|/(P<sup>2</sup> + 0.28125Q<sup>2</sup>)</p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">6</p></td>
+    <td width="15%" valign="middle"><p>] - &pi; /2 .. - 3&pi; /4[ </p></td>
+    <td width="10%" valign="middle"><p>P &lt; 0</p></td>
+    <td width="10%" valign="middle"><p>Q &lt; 0 </p></td>
+    <td width="10%" valign="middle"><p>| P | &lt; | Q | </p></td>
+    <td width="25%" valign="middle"><p>&phi;' = - &pi; /2 - |P||Q|/(Q<sup>2</sup> + 0.28125P<sup>2</sup>)</p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">7</p></td>
+    <td width="15%" valign="middle"><p>] - &pi; /4 .. - &pi; /2 ] </p></td>
+    <td width="10%" valign="middle"><p>P &gt;= 0</p></td>
+    <td width="10%" valign="middle"><p>Q &lt; 0 </p></td>
+    <td width="10%" valign="middle"><p>| P | &lt; | Q | </p></td>
+    <td width="25%" valign="middle"><p>&phi;' = - &pi; /2 + |P||Q|/(Q<sup>2</sup> + 0.28125P<sup>2</sup>)</p></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="middle"><p align="center">8</p></td>
+    <td width="15%" valign="middle"><p>[    0 .. - &pi; /4 ] </p></td>
+    <td width="10%" valign="middle"><p>P &gt;= 0</p></td>
+    <td width="10%" valign="middle"><p>Q &lt; 0 </p></td>
+    <td width="10%" valign="middle"><p>| P | &gt;= | Q | </p></td>
+    <td width="25%" valign="middle"><p>&phi;' = - |P||Q|/(P<sup>2</sup> + 0.28125Q<sup>2</sup>)</p></td>
+  </tr>
+</table> 
+</div>
+
+  <!-- (C) 2017 Shemarov Alexander, BSUIR end--> 
+
+<div align="center">
+	<p>
+    <input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK18/lk_18.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK20/lk_20.htm'" />
+  </p>
+</div>  
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>

@@ -1,0 +1,272 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 2.13</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 2.  Программная реализация основных алгоритмов цифровой обработки сигналов:  формирование сигналов, цифровая фильтрация, быстрое преобразование Фурье</strong>      </h3>
+      <p><br>
+        <strong>2.3&nbsp;&nbsp;&nbsp; Программирование базовых операций алгоритмов  быстрого преобразования Фурье (БПФ) (4 часа)</strong><br>
+        <strong><em>Лекция № 2.13</em></strong><br>
+      Частные случаи реализация базовой  операции БПФ.<br>Организация двоично-инверсного счетчика  для выполнения операции двоично-инверсной перестановки данных.</p>
+</div>
+
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK12/lk_12.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK14/lk_14.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+
+	<div class="Text_Style">
+	  <h1>Частные случаи реализация базовой операции БПФ</h1>
+	  <h2>Реализация базовой операции для специальных значений поворачивающих множителей</h2>
+	</div>
+ 	<div class="Text_Style">
+	<p>Воспользовавшись свойством симметрии поворачивающих  множителей можно значительно упростить вычисление &laquo;бабочки&raquo;.<br>
+<b>Для алгоритма БПФ с прореживанием по времени для W<sub>N</sub><sup>0</sup> = 1  (cos=1, sin=0) получим</b>
+<p>Pm+1 = [PR + QR] +  j&times;[PI + QI],<br>
+Qm+1 = [PR &ndash; QR] + j&times;[PI &ndash; QI].</p>
+<p>Программа вычисления &laquo;бабочки&raquo; при этом значительно  сокращается (в 2 раза):</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+BTRFLY
+	ld	PR, 15, a		; A = 1/2 QR
+	add	QR, 15, a		; A = 1/2 (PR+QR)
+	sth	a, PR			; = 1/2 PR
+	sub	QR, 16, a		; A = 1/2 (PR-QR)
+	sth	a, QR			; = 1/2 QR
+	ld	QI, 15, a		; A = 1/2 QI
+	add	PI, 15, a		; A = 1/2 (PI+QI)
+	sth	a, PI			; = 1/2 PI
+	sub	QI, 16, a		; A = 1/2 (PI-QI)
+	sth	a, QI			; = 1/2 QI
+	</pre>
+      </blockquote>
+	  </blockquote>
+    <p><b>Для алгоритма БПФ с прореживанием по частоте для W<sub>N</sub><sup>0</sup> = 1 (cos=1, sin=0) получим </b></p>
+    <p>Pm+1 = [PR + QR] +  j&times;[PI + QI],<br>
+      Qm+1 = [PR &ndash; QR] + j&times;[PI &ndash; QI].</p>
+    <p>Программа вычисления &laquo;бабочки&raquo; полностью совпадает  с программой для алгоритма с прореживанием по времени.</p>
+    <b>Для алгоритма БПФ с прореживанием по времени и W<sub>N</sub><sup>N/4</sup> = &ndash;j (cos=0, sin=1) получим </b>
+    <p>Pm+1 = [PR + QI] +  j&times;[PI &ndash; QR],<br>
+      Qm+1 = [PR &ndash; QI] + j&times;[PI + QR].</p>
+    <p>
+      Программа вычисления &laquo;бабочки&raquo; при этом выглядит следующим образом:</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+BTRFLY
+	ld	PI, 15, a		; A = 1/2 PI
+	sub	QR, 15, a		; A = 1/2 (PI-QR)
+	sth	a, PI			; = 1/2 PI
+	add	QR, 16, a		; A = 1/2 (PI+QR)
+	ld	PR, 15, b		; B = 1/2 PR
+	add	QI, 15, b		; B = 1/2 (PR+QI)
+	sth	b, PR			; = 1/2 PR
+	sub	QI, 16, b		; B = 1/2 (PR-QI)
+	sth	b, QR			; = 1/2 QR
+	sth	a, QI			; = 1/2 QI
+	</pre>
+	  </blockquote>
+	</blockquote>
+    <p><b>Для алгоритма БПФ с прореживанием по частоте для W<sub>N</sub><sup>N/4</sup> = &ndash;j (cos=0, sin=1) получим </b></p>
+    <p>Pm+1 = [PR + QR] +  j&times;[PI + QI],<br>
+      Qm+1 = [PI &ndash; QI] + j&times;[PR &ndash; QR].</p>
+    <p>
+      Программа вычисления &laquo;бабочки&raquo; при этом выглядит следующим образом:</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+BTRFLY
+	ld	PI, 15, a		; A = 1/2 PI
+	add	QI, 15, a		; A = 1/2 (PI+QI)
+	sth	a, PI			; = 1/2 PI
+	sub	QI, 16, a		; A = 1/2 (PI-QI)
+	ld	QR, 15, b		; B = 1/2 QR
+	sub	PR, 15, b		; B = 1/2 (QR-PR)
+	sth	b, QI			; = 1/2 QI
+	add	PR, 16, b		; B = 1/2 (PR+QR)
+	sth	b, PR			; = 1/2 PR
+	sth	a, QR			; = 1/2 QR
+	</pre>
+      </blockquote>
+	  </blockquote>
+    <p><b>Для БПФ с прореживанием по времени для W<sub>N</sub><sup>N/8</sup> = 0.7&ndash;j0.7 (cos=sin=W=0.7) получим </b></p>
+    <p>Pm+1 = [PR + (QI +  QR)&times;W] + j&times;[PI + (QI &ndash; QR)&times;W],<br>
+      Qm+1 = [PR &ndash; (QI + QR)&times;W] + j&times;[PI &ndash; (QI &ndash; QR)&times;W].<br></p>
+    <p><b>Для БПФ с прореживанием по частоте и W<sub>N</sub><sup>N/8</sup> = 0.7&ndash;j0.7 (cos=sin=W=0.7) получим </b></p>
+    <p>Pm+1 = [PR + QR] +  j&times;[PI +QI],<br>
+      Qm+1 = [(PI &ndash; QI)&times;W + (PR &ndash; QR)&times;W] + j&times;[<u>(</u>PI &ndash;QI)&times;W &ndash; (PR &ndash; QR)&times;W].</p>
+    <p><b>Для БПФ с прореживанием по времени для W</b><sub>N</sub><sup>3N/8</sup> = &ndash;0.7&ndash;j0.7 (&ndash;cos=sin=W=0.7) получим </b></p>
+    <p>Pm+1 = [PR + (QI &ndash;  QR)&times;W] + j&times;[PI &ndash; (QI + QR)&times;W],<br>
+      Qm+1 = [PR &ndash; (QI &ndash; QR)&times;W] + j&times;[PI + (QI + QR)&times;W].</p>
+    <p><b>Для БПФ с прореживанием по частоте для W<sub>N</sub><sup>3N/8</sup> = &ndash;0.7&ndash;j0.7 (&ndash;cos=sin=W=0.7) получим </b></p>
+    <p>Pm+1 = [PR + QR] +  j&times;[PI +QI],<br>
+      Qm+1 = [(QR &ndash; PR)&times;W &ndash; (QI &ndash; PI)&times;W] + j&times;[<u>(</u>QR &ndash; PR)&times;W + (<u>Q</u>I &ndash;PI)&times;W].</p>
+    <p>      Программа вычисления &laquo;бабочки&raquo; при этом сокращается незначительно.</p>
+    <p>&nbsp;</p>
+	</div>
+	<div class="Text_Style">
+	  <h2>Программная реализация двоично-инверсного счетчика</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Для вычисления БПФ требуется наличие двоично-инверсного  счетчика. В процессорах TMS второго  поколения начиная с TMS320C25 для  этого был введен новый способ адресации BR0+ (с обратным переносом). Для чисел из диапазона от 0 до 7  двоично-инверсный счетчик можно представить в виде следующей таблицы:</p>
+    <div align="center">
+      <table border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">Номер</p></td>
+          <td width="151" valign="top"><p align="center">Двоичное представление</p></td>
+          <td width="151" valign="top"><p align="center">Двоичная инверсия</p></td>
+          <td width="151" valign="top"><p align="center">Двоично-инверсный номер</p></td>
+        </tr>
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">0</p></td>
+          <td width="151" valign="top"><p align="center">000</p></td>
+          <td width="151" valign="top"><p align="center">000</p></td>
+          <td width="151" valign="top"><p align="center">0</p></td>
+        </tr>
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">1</p></td>
+          <td width="151" valign="top"><p align="center">001</p></td>
+          <td width="151" valign="top"><p align="center">100</p></td>
+          <td width="151" valign="top"><p align="center">4</p></td>
+        </tr>
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">2</p></td>
+          <td width="151" valign="top"><p align="center">010</p></td>
+          <td width="151" valign="top"><p align="center">010</p></td>
+          <td width="151" valign="top"><p align="center">2</p></td>
+        </tr>
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">3</p></td>
+          <td width="151" valign="top"><p align="center">011</p></td>
+          <td width="151" valign="top"><p align="center">110</p></td>
+          <td width="151" valign="top"><p align="center">6</p></td>
+        </tr>
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">4</p></td>
+          <td width="151" valign="top"><p align="center">100</p></td>
+          <td width="151" valign="top"><p align="center">001</p></td>
+          <td width="151" valign="top"><p align="center">1</p></td>
+        </tr>
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">5</p></td>
+          <td width="151" valign="top"><p align="center">101</p></td>
+          <td width="151" valign="top"><p align="center">101</p></td>
+          <td width="151" valign="top"><p align="center">5</p></td>
+        </tr>
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">6</p></td>
+          <td width="151" valign="top"><p align="center">110</p></td>
+          <td width="151" valign="top"><p align="center">011</p></td>
+          <td width="151" valign="top"><p align="center">3</p></td>
+        </tr>
+        <tr>
+          <td width="38" valign="top"><p align="left">&nbsp;</p></td>
+          <td width="151" valign="top"><p align="center">7</p></td>
+          <td width="151" valign="top"><p align="center">111</p></td>
+          <td width="151" valign="top"><p align="center">111</p></td>
+          <td width="151" valign="top"><p align="center">7</p></td>
+        </tr>
+      </table>
+    </div>
+    <p>Для организации двоично-инверсного счетчика при отсутствии соответствующего способа адресации можно использовать различные алгоритмы. Одним из таких алгоритмов является алгоритм, предложенный  Рэйдером (рис.&nbsp;2.3.6):<br>
+<h3 align="center"><a name="fig1"></a><img src="../../images/ris010302_a.gif" alt="Рис.3.6" width="635" height="876"></h3>
+<h3 align="center">Рисунок 2.3.6 &ndash; Алгоритм Рейдера</h3>
+</div>
+	<div class="Text_Style">
+	  <h2>Двоично-инверсная перестановка данных</h2>
+	</div>
+  <div class="Text_Style">
+	<p>При вводе данных в двоично-инверсном порядке можно  просто воспользоваться данным счетчиком для адресации памяти данных, куда  помещается информация, считанная из порта.<br>
+При перестановке результата вычисления можно  воспользоваться промежуточным буфером и считывать данные с помощью обычного  счетчика, а записывать в буфер с помощью двоично-инверсного или наоборот.<br>
+Второй способ  заключается в по парной перестановке соответствующих отсчетов сигнала. Для 16  отсчетов необходимы следующие перестановки (рис.&nbsp;2.3.7):<br>
+<h3 align="center"><a name="fig2"></a><img src="../../images/ris010302_b.gif" alt="Рис.3.7" width="644" height="213"></h3>
+<h3 align="center">Рисунок 2.3.7 &ndash; Двоично-инверсная перестановка данных</h3>
+    <p>Элементы с одинаковыми номерами переставлять нет  необходимости, а первыми необходимо поменять местами элементы 1&ndash;8. При этом,  когда мы дойдем до 8-го элемента в первой строке, то окажется что элементы 8&ndash;1 уже  были переставлены ранее и их переставлять также нет необходимости.<br>
+      Таким образом перестановка выполняется только для  элементов номер (адрес) источника которых меньше номера (адреса) приемника.<br>
+      Из проверки всегда можно исключить первый (0&hellip;0) и  последний (1&hellip;1) элементы.<br>
+      Таким образом получается, что нужно переставить  следующие элементы:<br>
+      1-8, 2-4, 3-12, 5-10, 7-14, 11-13.<br>
+      Как видим, последняя пара относится ко второй  половине массива элементов.<br>
+      Для того чтобы переставить пару элементов совсем не  обязательно пользоваться рабочими ячейками. Для этого можно использовать  32-разрядный аккумулятор загрузив первый элемент в старшую, а второй в младшую  часть аккумулятора (или наоборот). После чего записать содержимое аккумулятора  в обратном порядке &ndash; младшую часть на место первого элемента и старшую &ndash; на  место второго элемента.<br>
+      При наличии двух аккумуляторов можно легко  переставлять комплексные числа (по два 16-разрядных слова).<br>
+      Чтобы загрузить в аккумулятор два числа можно использовать команды <b>LD</b> со сдвигом на 16 и <b>OR, XOR, ADDS</b> или <b>LDU</b> и <b>ADD</b> со  сдвигом на 16. Сохранение переставленных данных выполняется обычными  командами <b>STL</b> и <b>STH</b>. Можно также использовать два аккумулятора и обмениваться сразу двойными словами (действительной и мнимой частями) используя команды <b>DLD</b> и <b>DST</b>.</p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+ 	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK12/lk_12.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK14/lk_14.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Практическое занятие "Использование алгоритма компрессии данных &mu;-Law для перевода данных в логарифмический масштаб"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle"><a name="sub0"></a>7. Использование алгоритма компрессии данных &mu;-Law для перевода данных в логарифмический масштаб.</div>
+	<div class="mainSubTitle"><a name="sub1"></a>1) Принцип компрессии данных по алгоритму &mu;-Law</div>
+ 	<div class="mainSubContent">
+<p>Алгоритмы компрессии данных можно использовать для перевода данных из линейной шкалы в логарифмическуюю Принцип кодирования для метода &mu;-Law можно  представить в следующем виде (табл.&nbsp;7.1):</p>
+<!--start table-->
+<table border="0" cellspacing="0" cellpadding="0"><tr><td width="80" valign="top" align=" right ">Таблица&nbsp;</td>
+<td width="600" valign="top">7.1 &ndash; Принцип кодирования для метода &mu;-255</td></tr></table>
+<!--end   table-->
+    <table border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="450" valign="center" align="center">Двоичные входные значения</td>
+        <td width="300" valign="center" align="center">Сжатое слово данных</td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>Бит:&nbsp;&nbsp; 12 11 10 9&nbsp; 8&nbsp; 7&nbsp; 6&nbsp; 5&nbsp; 4&nbsp; 3&nbsp; 2&nbsp;&nbsp; 1&nbsp;&nbsp; 0</p></td>
+        <td width="300" valign="top"><p>Бит:&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp; 5&nbsp; 4&nbsp; 3&nbsp; 2&nbsp;&nbsp; 1&nbsp;&nbsp; 0</p></td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub> х</p></td>
+        <td width="300" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 0&nbsp; 0 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub></p></td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub> х&nbsp; х</p></td>
+        <td width="300" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub></p></td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub> х&nbsp; х&nbsp; х</p></td>
+        <td width="300" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 1&nbsp; 0 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub></p></td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub> х&nbsp; х&nbsp; х&nbsp; х</p></td>
+        <td width="300" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 1&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub></p></td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub> х&nbsp; х&nbsp; х&nbsp; х&nbsp; х</p></td>
+        <td width="300" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 0&nbsp; 0 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub></p></td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub> х&nbsp; х&nbsp; х&nbsp; х&nbsp; х&nbsp; х</p></td>
+        <td width="300" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub></p></td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub> х&nbsp; х&nbsp; х&nbsp; х&nbsp; х&nbsp; х&nbsp; х</p></td>
+        <td width="300" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 1&nbsp; 0 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub></p></td>
+      </tr>
+      <tr>
+        <td width="450" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub> х&nbsp; х&nbsp; х&nbsp; х&nbsp; х&nbsp; х&nbsp; х&nbsp; х</p></td>
+        <td width="300" valign="top"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 1&nbsp; 1 Q<sub>3</sub> Q<sub>2</sub> Q<sub>1</sub> Q<sub>0</sub></p></td>
+      </tr>
+    </table>
+	<p>Схема алгоритма преобразования данных по методу &mu;-255 представлена на рис.&nbsp;7.1.</p>
+<!--start risunok-->
+<h3 align="center"><a name="fig2"></a><img src="../../../images/pz_ris0701.gif" alt="Рис.7.1" width="652" height="496"></h3>
+<h3 align="center">Рисунок 7.1 &ndash; Алгоритм сжатия данных по методу &mu;-255</h3>
+<!--end   risunok-->
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>2) Рекомендации по программированию</div>
+ 	<div class="mainSubContent">
+	Поиск первого нуля в числе можно выполнить командой EXP, а сдвиг числа до нужной позиции командой NORM.
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbsp;Назад&nbsp;&nbsp;" onClick="document.location.href ='../PZ6/pz_6.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем практических занятий" onClick="document.location.href ='../pz.html'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../PZ8/pz_8.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->			
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+</body></html>

@@ -1,0 +1,190 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 1.4</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 1.  Технологии и инструментальные системы программирования проблемно-ориентированных  вычислительных средств реального времени</strong></h3>
+      <p><strong>1.3&nbsp;&nbsp;&nbsp; Технология создания программ на языке С/С++ (4  часа)</strong><br>
+        <strong><em>Лекция № 1.4</em></strong><br>
+        Стандарт языка ANSI С/С++. Основные  элементы, типы данных, конструкции языка С/С++. <br>
+Создание программы с использованием  языка С/С++. <br>
+      </p>
+</div>
+
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK03/lk_03.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK05/lk_05.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+
+	<div class="Text_Style">
+	  <h1><strong>Технология создания программ на языке С/С++</strong></h1>
+      <h2>Стандарт языка ANSI С/С++. Основные  элементы, типы данных, конструкции языка С/С++</h2>
+<p>Сложность современного программного обеспечения требует для его создания использования новых технологий программирования. Сложность внутреннего устройства современных процессоров цифровой обработки сигналов определяет серьезные требования к компетенции программистов. Большинство программистов слабо разбираются в архитектуре проблемно-ориентированных процессоров. Для обеспечения разработки большого количества программ требуется привлечение для разработки модулей программного обеспечения, не играющих существенной роли в обеспечении основного технологического процесса, программистов пишущих программы на языках высокого уровня, в частности С/С++. Для обеспечения результативности процесса программирования рекомендуется соблюдать стандарты языков.</p>
+<p>Первый стандарт языка C был опубликован американским институтом ANSI. Через некоторое время он был принят международной организацией по стандартизации ISO, продолжившей выпускать следующие версии стандарта, которые стали приниматься как стандарт и институтом ANSI.<br>
+<strong>C89.</strong> В 1983 году Американский национальный институт стандартов сформировал комитет X3J11 для создания спецификации стандарта C. В 1989 году, после длительного и напряжённого процесса, стандарт был завершён и утверждён как ANSI X3.159-1989 «Язык программирования C». Именно эту версию часто называют «ANSI C», или «C89».<br>
+<strong>C90.</strong> В 1990 году, стандарт ANSI C (с небольшими изменениями) был принят Международной организацией по стандартизации (ISO) как ISO/IEC 9899:1990. Эту версию иногда называют C90. Однако, термины C89 и C90 относятся в сущности к одному языку.<br>
+<strong>C99.</strong> В марте 2000 года ANSI принял стандарт ISO/IEC 9899:1999. Этот стандарт   обычно называют C99. Это и есть современный стандарт языка   программирования C.<br>ANSI C поддерживается практически всеми распространёнными компиляторами языка C. Любая программа, написанная только с использованием стандарта и не допускающая специфических аппаратных допущений и использования сторонних библиотек, гарантированно должна работать на любой платформе с достаточно стандартной реализацией языка C.</p><br>
+      <h3 align="center"><a href="../../../n1124.pdf" title="Стандарт ANSI C89/C99" target="_blank"><img src="../../images/ANSI C89C99.gif" width="55%"  border="1" align="center"></a></h3>
+<h3 align="center">Рисунок 1.3.1 &ndash; Стандарт ANSI C89/C99</h3></div>
+
+</div>
+<div class="Text_Style"><p> Начиная с процессоров серии TMS320C55xx, инструментальная среда программирования поддерживает стандарт языка С++. Описание стандарта представлено в прилагаемом файле.</p><br>
+      <h3 align="center"><a href="../../../n3690.pdf" title="ISO Programming Languages — C++" target="_blank"><img src="../../images/ISO Programming Languages — C++.gif" width="55%"  border="1" align="center"></a></h3>
+<h3 align="center">Рисунок 1.3.2 &ndash; Стандарт ISO Programming Languages — C++</h3><br>
+<p> К сожалению, объем дисциплины не позволяет подробно рассмотреть основные конструкции языка. Однако, учитывая то, что язык C преподавался ранее, обучающимся предоставляется возможность самостоятельной разработки программного обеспечения на этих языках.<br></div>
+	<div class="Text_Style">
+      <h2>Создание программы с использованием  языка С</h2></div>
+<div class="Text_Style">
+  <p>Для создания проекта на языке C необходимо  выполнить следующие действия:</p>
+  <ol>
+    <ol>
+      <li value="1">Необходимо  создать проект. Для этого выбираем последовательно пункты меню &lt;Project&gt;&lt;New&hellip;&gt;. Появляется окно  создания проекта, в котором задаем имя проекта и место расположения папки с проектом.  Выбираем тип проекта, и семейство микросхем для которого создаем проект. </li>
+    </ol>
+  </ol>
+       <h3 align="center"><img title="Рисунок 1.3.3. Создание нового проекта" src="../../images/Ris_1_3_3.JPG" width="441" height="261"></h3>
+<h3 align="center">Рисунок 1.3.3 &ndash; Создание нового проекта</h3>
+<br>
+  <p>Далее нажимаем кнопку &lt;Готово&gt;  и убеждаемся, что проект появился в окне проектов (рабочего пространства).</p>
+       <h3 align="center"><img title="Рисунок 1.3.4. Контроль создания нового проекта" src="../../images/Ris_1_3_4.JPG" width="304" height="746"></h3>
+<h3 align="center">Рисунок 1.3.4 &ndash; Контроль создания нового проекта</h3><br>
+  <p>При необходимости делаем проект активным. </p>
+         <h3 align="center"><img title="Рисунок 1.3.5. Выбор проекта для работы (Установка активного проекта)" src="../../images/Ris_1_3_5.JPG" width="340" height="596"></h3>
+<h3 align="center">Рисунок 1.3.5 &ndash; Выбор проекта для работы (Установка активного проекта)</h3><br>
+
+  <ol>
+    <ol>
+      <li value="2">Создаем файл с исходным кодом на языке C. Для этого выбираем  последовательно пункты меню &lt;File&gt;&lt;New&hellip;&gt;&lt;Source File&gt;. Появляется окно исходного  Untitled XXX файла.</li>
+    </ol>
+  </ol>
+<h3 align="center"><img title="Рисунок 1.3.6. Создание файла для написания исходного кода" src="../../images/Ris_1_3_6.JPG" width="90%"></h3>
+<h3 align="center">Рисунок 1.3.6 &ndash; Создание файла для написания исходного кода</h3><br>
+
+  <p>В окне осуществляем создание  простейшей программы на языке С. </p>
+<h3 align="center"><img title="Рисунок 1.3.7. Создание (ввод) простейшей программы на языке C" src="../../images/Ris_1_3_07.JPG" width="90%"></h3>
+<h3 align="center">Рисунок 1.3.7 &ndash; Создание (ввод) простейшей программы на языке C</h3><br>
+  <ol>
+    <ol>
+      <li value="3">Сохраняем файл с исходным кодом на языке C. Для этого выбираем  последовательно пункты меню &lt;File&gt;&lt;Save&gt;. В появившемся окне  вводим имя файла, выбираем его расширение (*.с) и записываем его в папку  проекта.</li>
+    </ol>
+  </ol>
+<h3 align="center"><img title="Рисунок 1.3.8. Сохранене исходного файла под именем *.c" src="../../images/Ris_1_3_08.JPG" width="428" height="301"></h3>
+<h3 align="center">Рисунок 1.3.8 &ndash; Сохранене исходного файла под именем *.c</h3><br>
+  <ol>
+    <ol>
+      <li value="4">Подключаем сохраненный исходный файл к проекту. Для  этого выбираем последовательно пункты меню &lt; Project&gt;&lt;Add Files to Project&gt;. В появившемся  окне вводим имя файла (фалов) который (которые) собираемся добавить в проект и  добавляем их в проект.</li>
+    </ol>
+  </ol>
+<h3 align="center"><img title="Рисунок 1.3.9. Добавление нового исходного файла в активный проект" src="../../images/Ris_1_3_09.JPG" width="90%"></h3>
+<h3 align="center">Рисунок 1.3.9 &ndash; Добавление нового исходного файла в активный проект</h3><br>
+  <p>Убеждаемся, что файл добавлен в  проект.</p>
+<h3 align="center"><img title="Рисунок 1.3.10. Контроль появвления нового исходного файла с программой в активном проекте" src="../../images/Ris_1_3_10.JPG" width="699" height="505"></h3>
+<h3 align="center">Рисунок 1.3.10 &ndash; Контроль появвления нового исходного файла с программой в активном проекте</h3><br>
+  <ol>
+    <ol>
+      <li value="5">Выполняем построение проекта, которое может выполняться  либо в целом, либо опционально поэтапно. Выбор необходимо опции зависит от  сложности проекта. Простые проекты можно запускать сразу на компиляцию и  компоновку. Для выполнения только компиляции выполняем следующие действия: &lt;Project&gt;&lt;Compile&gt; (Рисунок 1.3.11).</li>
+    </ol>
+  </ol>
+<h3 align="center"><img title="Рисунок 1.3.11. Компиляция (трансляция) исходных модулей проекта" src="../../images/Ris_1_3_11.JPG" width="906" height="858"></h3>
+<h3 align="center">Рисунок 1.3.11 &ndash; Компиляция (трансляция) исходных модулей проекта</h3><br>
+  <p>Для выполнения только компоновки  выполняем следующие действия: &lt;Project&gt;&lt;Incremental Build&gt;  (Рисунок 1.3.12).</p>
+<h3 align="center"><img title="Рисунок 1.3.12. Компоновка (редактирование) объектных модулей проекта" src="../../images/Ris_1_3_12.JPG" width="769" height="868"></h3>
+<h3 align="center">Рисунок 1.3.12 &ndash; Компоновка (редактирование) объектных модулей проекта</h3><br>
+  <p>Далее устраняем ошибки как на  этапе компиляции, так и на этапе построения (компоновки) проекта. Обязательно  обращаем внимание на предупреждения, которые генерирует система. Так  предупреждение о отсутствии точки входа на этапе компоновки является серьезным  предупреждением и требует коррекции:</p>
+  <p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+  <p>&lt;Linking&gt;<br>
+    &gt;&gt; warning entry point symbol _c_int00  undefined</p>
+  <p>---------------------------------------------------------------------------------------------------------------------------------------------- </p>
+  <p>означает, что в проекте не  определена точка входа по сбросу питания (вектор прерывания 0)</p>
+  <p>Для устранения данной ошибки,  если не подключена библиотека rts.lib или rts_ext.lib, необходимо определить  точку входа следующим образом:</p>
+  <p><tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; extern&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void&nbsp;&nbsp;&nbsp;&nbsp; c_int00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (void)&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a,b,c;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a = 34;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b = 55;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c = b;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a += b;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b *= c;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c = 0;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</tr></p>
+  <p>Выполняем построение проекта &lt;Project&gt;&lt;Rebuild All&gt;. Предупреждение,  появившееся в окне вывода сообщает об использовании вызова компоновщика по  умолчанию, согласно профилю Debug  . В результате этого действия получаем проект в виде выходного файла, который может быть загружен либо в симулятор, либо в процессор.</p>
+<h3 align="center"><img title="Рисунок 1.3.13. Построение проекта" src="../../images/Ris_1_3_13.JPG" width="928" height="882"></h3>
+<h3 align="center">Рисунок 1.3.13 &ndash; Построение проекта</h3><br>
+  <p>Далее приступаем к отладке  проекта. </p>
+<h3 align="center"><img title="Рисунок 1.3.14. Отладка проекта" src="../../images/Ris_1_3_14.JPG" width="90%"></h3>
+<h3 align="center">Рисунок 1.3.14 &ndash; Отладка проекта</h3><br>
+  <p>Пример простейшего проекта на  языке С представлен на рисунке 1.3.15.<br>
+<h3 align="center"><img title="Рисунок 1.3.15. Пример построения проекта на языке C" src="../../images/Ris_1_3_15.JPG" width="90%"></h3>
+<h3 align="center">Рисунок 1.3.15 &ndash; Пример построения проекта на языке C</h3>
+<br><br>
+</div>
+
+
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK03/lk_03.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK05/lk_05.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>

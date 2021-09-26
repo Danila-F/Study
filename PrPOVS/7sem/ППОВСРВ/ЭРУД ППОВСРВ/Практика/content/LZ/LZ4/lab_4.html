@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Лабораторная работа "Измерение амплитудно-частотной характеристики цифрового рекурсивного фильтра"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle" align="center"><a name="sub0"></a>ЛАБОРАТОРНАЯ РАБОТА № 4</div>
+	<div class="mainTitle" align="center">ИЗМЕРЕНИЕ АМПЛИТУДНО-ЧАСТОТНОЙ ХАРАКТЕРИСТИКИ ЦИФРОВОГО РЕКУРСИВНОГО ФИЛЬТРА</div>
+	<div class="mainSubTitle"><a name="sub1"></a>4.1. ЦЕЛЬ РАБОТЫ</div>
+	<div class="mainSubContent">
+	Разработка алгоритма и написание программы для измерения АЧХ цифрового рекурсивного фильтра на базе лабораторного макета TMS320VC5402 DSP Starter Kit (DSK) и её отладка на лабораторном макете.
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>4.2. ТЕОРЕТИЧЕСКИЕ СВЕДЕНИЯ</div>
+	<div class="mainSubTitle1">4.2.1. Алгоритм измерения АЧХ фильтра</div>
+	<div class="mainSubContent">
+	  <p>Для измерения АЧХ фильтра может быть использован  генератор синусоидальных сигналов, разработанный в лабораторных работах №1 и  №2. На вход фильтра в течение заданных интервалов времени последовательно подается  синусоидальный сигнал с увеличивающейся частотой.<br>
+	    По истечении времени, необходимого на установку  сигнала на выходе фильтра, необходимо измерить мощность сигнала, для чего можно  воспользоваться выражением</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0401.gif" alt="Фор.4.1" width="139" height="59"><br></td>
+          <td width="50" valign="center" align="right">(4.1)</td>
+        </tr>
+      </table>
+      <p>где Е &ndash; энергия сигнала, y(n) &ndash; значение на выходе фильтра, N &ndash; интервал усреднения,  состоящий из целого числа периодов сигнала.<br>
+        Для нахождения АЧХ фильтра необходимо найти  отношение амплитуды синусоидального сигнала на выходе фильтра к амплитуде на  входе фильтра на каждой частоте. При этом если взять единичную амплитуду&nbsp; входного сигнала, амплитуды выходных сигналов  будут представлять собой АЧХ фильтра. Измерив мощность сигнала, можно найти  амплитуду выходного сигнала из следующего соотношения:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><img src="../../../images/lb_for0402.gif" alt="Фор.4.2" width="75" height="57"><br></td>
+          <td width="50" valign="center" align="right">(4.2)</td>
+        </tr>
+      </table>
+      <p>где Е &ndash; энергия сигнала, А &ndash;  амплитуда синусоидального сигнала.</p>
+  </div>
+	<div class="mainSubTitle1">4.2.2. Программа измерения АЧХ рекурсивного фильтра</div>
+	<div class="mainSubContent">
+	  <p>Для  измерения АЧХ фильтра, запрограммированного в лабораторной работе №3,  используются программы генераторов из лабораторных работ №1 и №2. После начала  формирования очередной гармоники на вход фильтра необходимо подать определенное  число отсчетов синуса (не менее одного периода) для достижения установившегося  режима на выходе фильтра.<br>
+	    После  достижения установившегося режима необходимо в течение N тактов (целое  число периодов) накаливать сумму квадратов амплитуд. При N=256 после завершения суммирования в  старшей части аккумулятора получится значение энергии (деление на 256 за счет  8-ми защитных разрядов).</p>
+	<p>Схема  алгоритма программы измерения АЧХ фильтра представлена на рис.&nbsp;4.1.</p>
+<h3 align="center"><img src="../../../images/lb_ris0401.gif" alt="Рис.2.1" width="441" height="833"></h3>
+<h3 align="center">Рисунок 4.1 &ndash; Схема алгоритма измерения АЧХ фильтра</h3>
+	</div>
+	<div class="mainSubTitle"><a name="sub3"></a>4.3. ПОРЯДОК ВЫПОЛНЕНИЯ РАБОТЫ</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Изучить теоретические сведения по теме лабораторной работы <a href="#sub2">(подразд.&nbsp;4.2)</a>.</li>
+		<li>Получить у преподавателя задание для выполнения практической части работы.</li>
+		<li>Согласно заданию написать, оттранслировать и выполнить программу.</li>
+		<li>Продемонстрировать результат трансляции и работы программы преподавателю.</li>
+		<li>Оформить и защитить отчет по лабораторной работе.</li>
+	</ol>
+	</div>
+	<div class="mainSubTitle"><a name="sub4"></a>4.4. СОДЕРЖАНИЕ ОТЧЕТА</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Цель работы и исходные данные.</li>
+		<li>Описание алгоритма работы программы.</li>
+		<li>Листинг программы с комментариями.</li>
+		<li>Выводы по работе.</li>
+	</ol>
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbspНазад&nbsp;&nbsp" onClick="document.location.href ='../LZ3/lab_3.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем лабораторных работ" onClick="document.location.href ='../lb.html'" />
+	<input type="button" class="buttonManage" value="&nbspВперед&nbsp" onClick="document.location.href ='../LZ5/lab_5.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+</BODY></HTML>

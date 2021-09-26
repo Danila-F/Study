@@ -1,0 +1,1 @@
+runas /user:ccs /SAVECRED "C:\Program Files\TI\cc\bin\cc_app.exe"

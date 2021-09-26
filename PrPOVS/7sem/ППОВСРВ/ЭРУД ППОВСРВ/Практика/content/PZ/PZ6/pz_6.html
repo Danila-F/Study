@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Практическое занятие "Программирование двоично-рекурсивного счетчика для алгоритма БПФ, перестановка данных"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle"><a name="sub0"></a>6. Программирование двоично-инверсного счетчика для алгоритма БПФ, перестановка данных.</div>
+	<div class="mainSubTitle"><a name="sub1"></a>1) Программная реализация двоично-инверсного счетчика</div>
+ 	<div class="mainSubContent">
+	<p>Для чисел из диапазона от 0 до 7  двоично-инверсный счетчик можно представить в виде следующей таблицы:</p>
+    <div align="center">
+      <table border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="150" valign="center" align="center">Номер</td>
+          <td width="150" valign="center" align="center">Двоичное представление</td>
+          <td width="150" valign="center" align="center">Двоичная инверсия</td>
+          <td width="150" valign="center" align="center">Двоично-инверсный номер</td>
+        </tr>
+        <tr>
+          <td width="150" valign="center" align="center">0</td>
+          <td width="150" valign="center" align="center">000</td>
+          <td width="150" valign="center" align="center">000</td>
+          <td width="150" valign="center" align="center">0</td>
+        </tr>
+        <tr>
+          <td width="150" valign="center" align="center">1</td>
+          <td width="150" valign="center" align="center">001</td>
+          <td width="150" valign="center" align="center">100</td>
+          <td width="150" valign="center" align="center">4</td>
+        </tr>
+        <tr>
+          <td width="150" valign="center" align="center">2</td>
+          <td width="150" valign="center" align="center">010</td>
+          <td width="150" valign="center" align="center">010</td>
+          <td width="150" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="150" valign="center" align="center">3</td>
+          <td width="150" valign="center" align="center">011</td>
+          <td width="150" valign="center" align="center">110</td>
+          <td width="150" valign="center" align="center">6</td>
+        </tr>
+        <tr>
+          <td width="150" valign="center" align="center">4</td>
+          <td width="150" valign="center" align="center">100</td>
+          <td width="150" valign="center" align="center">001</td>
+          <td width="150" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="150" valign="center" align="center">5</td>
+          <td width="150" valign="center" align="center">101</td>
+          <td width="150" valign="center" align="center">101</td>
+          <td width="150" valign="center" align="center">5</td>
+        </tr>
+        <tr>
+          <td width="150" valign="center" align="center">6</td>
+          <td width="150" valign="center" align="center">110</td>
+          <td width="150" valign="center" align="center">011</td>
+          <td width="150" valign="center" align="center">3</td>
+        </tr>
+        <tr>
+          <td width="150" valign="center" align="center">7</td>
+          <td width="150" valign="center" align="center">111</td>
+          <td width="150" valign="center" align="center">111</td>
+          <td width="150" valign="center" align="center">7</td>
+        </tr>
+      </table>
+    </div>
+    <p>Для программной реализации двоично-инверсного счетчика при отсутствии соответствующего способа адресации можно использовать различные алгоритмы. Одним из таких алгоритмов является алгоритм, предложенный  Рэйдером (рис.&nbsp;6.1):</p>
+<h3 align="center"><a name="fig1"></a><img src="../../../images/pz_ris0601.gif" alt="Рис.6.1" width="635" height="876"></h3>
+<h3 align="center">Рисунок 6.1 &ndash; Алгоритм Рейдера</h3>
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>2) Принцип перестановки данных в алгоритме БПФ</div>
+ 	<div class="mainSubContent">
+	<p>Суть перестановки данных заключается в по парной перестановке соответствующих отсчетов сигнала. Для 16  отсчетов необходимы следующие перестановки (рис.&nbsp;6.2):<br>
+<h3 align="center"><a name="fig2"></a><img src="../../../images/pz_ris0602.gif" alt="Рис.6.2" width="644" height="213"></h3>
+<h3 align="center">Рисунок 6.2 &ndash; Двоично-инверсная перестановка данных</h3>
+    <p>Элементы с одинаковыми номерами переставлять нет  необходимости, а первыми необходимо поменять местами элементы 1&ndash;8. При этом,  когда мы дойдем до 8-го элемента в первой строке, то окажется что элементы 8&ndash;1 уже  были переставлены ранее и их переставлять также нет необходимости.</p>
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>3) Рекомендации по программированию</div>
+ 	<div class="mainSubContent">
+    <p>Не смотря на кажущуюся сложность алгоритма (рис. 6.1) программная реализация его достаточно проста, если для поиска первого нуля использовать вычитание бегущей в право единицы.</p>
+      <p>Перестановка выполняется только для элементов номер (адрес) источника которых меньше номера (адреса) приемника или наоборот.<br>
+      Из проверки всегда можно исключить первый (0&hellip;0) и последний (1&hellip;1) элементы.<br>
+      Для того чтобы переставить пару элементов совсем не обязательно пользоваться рабочими ячейками. Для этого можно использовать 32-разрядный аккумулятор загрузив первый элемент в старшую, а второй в младшую  часть аккумулятора (или наоборот). После чего записать содержимое аккумулятора  в обратном порядке &ndash; младшую часть на место первого элемента и старшую &ndash; на  место второго элемента.<br>
+      При наличии двух аккумуляторов можно легко переставлять комплексные числа (по два 16-разрядных слова).<br>
+      Чтобы загрузить в аккумулятор два числа можно использовать команды <b>LD</b> со сдвигом на 16 и <b>OR, XOR, ADDS</b> или <b>LDU</b> и <b>ADD</b> со  сдвигом на 16. Сохранение переставленных данных выполняется обычными  командами <b>STL</b> и <b>STH</b>. Можно также использовать два аккумулятора и обмениваться сразу двойными словами (действительной и мнимой частями) используя команды <b>DLD</b> и <b>DST</b>.</p>
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbsp;Назад&nbsp;&nbsp;" onClick="document.location.href ='../PZ5/pz_5.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем практических занятий" onClick="document.location.href ='../pz.html'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../PZ7/pz_7.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->			
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+</body></html>

@@ -1,0 +1,318 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 2.8</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 2.  Программная реализация основных алгоритмов цифровой обработки сигналов:  формирование сигналов, цифровая фильтрация, быстрое преобразование Фурье</strong>      </h3>
+      <p><strong>2.2&nbsp;&nbsp;&nbsp; Программирование цифровых фильтров (8 часов)</strong><br>
+        <strong><em>Лекция № 2.8</em></strong><br>
+        Программирование цифровых нерекурсивных  фильтров. Распределение памяти данных и коэффициентов. Организация циклов.<br>
+      </p>
+</div>
+
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK07/lk_07.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK09/lk_09.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+<div class="Text_Style">
+	<h1>Программирование цифровых нерекурсивных фильтров</h1>
+	<h2>Уравнения и структура цифровых фильтров</h2></div>
+<div class="Text_Style">
+	  <p>Как известно, уравнение цифрового фильтра (ЦФ) во  временной области описывается выражением (прямая форма 1):</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010201_a.gif" alt="Фор.2.1" width="312" height="57"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.1)</td></tr></table>
+      <p>Если все коэффициенты b<sub>k</sub> равны нулю, мы получаем уравнение  цифрового нерекурсивного фильтра (ЦНФ), или фильтра с конечной импульсной характеристикой  (КИХ или FIR &ndash; Finite Impulse Response):</p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for010201_b.gif" alt="Фор.2.2" width="196" height="57"><br></td>
+          <td width="10%" valign="center" align="right">(2.2.2)</td>
+        </tr>
+      </table>
+      <p>где  коэффициенты a<sub>k</sub>  из предыдущей формулы обозначены как h(k) (коэффициенты импульсной характеристики  фильтра).<br>
+        Такой  фильтр N-го порядка может быть представлен следующей схемой (рис.&nbsp;2.2.1): <br></p>
+<h3 align="center"><a name="fig1"></a><img src="../../images/ris010201_a.gif" alt="Рис.2.1" width="630" height="141"></h3>
+<h3 align="center">Рисунок 2.1 &ndash; Граф-схема цифрового нерекурсивного фильтра</h3>
+      <p>Передаточная характеристика этого  фильтра описывается уравнением</p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for010201_c.gif" alt="Фор.2.3" width="330" height="59"><br></td>
+          <td width="10%" valign="center" align="right">(2.2.3)</td>
+        </tr>
+      </table>
+	</div>
+	<div class="Text_Style"><h2>Распределение памяти памяти данных и коэффициентовдля цифрового нерекурсивного фильтра</h2></div>
+<div class="Text_Style">
+	<p>При реализации ЦНФ на ЦПС важным является  оптимальное распределение в памяти процессора констант и данных.<br>
+Расположение данных, представленное на рис.&nbsp;2.2.2, позволяет воспользоваться командой DELAY (копирование в следующую по адресу  ячейку), встроенной в команды&nbsp; LTD и MACD, для организации линии задержки.  При этом вычисления следует начинать с XNMN1. Если порядок фильтра мал (не выше 5-го) можно использовать  линейную программу и команды LTD  или LD и&nbsp; MPY или MAC  с аргументом типа #lk.</p>
+<h3 align="center"><a name="fig2"></a><img src="../../images/ris010201_b.png" alt="Рис.2.2" width="250" height="190"></h3>
+<h3 align="center">Рисунок 2.2.2 &ndash; Порядок данных в памяти для цифрового нерекурсивного фильтра</h3>
+    <p>При числе коэффициентов &gt;5 используют циклическую  программу и соответствующие команды перехода, при этом порядок расположения  коэффициентов в памяти данных значения не имеет.<br>
+      Если коэффициенты расположены в памяти программ, то  можно использовать команду MACD, но при этом по самому младшему адресу в памяти  программ (с него начинается вычисление) должен располагаться коэффициент h(N-1),  обозначенный как HNM1, а по старшему &ndash; h(0), обозначенный как H0.<br>
+      Перед началом выполнения программы рекомендуется  обнулить все ячейки предыстории (x(n-1), x(n-2), &hellip;, x(n-N+1)).<br>
+      На  рисунке 2.2.3 приведено расположение данных и коэффициентом&nbsp; в памяти перед вычислением значения на выходе  фильтра для момента времени n<sub>0</sub> и n<sub>0</sub>+1.<br>
+<h3 align="center"><a name="fig3"></a><img src="../../images/ris010201_c.png" alt="Рис.2.3" width="730" height="290"></h3>
+<h3 align="center">Рисунок 2.2.3 &ndash; Расположение коэффициентов и данных в памяти</h3>
+  </div>
+	<div class="Text_Style">
+	  <h2>Примеры пограммной реализации цифрового нерекурсивного фильтра</h2>
+	</div>
+	<div class="Text_Style">
+
+      <p>Ниже приведены несколько примеров программ для разных способов  вычисления.</p>
+	  <blockquote>	    
+	    <blockquote>
+	      <h4>; Линейная программа фильтра 5-го порядка</h4>
+	      <pre>
+	.text		; секция программы
+START:	LD	#XN, DP	; сделать текущей страницу с x(n)
+	SSBX	FRCT	; режим умножения дробных чисел
+	SSBX	OVM	; режим коррекции переполнения
+	LD	#0, A	; обнуление предыстории (А:=0)
+	STL	A, XNM1	; XNM1:=0
+	STL	A, XNM2	; XNM2:=0
+	STL	A, XNM3	; XNM3:=0
+	STL	A, XNM4	; XNM4:=0
+; программа ЦНФ
+NXIPT:	PORTR	PA2, XN	; ввод из порта x(n)
+	LD	XNM4, T	; Т:=x(n-4)
+	MPY	#H4, A	; A:=T*h(4)=x(n-4)*h(4)
+	LTD	XNM3	; T:=x(n-3), x(n-3)->x(n-4)
+	MAC	#H3, A	; A:=A+T*h(3)=A+x(n-3)*h(3)
+	.  .  .
+	LTD	XN	; T:=x(n), x(n)->x(n-1)
+	MAC	#H0, A	; A:=A+T*h(0)=A+x(n)*h(0)=y(n)
+	STH	A, YN	; y(n) (можно использовать XN)
+	BD	NXIPT	; задержанный переход на NeXtInPuT
+	PORTW	YN, PA2	;2w вывод в порт y(n)
+	.data		; секция данных
+XN	.WORD	0	; предыстория фильтра
+	.  .  .
+XNM3	.WORD	0
+XNM4	.WORD	0
+YN	.WORD	0	; выход фильтра</pre>
+	      <h4>; Программа фильтра с использованием цикла</h4>
+	      <pre>
+	.text		; секция программы
+START:	SSBX	FRCT	; режим умножения дробных чисел
+	SSBX	OVM	; режим коррекции переполнения
+	STM	#XNMN1, AR2	; AR2:= адрес x(n-N+1)
+	LD	#0, A	; А:=0
+	RPT	#N-2	; повторить N-1 раз
+	STL	A, *AR2-	; обнуление предыстории x(n-k):=0
+; программа ЦНФ	; кроме x(n)
+NXIPT:	PORTR	PA2, *AR2	; ввод из порта x(n)
+	STM	#XNMN1, AR2	; AR2:= адрес x(n-N+1)
+	STM	#HNM1, AR3	; AR3:= адрес h(N-1)
+	STM	#N-1, BRC	; число повторений блока = N
+	RPTBD	LOOP-1	; повторить блок до метки LOOP
+	LD	#0, A	;1w A:=0
+	NOP		;1w
+	LTD	*AR2-	; T:=x(n-k), x(n-k)->x(n-k-1)
+	MAC	*AR3-, A	; A:=A+T*h(k)=A+x(n-k)*h(k)
+LOOP:	STH	A, *AR2	; y(n) (ячейка перед XN)
+	BD	NXIPT	; задержанный переход на NeXtInPuT
+	PORTW	*AR2+, PA2	;2w вывод y(n), AR2:= адрес x(n)
+	.data		; секция данных
+YN	.WORD	0	; выход фильтра (перед XN)
+XN	.WORD	0	; предыстория фильтра
+	.  .  .
+XNMN2	.WORD	0
+XNMN1	.WORD	0
+	.WORD	0	; свободная ячейка после x(n-N+1)
+H0	.WORD	0	; коэффициенты фильтра
+H1	.WORD	0
+	.  .  .
+HNM2	.WORD	0
+HNM1	.WORD	0
+; ПРИМЕЧАНИЕ:	коэффициенты h(k) в памяти данных и могут
+;		располагаться и в обратном порядке, при этом
+;		необходимо изменить команду  MAC *AR3+, A		</pre>
+	      <h4>; Программа фильтра с использованием команды MACD</h4>
+	      <pre>	.text		; секция программы
+START:	SSBX	FRCT	; режим умножения дробных чисел
+	SSBX	OVM	; режим коррекции переполнения
+	STM	#XNMN1, AR2	; AR2:= адрес x(n-N+1)
+	LD	#0, A	; А:=0
+	RPT	#N-2	; повторить N-1 раз
+	STL	A, *AR2-	; обнуление предыстории x(n-k):=0
+; программа ЦНФ	; кроме x(n)
+NXIPT:	PORTR	PA2, *AR2	; ввод из порта x(n)
+	STM	#XNMN1, AR2	; AR2:= адрес x(n-N+1)
+	RPTZ	A, #N-1	; A:=0, повторить команду N раз
+	MACD	*AR2-, HNM1	; A:=A+x(n-k)*h(k),x(n-k)->x(n-k-1)
+LOOP:	STH	A, *AR2	; y(n) (ячейка перед XN)
+	BD	NXIPT	; задержанный переход на NeXtInPuT
+	PORTW	*AR2+, PA2	;2w вывод y(n), AR2:= адрес x(n)
+HNM1	.WORD	0	; коэффициенты фильтра
+HNM2	.WORD	0
+	.  .  .
+H1	.WORD	0
+H0	.WORD	0
+	.data		; секция данных
+YN	.WORD	0	; выход фильтра (перед XN)
+XN	.WORD	0	; предыстория фильтра
+	.  .  .
+XNMN2	.WORD	0
+XNMN1	.WORD	0
+	.WORD	0	; свободная ячейка после x(n-N+1)
+; ПРИМЕЧАНИЕ:	коэффициенты h(k) в памяти программ и могут
+;		располагаться только в таком порядке !!!
+	</pre>
+        </blockquote>
+      </blockquote>
+</div>
+	<div class="Text_Style">
+	  <h2>Организация циклов на основе использования циклической адресации для реализации линии задержки в фильтре</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Наличие в процессоре  циклической адресации позволяет написать программу без использования команды  задержки DELAY за счет организации записи нового значения x(n)&nbsp; на место самого старого значения x(n-(N-1)). На рисунке 2.2.4 показано расположение данных&nbsp; в циклическом буфере. Внутреннее кольцо  показывает расположение данных предыстории на момент времени n<sub>0</sub>, а внешнее,  замещающие их данные на моменты времени n<sub>0</sub>+1, n<sub>0</sub>+2, n<sub>0</sub>+3 и т.д.</p>
+<h3 align="center"><a name="fig4"></a><img src="../../images/ris010201_d.gif" alt="Рис.2.4" width="498" height="331"></h3>
+<h3 align="center">Рисунок 2.2.4 &ndash; Организация циклического буфера</h3>
+    <p>Пример программы с  использованием циклической адресации приведен ниже.</p>
+	<blockquote>
+	  <blockquote>
+	    <h4>	; Программа фильтра с использованием циклической адресации	</h4>
+	    <pre>	.text		; секция программы
+START:	SSBX	FRCT	; режим умножения дробных чисел
+	SSBX	OVM	; режим коррекции переполнения
+	STM	#XNMN1, AR2	; AR2:= адрес x(n-N+1)
+	STM	#1, AR0	; AR0:= шаг в кольцевом буфере
+	STM	#N, BK	; размер кольцевого буфера
+	LD	#0, A	; А:=0
+	RPT	#N-2	; повторить N-1 раз
+	STL	A, *AR2+0%	; обнуление предыстории x(n-k):=0
+	STM	#HNM1, AR3	; AR3:= адрес h(N-1)
+; программа ЦНФ	; кроме x(n)
+NXIPT:	PORTR	PA2,*AR2+0%	; ввод из порта x(n)
+	RPTZ	A, #N-1	; A:=0, повторить команду N раз
+	MAC	*AR2+0%,*AR3+0%, A	; A:=A+x(n-k)*h(k)
+					; x(n-k)->x(n-k-1)
+LOOP:	STH	A, *AR2	; y(n) (ячейка x(n-N+1)
+	BD	NXIPT	; задержанный переход на NeXtInPuT
+	PORTW	*AR2, PA2	;2w вывод y(n)
+	.data		; секция данных
+	.ALIGN	128	; выравнивание для N < 128
+XNMN1	.WORD	0	; предыстория фильтра
+XNMN2	.WORD	0
+	.  .  .
+XNM1	.WORD	0
+XN	.WORD	0
+	.ALIGN	128	; выравнивание для N < 128
+HNM1	.WORD	0	; коэффициенты фильтра
+HNM2	.WORD	0
+	.  .  .
+H1	.WORD	0
+H0	.WORD	0
+; ПРИМЕЧАНИЕ:	коэффициенты h(k) в памяти данных и должны
+;		располагаться в том же порядке, что x(n-k);
+;		порядок h(k) и x(n-k) может быть обратным, при
+;		этом необходимо изменить команду  STM #-1, AR0
+	</pre>
+      </blockquote>
+	  </blockquote>
+</div>
+	<div class="Text_Style">
+	  <h2>Условие физической реализуемости цифрового нерекурсивного фильтра</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Поскольку фильтр имеет конечную импульсную характеристику, то  справедливы следующие соотношения:</p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for010201_d.gif" alt="Фор.2.d" width="309" height="72"><br></td>
+          <td width="10%" valign="center" align="right">&nbsp;</td>
+        </tr>
+      </table>
+<p>Откуда условием физической реализуемости ЦНР является:</p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for010201_e.gif" alt="Фор.2.4" width="101" height="67"><br></td>
+          <td width="10%" valign="center" align="right">(2.2.4)</td>
+        </tr>
+      </table>
+    <p>т.к. если предположить, что на входе фильтра сигнал имеет вид x(n-k)=&plusmn;1, и  знаки противоположны знакам h(k), то</p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for010201_f.gif" alt="Фор.2.f" width="287" height="67"><br></td>
+          <td width="10%" valign="center" align="right">&nbsp;</td>
+        </tr>
+      </table>
+    <p>и следовательно, для выполнения условия y(n)&lt;1 (отсутствие переполнения), должно выполняться условие (2.2.4).</p>
+    <p>&nbsp;</p>
+</div>
+
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK07/lk_07.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK09/lk_09.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+
+</BODY></HTML>

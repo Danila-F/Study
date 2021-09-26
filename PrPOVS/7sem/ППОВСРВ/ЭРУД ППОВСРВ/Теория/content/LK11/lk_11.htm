@@ -1,0 +1,532 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 2.11</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 2.  Программная реализация основных алгоритмов цифровой обработки сигналов:  формирование сигналов, цифровая фильтрация, быстрое преобразование Фурье</strong>      </h3>
+      <p><strong>2.2&nbsp;&nbsp;&nbsp; Программирование цифровых фильтров (8 часов)</strong><br>
+        <strong><em>Лекция № 2.11</em></strong><br>
+        Анализ точностных характеристик цифровых  фильтров. Квантование передаточной функции дискретной системы.<br>
+      Анализ чувствительности цифровых  фильтров. Ошибки квантования и округления при вычислениях в цифровом фильтре.</p>
+</div>
+
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK10/lk_10.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK12/lk_12.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+
+
+	<div class="Text_Style"><h1>Анализ точностных характеристик цифровых фильтров</h1>
+    <h2>Основные источники ошибок в системах ЦОС</h2></div>
+ 	<div class="Text_Style">
+	<p>Когда цифровой фильтр или  дискретная система реализованы на цифровых арифметических устройствах, и в частности  на цифровых процессорах сигналов (ЦПС), кроме рассмотрения временных или  частотных характеристик необходимо рассмотреть характеристики, связанные с  точностью фильтра или системы. Из-за своей дискретной природы ЦПС представляют  переменные и выполняют арифметические операции с конечной длиной слова, в связи  с чем наблюдаются три эффекта:</p>
+	<ol>
+	  <ol>
+	    <ol>
+	      <li><strong><em>при выборе передаточной функции фильтра  квантуются полюса и нули фильтра, существующие только в определенных точках  z-плоскости; </em></strong></li>
+	      <li><strong><em>квантуется входной сигнал;</em></strong></li>
+	      <li><strong><em>вносится шум квантования при  выполнении умножения и деления</em></strong>.</li>
+        </ol>
+      </ol>
+	  </ol>
+	<p>    Линейная, стационарная, с  одним входом и одним выходом (SISO) система в дискретном времени описывается  выражением</p>
+    <table width="80%" align="center" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="10%" ><p align="center">&nbsp;</p></td>
+		<td width="70%" align="center">u(k+1) = <strong>A</strong> u(k) + <strong>b</strong> x(k)<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y(k) = <strong>c</strong> u(k) + <strong>d</strong> x(k) ,</td>
+		<td width="10%" align="right">(2.2.10)</td></tr>
+    </table>
+    <p>где x(k) &ndash; входные значения, y(k) &ndash; выходные значения, u(k) &ndash;  внутреннее состояние системы, <strong>A</strong>, <strong>b</strong>, <strong>c</strong>, d &ndash; n&nbsp;x&nbsp;n, n&nbsp;x&nbsp;1, 1&nbsp;x&nbsp;n и 1&nbsp;x</strong>1 матрицы  с соответствующими действительными элементами a<sub>ij</sub>, b<sub>i</sub>, c<sub>j</sub>. Это  предполагает, что матрица <strong>A</strong> асимптотически устойчива с собственными значениями  внутри или на единичной окружности, |&nbsp;z&nbsp;| = 1. Элементы a<sub>ij</sub>, b<sub>i</sub>, c<sub>j</sub>, d являются сомножителями для  арифметическо-логического устройства (АЛУ), которые внутри ЦПС умножаются на  внутреннее состояние или входную переменную, и квантуются, потому что они  представляются внутри ЦПС цифровыми словами конечной длины.</p>
+  </div>
+	<div class="Text_Style"><h2>Квантование передаточных функций дискретных систем<</h2></div>
+	<div class="Text_Style">
+	<p>Передаточная функция для (2.2.10)</p>
+    <table width="80%" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tr><td width="10%"><p align="center">&nbsp;</p></td>
+		<td width="70%" align="center">
+        y(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		G(z) = &ndash;&ndash;&ndash;&ndash; = <strong>c</strong> (z <strong>I</strong> <strong>-</strong> <strong>A</strong>)<sup>-1</sup> <strong>b</strong> + d ,<br>
+		x(z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td width="10%"><p align="right">&nbsp;</p></td></tr>
+    </table>
+    <p>и  имеет форму</p>
+    <table width="80%" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tr><td width="10%"><p align="center">&nbsp;</p></td>
+		<td width="70%" align="center">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&beta;<sub>m</sub> &middot; z<sup>m</sup> + &beta;<sub>m-1</sub> &middot; z<sup>m-1</sup> + . . . + &beta;<sub>1</sub> &middot; z + &beta;<sub>0</sub><br>
+		G(z) = &ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash; ,<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&zeta;<sub>n</sub> &middot; z<sup>n</sup> + &zeta;<sub>n-1</sub> &middot; z<sup>n-1</sup> + . . . + &zeta;<sub>1</sub> &middot; z + &zeta;<sub>0</sub></td>
+		<td width="10%" align="right">(2.2.11)</td></tr>
+    </table>
+    <p>где  m = n (правильная передаточная функция), если d &ne; 0, и при m &lt; n (строго правильная передаточная функция), если d = 0.<br>
+      Знаменатель представляет  собой характеристический полином</p>
+    <table width="80%" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tr><td width="10%"><p align="center">&nbsp;</p></td>
+		<td width="70%" align="center">det [z &middot; <strong>I</strong> <strong>-</strong> <strong>A</strong>] = 0 ,</td>
+		<td width="10%"><p align="right">&nbsp;</p></td></tr>
+    </table>
+    <p>где <strong>I</strong> - n <strong>x</strong> n единичная матрица. Корни или нули числителя задаются </p>
+    <table width="80%" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tr><td width="10%"><p align="center">&nbsp;</p></td>
+		<td width="70%" align="center">N(z) = &beta;<sub>m</sub> &middot; z<sup>m</sup> + &beta;<sub>m-1</sub> &middot; z<sup>m-1</sup> + . . . + &beta;<sub>1</sub> &middot; z + &beta;<sub>0</sub> = 0 ,</td>
+		<td width="10%"><p align="right">&nbsp;</p></td></tr>
+    </table>
+    <p>а  корни или полюса знаменателя даны характеристическим уравнением </p>
+    <table width="80%" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tr><td width="10%"><p align="center">&nbsp;</p></td>
+		<td width="70%" align="center">D(z) = &zeta;<sub>n</sub> &middot; z<sup>n</sup> + &zeta;<sub>n-1</sub> &middot; z<sup>n-1</sup> + . . . + &zeta;<sub>1</sub> &middot; z + &zeta;<sub>0</sub> = 0 .</td>
+        <td width="10%" align="right">(2.2.12)</td></tr>
+    </table>
+    <p>Квантованные элементы a<sub>ij</sub>, b<sub>i</sub>, c<sub>j</sub>, d из {<strong>A</strong>, <strong>b</strong>, <strong>c</strong>,  d} определяют полиномиальные коэффициенты передаточной функции. Передаточная  функция квантуется также с полюсами и нолями, существующими только в  определенных дискретных точках <strong>z</strong>-плоскости.  Квантование передаточной функции изменяет полиномиальные коэффициенты числителя  и знаменателя, что приводит к несколько отличной передаточной функции, чем  требовалось.<br>
+      Теперь необходимо  определить эффект конечной длины слова для двух полиномов. Для дискретных  систем, реализующих фильтры с очень высокой добротностью Q, этот эффект  квантования полиномиальных коэффициентов может быть важен, и может даже  привести к потере устойчивости фильтра. Имеются несколько методов исследования  эффектов квантования коэффициентов, и мы рассмотрим два из них.<br>
+      Первый метод заключается в  разложении интересующего полинома, числителя или знаменателя, в ряд Тейлора для  анализа чувствительности коэффициентов. Второй метод геометрических мест корней  (процедура корневого годографа) используется для вычерчивания корней полинома  как функции величины коэффициента. Первый определяет движение корней точным  способом, но второй является более наглядным, так как корни отображаются  графически и область устойчивости может быть определена для каждого  полиномиального коэффициента.</p>
+</div>
+
+	<div class="Text_Style"><h1>Анализ чувствительности цифровых фильтров</h1>
+	<h2>Анализ чувствительности коэффициентов аналитическим методом</h2></div>
+ 	<div class="Text_Style">
+	<p>Выполним анализ  чувствительности коэффициентов полинома знаменателя передаточной функции из (2.2.11), потому что именно они значительно влияют на  устойчивость системы, хотя данный метод также применим и к полиному числителя.<br>
+Если некоторый  коэффициент, например &zeta;<sub>k</sub>, подвергается возмущению, то полином (2.2.12) является также и функцией этого коэффициента</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center">D(z, &zeta;<sub>k</sub>)    = &zeta;<sub>n</sub> &middot; z<sup>n</sup> + &zeta;<sub>n-1</sub> &middot; z<sup>n-1</sup> + ... + &zeta;<sub>k</sub> &middot; z<sup>k</sup> + ... + &zeta;<sub>1</sub> &middot; z + &zeta;<sub>0</sub> = 0.<br><br></td>
+<td width="10%" valign="center" align="right">(2.2.13)</td></tr></table>
+    <p>Корни полинома  знаменателя, удовлетворяющие (2.2.13), равны &lambda;<sub>1</sub>, &lambda;<sub>2</sub>, &hellip;, &lambda;<sub>n</sub>, но если &zeta;<sub>k</sub> отклоняется  на &delta;&zeta;<sub>k</sub> от  начальной величины &zeta;<sub>k0</sub></p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%"><p align="center">&nbsp;</p></td>
+<td width="70%" align="center">&zeta;<sub>k</sub> = &zeta;<sub>k0</sub> + &delta;&zeta;<sub>k</sub> ,</td>
+<td width="10%"><p align="right">&nbsp;</p></td></tr></table>
+    <p>то изменяются все корни &lambda;<sub>j</sub>, j = 1,  &hellip;, n из (2.2.13). Чтобы найти отклонение &delta;&lambda;<sub>j</sub> в зависимости от &delta;&zeta;<sub>k</sub> для j-го корня относительно начальной величины &lambda;<sub>j0</sub>, полином  разлагается в ряд Тейлора относительно номинальных значений &lambda;<sub>j0</sub> и &zeta;<sub>k0</sub></p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_a.png" alt="Фор.2.2.14" width="550" height="130"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.14)</td></tr></table>
+    <p>Для корней &lambda;<sub>j</sub> и &lambda;<sub>j0</sub> два  полинома D(&lambda;<sub>j</sub>, &zeta;<sub>k0</sub>) и D(&lambda;<sub>j0</sub>, &zeta;<sub>k0</sub>) равны  нулю. Поскольку члены разложения высшего порядка очень маленькие  для отклонения &delta;&lambda;<sub>j</sub> << 1,  уравнение (2.2.14) преобразуется в</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_b.png" alt="Фор.2.2.15" width="440" height="100"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.15)</td></tr></table>
+    <p>Решение уравнения (2.2.15) определяет изменение корней &delta;&lambda;<sub>j</sub> в зависимости от изменения коэффициента &delta;&zeta;<sub>k</sub></p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_c.png" alt="Фор.2.2.16" width="295" height="155"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.16)</td></tr></table>
+    <p>Так как  элементы матриц &zeta;<sub>ij</sub>,  b<sub>i</sub>, c<sub>i</sub>, d ограничены конечной длиной слова ЦПС, каждый из них подвержен возмущению.  Чтобы использовать результат (2.2.16), коэффициент полинома &zeta;<sub>k</sub> должен быть связан с этими возмущаемыми элементами матриц.<br>
+      Для некоторых динамических  систем это - простая задача, так как они либо низкого порядка, либо разлагаются  на простые составляющие. Последняя категория включает специальные канонические  формы, где элементы матриц идентичны коэффициентам полиномов числителя и  знаменателя.<br>
+      Для других систем задача  более трудна, так что полезно рассмотреть общие рекомендации по переходу от  пространства элементов матриц к пространству коэффициентов полинома. Эти  рекомендации для числителя и знаменателя (2.2.16) идентичны.<br>
+      Согласно (2.2.13) числитель из выражения (2.2.16) для k-го  коэффициента и j-го корня равен </p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_d.png" alt="Фор.2.2.16d" width="340" height="110"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+    <p>Если характеристическое  уравнение (2.2.13) выражено в эквивалентной форме через разложение на  множители, предполагая, что корни не повторяются</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" align="center">D(z, &zeta;<sub>k</sub>) = (z - &lambda;<sub>1</sub>) . . . (z - &lambda;<sub>k-1</sub>)(z - &lambda;<sub>k</sub>)(z - &lambda;<sub>k+1</sub>) . . . (z - &lambda;<sub>n</sub>) = 0 ,</td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+    <p>тогда  знаменатель (2.2.16) равен <br>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_e.png" alt="Фор.2.2.16e" width="600" height="110"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp</td></tr></table>
+      <p>При нахождении производных  использовались следующие основные соотношения: <b>(a+b) &middot; dx = a &middot; dx + b &middot; dx, c &middot; dx = 0, cx &middot; dx = c</b>.<br>
+      Подстановка этих двух  результатов для числителя и знаменателя в (2.2.16) дает </p>
+      </p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_f.png" alt="Фор.2.2.17" width="250" height="120"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.17)</td></tr></table>
+    <p><strong><em>Первое замечание</em></strong> основано на исследовании числителя (2.2.17), и, учитывая, что |&lambda;<sub>j0</sub>| < 1 имеем<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&lambda;<sub>j0</sub>|<sup>n</sup> < |&lambda;<sub>j0</sub>|<sup>n-1</sup> < . . . < |&lambda;<sub>j0</sub>|<sup>1</sup> < |&lambda;<sub>j0</sub>| ,<br>
+      это означает, что наиболее чувствительный коэффициент  будет всегда &zeta;<sub>0</sub>, а наименее чувствительный коэффициент &zeta;<sub>n</sub>.<br>
+  <strong><em>Второе замечание</em></strong> вытекает  из исследования знаменателя (2.2.17), которое показывает что чувствительность возрастает,  если корни становятся более сгруппированными, и кроме того, что  чувствительность резко увеличивается по мере того как порядок системы n становится большим. Высокая  добротность или большая крутизна фильтра &ndash; это примеры систем, которые могут  иметь проблемы с чувствительностью, потому что их корни расположены близко друг  к другу. Проблема чувствительности уменьшается для данного порядка системы,  если фильтр представляет собой композицию фильтров меньшего порядка,  соединенных в каскадную или параллельную формы.<br>
+      Точно так же непрерывная  система с низкочастотными полюсами, дискретизируемыми с высоким уровнем  точности требует соответствующего анализа чувствительности. Мотивацией для  высокой частоты дискретизации является увеличение запаса по фазе и, как  следствие, улучшение эффективности, что используется в системах управления с  обратной связью. Высокая частота дискретизации, однако, вредна для собственного  значения системы кластеров в z-плоскости относительно z = 1, как видно из  разложения энергии в ряд экспоненциальных матриц.</p>
+    <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+		<tr><td width="10%"><p align="center">&nbsp;</p></td>
+		<td width="70%" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FTs<sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FTs<sup>3</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		<strong>A</strong> = e<sup>FTs</sup> = <strong>I</strong> + FTs + &ndash;&ndash;&ndash;&ndash; + &ndash;&ndash;&ndash;&ndash; + . . . ,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3!</td>
+		<td width="10%"><p align="right">&nbsp;</p></td></tr>
+    </table>
+    <p>где Ts - интервал  дискретизации, а {F, g} определяет непрерывную систему, которую нужно дискретизировать:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<strong>.</strong><strong> </strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>u</strong>(t) = <strong>F</strong> u(t) + <strong>g</strong> x(t) .<br>
+      Для маленького интервала дискретизации, то есть, когда  Ts &rarr; 0,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;lim&nbsp; <strong>A</strong> = <strong>I</strong> ,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ts &rarr; 0<br>
+      собственные значения <strong>A</strong> в  s-плоскости группируются вблизи  z = + 1 в z-плоскости, что делает дискретизируемую систему все  более и более чувствительной к неопределенности коэффициента.    
+    <p><br>
+      <strong>Пример 1.</strong><br>
+      Рассмотрим дискретную  систему (рис.&nbsp;2.2.14) с параметром <strong>a<sub>11</sub></strong>. <br>
+    <h3 align="center"><a name="fig1"></a><img src="../../images/ris010205_a.gif" alt="Рис.2.2.14" width="553" height="191"></h3>
+<h3 align="center">Рисунок 2.2.14 &ndash; Дискретная система с возмущаемым параметром <strong>a<sub>11</sub></strong></h3>
+    <p>Положим, что номинальное значение  <strong>a<sub>11</sub></strong> равно 2.2.5, но эффекты квантования дают отклонение <strong>&delta;a<sub>11</sub></strong> от  этой номинальной величины, и это необходимо учесть, чтобы знать результирующие  изменения в собственных значениях системы.<br>
+      Рисунку  2.2.14 соответствует следующее матричное уравнение: </p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_g.png" alt="Фор.2.2.17g" width="450" height="220"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+    <p>и  передаточная функция
+    </p>
+    <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><br><img src="../../images/for010205_h.png" alt="Фор.2.2.18" width="470" height="250"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.18)</td></tr></table>
+      <p>Обратите внимание, что элемент матрицы <strong>a<sub>11</sub></strong> входит в числитель, также как и в два коэффициента знаменателя.<br>
+      Сравнение соответствующих  коэффициентов между (2.2.11) и последней строкой (2.2.18) дает: <strong>&zeta;<sub>0</sub></strong> = 3 - <strong>a<sub>11</sub></strong>, <strong>&zeta;<sub>1</sub></strong> = 1 - <strong>a<sub>11</sub></strong> и <strong>&beta;<sub>0</sub></strong> = - <strong>a<sub>11</sub></strong>. Проверка показывает, что ноль числителя имеет чувствительность +1, в  то время как чувствительность знаменателя менее очевидна и требует дальнейшего  уточнения.<br>
+      Для <strong>a<sub>11</sub></strong>=2.2.5 корни знаменателя <strong>&lambda;<sub>j</sub></strong>, j=1,2  равны  z=0.5 и  z=1.0. Чувствительность собственного значения <strong>&lambda;<sub>2</sub></strong>=1.0, например,  из-за изменений <strong>a<sub>11</sub></strong> находится из (2.2.16). Использование правила для частных производных дает</p>
+      </p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><br><img src="../../images/for010205_a.gif" alt="Фор.2.2.a" width="599" height="237"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<p>что  означает, что произвольное изменение в <strong>a<sub>11</sub></strong> от <strong>a<sub>11</sub></strong>=2.5 до <strong>a<sub>11</sub></strong>=2.51 вызовет изменение значения от <strong>&lambda;<sub>2</sub></strong> = 1 до <strong>&lambda;<sub>2</sub></strong> = 1.04. Таким образом, небольшое  изменение приведет к неустойчивости системы, потому что собственное значение  корня находится снаружи единичной окружности | z | = 1.</p>
+</div>
+	<div class="Text_Style">
+	  <h2>Анализ чувствительности коэффициентов методом корневого годографа</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Подход к определению  чувствительности, описанный выше, дает изменение корней полинома для малых  возмущений величины коэффициента. Второй подход заключается в применении метода  корневого годографа, который используется при разработке и анализе линейных  следящих систем. Этот подход дает изображения местоположения корней  полинома&nbsp; в z-плоскости.<br>
+После калибровки корневой  годограф дает пределы устойчивости, показывает состояние неустойчивости фильтра  и указывает зависимость чувствительности положения корней от величин  коэффициентов.<br>
+Из литературы по  управлению известно, что передаточная функция замкнутой системы G<sub>cl</sub>(z) для  систем управления с одним входом и одним выходом выражается через передаточную  функцию разомкнутой системы G<sub>ol</sub>(z), коэффициент усиления K, и  единичную обратную связь следующим образом:</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_b.gif" alt="Фор.2.2.b" width="211" height="63"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+    <p>Корни знаменателя  замкнутой системы удовлетворяют уравнению</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_c.gif" alt="Фор.2.2.c" width="148" height="33"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+    <p>Что эквивалентно</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_d.gif" alt="Фор.2.2.19" width="115" height="33"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.19)</td></tr></table>
+    <p>и  метод корневого годографа показывает все положения корней, которые  удовлетворяют уравнению (2.2.19) для значения коэффициента усиления K.<br>
+      Так как G<sub>ol</sub>(z) -  отношение двух полиномов, любой полином, то есть полиномы знаменателя или  числителя из (2.2.11), могут быть преобразованы, как и (2.2.19), путем разделения полинома на два других полинома R(z) и S(z) следующим  образом:</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_e.gif" alt="Фор.2.2.e" width="153" height="29"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+    <p>где  g  - элемент a<sub>ij</sub>, b<sub>i</sub> или  c<sub>i</sub>, представляющий интерес. Затем</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_f.gif" alt="Фор.2.2.f" width="125" height="29"><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+      и
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_g.gif" alt="Фор.2.2.20" width="142" height="85"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.20)</td></tr></table>
+    <p>Так как (2.2.20) имеет ту же самую форму, что и (2.2.19), все преобразования корневого годографа могут  применяться.<br>
+      <strong>Пример 2.</strong><br>
+      Рассмотрим передаточную  функцию (2.2.18) из примера 1, и построим график зависимости корней  знаменателя как функцию элемента матрицы <strong>a<sub>11</sub></strong>. Сначала изолируем все полиномиальные коэффициенты, содержащие <strong>a<sub>11</sub></strong>.</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><br><img src="../../images/for010205_h.gif" alt="Фор.2.2.h" width="458" height="33"><br></td>
+<td width="10%" valign="center" align="right">&nbsp;(2.2.20)</td></tr></table>
+    <p>тогда</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_i.gif" alt="Фор.2.2.i" width="202" height="33"><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+    <p>и</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_j.gif" alt="Фор.2.2.21" width="195" height="65"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.21)</td></tr></table>
+    <p>Корневой годограф (2.2.21) представлен на рис.&nbsp;2.2.15 для приращений <strong>a<sub>11</sub></strong>, <strong>d</strong><strong>a<sub>11</sub></strong>=<strong>0.1</strong>. Поскольку для значения <strong>a<sub>11</sub></strong>=<strong>0</strong> множители знаменателя равны соответственно <strong>(z + 0.5 + j1. 658)</strong> и <strong>(z + 0.5 - j1. 658)</strong>, корни  находятся снаружи единичной окружности и равны &nbsp;<strong>Z = -0.5 </strong><strong>&plusmn;  j1.658</strong>. Следовательно, система неустойчива для маленьких  значений <strong>a<sub>11</sub></strong>, но становится устойчивой для средних  значений <strong>a<sub>11</sub></strong>, и снова неустойчивой для больших  величин <strong>a<sub>11</sub></strong>.</p>
+<h3 align="center"><a name="fig2"></a><img src="../../images/ris010205_b.png" alt="Рис.2.2.15" width="580" height="565"></h3>
+<h3 align="center">Рисунок 2.2.15 &ndash; Корневой годограф <sub><img src="../../images/for010205_k.gif" width="197" height="33"></sub> для возрастающих значений <strong>a<sub>11</sub></strong> в диапазоне [0,3]</h3>
+    <p>Корни находятся снаружи единичной окружности <strong>z = - 0.5 </strong><strong>&plusmn; j1.658</strong> для <strong>a<sub>11</sub></strong><strong>&nbsp;=&nbsp;0</strong> и двигаются в сторону действительной оси. Бесконечная чувствительность будет тогда, когда корни совпадают  в z = <strong>0.732 </strong><strong>&plusmn;</strong><strong> j0</strong>.<br>
+      Пределы устойчивости для <strong>a<sub>11</sub></strong>, когда <strong>2.0  &lt; a<sub>11</sub> &lt; 2.5</strong>.  Для <strong>a<sub>11</sub> &lt; 2.0</strong> тип увеличения неустойчивости &ndash; синусоидальный, в то время как для <strong>a<sub>11</sub></strong><strong> &gt; 2.5</strong> тип увеличения неустойчивости &ndash;  линейный. Обратите внимание на то, что чувствительность корня изменяется очень  сильно, когда <strong>a<sub>11</sub></strong> располагается в определенных пределах, и интересным является второй пример  точки годографа с бесконечной чувствительностью, расположенной на  действительной оси, где корни совпадают <strong>z  = 0.732 </strong><strong>&plusmn;</strong><strong> j0</strong>.</p>
+    <p>&nbsp;</p>
+</div>
+	<div class="Text_Style"><h2>Ошибки квантования в цифровых фильтрах</h2></div>
+	<div class="Text_Style">
+	<p>В то время, как в  предыдущем разделе рассматривались эффекты квантования коэффициентов  передаточной функции, в этом разделе рассматриваются эффекты квантования на  входе системы, промежуточных переменных ЦОС и выходного сигнала. Существуют  соответствующие методы для оценки максимальной величины ошибки квантования в  цифровых системах.<br>
+Есть три источника  квантования - на входе ЦОС, внутри ЦОС, и на выходе ЦОС, которые возникают  потому, что:</p>
+    <div><ul>
+      <ul>
+        <ul>
+          <li>Входной сигнал для дискретной системы является  непрерывным и необходимо его аналого-цифровое преобразование прежде, чем  любые&nbsp; вычисления будут выполняться.</li>
+          <li>Цифровой процессор отбрасывает часть вычисленных  результатов при выполнении умножения и деления. Отбрасывание необходимо потому,  что число битов, требуемых для точного представления результата, увеличивается  по сравнению с числом битов, необходимых для представления коэффициентов матриц  a<sub>ij</sub>, b<sub>i</sub>, C<sub>i</sub>, d. Без усечения или округления разрядность данных при  умножении или делении увеличивается неограниченно.</li>
+          <li>На выходе дискретного процессора обычно необходим  непрерывный аналоговый сигнал, а используемый цифро-аналоговый преобразователь  обычно имеет меньшее разрешение по сравнению с&nbsp;  цифровым процессором. При этом отбрасывание самых младших битов дает  ошибку квантования.</li>
+        </ul>
+      </ul>
+      </ul></div>
+    <p>Все эти ошибки можно  описать как шумоподобные ошибки квантования. Ошибка квантования с  округлением <b>&epsilon;</b> есть разница между точным значением величины  и значением самого близкого из набора уровней, которые отличаются друг от друга  на q. И альтернативная ей, ошибка квантования с усечением <b>&epsilon;</b> - разница между  точным значением величины и значением самого близкого снизу из набора уровней.  Ошибка с округлением  показана на рис. 2.2.16, на котором точная величина непрерывного сигнала наложена на сетку интервалов дискретизации и уровней квантования, расположенных через q. Ошибка квантования с округлением <b>&epsilon;</b> в моменты дискретизации k = 1, 2, ... является интервалом между непрерывным сигналом и самым близким уровнем квантования.<br>
+      Так как различие в уровнях  квантования - q, ошибка округления e&nbsp; между  непрерывным сигналом и каждым из квантованных уровней не превышает &plusmn;q/2.  Если предположить, что колебание сигнала является большим, чем q от одной выборки к следующей, то ошибка&nbsp; e&nbsp; для одной выборки будет статистически независимой от ошибки&nbsp; e&nbsp; для любой другой выборки и будет иметь равную  вероятность в диапазоне &plusmn;q/2. <br>
+      Противоположный случай -  постоянный или медленно изменяющийся сигнал. Для систем управления с обратной  связью статистическая зависимость между выборками из-за квантования вызывает  предельные циклы. Если там преобладает только одна такая нелинейность в контуре  обратной связи, то возможно использование метода функции описания, чтобы  приблизительно определить поведение предельного цикла. Однако, добавление  подходящего высокочастотного возмущающего сигнала ко входу системы сделает и  ошибку квантования, и ошибку округления однородно распределенной, белой, и взаимно  некоррелированной.</p>
+<h3 align="center"><a name="fig3"></a><img src="../../images/ris010205_c.png" alt="Рис.2.2.16" width="620" height="420"></h3>
+<h3 align="center">Рисунок 2.2.16 &ndash; Непрерывный сигнал, наложенный на сетку интервалов  дискретизации и уровней квантования</h3>
+    <p>Три источника ошибки  квантования эквивалентны добавлению шумоподобного воздействия ко входу,  вычисленным результатам и выходу, соответственно. Результирующая функция  плотности вероятности ошибки показана на рис. 2.2.17a или рис. 2.2.17б, в зависимости от  того, усечение, или округление происходит при квантовании. Усечение - простое  отбрасывание самых младших битов, при округлении используется наименьший  значащий бит квантования, чтобы минимизировать абсолютную величину ошибки.<br>
+<h3 align="center"><a name="fig4"></a><img src="../../images/ris010205_d.png" alt="Рис.2.2.17" width="540" height="220"></h3>
+<h3 align="center">Рисунок 2.2.17 &ndash; Функции плотности вероятности ошибки квантования для усечения (a) и округления (б)</h3>
+    <p>Среднее или матожидание <b>&mu;</b> и дисперсия <b>&sigma;<sup>2</sup></b> шума определяются как первый и второй моменты <strong>E</strong>{<strong>&epsilon;</strong>}, <strong>E</strong>{<strong>&epsilon;<sup>2</sup></strong>}  из соответствующих функций плотности вероятности.<br>
+      Квантование с усечением:</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_l.gif" alt="Фор.2.2.22" width="322" height="65"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.22)</td></tr></table>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_m.gif" alt="Фор.2.2.23" width="499" height="67"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.23)</td></tr></table>
+    <p>Квантование с округлением:</p>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_n.gif" alt="Фор.2.2.24" width="345" height="84"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.24)</td></tr></table>
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_o.gif" alt="Фор.2.2.25" width="485" height="82"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.25)</td></tr></table>
+    <p>Результаты (2.2.22) - (2.2.25) показывают, что дисперсия для усечения такая же, как  и для округления, и только матожидание является различным. Модель для шумовых  источников при каждой выборке в момент k определяется как </p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_p.gif" alt="Фор.2.2.p" width="216" height="37"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>где запись <b>&epsilon;</b>(k, &middot;) и w(k,&middot;) описывает реальные значения стохастических процессов  такие, что <b>&epsilon;</b>(k, &middot;) и w(k,&middot;) являются произвольными  переменными для любого фиксированного k, k =  1,... .</p>
+<h3 align="center"><a name="fig5"></a><img src="../../images/ris010205_e.gif" alt="Рис.2.2.18" width="647" height="271"></h3>
+<h3 align="center">Рисунок 2.2.18 &ndash; Диаграмма состояния, показывающая источники ошибок</h3>
+<p>Случайная переменная w(k,&middot;) имеет  нулевое матожидание и дисперсию q<sup>2</sup>/12, в то время как <b>&mu;<sub>&epsilon;</sub></b> определяется как <b>&mu;<sub>&epsilon;</sub></b> = 0 или <b>&mu;<sub>&epsilon;</sub></b> = q/2 в зависимости от того, используется округление или усечение  соответственно. Описание шумовых источников как переменной и постоянной части  позволяет рассматривать отдельно их влияние -  w(k,&middot;)  исключительно на дисперсию и <b>&mu;<sub>&epsilon;</sub></b> как производную от смещения АЦП. <br>
+      Источники ошибки показаны  на диаграмме состояния (рис. 2.2.18) как скалярный шум аналого-цифрового преобразования на  входе <b>&epsilon;<sub>i</sub></b>(k,w), векторный шум вычисления <b>&epsilon;<sub>c</sub></b>(k,w) и скалярный шум цифро-аналогового преобразования на выходе <b>&epsilon;<sub>o</sub></b>(k,w).<br>
+      Соответствующее уравнение состояния</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center">u(k+1) = <strong>A</strong> u(k) + <strong>b </strong>[ x(k) + <b>&epsilon;<sub>i</sub></b>(k) ] + <b>&epsilon;<sub>c</sub></b>(k) ,<br>
+y(k) = <strong>c</strong> u(k) + <b>&epsilon;<sub>o</sub></b>(k) .<br><br></td>
+<td width="10%" valign="center" align="right">(2.2.26)</td></tr></table>
+<!--end   formula-->
+    <p>Вычисление  выходной дисперсии <sub><img src="../../images/for010205_q.gif" width="31" height="38"></sub> требует  нахождения значения второго момента y(k).</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_r.gif" alt="Фор.2.2.r" width="555" height="101"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>Поскольку <b>&epsilon;<sub>o</sub></b>(k,&middot;) имеет  нулевое матожидание и некоррелировано с x(k)</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_s.gif" alt="Фор.2.2.27" width="458" height="74"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.27)</td></tr></table>
+<!--end   formula-->
+    <p>где  R<sub>o</sub>(<strong>t</strong>), <strong>t</strong> = 0, является автокорреляционной функцией выходного шума.<br>
+      Уравнение (2.2.27) показывает, что выходная дисперсия является суммой  выходной ковариации шума и уровня ковариации P<sub>uu</sub>(k) взвешенного выходным вектором с. Вычисление  уровня ковариации  P<sub>uu</sub>(k) требует  рекуррентной формулы, которая находится из ожидаемой величины второго момента u(k+1). Из (2.2.26),</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_t.gif" alt="Фор.2.2.28" width="576" height="199"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.28)</td></tr></table>
+<!--end   formula-->
+    <p>Так как шумовые источники w<sub>i</sub>(k,&middot;), w<sub>c</sub>(k,&middot;) статистически  независимы друг от друга и от u(k), ожидаемое  значение их перекрестных произведений нулевое. Уравнение (2.2.28) приводится к виду</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_u.gif" alt="Фор.2.2.u" width="523" height="33"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>или</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_v.gif" alt="Фор.2.2.29" width="352" height="33"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.29)</td></tr></table>
+<!--end   formula-->
+    <p>где  R<sub>i</sub>(<strong>t</strong>) и R<sub>c</sub>(<strong>t</strong>), <strong>t</strong> = 0, являются автокорреляционными функциями  входного шума и шума вычисления, соответственно.<br>
+      Уравнение (2.2.29) говорит, что значение ковариации при выборке k+1  получается из ковариации для предыдущей выборки плюс компоненты входного шума и  шума вычислений. Если состояние u(k)  было точно известно из начального состояния и при допущении P<sub>uu</sub>(0)=0, тогда для каждого  следующего отсчета k=1,  2, &hellip; представленного как u(k), получается  как дано в (2.2.29). Так как матрица А устойчива с собственными  значениями внутри единичного круга,</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_w.gif" alt="Фор.2.2.w" width="254" height="45"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>и вычисление выражения (2.2.29) - простая рекурсивная задача с доступными  инструментальными средствами работы с матрицами. Обратите внимание, что  результирующий шум имеет не равномерный закон распределения, а скорее  гауссовский в соответствии с центральной предельной теоремой.</p>
+    <p><br>
+      <strong>Пример 3.</strong><br>
+      Рассмотрим динамическую  систему из примера 1, но со значением <strong>a<sub>11</sub></strong>=2.4,  дающую фильтр нижних частот. Предположим, что входной сигнал продискретизирован  10-разрядным А/Ц преобразователем с диапазоном от&nbsp;&nbsp; -1 до +1 В и самый младший бит соответствует  приблизительно 20 мВ. Предположим также, что в ЦПС переменные u<sub>1</sub>(k) и u<sub>2</sub>(k) представлены  16-разрядными словами в дополнительном коде с динамическим диапазоном от -1  (8000h) до (+1-1/2<sup>15</sup>) (7FFFh), где суффикс  &quot;h&quot; обозначает шестнадцатеричное число. При вычислениях ЦПС усекает  результаты, то есть при умножении в качестве результата берутся 16-разрядные  слова и результаты выдаются в диапазоне от -1 до +1 В на 9-разрядный Ц/А  преобразователь с весом младшего разряда приблизительно равным 40 мВ.  Определим, какой величины будет выходной шум.<br>
+      Результирующая диаграмма состояния для данного случая показана на рис. 2.2.19 с источниками шума из-за эффектов квантования e<sub>i</sub>,  e<sub>c1</sub>, e<sub>c2</sub>,  e<sub>o</sub>.  Заметим, что не имеется никакого источника шума, связанного коэффициентом С<sub>22</sub>, равным -1, так как при этом  фактически умножения нет, а есть только вычитание.</p>
+<h3 align="center"><a name="fig6"></a><img src="../../images/ris010205_f.gif" alt="Рис.2.2.19" width="628" height="386"></h3>
+<h3 align="center">Рисунок 2.2.19 &ndash; Диаграмма состояния для примера 3</h3>
+    <p>Матожидания и дисперсии различных источников представлены далее.<br>
+      Входной шум:</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_x.gif" alt="Фор.2.2.30" width="67" height="31"><br></td>
+<td width="10%" valign="center" align="right">(2.2.30)</td></tr></table>
+<!--end   formula-->
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_y.gif" alt="Фор.2.2.31" width="435" height="90"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.31)</td></tr></table>
+<!--end   formula-->
+    <p>Шум вычисления:</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_z.gif" alt="Фор.2.2.32" width="199" height="71"><br></td>
+<td width="10%" valign="center" align="right">(2.2.32)</td></tr></table>
+<!--end   formula-->
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_aa.gif" alt="Фор.2.2.33" width="530" height="92"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.33)</td></tr></table>
+<!--end   formula-->
+    <p>Выходной шум:</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_ab.gif" alt="Фор.2.2.34" width="180" height="75"><br></td>
+<td width="10%" valign="center" align="right">(2.2.34)</td></tr></table>
+<!--end   formula-->
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_ac.gif" alt="Фор.2.2.35" width="414" height="82"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.35)</td></tr></table>
+<!--end   formula-->
+    <p>Используя значения (2.2.30)-(2.2.35), уровень ковариации согласно (2.2.29) равен</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><br><img src="../../images/for010205_ad.gif" alt="Фор.2.2.ad" width="567" height="131"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>Рис. 2.2.20 показывает  рекурсивное решение для k = 0, 1, &hellip; учитывая, что начальное состояние  известно и равно</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_ae.gif" alt="Фор.2.2.ae" width="148" height="57"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+    <p>Значение ковариации  увеличивается по траектории от ноля до величины установившегося значения.  Динамика состояния определяет скорость увеличения траектории. Окончательная  величина матрицы значений ковариации равна</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_af.gif" alt="Фор.2.2.36" width="346" height="65"><br><br></td>
+<td width="10%" valign="center" align="right">(2.2.36)</td></tr></table>
+<!--end   formula-->
+    <p>Значения дисперсии  находятся на основной диагонали матрицы ковариаций (2.2.36) и, следовательно <strong>&sigma;</strong><sub>u1</sub><sup>2</sup>=19.6&times;10<sup>-6</sup> и <strong>&sigma;</strong><sub>u2</sub><sup>2</sup>=5.43&times;10<sup>-6</sup>&nbsp;. Обратите внимание, что начальное  предположение, сделанное, чтобы исключить первоначальную неопределенность P<sub>UU</sub>(0) не  оказывает воздействия на конечный результат (2.2.36). Если, например, P<sub>UU</sub>(0) первоначально  большое относительно установившейся величины состояние ковариации, P<sub>UU</sub>(k) уменьшалось бы до ранее полученного результата (2.2.36).<br>
+<h3 align="center"><a name="fig7"></a><img src="../../images/ris010205_g.png" alt="Рис.2.2.20" width="580" height="570"></h3>
+<h3 align="center">Рисунок 2.2.20 &ndash; Решение уравнения для матрицы ковариации асимптотическим приближением при k -> &infin;</h3>
+    <p>Если известно состояние  ковариации  P<sub>UU</sub>(k), то  выходная дисперсия может быть найдена из (2.2.27):</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><br><img src="../../images/for010205_ag.gif" alt="Фор.2.2.ag" width="465" height="142"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>Одно из назначений  вычисления ковариации - способность различить видимые источники  неопределенности для полной оптимизации системы. В этом случае имеется  незначительный вклад ошибок вычисления, и более существенный вклад выхода Ц/A  преобразователя. Если при полной оптимизация системы исходить из стоимости, то  учитывая вклад Ц/A преобразователя можно обойтись меньшим разрешением и менее  дорогим 8-разрядным ЦАП.<br>
+      Чтобы учесть эффекты  усечения и округления, как видно из рис. 2.2.17 и (2.2.22), дисперсии для любого случая должна быть та же самая,  но усечение дает среднее отличное от нуля &mu;<sub>c1</sub> = &mu;<sub>c2</sub> = q/2 = 1.53&times;10<sup>-5</sup>, которое представляет смещение  состояния&nbsp; от u(k)  до  u(k+1). Эффект моделируется выражениями (2.2.30)-(2.2.35) и</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_ah.gif" alt="Фор.2.2.ah" width="378" height="63"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>При использовании этих  средних в качестве входных, уравнение состояния (2.2.26) преобразуется в</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_ai.gif" alt="Фор.2.2.ai" width="505" height="129"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>рекурсивное  решение которого дает</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_aj.gif" alt="Фор.2.2.aj" width="261" height="67"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+    <p>и выход</p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_ak.gif" alt="Фор.2.2.ak" width="486" height="106"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+</div>
+	<div class="Text_Style"><h2>Минимизация эффектов квантования в ЦПС семейства TMS320</h2></div>
+	<div class="Text_Style">
+	<p>Чтобы увидеть, как в ЦПС семейства TMS320 уменьшить  эффекты квантования, необходимо вначале рассмотреть, как представляются  десятичные числа и как выполняются арифметические операции в ЦПС. <br>
+Центральное арифметическо-логическое устройство  процессоров семейства TMS320C2х  имеет входное 16-разрядное сдвигающее устройство, 16&times;16-разрядный параллельный умножитель,  32-разрядное арифметическо-логическое устройство (АЛУ), 32-разрядный аккумулятор, и дополнительные  сдвигающие устройства на выходах аккумулятора и умножителя. Типичная операция  умножения двух чисел  А&times;B требует команду &quot;LT&quot; для загрузки регистра &quot;T&quot; значением A, команду &quot;MPY&quot; указывающую второй операнд в памяти данных B, команду &quot;PAC&quot;, чтобы загрузить аккумулятор содержимым  регистра &quot;P&quot;, и команду &quot;SACH&quot;, чтобы сохранить в  память данных 16 старших битов 32-разрядного результата, который находится в  аккумуляторе. Таким образом, одиночное умножение двух чисел требует четырех  команд, и если используется внутренняя память на кристалле, не требующая циклов  ожидания, как например для медленной памяти вне кристалла, то время умножения  для TMS320C25 со временем выполнения команды 100 наносекунд, будет равно  времени для четырех команд или 400 наносекунд. Если умножение объединяется с  добавлением затем к АЛУ, то выборка данных, умножение и накопление могут  выполняться в одном цикле команды &quot;MACD&quot;, которая значительно повышает эффективность  вычислений.<br>
+Десятичные  числа представляются в виде 16-разрядных (одинарной точности) вычисленных  дробей. Цифровые слова имеют форму</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; СР&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; МР<br>
+      <a name="_Toc454707127">Номер разряда</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15&nbsp;&nbsp;&nbsp;&nbsp; 14&nbsp;&nbsp;&nbsp;&nbsp; 13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &hellip;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+      <a name="_Toc454707128">Величина</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -S&nbsp;&nbsp;&nbsp;&nbsp; S/2&nbsp;&nbsp;&nbsp; S/4&nbsp;&nbsp;&nbsp; S/8&nbsp;&nbsp; S/16&nbsp;&nbsp;&nbsp; &hellip;&nbsp;&nbsp;&nbsp; S/2<sup>14</sup>&nbsp;&nbsp; S/2<sup>15</sup>&nbsp; ,</p>
+    <p>где бит 15 - знаковый разряд. Подразумеваемая  точка основания системы счисления расположена между битами 15 и 14, а биты от 0 до 14 задают 15  разрядов величины числа.  S &ndash;  положительное число из диапазона от 0 до &infin;, которое является коэффициентом пересчета цифрового  слова. Коэффициент пересчета  S  позволяет цифровому слову представлять любое число из интервала [ -S, +S(1-1/2<sup>15</sup>) ] для цифрового диапазона слова от 8000h до 7FFFh, где суффикс &quot;h&quot; указывает  шестнадцатеричную величину.<br>
+      Общие специальные  случаи - для S=2<sup>15</sup>=32768, который смещает десятичную точку вправо, чтобы  представлять целые числа в интервале<br>
+      [-32768, 32767], и для S=1, который  выравнивает десятичную точку так, чтобы десятичное число, представляемое  цифровым словом, имело интервал<br>
+      [-1, 0.9999695]. Особенность этого второго представления - предотвращение  переполнения АЛУ, так как произведение любых чисел из данного интервала будет  всегда давать другое число, содержащееся внутри интервала [-1, 0.9999695]. <br>
+      Поскольку каждое цифровое слово имеет заданный масштабный множитель,  соблюдаются два правила при выполнении арифметических операций:</p>
+    <h6>Правило 1. Сложение</h6>
+    <p>Если две переменных x и y с соответствующими масштабными множителями S<sub>x</sub> и S<sub>y</sub> складываются, x + y, то оба масштабных множителя должны быть одинаковыми,&nbsp; S<sub>x</sub> = S<sub>y</sub>.</p>
+    <h6>Правило 2. Умножение</h6>
+    <p>Если константа C умножается на переменную x  с масштабным  множителем S<sub>x</sub>, чтобы получить переменную y: y = Cx, то масштабный множитель S<sub>y</sub> с учетом масштаба C получается согласно правилу </p>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_al.gif" alt="Фор.2.2.al" width="147" height="74"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+      <p>Применение  этого правила переводит десятичную константу C к десятичной дроби С<sub>ЦПС</sub> с интервалом [ -1,  (1-1/2<sup>15</sup>) ]. С<sub>ЦПС</sub> представляется внутри  ЦПС как цифровое слово в интервале [8000h, 7FFFh].<br>
+      Правило 1 относится к механизму  масштабирования при сложении и дает ошибку квантования в младшем разряде, если  сдвигаемая переменная отбрасывается после добавления ко второй переменной.  Приведенный далее пример иллюстрирует эту ситуацию.<br>
+      Правило 2 относится к умножению  и, следовательно, воздействует на квантование как было описано ранее.  Рассмотрим применение правила 2. <br>
+      Предположим, что необходимо  вычислить выражение y = 5x, где x находится в интервале [1.8, +1.6], и это желательно привести к шкале  используемого ЦПС. Так как максимум абсолютной величины x равен 1.8, масштабный  множитель S<sub>x</sub> должен быть  некоторым числом &ge; 1.8, и чтобы минимизировать  эффекты квантования, выбираем S<sub>x</sub> так,  чтобы S<sub>x</sub>=1.8  точно. При таком  выборе S<sub>x</sub> получим почти симметричный интервал [-1.8, 1.8(1-1/2<sup>15</sup>)]  с цифровым интервалом слова [8000h, 7FFFh], что перекрывает интервал x настолько близко, насколько возможно. Так как S<sub>x</sub>=1.8, произведение y  = 5x попадает в  интервал [-5<strong>&times;</strong>1.8, +5<strong>&times;</strong>1.8(1-1/2<supg>15</sup>)], или  [-9, +8.999725]. Соответствующий интервал S<sub>y</sub> должен быть &ge; 9. Поскольку максимальная  положительная величина С<sub>ЦПС</sub> (1-1/2<sup>15</sup>) =0.9999695, а не  1, то S<sub>y</sub> должно быть немного большим,  чем 9 и, например, выберем S<sub>y</sub>=10.<br>
+      Учитывая заданное значение S<sub>x</sub> и выбранное значение  S<sub>y</sub> для С<sub>ЦОС</sub>,  получим <br>
+<!--start formula-->
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="10%">&nbsp;</td>
+<td width="70%" valign="center" align="center"><img src="../../images/for010205_am.gif" alt="Фор.2.2.am" width="317" height="63"><br><br></td>
+<td width="10%" valign="center" align="right">&nbsp;</td></tr></table>
+<!--end   formula-->
+      <p>Применение этих двух правил для  масштабирования и уменьшение эффектов квантования в цифровых процессорах  сигналов семейства TMS320 включает следующие особенности для арифметики с  фиксированной точкой:<br>
+&nbsp;&nbsp;&nbsp;1.&nbsp;Наиболее очевидная и важная  особенность уменьшения эффектов квантования &ndash; ширина АЛУ, аккумулятора и 16&times;16 разрядного умножителя. 32-разрядная ширина позволяет выполнять накопление любых 32-разрядных слов  повышенной точности или 16-разрядных слов без переполнения. При умножении  32-разрядное произведение соответствует 32-разрядной ширине аккумулятора и  любой полный результат умножения знаковых чисел помещается в АЛУ, или умножение  расширенной точности 32&times;32 бита возможно для беззнаковых чисел.<br>
+&nbsp;&nbsp;&nbsp;2.&nbsp;Вторая  особенность &ndash; на входе АЛУ имеется сдвигающее устройство, чей 16-разрядный вход соединяется с шиной данных, а 32-разрядный выход соединяется  со входом АЛУ. Сдвигающее устройство выполняет левый сдвиг от 0 до 16 бит над  входными данными, где выходные младшие разряды заполняются нолями, а старшие  заполняются нолями или расширением знака, в зависимости от &quot;SXM&quot; (режим расширения  знака) бита. Если прибавление x  с  масштабным множителем S<sub>x</sub> выполняется к  содержимому аккумулятора y с масштабным  множителем S<sub>y</sub>, и если S<sub>x</sub> и S<sub>y</sub> отличаются  как степени 2, то сдвигающее устройство может пересчитать масштаб x к Sy перед сложением. Эта вторая особенность позволяет  просто реализовать правило 1, но не касается проблемы квантования, потому что  это применимо только к сложению.<br>
+&nbsp;&nbsp;&nbsp;3.&nbsp;Третья особенность, которая  касается квантования - возможность исключения режима переполнения аккумулятора  для операций сложения и вычитания по модулю. Модульная арифметика выгодна там,  где несколько чисел, обычно переменного знака, складывают вместе и результат  всегда меньше, чем сумма их абсолютных величин. Общий пример такого вычисления  - суммирование значений с ответвлений КИХ-фильтра, чтобы сформировать&nbsp; сигнал на его выходе.<br>
+      Для модульной  арифметики аккумулятор ориентируется&nbsp; на  максимальный числовой диапазон конечных результатов вместо максимального  диапазона промежуточных данных. После настройки на конечный результат  изначально предполагается, что число положительных и отрицательных переполнений  будет примерно одинаковым, переполнения игнорируются в промежуточных  результатах накопления, поскольку числа добавляются или вычитаются. Таким  образом, биты, которые в другом случае предотвратили бы переполнение, дают  дополнительные значащие биты в представлении конечной суммы в аккумуляторе.  Модульное сложение уменьшает шум квантования, позволяя уменьшить масштабный  множитель аккумулятора, что позволяет накапливать полные 31-разрядные  результаты умножения без усечения.<br>
+&nbsp;&nbsp;&nbsp;4.&nbsp;Четвертая  особенность уменьшает квантование передаточной функции,&nbsp; позволяя сдвинуть содержимое регистра &quot;P&quot; прежде, чем они будут добавлены к  аккумулятору. В произведении  y = Cx этот  общий выходной масштаб Sy может быть заметно большим, чем константа C и входной масштаб S<sub>x</sub>. Из правила 2  однако следует, что если масштаб S<sub>y</sub> большой,  то С<sub>ЦПС</sub> будет маленьким, и число значащих битов, определяющих  сомножитель СЦПС уменьшается,  чтобы получить более квантованную передаточную функцию.<br>
+      Более  привлекательное решение для квантования коэффициентов состоит в том, чтобы  уменьшить масштабный множитель аккумулятора в два раза при вычислении С<sub>ЦПС</sub>, и применить правый  сдвиг произведения в регистре &quot;P&quot; прежде, чем оно будет добавлено к  аккумулятору. Таким образом, это квантование коэффициентов дает дополнительные  значащие биты для С<sub>ЦПС</sub>, чтобы представить C.<br>
+      Доступные сдвиги  регистра &quot;P&quot; есть 0, +1, +4 и  &ndash;6, как определено двумя битами поля &quot;РМ&quot; в регистре состояния &quot;ST1&quot;. При левых сдвигах  младшие разряды заполняются нолями, в то время как при правом сдвиге в старшие  разряды распространяется знак. Обычно левый сдвиг на +1 требуется для знакового  умножения, потому что произведение на выходе регистра &quot;P&quot; имеет двойной знаковый разряд. Если  не делать никакого сдвига &quot;P&quot; перед сложением, то  эффект эквивалентен правому сдвигу для более низкого масштабного множителя.  Более низкий масштабный множитель S<sub>acc</sub>/2 для содержимого  регистра &quot;P&quot; функционирует, согласно правилу 2, и дает левый сдвиг  СЦПС и дополнительный значащий бит результата. Точно так же правый сдвиг на -6  разрядов уменьшает масштаб регистра &quot;P&quot; до S<sub>acc</sub>/2<sup>7</sup> и, согласно правилу  2, правый сдвиг множителя на +7 позиций дает 7 дополнительных значащих бит.<br>
+      Использование этой  особенности уменьшает масштабный множитель аккумулятора до 1/2 или 1/2<sup>7</sup>, когда используется  правило 2, чтобы вычислить С<sub>ЦПС</sub>, и дает 1 или 7  дополнительных значащих битов в представлении С<sub>ЦПС</sub>. Если результат  умножения сдвинут вправо на -6, тогда 5 битов произведения потеряны и  обязательно появится шум квантования. Таким образом, сдвиг регистра  &quot;P&quot; дает компромисс между квантованием передаточной функции и шумом  квантования. Шум квантования очень маленький и не увеличивается с числом  сдвигов. Он всегда равен S<sub>acc</sub>/2<sup>31</sup>, где S<sub>acc</sub> - масштабный  коэффициент аккумулятора.<br>
+&nbsp;&nbsp;&nbsp;5.&nbsp;Пятая  особенность - сдвигающее устройство на выходе аккумулятора. Команда &quot;SACH&quot; копирует весь аккумулятор в сдвигающее  устройство, где всё это 32-разрядное число сдвигается на какое-нибудь число  разрядов от 0 до 7, и затем копирует старшие (младшие для команды &quot;SACL&quot;) 16 битов сдвинутой  величины в память данных. Сам аккумулятор при этом не изменяется. Выходной  сдвигатель, таким образом, позволяет иметь большой масштабный множитель  аккумулятора с несколькими старшими битами, чтобы предотвратить переполнение при  циклическом сложении, но позволяет полностью сохранить 15 значащих битов  (одинарная точность) из 31 бита аккумулятора. Без этого сдвигателя любое  различие между аккумулятором и выходными масштабными множителями давало бы  результат, который имел бы меньшее количество значащих битов и большую ошибку  квантования. <br>
+&nbsp;&nbsp;&nbsp;6.&nbsp;Шестая особенность - простая  реализация функции автоматической регулировки усиления (АРУ). Функция АРУ  позволяет динамически масштабировать входные данные, чьи входная амплитуда  значительно изменяется через какое-то время. Для некоторых приложений, например  передача данных, данные организованы в виде блоков, в то время как для других  приложений входные данные предусматривают изменяемый формат. Рис. 2.2.21 показывает  структуру данных и блоков данных для телекоммуникации.<br>
+<h3 align="center"><a name="fig8"></a><img src="../../images/ris010205_h.png" alt="Рис.2.2.21" width="580" height="410"></h3>
+<h3 align="center">Рисунок 2.2.21 &ndash; Входной сигнал в виде цифровых слов внутри блоков данных</h3>
+<p>Для этих  приложений обычное используемое масштабирование в ЦПС, чтобы приспособить  сигнал самой большой амплитуды, неизменно приводит для сигналов с меньшей  амплитудой к ошибке усечения или округления.<br>
+  С другой  стороны, функция АРУ автоматически корректирует входной сигнал, как показано на рис.2.2.21 до амплитуды, необходимой для соответствующего масштаба и минимальной  ошибки.<br>
+  Чтобы применить  функцию АРУ к блоку отсчетов данных, первое слово блока данных загружается в  буфер аккумулятора (для процессоров семейства TMS320C5x).  Команда &quot;CRGT&quot; затем проверяет  каждое следующее слово данных блока, чтобы найти большее слово данных, загружая  его в аккумулятор. Если большее значение найдено, то команда &quot;EXAR&quot; меняет большее число  в аккумуляторе с буфером аккумулятора. После того как проверка закончится,  максимальное слово данных для данного блока данных всегда будет находиться в  буфере аккумулятора.<br>
+  По  этому максимальному известному значению обратная величина может быть найдена  делением или по таблице. Обратная величина затем загружается в  &quot;TREG0&quot;, и все слова блока данных затем умножаются на нее, то есть,  масштабируются путем деления на максимум. В качестве альтернативы, выбором из  таблицы можно определить максимально возможный левый сдвиг (умножение на  степень 2) для уменьшения максимального значения в блоке. Левые сдвиги можно  выполнять автоматически,&nbsp; загружая в  &quot;TREG1&quot; величину сдвига и затем использовать команду  &quot;LACT&quot;, чтобы загрузить аккумулятор с левым сдвигом на число  разрядов, задаваемых с помощью &quot;TREG1&quot;.<br>
+&nbsp;&nbsp;&nbsp;7.&nbsp;И,  в заключение, перечислим ряд дополнительных особенностей. Рассмотренные выше  особенности составляют минимальное подмножество математических возможностей,  которые любой ЦПС должен иметь, но которые могут отсутствовать в  микроконтроллерах. Одна из них - способность сохранить содержание аккумулятора  со сдвигом вправо, в то время как само содержимое аккумулятора не изменяется и  не появляется ни&nbsp; какой ошибки усечения.  Вторая - наличие флага переноса и заема для повышенной точности 64-разрядного  сложения и вычитания. И третья - возможность знакового и беззнакового  умножения, которая позволяет выполнять умножение с повышенной точностью.</p>
+</div>
+
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK10/lk_10.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK12/lk_12.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+
+
+</BODY></HTML>

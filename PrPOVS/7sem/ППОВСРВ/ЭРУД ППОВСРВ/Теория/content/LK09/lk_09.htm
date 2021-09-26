@@ -1,0 +1,275 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 2.9</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 2.  Программная реализация основных алгоритмов цифровой обработки сигналов:  формирование сигналов, цифровая фильтрация, быстрое преобразование Фурье</strong>      </h3>
+      <p><strong>2.2&nbsp;&nbsp;&nbsp; Программирование цифровых фильтров (8 часов)</strong><br>
+        <strong><em>Лекция № 2.9</em></strong><br>
+        Программирование цифровых рекурсивных  фильтров (ЦРФ). Распределение памяти данных и коэффициентов. Прямое  программирование ЦРФ.<br>
+      </p>
+
+</div>
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK08/lk_08.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK10/lk_10.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+<div class="Text_Style">
+	<h1>Программирование цифровых рекурсивных фильтров</h1>
+	<h2>Уравнения и структуры цифровых рекурсивных фильтров</h2></div>
+ 	<div class="Text_Style">
+	  <p>Прямая форма записи уравнения цифрового рекурсивного фильтра во временной области выглядит следующим образом  (прямая форма 1):</p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for010202_a.gif" alt="Фор.2.5" width="312" height="57"><br><br></td>
+          <td width="10%" valign="center" align="right">(2.2.5)</td>
+        </tr>
+      </table>
+      <p>Передаточная функция цифрового рекурсивного фильтра (ЦРФ)  или фильтра с бесконечной импульсной характеристикой (БИХ или IIR &ndash; Infinite Impulse Response) в Z-области  записывается уравнением</p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for010202_b.gif" alt="Фор.2.6" width="243" height="114"><br><br></td>
+          <td width="10%" valign="center" align="right">(2.2.6)</td>
+        </tr>
+      </table>
+      <p>Кроме прямой формы (2.2.5) имеется и другая форма (называемая канонической)  уравнения ЦРФ с использованием промежуточных переменных d:</p>
+      <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><br><img src="../../images/for010202_c.gif" alt="Фор.2.7" width="232" height="116"><br><br></td>
+          <td width="10%" valign="center" align="right">(2.2.7)</td>
+        </tr>
+      </table>
+      <p>Обе эти  формы (2.2.5) и (2.2.7) для случая N = M могут быть представлены следующими  схемами (рис.&nbsp;2.2.5):<br></p>
+<h3 align="center"><a name="fig1"></a><img src="../../images/ris010202_a.png" alt="Рис.2.5" width="550" height="290"></h3>
+<h3 align="center">Рисунок 2.2.5 &ndash; Граф-схемы цифровых рекурсивных фильтров</h3>
+      <p>Прямая форма (рис. 2.2.5а) требует 2N+1 коэффициентов и 2N+1 рабочих ячеек для переменных X, Y (переменные x(n), y(n) могут храниться в одной ячейке памяти). При канонической реализации (рис. 2.2.5б) число переменных в два раза меньше (N+2).</p>
+	<p>Коэффициенты a и b в обеих формулах одинаковые, в чем можно убедиться на примере фильтра  второго порядка.</p>
+           <pre> 
+                     y(n)    =   a0d(n)    + a1d(n-1)       + a2d(n-2)
+                     
+                     d(n)    =   x(n)      - b1d(n-1)       - b2d(n-2)
+
+                     d(n-1) =   x(n-1)      - b1d(n-2) - b2d(n-3)
+
+                     d(n-2) =   x(n-2)      - b1d(n-3) - b2d(n-4)
+
+                     y(n)   =   a0[x(n)     - b1d(n-1) - b2d(n-2)] +
+                              + a1[x(n-1)   - b1d(n-2) - b2d(n-3)] +
+                              + a2[x(n-2)   - b1d(n-3) - b2d(n-4)] =
+
+                            =   a0x(n)      + a1x(n-1) + a2x(n-2)  -
+                              - b1[a0d(n-1) + a1d(n-2) + a2d(n-3)] -
+                              - b2[a0d(n-2) + a1d(n-3) + a2d(n-4)] =           
+
+                            =   a0x(n)      + a1x(n-1) + a2x(n-2)  -
+                              - b1y(n-1)    - b2y(n-2)</pre>
+
+<p>Обычно при программировании ЦФ используется  разбиение фильтра высокого порядка на ряд фильтров более низкого порядка  (например 2-го порядка), поскольку при программировании фильтра высокого  порядка трудно избежать переполнения для промежуточных результатов вычисления и  большой разницы в величине коэффициентов.<br>
+  В качестве примера можно  рассмотреть программирование ЦРФ второго порядка с прямой и косвенной  адресацией (в отличие от ЦНФ обнуление предыстории <strong>обязательно</strong> для ЦРФ).<br>
+  Расположение отсчетов предыстории в памяти данных  аналогично их расположению у нерекурсивного фильтра: DN (мл.) -&gt; DNM1-&gt;  DNM2 (ст.).</p>
+	</div>
+	<div class="Text_Style"><h2>Примеры программной реализации цифрового рекурсивного фильтра</h2></div>
+	<div class="Text_Style">
+	<p>Ниже приведены несколько примеров программ для разных способов вычисления.</p>
+    <blockquote>
+      <blockquote>
+        <h4>    ; Линейная программа ЦРФ (каноническая форма) 2-го порядка
+        </h4>
+        <pre>	.text		; секция программы
+START:	LD	#XN, DP	; сделать текущей страницу с x(n)
+	SSBX	FRCT	; режим умножения дробных чисел
+	RSBX	OVM	; нет коррекции переполнения в АЛУ
+	ORM	#1, PMST	; коррекция переполнения при записи
+	LD	#0, A	; обнуление предыстории (А:=0)
+	STL	A, DNM1	; DNM1:=0
+	STL	A, DNM2	; DNM2:=0
+; программа ЦРФ (ввод и вывод через параллельный порт)
+NXIPT:	PORTR	PA2, XN	; ввод из порта x(n)
+	; вычисление d(n)
+	LD	XN, 16, A	; x(n) в старшую часть акк.А
+	LD	DNM1, T	; Т:=d(n-1)
+	MAS	B1, A	; A:=A-T*b1=A-b1*d(n-1)
+	LD	DNM2, T	; T:=d(n-2)
+	MASR	B2, A	; A:=A-T*b2=A-b2*d(n-2)=d(n) и окр.
+	STH	A, DN	; d(n)
+	; вычисление y(n)
+	MPY	A2, A	; A:=T*a2=a2*d(n-2)
+	LTD	DNM1	; T:=d(n-1), d(n-1)->d(n-2)
+	MAC	A1, A	; A:=A+T*a1=A+a1*d(n-1)
+	LTD	DN	; T:=d(n), d(n)->d(n-1)
+	MACR	A0, A	; A:=A+T*a0=A+a0*d(n) и округл.
+	STH	A, XN	; y(n)->x(n)
+	BD	NXIPT	; задержанный переход на NeXtInPuT
+	PORTW	XN, PA2	;2w вывод в порт y(n)
+	.data		; секция данных
+XN	.WORD	0	; вход и выход фильтра
+DN	.WORD	0	; предыстория фильтра
+DNM1	.WORD	0
+DNM2	.WORD	0
+A0	.WORD	0	; коэффициенты фильтра
+A1	.WORD	0
+A2	.WORD	0
+B1	.WORD	0
+B2	.WORD	0
+</pre>
+        <h4>      ; Программа ЦРФ N-го порядка с использованием команд MACP и MACD    </h4>
+        <pre>
+	.text		; секция программы
+START:	LD	#0, DP	; сделать текущей 0-ю страницу
+	SSBX	FRCT	; режим умножения дробных чисел
+	RSBX	OVM	; нет коррекции переполнения в АЛУ
+	ORM	#1, PMST	; коррекция переполнения при записи
+	STM	#DNMN1, AR2	; AR2:= адрес d(n-(N-1))
+	RPTZ	A, #N-2	; А:=0 и повторить N-1 раз
+	STL	A, *AR2-	; обнуление предыстории d(n-k):=0
+; программа ЦРФ (ввод и вывод через последовательный порт)
+NXIPT:	LD	McDRR, 16, A ; ввод из порта x(n) в AH
+	; вычисление d(n)
+	STM	#DNMN1, AR2	; AR2:= адрес d(n-(N-1))
+	RPT	#N-2	; повторить N-1 раз
+	MACP	*AR2-,BNM1, A ; A:=A+T*(-bk)=A-bk*d(n-k)
+	STH	A, *AR2	; d(n)
+	; вычисление y(n)
+	STM	#DNMN1, AR2	; AR2:= адрес d(n-(N-1))
+	RPTZ	A, #N-1	; А:=0 и повторить N раз
+	MACD	*AR2-,ANM1, A ; A:=A+T*ak=A+ak*d(n-k)
+	BD	NXIPT	; задержанный переход на NeXtInPuT
+	STH	A, McDXR	;1w вывод в порт y(n)
+	NOP		;1w пустая команда
+ANMN1	.WORD	0
+	.  .  .
+A1	.WORD	0
+A0	.WORD	0	; коэффициенты фильтра
+BNMN1	.WORD	0
+	.  .  .
+B1	.WORD	0
+	.data		; секция данных
+DN	.WORD	0	; предыстория фильтра
+DNM1	.WORD	0
+	.  .  .
+DNMN1	.WORD	0
+XN	.WORD	0	; резервная пустая ячейка
+; ПРИМЕЧАНИЕ:	коэффициенты ak и bk в памяти программ и могут
+;		располагаться только в таком порядке !!!
+</pre>
+        <h4>
+          ; Программа ЦРФ с использованием циклической адресации
+        </h4>
+        <pre>	.text		; секция программы
+START:	LD	#0, DP	; сделать текущей 0-ю страницу
+	SSBX	FRCT	; режим умножения дробных чисел
+	RSBX	OVM	; нет коррекции переполнения в АЛУ
+	ORM	#1, PMST	; коррекция переполнения при записи
+	STM	#DNMN1, AR2	; AR2:= адрес d(n-(N-1))
+	RPTZ	A, #N-3	; А:=0 и повторить N-2 раз
+	STL	A, *AR2-	; обнуление предыстории d(n-k):=0
+	STL	A, *AR2	; обнуление предыстории d(n-1):=0
+	STM	#1, AR0	; AR0:= шаг в кольцевом буфере
+	STM	#N, BK	; размер кольцевого буфера
+; программа ЦРФ (ввод и вывод через последовательный порт)
+NXIPT:	LD	McDRR, 16, A ; ввод из порта x(n) в AH
+	; вычисление d(n)
+	STM	#B1, AR3	; AR3:= адрес b1
+	RPT	#N-2	; повторить N-1 раз
+	MAS	*AR2+0%,*AR3+, A ; A:=A-T*bk=A-bk*d(n-k)
+	STH	A, *AR2	; d(n)
+	; вычисление y(n)
+	RPTZ	A, #N-1	; А:=0 и повторить N раз
+	MAC	*AR2+0%,*AR3+, A ; A:=A+T*ak=A+ak*d(n-k)
+	BD	NXIPT	; задержанный переход на NeXtInPuT
+	STH	A, McDXR	;1w вывод в порт y(n)
+	NOP		;1w пустая команда
+	.data		; секция данных
+	.ALIGN	32	; выравнивание для N < 32
+DN	.WORD	0	; предыстория фильтра
+DNM1	.WORD	0
+	.  .  .
+DNMN1	.WORD	0
+B1	.WORD	0	; коэффициенты фильтра
+	.  .  .
+BNMN1	.WORD	0
+A0	.WORD	0
+	.  .  .
+ANMN1	.WORD	0
+; ПРИМЕЧАНИЕ:	коэффициенты ak и bk в памяти данных и должны
+;		располагаться в указанном порядке, при этом
+;		порядок ak, bk и d(n-k) может быть и обратным,
+;		при этом AR0:=-1 и меняется адресация *AR3-
+	</pre>
+      </blockquote>
+      </blockquote>
+    <p>Недостаток канонической формы – возможно переполнение, недостаток прямой – в 2 раза больше памяти.</p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK08/lk_08.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK10/lk_10.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+
+</BODY></HTML>

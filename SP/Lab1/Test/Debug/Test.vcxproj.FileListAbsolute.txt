@@ -1,0 +1,2 @@
+C:\Study\SP\Lab1\Test\Debug\Test.exe
+C:\Study\SP\Lab1\Test\Debug\Test.pdb

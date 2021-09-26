@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Практическое занятие "Программирование синусоидальных сигналов с использованием интерполяционного табличного метода"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle"><a name="sub0"></a>2. Программирование синусоидальных сигналов с использованием интерполяционного табличного метода.</div>
+	<div class="mainSubTitle"><a name="sub1"></a>1) Табличный метод с интерполяцией для программирования синусоиды с дробным шагом</div>
+ 	<div class="mainSubContent">
+	<p>Данный метод  является модификацией предыдущего и в его основе лежит точно такая же таблица  синуса и обычная линейная интерполяция функции между двумя точками.<br>
+Данный метод описывается выражением <br>
+sin(2&Pi;(i+d)/N) &asymp; sin(2&Pi;i/N) + d&middot;[sin(2&Pi;(i+1)/N)  &ndash; sin(2&Pi;i/N)] = S(i) + d&middot;[S(i+1) &ndash; S(i)]<br>
+где  i &ndash; целая часть аргумента (индекс в таблице синуса), а d &ndash; дробная часть (коэффициент пропорциональности).<br>
+Данный метод может быть проиллюстрирован рисунком 2.1:</p>
+<h3 align="center"><a name="fig2"></a><img src="../../../images/pz_ris0201.gif" alt="Рис.2.1" width="534" height="234"></h3>
+<h3 align="center">Рисунок 2.1 &ndash; Синусоида с дробным шагом аргумента и интерполяцией</h3>
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>2) Рекомендации по программированию</div>
+ 	<div class="mainSubContent">
+      Для удобства вычислений аргумент рекомендуется хранить в аккумуляторе <b>В</b> таким образом, что бы целая часть аргумента располагалась в аккумуляторе начиная с 15-го разряда. В этом случае дробная часть будет занимать младшую часть аккумулятора<br>
+      Поскольку в знаковом (15-м) разряде находится младший бит целой части, то для выделения дробной части необходимо использовать маску 0х7FFF.<br>
+      Формулу вычисления синуса лучше преобразовать к следующему виду<br>
+sin(2&Pi;(i+d)/N) &asymp; S(i) + d&middot;S(i+1) &ndash; d&middot;S(i)<br>
+что позволит применить автоинкрементную и автодекрементную косвенную адресацию.
+      Для контроля выхода адреса за пределы таблицы синуса можно использовать соответствующую маску, расположив саму таблицу с адреса кратного степени двойки большей длины таблицы. В этом случае вместо аргумента можно использовать аргумент увеличенный на адрес таблицы, т.е. фактически работать с адресами памяти.<br>
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbsp;Назад&nbsp;&nbsp;" onClick="document.location.href ='../PZ1/pz_1.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем практических занятий" onClick="document.location.href ='../pz.html'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../PZ3/pz_3.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->			
+
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+
+</body></html>

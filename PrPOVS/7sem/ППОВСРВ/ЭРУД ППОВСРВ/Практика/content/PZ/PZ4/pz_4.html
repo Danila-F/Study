@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Практическое занятие "Расчет мощности паразитных гармоник в сформированном сигнале и коэффициента нелинейных искажений"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle"><a name="sub0"></a>4. Расчет мощности паразитных гармоник в сформированном сигнале и коэффициента нелинейных искажений.</div>
+	<div class="mainSubTitle"><a name="sub1"></a>1) Принципы расчета мощности паразитных гармоник и коэффициента нелинейных искажений</div>
+ 	<div class="mainSubContent">
+	Полные нелинейные искажения (Total Harmonic Distortion &ndash; THD ) определяются выражением:<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>THD = энергия паразитных гармоник / полная энергия сигнала</b><br><br>
+	Поскольку расчет энергия всех паразитных гармоник является достаточно трудоемким, то для вычисления коэффициента нелинейных искажений можно воспользоваться выражением:<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>THD = (E(total)&ndash;E(fundamental)) / E(total)</b> ,<br><br>
+	где E(total) и E(fundamental) значения полной энергии и энергии основной гармоники сигнала соответственно.
+	</div>
+	<div class="mainSubTitle"><a name="sub2"></a>2) Рекомендации по программированию</div>
+ 	<div class="mainSubContent">
+	Вычисление энергии всех паразитных гармоник производится вычитанием из полной энергия сигнала энергии основной гармоники. При этом необходимо учесть, что полученное значение не промасштабировано.<br>
+    Для вычисления коэффициента нелинейных искажений необходимо разделить полученное значение нергии всех паразитных гармоник на полную энергию сигнала. Операцию деления можно реализовать с помощью зацикливания команды условного вычитания, предварительно промасштабировав полную энергию сигнала.
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="&nbsp;&nbsp;Назад&nbsp;&nbsp;" onClick="document.location.href ='../PZ3/pz_3.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем практических занятий" onClick="document.location.href ='../pz.html'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../PZ5/pz_5.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->			
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+</body></html>

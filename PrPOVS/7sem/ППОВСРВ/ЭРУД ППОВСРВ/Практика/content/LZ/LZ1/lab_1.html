@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="../../../../Оболочка/css/style3.css" type="text/css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>ЭРУД по дисциплине "Программирование проблемно-ориентированных вычислительных средств реального времени" &#8250; Практика &#8250; Лабораторная работа "Программирование синусоидальных сигналов методом суммы двух углов"</title>
+<base target="_top">
+</HEAD>
+<BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >Электронный 
+        ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+	  1-40 02 02 "Электронные вычислительные средства"
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<!--start-->
+<div class="mainBlock">
+	<div class="mainTitle" align="center"><a name="sub0"></a>ЛАБОРАТОРНАЯ РАБОТА № 1</div>
+	<div class="mainTitle" align="center">ПРОГРАММИРОВАНИЕ СИНУСОИДАЛЬНЫХ СИГНАЛОВ МЕТОДОМ СУММЫ ДВУХ УГЛОВ</div>
+	<div class="mainSubTitle"><a name="sub1"></a>1.1. ЦЕЛЬ РАБОТЫ</div>
+	<div class="mainSubContent">
+	Знакомство с различными алгоритмами формирования синусоидальных сигналов, разработка и отладка программы генератора синусоидальных сигналов на основе рекуррентно-аналитического метода суммы двух углов на ассемблере процессора TMS320VC5402 для лабораторного макета TMS320VC5402 DSP Starter Kit (DSK).
+	</div>
+<div class="mainSubTitle"><a name="sub2"></a>1.2. ТЕОРЕТИЧЕСКИЕ СВЕДЕНИЯ</div>
+	<div class="mainSubTitle1">1.2.1. Формулы суммы двух углов</div>
+	<div class="mainSubContent">
+	  <p>Существует несколько аналитических (вычислительных)  методов формирования синусоидальных сигналов. Один из таких методов основан на  формулах суммы двух углов:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><br>
+			sin(&alpha;+&beta;) = sin(&alpha;)&middot;cos(&beta;)+cos(&alpha;)&middot;sin(&beta;),<br>
+			cos(&alpha;+&beta;) = cos(&alpha;)&middot;cos(&beta;)&ndash;sin(&alpha;)&middot;sin(&beta;).<br><br></td>
+          <td width="50" valign="center" align="right">(1.1)</td>
+        </tr>
+      </table>
+      <p>Этот метод применим для последовательной генерации  отсчетов одной синусоиды и позволяет вычислить очередной отсчет функции,  например sin(an)=sin(a(n-1)+a)  через предыдущий sin(a(n-1)).<br>
+        Использовав a(n-1)  в качестве &alpha; и a  в качестве &beta; и обозначив S1=sin(a),  C1=cos(a), Sn(n)=sin(an), Cn(n)=cos(an),  получим следующие выражения для вычисления очередных значений синуса и  косинуса:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><br>
+			Sn(n) = C1&middot;Sn(n-1)+S1&middot;Cn(n-1),<br>
+			Cn(n) = C1&middot;Cn(n-1)&ndash;S1&middot;Sn(n-1).<br><br></td>
+          <td width="50" valign="center" align="right">(1.2)</td>
+        </tr>
+      </table>
+      <p>Исходными данными для вычисления первой гармоники (с  минимальной возможной частотой) являются следующие значения: Sn(0)=0, Cn(0)=1  &ndash; значения синуса и косинуса для нулевого аргумента; N&nbsp;&ndash;  длина выборки (число отсчетов в первой гармонике); a=2P/N  &ndash; минимальное приращение аргумента и S1=sin(2P/N), C1=cos(2P/N) &ndash; значения синуса и косинуса для минимального аргумента.<br>
+        На рис.&nbsp;1.1 показан пример синусоиды с периодом 8 отсчетов (N=8).<br>
+<h3 align="center"><img src="../../../images/lb_ris0101.gif" alt="Рис.1.1" width="605" height="270"></h3>
+<h3 align="center">Рисунок 1.1 &ndash; Синусоида с периодом 8 отсчетов</h3>
+        Учитывая, что исходными значениями для k-й гармоники являются начальный угол &beta;=ak, Sk=sin(ak) и Ck=cos(ak), для их вычисления можно использовать те же  самые формулы:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><br>
+			Sk(k) = C1&middot;Sk(k-1)+S1&middot;Ck(k-1),<br>
+			Ck(k) = C1&middot;Ck(k-1)&ndash;S1&middot;Sk(k-1).<br><br></td>
+          <td width="50" valign="center" align="right">(1.3)</td>
+        </tr>
+      </table>
+      <p>Исходными  данными для вычисления, как и в выражении  (1.2), являются значения Sk(0)=0 и Ck(0)=1.<br>
+        Расположив данные в памяти следующим образом: Cn, Sn, Ck, Sk,  C1, S1, можно использовать одну и ту же подпрограмму с  косвенной адресацией для вычисления как отсчетов очередной гармоники Sn и Cn,  так и начальных значений Sk и Ck.<br>
+        Для чего вначале устанавливаем указатель (адрес во  вспомогательном регистре) на Ck и  вычисляем очередное значение Ck и Sk, а затем на Cn и вычисляем нужное число отсчетов очередной  гармоники Sn и Cn:</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50" valign="top">&nbsp;</td>
+          <td width="700" valign="center" align="center"><br>
+			Sn(n) = Ck&middot;Sn(n-1)+Sk&middot;Cn(n-1),<br>
+			Cn(n) = Ck&middot;Cn(n-1)&ndash;Sk&middot;Sn(n-1).<br><br></td>
+          <td width="50" valign="center" align="right">(1.4)</td>
+        </tr>
+      </table>
+</div>
+	<div class="mainSubTitle1">1.2.2. Замечания по программированию</div>
+	<div class="mainSubContent">
+	  <p>При  программировании синусоиды данным методом необходимо учесть следующие  замечания:</p>
+      <ul>
+        <li>используя два вспомогательных регистра и  двухоперандные команды (Xmem,  Ymem), вычисление  синуса (косинуса) можно выполнить тремя командами;</li>
+        <li>поскольку ассемблер TMS320VC5402 не имеет  директив для задания дробных чисел, то дробные числа (формат Q15) переводятся в  целые путем умножения на 32768 и используется директива .word;</li>
+        <li>поскольку не существует кода для положительной единицы,  то для задания <strong>cos(0) </strong>используется  приближенное значение 7FFFh = 1-2<sup>-15</sup>;</li>
+        <li>для того чтобы формируемая синусоида  (косинусоида) не затухала, начальное значение <strong>C1=cos(2P/N) </strong>увеличивается  на одну или две единицы младшего разряда и вычисления выполняются в старшей  части аккумулятора при установленном режиме коррекции переполнения.</li>
+      </ul>
+  </div>
+	<div class="mainSubTitle1">1.2.3. Алгоритм формирования последовательности синусоид</div>
+	<div class="mainSubContent">
+	  <p>Для  исследования цифровых фильтров требуется генератор последовательности синусоид  с возрастающей частотой. Схема алгоритма формирования последовательности  синусоид на рис.&nbsp;1.2.</p>
+<h3 align="center"><img src="../../../images/lb_ris0102.gif" alt="Рис.1.2" width="437" height="816"></h3>
+<h3 align="center">Рисунок 1.2 &ndash; Схема алгоритма формирования последовательности синусоид</h3>
+	</div>
+	<div class="mainSubTitle"><a name="sub3"></a>1.3. ПОРЯДОК ВЫПОЛНЕНИЯ РАБОТЫ</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Изучить теоретические сведения по теме лабораторной работы <a href="#sub2">(подразд.&nbsp;1.2)</a>.</li>
+		<li>Получить у преподавателя задание для выполнения практической части работы.</li>
+		<li>Согласно заданию написать, оттранслировать и выполнить программу.</li>
+		<li>Продемонстрировать результат трансляции и работы программы преподавателю.</li>
+		<li>Оформить и защитить отчет по лабораторной работе.</li>
+	</ol>
+	</div>
+	<div class="mainSubTitle"><a name="sub4"></a>1.4. СОДЕРЖАНИЕ ОТЧЕТА</div>
+	<div class="mainSubContent">
+	<ol>
+		<li>Цель работы и исходные данные.</li>
+		<li>Описание алгоритма работы программы.</li>
+		<li>Листинг программы с комментариями.</li>
+		<li>Выводы по работе.</li>
+	</ol>
+	</div>
+</div>
+<div align="center">
+	<input type="button" class="buttonManage" value="В конец" onClick="document.location.href ='../LZ8/lab_8.html'" />
+	<input type="button" class="buttonManage" value="Перечень тем лабораторных работ" onClick="document.location.href ='../lb.html'" />
+	<input type="button" class="buttonManage" value="&nbspВперед&nbsp" onClick="document.location.href ='../LZ2/lab_2.html'" />
+	<div class="mainSubContent"><br></div>
+</div>
+<!--end-->
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../../Оболочка/images/background.jpg">
+	<Tr><td align=center colspan=2><var class="normal"><A HREF="../../../../index.htm">Оглавление</A> | <A HREF="../../../../Программа/ППОВСРВ_программа_2017.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | <a href="../../../../Теория/theory.htm">Теория</a> | <A HREF="../../../../Практика/practice.htm">Практика</A> | <A HREF="../../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+    <Tr><td align=center><var><b>(С) БГУИР</b></var></td></tr>
+</table>
+
+</BODY></HTML>

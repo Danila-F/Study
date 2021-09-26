@@ -1,0 +1,172 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 1.5</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 1.  Технологии и инструментальные системы программирования проблемно-ориентированных  вычислительных средств реального времени</strong></h3>
+      <p><strong>1.3&nbsp;&nbsp;&nbsp; Технология создания программ на языке С/С++ (4  часа)</strong><br>
+        <strong><em>Лекция № 1.5</em></strong><br>
+        Создание многофайловых проектов.  Использование и создание ассемблерных вставок в проекте. Использование  заголовочных файлов *.h для подключения стандартных библиотек. <br>
+Оценка эффективности использования языка  С/С++.<br>
+      </p>
+</div>
+
+
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK04/lk_04.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK06/lk_06.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+<div class="Text_Style">
+	  <h1><strong>Технология создания программ на языке С/С++</strong></h1>
+  <h2>Создание многофайловых проектов. </h2></div>
+
+<div class="Text_Style"><br>
+  <p>Очень сложно создать сложный проект, используя только один файл  проекта. Поэтому важной компетенцией программиста является умение создавать многофайловые проекты.<br>
+  При создании программного  обеспечения приходиться решать множество задач, позволяющих создавать хорошо  структурированные, легко читаемые, поддерживающие полный жизненный цикл  программной системы проекты. <br>
+Одной из возможностей создания  таких проектов является использование возможности создания многофайловых  проектов.<br>
+Создадим проект &ldquo;Second_C_Project&rdquo;, используя схему, реализованную в предыдущей лекции, так,  как это было выполнено выше.<br>
+Напишем простейшую программу на  языке С, и выполним ее трансляцию.<br>
+Текст анализируемой программы  представлен ниже.</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; extern void c_int00 (void)&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float&nbsp;&nbsp;&nbsp; a, b, c;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=4.5;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b=7.8;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c=a+b;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=c-a;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b=b*c;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>Результат трансляции представлен  на рисунке 1.3.16. Как видите, трансляция программы завершилась успешно.</p>
+<h3 align="center"><img title="Рисунок 1.3.16. Результат трансляции проекта Second_C_Project" src="../../images/Ris010316.JPG" width="832" height="826"></h3>
+<h3 align="center">Рисунок 1.3.16 &ndash; Результат трансляции проекта Second_C_Project</h3>
+
+   <p>&nbsp;</p>
+  <p>Однако, после построения проекта  будет выдано следующее сообщение:<br>
+  &lt;Linking&gt;</p>
+  <p>undefined&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; first referenced<br>
+  &nbsp;symbol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in file<br>
+    ---------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----------------<br>
+    F$$ADD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  C:\ti\myprojects\Second_C_Project\Debug\Second_C_Project.obj<br>
+    F$$MUL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  C:\ti\myprojects\Second_C_Project\Debug\Second_C_Project.obj<br>
+    F$$SUB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C:\ti\myprojects\Second_C_Project\Debug\Second_C_Project.obj<br>
+  &gt;&gt;&nbsp;&nbsp;  error: symbol referencing errors - ./Debug/Second_C_Project.out not  built</p>
+  <p>Build Complete,<br>
+  &nbsp;  1 Errors, 1 Warnings, 0 Remarks.</p>
+  <p>Это сообщение указывает на  отсутствие возможности выполнения операций сложения, умножения, вычитания (F$$ADD, F$$MUL, F$$SUB с над  числами представленными в форме с плавающей точкой. Ошибки, возникшие при  компоновке проекта, представлены на рисунке 1.3.17.</p>
+  
+ <h3 align="center"><img title="Рисунок 1.3.17. Ошибки, возникшие при  компоновке проекта Second_C_Project" src="../../images/Ris010317.JPG" width="960" height="1024"></h3>
+<h3 align="center">Рисунок 1.3.17 &ndash; Ошибки, возникшие при  компоновке проекта  Second_C_Project</h3>
+
+  <p>В данном случае, это означает, что  мы не имеем возможности использования стандартно библиотеки со встроенными  функциями. Как видно из примера, мы пишем код в стандарте С, и не задумываемся  о необходимости написания функций, позволяющих использовать арифметику с  плавающей точкой, не являющуюся встроено для процессоров серии TMS320C54XX.</p>
+  <p>Подключение стандартной  библиотеки осуществляется командой препроцессора #include.<br>
+    Стандартная библиотека должна  быть включена в проект. Для этого выполняем следующие действия: &lt;Project&gt;&lt;Add Files to Project&gt;. В открывшемся  окне указываем путь к библиотеке &lt;..ti\c5400\cgtools\lib\rts.lib&gt;.</p>
+  
+ <h3 align="center"><img title="Рисунок 1.3.18. Подключение стандартной библиотеки к проекту Second_C_Project" src="../../images/Ris010318.JPG" width="428" height="301"></h3>
+<h3 align="center">Рисунок 1.3.18 &ndash; Подключение стандартной библиотеки к проекту Second_C_Project</h3>
+  <p>Далее убеждаемся, что требуемая  библиотека подключилась к проекту, как это показано на рисунке 1.3.19. </p>
+ <h3 align="center"><img title="Рисунок 1.3.19. Проверка подключения стандартной библиотеки к проекту Second_C_Project" src="../../images/Ris010319.JPG" width="773" height="751"></h3>
+<h3 align="center">Рисунок 1.3.19 &ndash; Проверка подключения стандартной библиотеки к проекту Second_C_Project</h3>
+  <p>Далее перестраиваем проект, и  получаем следующее сообщение от компилятора:<br>
+  &quot;c:\ti\c5400\cgtools\bin\cl500&quot; -g -q  -fr&quot;C:/ti/myprojects/Second_C_Project/Debug&quot; -d&quot;_DEBUG&quot;  -@&quot;Debug.lkf&quot; &quot;Second_C_Project.c&quot;<br>
+    [second_c_project.c]</p>
+  <p>Warning: The project has no cmd file while the  Text Linker is selected<br>
+  &quot;c:\ti\c5400\cgtools\bin\cl500&quot;  -@&quot;Debug.lkf&quot;<br>
+  &lt;Linking&gt;<br>
+  &gt;&gt;&nbsp;&nbsp;  error: symbol _c_int00 multiply defined: boot.obj<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  (C:\ti\c5400\cgtools\lib\rts.lib) and<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  C:\ti\myprojects\Second_C_Project\Debug\Second_C_Project.obj</p>
+  <p>Build Complete,<br>
+  &nbsp;  1 Errors, 1 Warnings, 0 Remarks.</p>
+  <p>Это сообщение указывает на то,  что точка входа в программу находится в загрузочной и инициализирующей секции boot.obj (C:\ti\c5400\cgtools\lib\rts.lib),  а также в головной программе C:\ti\myprojects\Second_C_Project\Debug\Second_C_Project.obj.</p>
+  <p>Следовательно перестраиваем  головную программу согласно принятому в языке стилю, то есть вводим функцию main. </p>
+  <p>Текст анализируемой программы  будет изменен следующим образом:</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void main(void)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float&nbsp;&nbsp;&nbsp; a, b, c;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=4.5;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b=7.8;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c=a+b;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=c-a;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b=b*c;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>Результат построения проекта представлен  на рисунке 1.3.20. Как видите, построение программы завершилась успешно.</p>
+ <h3 align="center"><img title="Рисунок 1.3.20. Успешное построение проекта Second_C_Project" src="../../images/Ris010320a.JPG" width="980" height="980"></h3>
+ <h3 align="center">Рисунок 1.3.20 &ndash; Успешное построение проекта Second_C_Project</h3>
+  <p>После этого можно приступать к  отладке проекта. Для этого выполняем следующую последовательность действий. &lt;Debug&gt;&lt;Go Main&gt;. </p>
+ <h3 align="center"><img title="Рисунок 1.3.21. Запуск успешного построения проекта Second_C_Project" src="../../images/Ris010321.JPG" width="90%"></h3>
+ <h3 align="center">Рисунок 1.3.21 &ndash; Запуск успешного построения проекта Second_C_Project</h3>
+  <p>После этого можно выполнять  отладку по операторам языка. Для просмотра результатов используйте окна &lt;Watch&gt;, которые можно  вызвать выполнив следующую последовательность действий: &lt;View&gt;&lt;Watch Windows&gt; .</p>
+  <h3 align="center"><img title="Рисунок 1.3.22. Процесс отладки проекта Second_C_Project" src="../../images/Ris010322.JPG" width="90%"></h3>
+ <h3 align="center">Рисунок 1.3.22 &ndash; Процесс отладки проекта Second_C_Project</h3><br>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK04/lk_04.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK06/lk_06.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>

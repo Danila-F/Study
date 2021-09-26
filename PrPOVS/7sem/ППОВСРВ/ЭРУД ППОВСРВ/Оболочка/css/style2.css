@@ -1,0 +1,95 @@
+@charset "windows-1251";
+/* CSS Document */
+.Header_Style {
+	font-family: "Times New Roman", Times, serif;
+}
+.Header_Style h1 {
+	font-size: 16pt;
+	font-weight: bold;
+	color: #FAFAFA;
+}
+.Header_Style h3 {
+	font-size: 14pt;
+}
+.Header_Style table tr td .normal a {
+	font-size: 12pt;
+	font-style: normal;
+	font-weight: normal;
+}
+.Header_Style table tr td var b {
+	color: #FAFAFA;
+	font-style: normal;
+	font-size: 14px;
+}
+.Header_Style a { color: #0F9 ; font-style:normal }
+.Header_Style a:HOVER { color:#FF0; font-style:normal }
+
+.Header_Style p6 { color: #FFF ; font-style:normal }
+
+
+.Header_page_Style {
+	font-family: "Times New Roman", Times, serif;
+}
+
+.Header_page_Style p { margin-left: 10%; margin-right: 10%; }
+
+.Text_Style {
+	font-family: "Times New Roman", Times, serif;
+}
+.Text_Style h1 {
+	font-size: 16pt;
+	font-weight: bold;
+	color: #000088;
+	text-align: center;
+	}
+.Text_Style p {
+	font-size: 12pt;
+	font-weight: normal;
+	color: #000000;
+	text-align: justify;
+	}
+.Text_Style h2 {
+	font-size: 14pt;
+	font-weight: bold;
+	color: #000088;
+	text-align: center;
+	}
+	
+.Text_Style h4 {
+	font-size: 12pt;
+	font-weight: bold;
+	color: #008800;
+	text-align: left;
+	font-style: italic;
+	}	
+	
+.Text_Style h6 {
+	font-size: 12pt;
+	font-weight: bold;
+	color: #000000;
+	text-align: center;
+	}
+	
+.Text_Style li {
+	font-size: 12pt;
+	font-weight: normal;
+	color: #000000;
+	text-align: justify;
+	margin-right: 5%;
+	}
+table {
+	font-family: Courier New, Courier, monospace;
+}
+table {
+	font-family: Courier New, Courier, monospace;
+}
+table {
+	font-family: Courier New, Courier, monospace;
+}
+table {
+	font-family: Courier New, Courier, monospace;
+}
+.border
+   {
+    border: 1px solid black;
+}

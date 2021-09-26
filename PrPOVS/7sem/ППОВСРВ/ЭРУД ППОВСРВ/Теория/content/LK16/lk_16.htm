@@ -1,0 +1,626 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 2.16</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 2.  Программная реализация основных алгоритмов цифровой обработки сигналов:  формирование сигналов, цифровая фильтрация, быстрое преобразование Фурье</strong>      </h3>
+      <p><strong>2.5&nbsp;&nbsp;&nbsp; Программирование алгоритмов БПФ с  прореживанием по частоте (4 часа)</strong><br>
+        <strong><em>Лекция № 2.16</em></strong><br>
+        Программная реализация алгоритма БПФ по  модулю два с замещением, прореживанием по частоте и прямым порядком входных  данных.<br>
+        Программная реализация алгоритма БПФ по  модулю два с замещением, прореживанием по частоте и двоично-инверсным порядком  входных данных.<br>
+      </p>
+</div>
+
+
+<div align="center">
+    <p>
+    <input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK15/lk_15.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK17/lk_17.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+
+	<div class="Text_Style"><h1>Программирование алгоритмов БПФ с прореживанием по частоте<br>
+	Алгоритм БПФ с прореживанием по частоте и прямым порядком входных данных</h1>
+	<h2>Изменение индексов и поворачивающих множителей</h2></div>
+ 	<div class="Text_Style">
+	<p>Ниже приведены граф-схема (рис. 2.5.1) и таблица индексов (табл. 2.5.1) 8 точечного БПФ с прореживанием по частоте и прямым порядком входных данных.</p>
+<h3 align="center"><a name="fig1"></a><img src="../../images/ris010501_a.gif" alt="Рис.5.1" width="610" height="439"></h3>
+<h3 align="center">Рисунок 2.5.1 &ndash; Граф-схема БПФ с прореживанием по частоте<br>и прямым порядком входных данных</h3>
+<table align="center" width="68%" border="0">
+  <tr>
+    <td>Таблица 2.5.1 - Изменение индексов  для БПФ с прореживанием по частоте и прямым порядком входных данных</td>
+  </tr>
+</table>
+      <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="13%" valign="center" align="center">№ п/п</td>
+          <td width="10%" valign="center" align="center">N2</td>
+          <td width="10%" valign="center" align="center">IE</td>
+          <td width="10%" valign="center" align="center">J</td>
+          <td width="10%" valign="center" align="center">I</td>
+          <td width="10%" valign="center" align="center">I + N2</td>
+          <td width="10%" valign="center" align="center">K</td>
+          <td width="13%" valign="center" align="center">Цикл</td>
+          <td width="13%" valign="center" align="center">Переход</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="13%" valign="center" align="center">2</td>
+          <td width="13%" rowspan="3" valign="center" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">5</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="13%" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="13%" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">7</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="13%" valign="center" align="center">2</td>
+          <td width="13%" rowspan="2" valign="center" align="left">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">5</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+          <td width="13%" rowspan="2" valign="center" align="left">&nbsp;2</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">7</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">8</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">5</td>
+          <td width="10%" valign="center" align="center">7</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+          <td width="13%" rowspan="2" valign="center" align="left">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">9 </td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">10 </td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+          <td width="13%" rowspan="3" valign="center" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">11 </td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">5</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">12 </td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">7</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+      </table>
+	</div>
+	<div class="Text_Style"><h2>Схема алгоритма БПФ</h2></div>
+	<div class="Text_Style">
+	<p>Ниже приведена обобщенная схема алгоритма БПФ с прореживанием по частоте и прямым порядком входных данных (рис. 2.5.2).</p>
+<h3 align="center"><a name="fig2"></a><img src="../../images/ris010501_b.gif" alt="Рис.5.2" width="602" height="818"></h3>
+<h3 align="center">Рисунок 2.5.2 &ndash; Схема алгоритма БПФ с прореживанием по частоте<br>и прямым порядком входных данных</h3>
+</div>
+	<div class="Text_Style">
+	  <h2>Программная реализация алгоритма БПФ</h2>
+	</div>
+  <div class="mainSubContent">
+	<p>Ниже приведен пример подпрограммы для реализации алгоритма БПФ с прореживанием по частоте и прямым порядком входных данных.</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+* DIF FFT Programm for TMS320C5402 DSP Starter Kit
+* direct -> reverce addres     12/10/04 20:20:00
+	.data
+HOLDN   .word    64h
+QUARTN  .word    65h
+N1      .word    66h
+N2      .word    67h
+J       .word    68h
+IADDR   .word    69h
+SINTBL  .word    6Ah
+SIN     .word    6Bh
+COS     .word    6Ch
+I       .word    6Dh
+IE      .word    6Eh
+INV     .word    6Fh
+	.text
+FFT	stl	a, INV		; признак БПФ(=0) или ОБПФ (=1)
+	stm	#1, IE		; IE=1 !!!
+	ld	#N, a
+	stl	a, HOLDN		; N
+	stl	a, N2			; N2=N !!!
+	stl	a, -2, QUARTN
+	st	#XFFT, IADDR
+	stm	#M, AR1		; число итераций - 1
+IELOOP	ld	#0, a
+	stl	a, J			; J=0
+	st	#sint, SINTBL	; K=0 new
+	ld	N2, a
+	stl	a, -1, N2		; N2=N2/2
+	mvdm	N2, AR2
+	stl	a, N1			; N1=2N2
+	mar	*AR2-			; AR2=N2-1
+JLOOP	ld	J, 1, a
+	stl	a, I			; I=J (2J)
+	ld	SINTBL, a
+	reada	SIN
+	add	QUARTN, a
+	reada	COS			; W(K)
+	ld	INV, a
+	bcd	ILOOP, aeq
+	ld	SIN, b		;1w
+	neg	b			;1w
+	stl	b, SIN
+ILOOP	mvdm	I, AR0
+	mvdm	IADDR, AR3
+	nop				;PPC1 ar3
+	mar	*AR3+0		; (I)
+	mvdm	N1, AR0		; N2 (N1=2N2)
+	nop				;PPC1 ar0
+*=========================================*
+*	ld	*AR3+0, 15, a   ; A = 1/2 PR      *
+*	"бабочка"                             *
+*  	sth	b, *AR3		; 1/2 QI              *
+*=========================================*
+	ld	I, a
+	add	N1, 1, a		; 2N1
+	stl	a, I			; I=I+2N2 (2N1=4N2)
+	sub	HOLDN,1, a
+	bc	ILOOP, alt   	; I < N (< 2N=2HOLDN)
+	ld	SINTBL, a
+	add	IE, a
+	stl	a, SINTBL		; K=K+IE
+	banzd	JLOOP, *AR2-	; J < N2
+	addm	#1, J			;2w J=J+1
+	ld	IE, 1, a
+	stl	a, IE			; IE=2IE
+	banz	IELOOP, *AR1-	; IE < N
+DRC2	stm	#N-1, AR1
+	mvdm	IADDR, AR3
+	mvdm	IADDR, AR2
+LOOPD	mvmm	AR3, AR0
+	cmpr	LT, AR2
+	bcd	NODRC, NTC
+	mvdm	HOLDN, AR0	;2w
+	ld	*AR2, 16, a
+	or	*AR3, a
+	stl	a, *AR2+
+	sth	a, *AR3+
+	ld	*AR2, 16, a
+	or	*AR3, a
+	stl	a, *AR2-
+	sth	a, *AR3-
+NODRC	mar	*AR3+0B
+	banzd	LOOPD, *AR1-
+	mar	*AR2+			;1w
+	mar	*AR2+			;1w
+	stm	#N-1, BRC
+	mvdm	IADDR, AR2
+	rptbd	LOOPM-1
+	ld	#1, b			;1w
+	nop				;1w
+	squr	*AR2+, a
+	squra	*AR2+, a
+	max	b
+LOOPM	exp	b
+	retd
+	ldm	T, b			;1w
+	nop				;1w
+	</pre>
+      </blockquote>
+    </blockquote>
+</div>
+    
+	<div class="Text_Style">
+	  <h1>Алгоритм БПФ с прореживанием по частоте и двоично-инверсным порядком входных данных</h1>
+	<h2>Изменение индексов и поворачивающих множителей</h2></div>
+<div class="Text_Style">
+<p>Ниже приведены граф-схема (рис. 2.5.3) и таблица индексов (табл. 2.5.2) 8 точечного БПФ с прореживанием по частоте и двоично-инверсным порядком входных данных.</p>
+<h3 align="center"><a name="fig1"></a><img src="../../images/ris010502_a.gif" alt="Рис.5.3" width="610" height="440"></h3>
+<h3 align="center">Рисунок 2.5.3 &ndash; Граф-схема БПФ с прореживанием по частоте<br>и двоично-инверсным порядком входных данных</h3>
+      	<table align="center" width="68%" border="0">
+  <tr>
+    <td>Таблица 2.5.2 - Изменение индексов для БПФ с прореживанием по частоте и двоично-инверсным порядком входных данных</td>
+  </tr>
+</table>
+      <table align="center" width="68%" border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="13%" valign="center" align="center">№ п/п</td>
+          <td width="10%" valign="center" align="center">N2</td>
+          <td width="10%" valign="center" align="center">IE</td>
+          <td width="10%" valign="center" align="center">J</td>
+          <td width="10%" valign="center" align="center">I</td>
+          <td width="10%" valign="center" align="center">I + N2</td>
+          <td width="10%" valign="center" align="center">K</td>
+          <td width="13%" valign="center" align="center">Цикл</td>
+          <td width="13%" valign="center" align="center">Переход</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="13%" valign="center" align="center">2</td>
+          <td width="13%" rowspan="3" valign="center" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="13%" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">5</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="13%" valign="center" align="center">2</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">7</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="13%" valign="center" align="center">2</td>
+          <td width="13%" rowspan="2" valign="center" align="left">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">5</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+          <td width="13%" rowspan="2" valign="center" align="left">&nbsp;2</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">7</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">8</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">5</td>
+          <td width="10%" valign="center" align="center">7</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+          <td width="13%" rowspan="2" valign="center" align="left">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">9 </td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="10%" valign="center" align="center">4</td>
+          <td width="10%" valign="center" align="center">0</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">10 </td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">1</td>
+          <td width="10%" valign="center" align="center">5</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+          <td width="13%" rowspan="3" valign="center" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">11 </td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">2</td>
+          <td width="10%" valign="center" align="center">6</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+        <tr>
+          <td width="13%" valign="center" align="center">12 </td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="10%" valign="center" align="center">3</td>
+          <td width="10%" valign="center" align="center">7</td>
+          <td width="10%" valign="center" align="center">&nbsp;</td>
+          <td width="13%" valign="center" align="center">1</td>
+        </tr>
+      </table>
+	</div>
+	<div class="Text_Style">
+	  <h2>Схема алгоритма БПФ</h2>
+	</div>
+	<div class="Text_Style">
+	<p>Ниже приведена обобщенная схема алгоритма БПФ с прореживанием по частоте и двоично-инверсным порядком входных данных (рис. 2.5.4).</p>
+<h3 align="center"><a name="fig2"></a><img src="../../images/ris010502_b.gif" alt="Рис.2.5.4" width="601" height="818"></h3>
+<h3 align="center">Рисунок 2.5.4 &ndash; Схема алгоритма БПФ с прореживанием по частоте<br>
+  и двоично-инверсным порядком входных данных</h3>
+</div>
+	<div class="Text_Style"><h2>Программная реализация алгоритма БПФ</h2></div>
+  <div class="Text_Style">
+	<p>Ниже приведен пример подпрограммы для реализации алгоритма БПФ с прореживанием по частоте и двоично-инверсным порядком входных данных.</p>
+	<blockquote>
+	  <blockquote>
+	    <pre>
+* DIF FFT Programm for TMS320C5402 DSP Starter Kit
+* reverce -> direct addres     26/10/04 20:20:00
+	.data
+HOLDN   .word    64h
+QUARTN  .word    65h
+N1      .word    66h
+N2      .word    67h
+J       .word    68h
+IADDR   .word    69h
+SINTBL  .word    6Ah
+SIN     .word    6Bh
+COS     .word    6Ch
+I       .word    6Dh
+IE      .word    6Eh
+INV     .word    6Fh
+	.text
+FFT	stl	a, INV		; признак БПФ(=0) или ОБПФ (=1)
+	ld	#N, a
+	stl	a, HOLDN		; N
+	stl	a, -2, QUARTN	; N/4
+	stl	a, -2, IE		; IE=N/4 !!!
+	st	#1, N1		; N2=1 !!!
+	st	#XFFT, IADDR
+DRC2	stm	#N-1, AR1
+	mvdm	IADDR, AR3
+	mvdm	IADDR, AR2
+LOOPD	mvmm	AR3, AR0
+	cmpr	LT, AR2
+	bcd	NODRC, NTC
+	mvdm	HOLDN, AR0		;2w
+	ld	*AR2, 16, a
+	or	*AR3, a
+	stl	a, *AR2+
+	sth	a, *AR3+
+	ld	*AR2, 16, a
+	or	*AR3, a
+	stl	a, *AR2-
+	sth	a, *AR3-
+NODRC	mar	*AR3+0B
+	banz	LOOPD, *AR1-
+	mar	*AR2+			;1w
+	mar	*AR2+			;1w
+	stm	#M, AR1		; число итераций - 1
+IELOOP	ld	#0, a
+	stl	a, J			; J=0
+	st	#sint, SINTBL	; K=0
+	ld	N1, a
+	stl	a, N2			; N2=2*N2
+	stl	a, 1, N1		; N1=2N2
+JLOOP	ld	J, 1, a
+	mvdm	N2, AR2
+	stl	a, I			; I=J (2J)
+	mar	*AR2-			; AR2=N2-1
+	ld	SINTBL, a
+	reada	SIN
+	add	QUARTN, a
+	reada	COS			; W(K)
+	ld	INV, a
+	bcd	ILOOP, aeq
+	ld	SIN, b		;1w
+	neg	b			;1w
+	stl	b, SIN
+ILOOP	mvdm	I, AR0
+	mvdm	IADDR, AR3
+	nop				;PPC1 ar3
+	mar	*AR3+0		; (I)
+	mvdm	N1, AR0		; N2 (N1=2N2)
+	nop				;PPC1 ar0
+*=========================================*
+*	ld	*AR3+0, 15, a	; A = 1/2 PR      *
+*	"бабочка"                             *
+*  	sth	b, *AR3         ; 1/2 QI          *
+*=========================================*
+	banz	ILOOP, *AR2-	; (I-J) < N2
+	addm	#1, I			;2w I=I+1
+	mvdm	IE, AR0
+	mvdm	SINTBL, AR3
+	ld	J, a
+	mar	*AR3+0B		; K=br(K+IE)
+	add	N2, 1, a		; J=J+2N2
+	stl	a, J
+	sub	HOLDN, a
+	bcd	JLOOP, alt		; J < N
+	mvmd	AR3, SINTBL	;2w
+	banz	IELOOP, *AR1-	; N2 < N
+	stm	#N-1, BRC
+	mvdm	IADDR, AR2
+	rptbd	LOOPM-1
+	ld	#1, b			;1w
+	nop				;1w
+	squr	*AR2+, a
+	squra	*AR2+, a
+	max	b
+LOOPM
+	exp	b
+	retd
+	ldm	T, b			;1w
+	nop				;1w
+	</pre>
+      </blockquote>
+    </blockquote>
+</div>
+    
+
+
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR end-->  
+
+<div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK15/lk_15.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK17/lk_17.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+
+
+
+<!--end-->
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>

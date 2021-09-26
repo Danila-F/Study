@@ -1,0 +1,1027 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style2.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Теория по дисциплине &quot;Программирование проблемно-ориентированных вычислительных средств реального времени&quot;</title>
+<base target="_top">
+
+<base target="_self">
+<style type="text/css">
+body,td,th { font-family: Times New Roman, Times, serif; }
+p {margin-left: 5%; margin-right: 5%; }
+</style></HEAD>
+
+</HEAD><BODY>
+<div class="Header_Style">
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >&nbsp;</H1>
+      <H1 align="center" >Электронный ресурс по учебной дисциплине<BR>
+        "Программирование проблемно-ориентированных вычислительных средств реального времени"<BR> 
+        для специальности: </H1>
+<p>1-40 02 02 "Электронные вычислительные средства"
+</p></td>
+    <td width="12%" rowspan=3 align="center" ><img src="../../images/theory.jpg" width="146" height="85"></td>
+  <Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> | <A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table></div>
+
+
+
+<!--start-->
+	<div class="mainTitle" align="center">
+	  <h1>Лекция № 3.23</h1>
+</div>
+	<div>
+	  <h3 align="center"><strong>Раздел 3.  Программирование различных задач цифровой обработки сигналов на  проблемно-ориентированных процессорах</strong></h3>
+      <p><strong>3.4&nbsp;&nbsp;&nbsp; Формирование случайных процессов с  использованием проблемно-ориентированных процессоров (4 часа)</strong> <br>
+        <strong><em>Лекция № 3.23</em></strong><br>
+        Случайные числа. Случайные и псевдослучайные последовательности.<br>
+        Формирование псевдослучайных  последовательностей. М-последовательности. Топология обратной связи сдвигового  регистра для формирования последовательностей различной длины.<br>
+        
+<div align="center">
+    <p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK22/lk_22.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK24/lk_24.htm'" />
+    </p>
+</div>
+
+<!-- (C) 2017 Shemarov Alexander, BSUIR begin-->  
+<div class="Text_Style"><h1><strong>Формирование случайных процессов</strong><br>
+Случайные числа. Случайные и псевдослучайные последовательности</h1></div>
+<div class="Text_Style"><h2>Случайные числа</h2>
+</div>
+
+<div class="Text_Style">
+  <p>СЛУЧАЙНЫЕ И ПСЕВДОСЛУЧАЙНЫЕ ЧИСЛА &mdash;  числа &xi;<sub>n</sub> (или цифры а<sub>n</sub>), последовательность появления 
+  которых обладает теми или иными статистическими закономерностями. Различают 
+  случайные числа (ел.), генерируемые каким-либо 
+  стохастическим устройством (физическим генератором случайных чисел), и псевдослучайные 
+  числа, конструируемые (синтезируемые) с помощью арифметических 
+  алгоритмов. При этом обычно (с большим или меньшим 
+  основанием) принимают, что полученная (или 
+  построенная) последовательность обладает комплексом 
+  частотных свойств, &laquo;типичным&raquo; для 
+  последовательности независимых реализаций какой-либо случайной 
+  величины &zeta; с функцией распределения F(z). В этом случае говорят 
+  о независимых случайных числах, распределенных по закону F(z). <br>
+  Наиболее употребительны для решения практических задач равномерно распределенные 
+  на отрезке [0,1] случайные числа (РРСЧ), &xi;<sub>&eta;</sub>  P{&xi;<sub>&eta;</sub>&lt;x} = x, a 
+  также равновероятные двоичные случайные числа 
+   а<sub>n</sub> РДСЧ.), &Rho;{ а<sub>0</sub>=0}=&Rho;{ а<sub>1</sub>=1}=0,5, и 
+  нормальные случайные числа &eta;<sub>n;</sub> (НРСЧ.), распределенные по 
+  нормальному закону со средним значением 0 и дисперсией 1. Случайные  числа с 
+  произвольной функцией распределения F(z) могут быть 
+  построены пунем преобразования последовательности РРСЧ.</p>
+  <p>Cтрогий математический смысл понятию случайного числа 
+    удается только в рамках алгоритмической теории 
+    вероятностей А. Н. Колмогорова - П. Мартин-Лёфа. Не вдаваясь в строгие, очень лаконичные и красивые подробности, можно утверждать следующее. Пусть существует искусственно созданная последовательность случайных чисел. Точное определение понятия последовательность будет приведено ниже. Тогда, в принципе, любую сконструированную последовательность  можно считать типичной и 
+    и принять за последовательность равномерно распределеных случайных чисел. Однако, сконструировать новую типичную последовательность на базе существующей, скорее всего, в общем случае, не удасться без введения физических стохастических генераторов.
+    Типичная 
+    последовательность равномерно распределеных случайных чисел сама не может быть конструктивной, 
+    и даже построение типичной последовательности 
+    случайных чисел требует чрезвычайно большого 
+    перебора. Поэтому на практике используют более 
+    просто устроенные алгоритмы, проверяя их статистические    &laquo;качества&raquo; небольшим количеством тестов. Так, 
+    конструируя равномерно распределеную последовательность случайных чисел, обязательно тестируют на равномерность распределения чисел в последовательности. 
+    В простых задачах выполнение нескольких тестов уже 
+    может гарантировать применимость 
+    последовательности. Иногда более эффективно использование 
+    коррелированных случайных чисел, как правило, их строят по 
+    последовательности равномерно распределеных случайных чисел. 
+    Созданы также таблицы случайных чисел и случайных знаков. 
+    Однако, по-видимому, нельзя гарантировать, что они 
+    удовлетворяют всем разумным статистическим тестам на 
+    некоррелированность. 
+  </p>
+  <p>ПОСЛЕДОВАТЕЛЬНОСТЬ элементов 
+    заданного множества - функция, 
+    определенная на множестве натуральных чисел, множество 
+    значений которой содержится в рассматриваемом множестве. 
+    Элементом, или членом, 
+    последовательности &fnof;: N&rarr;X, где N - множество натуральных чисел, 
+    X - заданное множество, называется упорядоченная пара 
+    (n, х), x = f(n), n &isin; N, x &isin; X, которая обозначается через 
+    x<sub>n</sub>. Натуральное число n называется номером 
+    элемента последовательности x<sub>n</sub>, а элемент   x ? X, - его значением. Последовательность &fnof;: N&rarr;X обычно обозначается через {x<sub>n</sub>} или x<sub>n</sub>, n =  1, 2, ... . <br>
+    Множество элементов последовательности. всегда счетно, причем два 
+    различных члена последовательности отличаются по крайней мере 
+    номерами. Множество значений элементов последовательности  может быть и 
+    конечным; так, множество значений всякой 
+    стационарной последовательности, т. е. последовательности {x<sub>n</sub>}, все 
+    элементы которой имеют одно и то же значение: x<sub>n</sub>= a, n = 1, 2, . . ., состоит из одного элемента. 
+    Если n1 &lt; n2, то член x<sub>n1</sub> последовательности {x<sub>n</sub>} 
+    называется. предшествующим члену x<sub>n2</sub> а член 
+    x<sub>n2</sub> - следующим за членом x<sub>n1</sub>. Таким образом, 
+    множество элементов  последовательности упорядочено. </p>
+  <p><br>
+  </p>
+</div>
+
+<div class="Text_Style"><h2>Случайные и псевдослучайные последовательности</h2>
+</div>
+<div class="Text_Style">
+  <p>
+Случайную двоичную последовательность можно сформировать с помощью физического стохастического генератора белого шума. Структурная схема генератора представлена на рисунке 3.4.1.
+</p>
+<h3 align="center"><a name="Рис3.4.1"></a><img src="../../images/Ris23_01.gif" width="679" height="215"></h3>
+<h3 align="center">Рисунок 3.4.1 &ndash; Генератор случайной двоичной последовательности</h3>
+</div>
+<div class="Text_Style">
+  <p>
+На базе генератора случайной двоичной последовательност (ГСДП) можно легко сформировать генератгор случайной последовательности чисел или генератор случайных чисед (ГСЧ) как параллельного, так и последовательного типов. Генератор слеучайных чисел параллельного типа представлен на рисунке 3.4.2, а генератор слеучайных чисел последовательного типа представлен на рисунке 3.4.3 В генераторе последовательного типа, для устранения корелляции между разрядами, случайное число генериреется из К двоичных чисел, для чего в схему введен делитель частоты с коэффициентом деления 1/K.
+</p>
+  <p>&nbsp;</p>
+<h3 align="center"><a name="Рис3.4.2"></a><img src="../../images/Ris23_02.gif" width="514" height="404"></h3>
+<h3 align="center">Рисунок 3.4.2 &ndash; Генератор случайных чисел параллельного типа</h3>
+  <p>&nbsp;</p>
+<h3 align="center"><a name="Рис3.4.3"></a><img src="../../images/Ris23_03.gif" width="719" height="218"></h3>
+<h3 align="center">Рисунок 3.4.3 &ndash; Генератор случайных чисел последовательного типа</h3>
+</div>
+
+<div class="Text_Style"> <p>Принципиальное отличие генератора псевдослучайных чисел от генератора случайных чисел заключается в том, что   в отличие от генератора случайных чисел, каждое новое число генерируется на основе предыдущих чисел ранее сгенерированной последовательности, то есть, в пределе, новое число формируется на базе ранее сгенерированного числа. Такая последовательность не является случайной, но приближается к ней на коротком (значительно меньшем чем период генерируемых чисел) отрезке. Стректура генератора псевдослучайных чисел представлена на рисунке 3.4.4. Необходимо отметить, что псевдослучайные последовательности можно повторять, а эмо является очень важным свойством для ряда технических применений. Cуществуют как последовательные, так и параллельные генераторы псевдослучайных чисел.
+</p>
+  <p>&nbsp;</p>
+<h3 align="center"><a name="Рис3.4.4"></a><img src="../../images/Ris23_04.gif" width="597" height="261"></h3>
+<h3 align="center">Рисунок 3.4.4 &ndash; Генератор псевдослеучайных чисел</h3><br>
+</div>
+<div class="Text_Style">
+  <h2>Формирование псевдослучайных  последовательностей. М-последовательности</h2>
+</div>
+<div class="Text_Style">
+  <p>М-последовательность или последовательность максимальной длины - псевдослучайная двоичная последовательность, порожденная регистром сдвига с линейной обратной связью и имеющая максимальный период. М-последовательности применяются для формирования псевдослучайных последовательностей и находят широкое применение в технических системах.  М-последовательност формируется с помощью порождающего пилинома. Для генерации М-последовательности с периодом М=2<sup>n</sup> &ndash; 1 используется примитивный    полином h(x) степени n с коэффициентамиследующего вида:</p> 
+  
+  <table align="center" width="80%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+          <td width="10%" valign="top">&nbsp;</td>
+          <td width="70%" valign="center" align="center"><img src="../../images/for030401.png" width="270" height="70"></td>
+          <td width="10%" valign="center" align="right">(3.4.1)</td>
+    </tr>
+  </table>
+  <p>
+  Примитивные полиномы существуют для всех n &gt; 1. </p></div>
+  <div class="Text_Style">
+  <h2>Топология обратной связи сдвигового  регистра для формирования последовательностей различной длины</h2>
+</div>
+<div class="Text_Style">
+  <p>Структурная схема генератора M - последовательности в общем виде представлена на рисунке 3.4.5. 
+  Наибольший интерес представляют вырожденные полиномы, т. е. полиномы содержащие наибольшее число нулей. 
+  </p> 
+  <h3 align="center"><a name="Рис3.4.5"></a><img src="../../images/Ris23_05.gif" width="606" height="265"></h3>
+<h3 align="center">Рисунок 3.4.5 &ndash; Структурная схема генератора M - последовательности</h3></div>
+   
+<div class="Text_Style"> 
+  <p>В таблице 3.4.1 приведены полиномы h(x)  для n =1&hellip;19, которые имеют минимальное число ненулевых коэффициентов h<sub>i</sub> и могут быть использованы для генерации соответствующих М-последовательностей. </p>
+  <table a align="center"border="1" cellspacing="2" cellpadding="2">
+    <tr>
+      <td colspan="6" align="right" valign="top">Таблица 3.4.1</td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p align="center">n</p></td>
+      <td width="168" valign="top"><p align="center">h(x)</p></td>
+      <td width="106" valign="top"><p align="center">M=2<sup>n</sup>-1</p></td>
+      <td width="47" valign="top"><p align="center">n</p></td>
+      <td width="165" valign="top"><p align="center">h(x)</p></td>
+      <td width="106" valign="top"><p align="center">M=2<sup>n</sup>-1</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>1</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">1</p></td>
+      <td width="47" valign="top"><p>11</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>11</sup>+x<sup>2</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">2047</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>2</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>2</sup>+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">3</p></td>
+      <td width="47" valign="top"><p>12</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>12</sup>+x<sup>6</sup>+x<sup>4</sup>+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">4095</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>3</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>3</sup>+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">7</p></td>
+      <td width="47" valign="top"><p>13</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>13</sup>+x<sup>4</sup>+x<sup>3</sup>+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">8191</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>4</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>4</sup>+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">15</p></td>
+      <td width="47" valign="top"><p>14</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>14</sup>+x<sup>10</sup>+x6+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">16383</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>5</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>5</sup>+x<sup>2</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">31</p></td>
+      <td width="47" valign="top"><p>15</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>15</sup>+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">32767</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>6</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>6</sup>+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">63</p></td>
+      <td width="47" valign="top"><p>16</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>16</sup>+x<sup>12</sup>+x<sup>3</sup>+x<sup>1</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">65535</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>7</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>7</sup>+x3+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">127</p></td>
+      <td width="47" valign="top"><p>17</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>17</sup>+x<sup>14</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">131071</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>8</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>8</sup>+x<sup>4</sup>+x<sup>3</sup>+x2+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">255</p></td>
+      <td width="47" valign="top"><p>18</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>18</sup>+x<sup>11</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">262143</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>9</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>9</sup>+x<sup>4</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">511</p></td>
+      <td width="47" valign="top"><p>19</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>19</sup>+x<sup>18</sup>+x<sup>17</sup>+x<sup>14</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">524287</p></td>
+    </tr>
+    <tr>
+      <td width="45" valign="top"><p>10</p></td>
+      <td width="168" valign="top"><p align="center">x<sup>10</sup>+x<sup>3</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">1023</p></td>
+      <td width="47" valign="top"><p>20</p></td>
+      <td width="165" valign="top"><p align="center">x<sup>20</sup>+x<sup>17</sup>+x<sup>0</sup></p></td>
+      <td width="106" valign="top"><p align="right">1048575</p></td>
+    </tr>
+  </table>
+<p>&nbsp;</p>
+</div> 
+ <div class="Text_Style"><p>Для иллюстрации работы генератора M-последовательности рассмотрим структуру 20-ти разрядного генератора и программу реализующую параллельный генератор, то есть будем использовать оптимизированное, с точки зрения уменьшения количества операций, вычисление нового значения псевдослучайной величины путем распараллеливания ее вычисления значения по разрядам.  Структура 20-ти разрядного генератора псевдослеучайных чисел на базе M - последовательности представлена на рисунке 3.4.6.</p>
+   <h3 align="center"><a name="Рис3.4.6"></a>.<img src="../../images/Ris23_06.gif" width="663" height="85"></h3>
+<h3 align="center">Рисунок 3.4.6 &ndash; Структура 20-ти разрядного генератора псевдослучайных чисел</h3>
+<br>
+<p>Ниже представлена модель работы генератора.
+
+
+<table align="center" width="90%" cellspacing="2" cellpadding="2">
+  <col width="115">
+  <col width="64">
+  <col width="75" span="3">
+  <col width="64" span="3">
+  <col width="53" span="8">
+  <col width="64" span="3">
+  <col width="75" span="3">
+  <col width="64">
+  <col width="81">
+  <col width="20">
+  <col width="64">
+  <tr>
+    <td width="115">№ итерации</td>
+    <td width="64"></td>
+    <td width="75"></td>
+    <td width="75"></td>
+    <td width="75"></td>
+    <td width="64"></td>
+    <td width="64"></td>
+    <td width="64"></td>
+    <td width="53"></td>
+    <td width="53"></td>
+    <td width="53"></td>
+    <td width="53"></td>
+    <td width="53"></td>
+    <td width="53"></td>
+    <td width="53"></td>
+    <td width="53"></td>
+    <td width="64"></td>
+    <td width="64"></td>
+    <td width="64"></td>
+    <td width="75"></td>
+    <td width="75"></td>
+    <td width="75"></td>
+    <td width="64"></td>
+    <td width="81"></td>
+    <td width="20"></td>
+    <td width="64"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>19</td>
+    <td>18</td>
+    <td>17</td>
+    <td>16</td>
+    <td>15</td>
+    <td>14</td>
+    <td>13</td>
+    <td>12</td>
+    <td>11</td>
+    <td>10</td>
+    <td>09</td>
+    <td>08</td>
+    <td>07</td>
+    <td>06</td>
+    <td>05</td>
+    <td>04</td>
+    <td>03</td>
+    <td>02</td>
+    <td>01</td>
+    <td>00</td>
+    <td></td>
+    <td align="right">1000000</td>
+    <td></td>
+    <td>F4240</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Start 00</td>
+    <td></td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">1000000</td>
+    <td></td>
+    <td>F4240</td>
+  </tr>
+  <tr>
+    <td>01</td>
+    <td></td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0951424</td>
+    <td></td>
+    <td>E8480</td>
+  </tr>
+  <tr>
+    <td>02</td>
+    <td></td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td></td>
+    <td align="right">0854273</td>
+    <td></td>
+    <td>D0901</td>
+  </tr>
+  <tr>
+    <td>03</td>
+    <td></td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0659970</td>
+    <td></td>
+    <td>A1202</td>
+  </tr>
+  <tr>
+    <td>04</td>
+    <td></td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td></td>
+    <td align="right">0271365</td>
+    <td></td>
+    <td>42405</td>
+  </tr>
+  <tr>
+    <td>05</td>
+    <td></td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0542730</td>
+    <td></td>
+    <td>8480A</td>
+  </tr>
+  <tr>
+    <td>06</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td></td>
+    <td align="right">0036885</td>
+    <td></td>
+    <td>09015</td>
+  </tr>
+  <tr>
+    <td>07</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0073770</td>
+    <td></td>
+    <td>1202A</td>
+  </tr>
+  <tr>
+    <td>08</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td></td>
+    <td align="right">0147541</td>
+    <td></td>
+    <td>24055</td>
+  </tr>
+  <tr>
+    <td>09</td>
+    <td></td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0295082</td>
+    <td></td>
+    <td>480AA</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td></td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0590164</td>
+    <td></td>
+    <td>90154</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0131752</td>
+    <td></td>
+    <td>202A8</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td></td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0263504</td>
+    <td></td>
+    <td>40550</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td></td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0527008</td>
+    <td></td>
+    <td>80AA0</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td></td>
+    <td align="right">0005441</td>
+    <td></td>
+    <td>01541</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0010882</td>
+    <td></td>
+    <td>02A82</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0021764</td>
+    <td></td>
+    <td>05504</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0043528</td>
+    <td></td>
+    <td>0AA08</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0087056</td>
+    <td></td>
+    <td>15410</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td></td>
+    <td align="right">0174113</td>
+    <td></td>
+    <td>2A821</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td></td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td></td>
+    <td align="right">0348226</td>
+    <td></td>
+    <td>55042</td>
+  </tr>
+</table>
+<p></p>
+ </div>   
+    
+ 	<div class="Text_Style">
+	<p>Пример подпрограммы реализующей структуру генератора на основе M - последовательности представлен ниже. График сгенирированного с помощью программы псевдослучайного процесса представлен на рисунке 3.4.7</p>
+	<blockquote>
+	  <blockquote>
+	    <p>; Подпрограмма для генерирования псевдослучайных чисел<br>
+	      ; AR1 - адрес массива элементов в памяти<br>
+	      ; BRC - количество элементов массива<br>
+	      Random_M_Seq:	rsbx	sxm<br>
+	      rptb	end_block<br>
+  <br>
+	      ld		A, 3, B<br>
+	      xor		B, A<br>
+	      ld  	A, -16, B<br>
+	      and 	#0x000F, B<br>
+	      xor		B, -1, A<br>
+	      end_block:		stl		A, *AR1+</p>
+	    <p> ret<br>
+	    </p>
+</blockquote>
+	  </blockquote>
+</div>   
+    
+ <div class="Text_Style">
+   <h3 align="center"><a name="Рис3.4.6"></a>.<img src="../../images/Ris23_06.gif" width="663" height="85"></h3>
+<h3 align="center">Рисунок 3.4.6 &ndash; Структура 20-ти разрядного генератора псевдослучайных чисел</h3>
+<br>
+   <h3 align="center"><a name="Рис3.4.7"></a>.<img src="../../images/Ris23_7.jpg" width="90%" ></h3>
+<h3 align="center">Рисунок 3.4.7 &ndash; Последовательность псевдослучайных чисел, полученных с помощью генератора M - последовательностей (20 разрядов)</h3></div>
+    
+    <!-- (C) 2017 Shemarov Alexander, BSUIR end-->   
+    
+  <div align="center">
+	<p>
+	<input type="button" class="buttonManage" value="&nbsp;Назад&nbsp;" onClick="document.location.href ='../LK22/lk_22.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Перечень тем лекций&nbsp;" onClick="document.location.href ='../../theory.htm'" />
+	<input type="button" class="buttonManage" value="&nbsp;Вперед&nbsp;" onClick="document.location.href ='../LK24/lk_24.htm'" />
+    </p>
+  
+<div class="Text_Style"><br></div>
+</div>
+
+ 
+        
+<!--end-->
+</p>
+</div>
+	<div class="Header_Style">
+  <table width="100%" border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+	<Tr>
+    <td align=center colspan=2><var class="Header_Style"><A HREF="../../../index.htm">Оглавление</A> | <A HREF="../../../Программа/ППОВСРВ_программа_2017.htm" >Программа</A> | <a href="../../../Теория/theory.htm">Теория</a> | <a href="../../../Практика/practice.htm">Практика</a> |<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | <A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <Tr>
+   <td align=center><a href="https://www.bsuir.by/" title="Официальный сайт БГУИР" target="_blank">(С) БГУИР</a></td>
+  </tr>
+</table></div>
+
+</BODY></HTML>
