@@ -1,0 +1,2 @@
+26.09.2021 - 19:18:03 - Everything is GOOD! - TRACE
+Message: Calling function "adding".      19:18:03      Priority type: DEBUG      19:18:03      

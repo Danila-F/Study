@@ -100,4 +100,7 @@ int main()
 
     logger2.setFormat("Message: **message**      %%time%%      Priority type: *prior*      %%time%%      ");
     logger2.printDebug("Calling function \"adding\".");
+
+    system("pause");
+    return 0;
 }

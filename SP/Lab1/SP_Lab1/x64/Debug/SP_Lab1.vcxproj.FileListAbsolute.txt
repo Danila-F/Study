@@ -1,4 +1,2 @@
 C:\Study\SP\Lab1\SP_Lab1\x64\Debug\SP_Lab1.exe
 C:\Study\SP\Lab1\SP_Lab1\x64\Debug\SP_Lab1.pdb
-C:\Study\SP\Lab1\SP_Lab1\x64\Debug\SP_Lab1.exe.lastcodeanalysissucceeded
-C:\Study\SP\Lab1\SP_Lab1\x64\Debug\NativeCodeAnalysis.read.1.tlog
