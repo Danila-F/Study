@@ -15,16 +15,17 @@ private:
     regex m_reg_time;
     regex m_reg_message;
     regex m_reg_prior;
+    bool isfileout;
 
     void printFileCml(string text)
     {
-        if (m_filename == "")
+        if (isfileout)
         {
-            cout << text << "\n";
+            m_file << text << "\n";
         }
         else
         {
-            m_file << text << "\n";
+            cout << text << "\n";
         }
     }
 
@@ -54,17 +55,20 @@ public:
         m_reg_time = regex("(%%time%%)");
         m_reg_message = regex("(\\*\\*message\\*\\*)");
         m_reg_prior = regex("(\\*prior\\*)");
+        isfileout = false;
     }
 
     Logger(string filename): Logger() // Конструктор для вывода в файл
     {
         m_filename = filename;
-        m_file.open(m_filename, ios::app);
+        m_file.open(m_filename, ios::app, _SH_DENYNO);
+        isfileout = true;
     }
 
     ~Logger()
     {
-        m_file.close();
+        if (isfileout && m_file.is_open())
+            m_file.close();
     }
 
     void setFormat(string format)

@@ -1,2 +1,14 @@
-27.09.2021 - 18:16:38 - Everything is GOOD! - TRACE
-Message: Calling function "adding".      18:16:38      Priority type: DEBUG      18:16:38      
+27.09.2021 - 22:01:31 - Everything is GOOD! - TRACE
+Message: Calling function "adding".      22:01:31      Priority type: DEBUG      22:01:31      
+27.09.2021 - 22:06:11 - Everything is GOOD! - TRACE
+Message: Calling function "adding".      22:06:11      Priority type: DEBUG      22:06:11      
+27.09.2021 - 22:46:55 - Everything is GOOD! - TRACE
+Message: Calling function "adding".      22:46:55      Priority type: DEBUG      22:46:55      
+27.09.2021 - 22:49:18 - Everything is GOOD! - TRACE
+Message: Calling function "adding".      22:49:18      Priority type: DEBUG      22:49:18      
+27.09.2021 - 22:49:32 - Everything is GOOD! - TRACE
+Message: Calling function "adding".      22:49:32      Priority type: DEBUG      22:49:32      
+27.09.2021 - 22:51:37 - Everything is GOOD! - TRACE
+Message: Calling function "adding".      22:51:37      Priority type: DEBUG      22:51:37      
+27.09.2021 - 23:11:59 - Everything is GOOD! - TRACE
+Message: Calling function "adding".      23:11:59      Priority type: DEBUG      23:11:59      
