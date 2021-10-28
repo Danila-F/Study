@@ -1,0 +1,2 @@
+-z -q -c -o"./Debug/Lab1.out" -x -i"c:/ti/c5400/bios/lib" -i"c:/ti/c5400/rtdx/lib" -i"c:/ti/c5400/cgtools/lib"
+"c:\study\prpovs\7sem\lab1\Debug\Lab1.obj"

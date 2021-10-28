@@ -1,0 +1,34 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="Lab1"
+ProjectDir="C:\Study\PrPOVS\7sem\Lab1\"
+ProjectType=Executable
+CPUFamily=TMS320C54XX
+Tool="Compiler"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="Lab1.asm"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -fr"c:\study\prpovs\7sem\lab1\Debug" -d"_DEBUG"
+
+["Compiler" Settings: "Release"]
+Options=-q -o2 -fr"c:\study\prpovs\7sem\lab1\Release"
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v54
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v54
+
+["Linker" Settings: "Debug"]
+Options=-q -c -o".\Debug\Lab1.out" -x
+
+["Linker" Settings: "Release"]
+Options=-q -c -o".\Release\Lab1.out" -x
+
