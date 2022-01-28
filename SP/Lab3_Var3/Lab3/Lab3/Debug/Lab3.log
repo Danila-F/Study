@@ -1,0 +1,4 @@
+﻿  Lab3.cpp
+C:\Study\SP\Lab3_Var3\Lab3\Lab3\Lab3.cpp(16,72): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Study\SP\Lab3_Var3\Lab3\Lab3\Lab3.cpp(31,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  Lab3.vcxproj -> C:\Study\SP\Lab3_Var3\Lab3\Debug\Lab3.exe

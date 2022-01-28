@@ -1,0 +1,16 @@
+﻿  LoggerLibrary.cpp
+C:\Study\SP\Lab2\SP_Lab2\LoggerLibrary\LoggerLibrary.h(20,22): warning C4251: Logger::m_filename: class "std::basic_string<char,std::char_traits<char>,std::allocator<char>>" должен иметь dll-интерфейс для использования клиентами class "Logger"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xstring(4564): message : см. объявление "std::basic_string<char,std::char_traits<char>,std::allocator<char>>"
+C:\Study\SP\Lab2\SP_Lab2\LoggerLibrary\LoggerLibrary.h(21,20): warning C4251: Logger::m_file: class "std::basic_ofstream<char,std::char_traits<char>>" должен иметь dll-интерфейс для использования клиентами class "Logger"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\iosfwd(225): message : см. объявление "std::basic_ofstream<char,std::char_traits<char>>"
+C:\Study\SP\Lab2\SP_Lab2\LoggerLibrary\LoggerLibrary.h(22,20): warning C4251: Logger::m_format: class "std::basic_string<char,std::char_traits<char>,std::allocator<char>>" должен иметь dll-интерфейс для использования клиентами class "Logger"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xstring(4564): message : см. объявление "std::basic_string<char,std::char_traits<char>,std::allocator<char>>"
+C:\Study\SP\Lab2\SP_Lab2\LoggerLibrary\LoggerLibrary.h(23,21): warning C4251: Logger::m_reg_data: class "std::basic_regex<char,std::regex_traits<char>>" должен иметь dll-интерфейс для использования клиентами class "Logger"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\regex(2042): message : см. объявление "std::basic_regex<char,std::regex_traits<char>>"
+C:\Study\SP\Lab2\SP_Lab2\LoggerLibrary\LoggerLibrary.h(24,21): warning C4251: Logger::m_reg_time: class "std::basic_regex<char,std::regex_traits<char>>" должен иметь dll-интерфейс для использования клиентами class "Logger"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\regex(2042): message : см. объявление "std::basic_regex<char,std::regex_traits<char>>"
+C:\Study\SP\Lab2\SP_Lab2\LoggerLibrary\LoggerLibrary.h(25,24): warning C4251: Logger::m_reg_message: class "std::basic_regex<char,std::regex_traits<char>>" должен иметь dll-интерфейс для использования клиентами class "Logger"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\regex(2042): message : см. объявление "std::basic_regex<char,std::regex_traits<char>>"
+C:\Study\SP\Lab2\SP_Lab2\LoggerLibrary\LoggerLibrary.h(26,22): warning C4251: Logger::m_reg_prior: class "std::basic_regex<char,std::regex_traits<char>>" должен иметь dll-интерфейс для использования клиентами class "Logger"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\regex(2042): message : см. объявление "std::basic_regex<char,std::regex_traits<char>>"
+  LoggerLibrary.vcxproj -> C:\Study\SP\Lab2\SP_Lab2\Debug\LoggerLibrary.dll
