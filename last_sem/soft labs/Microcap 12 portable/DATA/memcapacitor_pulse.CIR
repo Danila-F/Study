@@ -1,0 +1,1423 @@
+[Main]
+FileType=CIR
+Version=10.01
+Program=Micro-Cap
+Component Version=10.00
+Shape Version=10.01
+Screen=1920,1200
+MCAPVersion=10.0.0.0
+Key ID=208 332 945
+NLCnt=15
+TXCnt=22
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Memcapacitor
+Rectangle=12,-6,36,6
+FColor=None
+Line=0,0,12,0
+Line=48,0,36,0
+Current=32,12,16,12
+Rectangle=12,-6,14,6
+Line=24,-5,24,5
+Line=20,-5,20,5
+Line=28,-5,28,5
+Line=20,0,13,0
+Line=28,0,37,0
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Resistor
+PolyOpen=12
+PolyLine=0,0
+PolyLine=0,0
+PolyLine=12,0
+PolyLine=14,-4
+PolyLine=18,4
+PolyLine=22,-4
+PolyLine=26,4
+PolyLine=30,-4
+PolyLine=34,4
+PolyLine=36,0
+PolyLine=48,0
+PolyLine=48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=SPICE_V
+Root="Vsource.root",0,0,0
+
+[shapedef]
+Name=Vsource.root
+Line=0,0,12,0
+Line=36,0,48,0
+Ellipse=12,-12,36,12
+FColor=None
+Line=7,5,7,9
+Root="Plus.root",41,7,0
+Current=32,16,16,16
+
+[compdef]
+Name=Voltage Source
+Definition=VSpice
+Shape=SPICE_V
+Mask=4864
+memo=Voltage Source
+Label Offset=19,13,15,13
+PinCnt=2
+Pin="Plus",6,0,-5,-6
+Pin="Minus",0,0,-20,-6
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[compdef]
+Name=Memcapacitor
+Definition=Macro
+Shape=Memcapacitor
+Mask=5888
+memo=Charge-controlled memcapacitor basic model
+Label Offset=14,6,9,10
+PinCnt=2
+Pin="Plus",a,0,0,-12,-1
+Pin="Minus",a,6,0,-7,-1
+
+[compdef]
+Name=Resistor
+Definition=Resistor
+Shape=Resistor
+Mask=7169
+memo=Resistor
+Label Offset=18,6,8,11
+PinCnt=2
+Pin="Plus",6,0,-10,-4
+Pin="Minus",0,0,-14,-4
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-30, 20,203,1711,832
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#FF0000,Name=Verdana
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Verdana
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=Height=-11,FStyle=0,Color=#000000,Name=Arial
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+Grid Color=#000000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+NodeVoltageFormat=3
+PathDelayFormat=3
+WarningFormat=3
+GridTextFormulaFormat=3
+Window Placement in Transient Analysis=0,1, -1,-1, -4,-30, 953,0,1906,915
+Window Placement in AC Analysis=0,1, -1,-1, -4,-30, 953,0,1906,915
+Window Placement in DC Analysis=0,1, -1,-1, -4,-30, 953,0,1906,915
+Window Placement in Distortion Analysis=0,1, -1,-1, -4,-30, 953,0,1906,915
+Window Placement in ImDistortion Analysis=0,1, -1,-1, -4,-30, 953,0,1906,915
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=False
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Line
+CBorder=#000080
+Grids=19,26,21,32
+
+[Object]
+Object=RightCurlyBracket
+CBorder=#000080
+Grids=21,54,22,59
+Rot=0
+
+[Object]
+Object=RightCurlyBracket
+CBorder=#000080
+Grids=21,39,23,49
+Rot=0
+
+[Comp]
+Name=Voltage Source
+Grid=9,22
+Rot=3
+
+[Attr]
+ON=-37,-18,PART
+V=Vina
+Style=8192
+
+[Attr]
+ON=-56,-41,VALUE
+V=DC 0 AC 1 0 Pulse 0 Va 100m 10m 10m 400m 10
+
+[Attr]
+ON=0,0,Saved_Pulse
+V=DC 0 AC 1 0 Pulse 0 Va 100m 10m 10m 400m 10
+Style=256
+
+[Attr]
+ON=0,0,Saved_Sin
+V=DC 0 AC 1 0 Sin 0 V0 f0 0 0 0
+Style=256
+
+[Comp]
+Name=Ground
+Grid=9,28
+Rot=1
+
+[Comp]
+Name=Ground
+Grid=18,28
+Rot=1
+
+[Comp]
+Name=Voltage Source
+Grid=9,28
+Rot=3
+
+[Attr]
+ON=-39,-19,PART
+V=Vinb
+Style=8192
+
+[Attr]
+ON=-56,-41,VALUE
+V=DC 0 AC 1 0 Pulse 0 Vb 4000m 10m 10m 400m 10
+
+[Attr]
+ON=0,0,Saved_Pulse
+V=DC 0 AC 1 0 Pulse 0 Vb 4000m 10m 10m 400m 10
+Style=256
+
+[Attr]
+ON=0,0,Saved_Sin
+V=DC 0 AC 1 0 Sin 0 V0 f0 0 0 0
+Style=256
+
+[Comp]
+Name=Memcapacitor
+Grid=18,22
+Rot=7
+
+[Attr]
+ON=-22,17,PART
+V=XJ
+Style=8192
+
+[Attr]
+ON=-95,24,FILE
+V=Memcapacitor
+
+[Attr]
+ON=-40,38,Param:CMIN
+V=Cmin
+
+[Attr]
+ON=-44,52,Param:CMAX
+V=Cmax
+
+[Attr]
+ON=-37,66,Param:CINIT
+V=Cinit
+
+[Attr]
+ON=-52,80,Param:K
+V=10meg
+
+[Attr]
+ON=-17,94,Param:P
+V=p
+
+[Attr]
+ON=-17,108,Param:ICO
+V=0
+
+[Attr]
+ON=-60,122,Param:WINDOW_TYPE
+V=joglekar
+
+[Comp]
+Name=Resistor
+Grid=18,22
+Rot=5
+
+[Attr]
+ON=8,-25,PART
+V=RiJ
+Style=8192
+
+[Attr]
+ON=8,-39,RESISTANCE
+V=1m
+Style=8192
+
+[Comp]
+Name=Ground
+Grid=28,28
+Rot=1
+
+[Comp]
+Name=Memcapacitor
+Grid=28,22
+Rot=7
+
+[Attr]
+ON=-25,18,PART
+V=XB
+Style=8192
+
+[Attr]
+ON=-95,24,FILE
+V=Memcapacitor
+
+[Attr]
+ON=-40,38,Param:CMIN
+V=Cmin
+
+[Attr]
+ON=-44,52,Param:CMAX
+V=Cmax
+
+[Attr]
+ON=-37,66,Param:CINIT
+V=Cinit
+
+[Attr]
+ON=-52,80,Param:K
+V=10meg
+
+[Attr]
+ON=-17,94,Param:P
+V=p
+
+[Attr]
+ON=-17,108,Param:ICO
+V=0
+
+[Attr]
+ON=-46,122,Param:WINDOW_TYPE
+V=biolek
+
+[Comp]
+Name=Resistor
+Grid=28,22
+Rot=5
+
+[Attr]
+ON=8,-25,PART
+V=RiB
+Style=8192
+
+[Attr]
+ON=8,-39,RESISTANCE
+V=1m
+Style=8192
+
+[Wire]
+Grids=9,16,18,16
+
+[Wire]
+Grids=18,16,28,16
+
+[Object]
+Object=Line
+CBorder=#000080
+Grids=29,26,31,32
+
+[Grid Text]
+Text="in"
+Grid=18,16
+CBorder=None
+
+[Grid Text]
+Text=".define p 1"
+Grid=2,49
+CBorder=None
+
+[Grid Text]
+Text="Run Transient Analysis."
+Text="Tile the open circuit windows vertically (Windows/Tile Vertical)."
+Text="Increase the Vina and Vinb parameters and check the"
+Text="memory effect of the capacitance:"
+Text=""
+Text="Select the define statement"
+Text=""
+Text=".define Va 1"
+Text=""
+Text="or"
+Text=""
+Text=".define Vb -1"
+Text=""
+Text="and press the up or down arrow cursor key repeatedly."
+Text=""
+Text="Note that the time integral of charge is a single-valued function of the flux,"
+Text="as it must be in a memcapacitor*)."
+Grid=52,50
+Color=#000000
+CFill=#C5C5FF
+CBorder=#5A91AB
+
+[Grid Text]
+Text="parameters of "
+Text="driving voltage sources"
+Grid=24,58
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text=".define Va 1"
+Grid=2,56
+CBorder=None
+
+[Grid Text]
+Text="Modeling memory effects when driving memcapacitor the by a pulse voltage"
+Grid=19,7
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text="MEMCAPACITOR"
+Grid=37,4
+Height=-24
+Color=#5A91AB
+Font=Times New Roman
+CBorder=None
+
+[Grid Text]
+Text=".define Vb -1"
+Grid=2,58
+CBorder=None
+
+[Grid Text]
+Text=".define Cinit 100n"
+Grid=2,46
+CBorder=None
+
+[Grid Text]
+Text=".define Cmin 50n"
+Grid=2,40
+CBorder=None
+
+[Grid Text]
+Text="memJ"
+Grid=18,22
+CBorder=None
+
+[Grid Text]
+Text="memcapacitor parameters"
+Grid=24,44
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text="Symbol of the memcapacitor is used in accordance with [1]:"
+Text="when a positive voltage is applied to the terminal"
+Text="denoted by the black thick line with respect to the"
+Text="second terminal, the memcapacitance is decreased."
+Grid=52,19
+Color=#000000
+CBorder=#000000
+
+[Grid Text]
+Text="model by Biolek et al. [2]"
+Grid=19,10
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text="(for details, see macro file)"
+Grid=24,47
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text="[1] Di VENTRA, M., PERSHIN, Y.V., CHUA, L.O. Circuit elements with memory: memristors, memcapacitors and meminductors."
+Text="     arXiv:0901.3682v1 [cond-mat.mes-hall] 23 Jan 2009."
+Text="[2] BIOLEK, D., BIOLEK, Z., BIOLKOVA, V. SPICE Modeling of Memristive, Memcapacitative and Meminductive Systems. "
+Text="     Proc. of ECCTD '09, European Conference on Circuit Theory and Design, August 23-27, 2009, Antalya, Turkey, pp. 249-252."
+Text="[3] JOGLEKAR, Y.N., WOLF, S.J. The elusive memristor: properties of basic electrical circuits. arXiv:0807.3994 v2 [cond-mat.mes-hall]"
+Text="     13 January 2009, pp.1-24."
+Text="[4] BIOLEK, Z., BIOLEK, D., BIOLKOVA, V. SPICE model of memristor with nonlinear dopant drift. Radioengineering, 2009, vol. 18, no. 2, pp. 210-214."
+Grid=2,78
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text=".define Cmax 200n"
+Grid=2,43
+CBorder=None
+
+[Grid Text]
+Text="memB"
+Grid=28,22
+CBorder=None
+
+[Grid Text]
+Text="Joglekar"
+Grid=21,35
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text="Biolek"
+Grid=29,35
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text="window"
+Grid=26,38
+Color=#000000
+CBorder=None
+
+[Grid Text]
+Text="*) Sometimes a violation of the above rule can appear in the simulation results."
+Text="There are two possible reasons:"
+Text="(a) The inaccuracy of numerical integration of the memcapacitor signals,"
+Text="particularly in the case of narrow impulses of small magnitudes."
+Text="(b) Due to boundary effects, modeled by the window functions,"
+Text="memcapacitor behaves like a more general memcapacitive system, in which "
+Text="the above rule can be violated."
+Grid=52,63
+Color=#000000
+CBorder=None
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic","Main1","Main11","Main2","Main111","GroundArrow"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+CalcVoltage=True
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+FILESAVEASOLD=No
+BOM=No
+FILEPCB=No
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+FLAG=Yes
+INFO=Yes
+HELP=Yes
+HELP_SPICE=No
+LINK=Yes
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=Yes
+BORDER=No
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+CIR_MAKEMACRO=No
+CLEARCUTWIRE=No
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+REPLACE=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=Yes
+DISABLE=Yes
+TOFRONT=Yes
+TOBACK=Yes
+SELNEXT=No
+PAGEADD=No
+PAGEADDTEXT=No
+ADDSECTION=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=Yes
+FONT=Yes
+DM_LAST=No
+DM_RMS=No
+DM_AVG=No
+DM_PEAK=No
+GRID_NONE=No
+GRID_NORMAL=No
+GRID_BOLD_5=No
+GRID_BOLD_6=No
+GRID_BOLD_USER=No
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+RENAMEDEFINE=No
+RENAMECMP=No
+ATTALIGN=No
+RESETNODEPOS=No
+FIT2STANDARD=No
+NODESNAP=No
+MOVETEXT=No
+TEXTINC=No
+TOGGLETEXT=No
+TOGGLEMODE=No
+TOLERANCE=No
+ALIGNLEFT=No
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNBOTTOM=No
+
+[Section]
+Index=0
+Name="memcapacitor_pulse"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=425
+TabSize 1=425
+TabSize 2=425
+TabSize 3=425
+
+[Page]
+Index=0
+Section=0
+Print=True
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=39,26
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+Background Color=#FFFFFF
+Text=Available window types:
+Text=
+Text=.define biolek 2
+Text=.define joglekar 1
+Text=.define user 0
+Text=
+Text=The windows are defined in macro file MEMCAPACITOR.MAC.
+Text=The user's window can be re-defined in the macro file by user's expression.
+Text=
+Text=Warning: some window functions can cause convergence problems in PSPICE.
+Text=.OPTIONS ITL4=50
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+Background Color=#FFFFFF
+
+[Transient]
+Window Placement=0,1, -1,-1, -4,-30, 0,0,953,915
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Title=memcapacitor_sinus.CIR
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=False
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=No
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=False
+OperPointOnly=False
+AutoScaleRanges=False
+FixedTimeStep=False
+DoPSS=False
+PSS_Periods="1"
+PSS_Iterations="5"
+PSS_Error="1u"
+PSS_ShowPlots=True
+FFT_NPts="1024"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=16
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=142
+MonExprYWidth=260
+MonRangeXWidth=90
+MonRangeYWidth=90
+AnimateWait=0
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Low="TSTART"
+Num Out High="TMAX"
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Format=3
+Num Out HideNonSelected=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=No
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[APage]
+Analysis=Transient
+Name="1"
+
+[APage]
+Analysis=Transient
+Name="2"
+
+[Monte Carlo Options]
+Analysis=Transient
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Limits]
+Analysis=Transient
+TRange=20
+TStep=1m
+NPts=51
+Temp=27
+RetraceRuns=1
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+
+[WaveForm]
+Analysis=Transient
+Plt=1
+Page=1
+AliasID=1
+XExp=V(XJ.FLUX)
+YExp=V(XJ.IntCharge)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+CS=Normal
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+Page=1
+AliasID=5
+XExp=time
+YExp=V(memJ)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+CS=Normal
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+Page=1
+AliasID=3
+XExp=time
+YExp=I(RiJ)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+CS=Normal
+Line Color=#FF396B
+Text Color=#FF396B
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+Page=1
+AliasID=6
+XExp=time
+YExp=V(XJ.charge)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+CS=Normal
+Line Color=#000000
+Text Color=#000000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+Page=1
+AliasID=7
+XExp=time
+YExp=V(XJ.flux)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+CS=Normal
+Line Color=#CDC01D
+Text Color=#CDC01D
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=3
+Page=1
+AliasID=4
+XExp=time
+YExp=V(XJ.X)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+CS=Normal
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=4
+Page=1
+AliasID=8
+XExp=time
+YExp=1/(1/Cmax+V(XJ.X)*(1/Cmin-1/Cmax))
+XRng=AutoAlways
+YRng=150n,50n
+Options=LINEARX,LINEARY
+Enable=Enable
+CS=Normal
+Line Color=#FF00FF
+Text Color=#FF00FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=4
+Page=1
+AliasID=2
+XExp=time
+YExp=V(XJ.charge)/V(memJ)
+XRng=AutoAlways
+YRng=150n,50n
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=1
+Page=2
+AliasID=9
+XExp=V(XB.FLUX)
+YExp=V(XB.IntCharge)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#FF00FF
+Text Color=#FF00FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+Page=2
+AliasID=10
+XExp=time
+YExp=V(memB)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#000000
+Text Color=#000000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+Page=2
+AliasID=11
+XExp=time
+YExp=I(RiB)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+Page=2
+AliasID=12
+XExp=time
+YExp=V(XB.charge)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+Page=2
+AliasID=13
+XExp=time
+YExp=V(XB.flux)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=3
+Page=2
+AliasID=14
+XExp=time
+YExp=V(XB.X)
+XRng=AutoAlways
+YRng=AutoAlways
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#FF00FF
+Text Color=#FF00FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=4
+Page=2
+AliasID=15
+XExp=time
+YExp=1/(1/Cmax+V(XB.X)*(1/Cmin-1/Cmax))
+XRng=AutoAlways
+YRng=150n,50n
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#000000
+Text Color=#000000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=4
+Page=2
+AliasID=16
+XExp=time
+YExp=V(XB.charge)/V(memB)
+XRng=AutoAlways
+YRng=150n,50n
+Options=LINEARX,LINEARY
+Enable=Enable
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+CurrentPage 0="2"
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[Pane]
+Analysis=ImDistortion
+
+[Watch]
+Analysis=Transient
+Format=3
+ExprPercentWidth=80
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

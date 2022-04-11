@@ -1,0 +1,362 @@
+[Main]
+FileType=CIR
+Version=9.00
+Program=Micro-Cap
+Screen=1280,1024
+MCAPVersion=9.0.1.0
+Key ID=208 332 945
+NLCnt=4
+TXCnt=7
+
+[shapedef]
+Name=SPICE_V
+Root="Vsource.root",0,-12,0
+
+[shapedef]
+Name=Vsource.root
+Line=0,0,12,0
+Line=36,0,48,0
+Ellipse=12,-12,36,12
+Line=7,5,7,9
+Root="Plus.root",39,5,0
+Current=32,16,16,16
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[compdef]
+Name=Voltage Source
+Definition=VSpice
+Shape=SPICE_V
+Mask=4864
+memo=Voltage Source
+Label Offset=19,13,15,13
+PinCnt=2
+Pin="Plus",6,0,-5,-6
+Pin="Minus",0,0,-20,-6
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-23, 132,132,924,737
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Arial
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Arial
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=#000000
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=3,5,90,42
+
+[Comp]
+Name=Voltage Source
+Grid=31,30
+Rot=3
+
+[Attr]
+ONV=-32,-30,PART,V1
+Style=8192
+Height=-13
+Color=#FF0000
+
+[Attr]
+ONV=-202,11,VALUE,PWL TIME_SCALE_FACTOR=ts VALUE_SCALE_FACTOR=vs 0,{rnd} REPEAT FOREVER 1,{rnd} ENDREPEAT
+Style=8192
+Height=-13
+Color=#FF0000
+
+[Wire]
+Grids=31,24,36,24
+
+[Wire]
+Grids=31,30,36,30
+
+[Grid Text]
+Text=".HELP TS "Noise repitition rate. A new noise value will be generated every TS seconds.""
+Grid=14,38
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text="Minus"
+Grid=36,30
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="Plus"
+Grid=36,24
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text=".PARAMETERS(TS=10n,VS=1m)"
+Grid=24,13
+Height=-13
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="NOISE MACRO"
+Grid=26,10
+Height=-19
+Color=#FF00FF
+CBorder=NONE
+
+[Grid Text]
+Text="THE NOISE SOURCE IS A RANDOM VALUE GENERATOR.  IT WILL PRODUCEþA NEW RANDOM VALUE EVERY TS SECONDS.  THE VALUE WILL BE IN THEþRANGE FROM VS*(0<X<1)."
+Grid=17,20
+Color=#008080
+CBorder=NONE
+
+[Grid Text]
+Text=".HELP VS "The maximum value of the noise source. All values will be in the range of 0.0 to VS volts.""
+Grid=14,40
+Color=#008000
+CBorder=NONE
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=No
+META=No
+INFO=Yes
+HELP=Yes
+LINK=No
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=No
+BORDER=No
+TITLE=No
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=No
+DISABLE=No
+TOFRONT=No
+TOBACK=No
+SELNEXT=No
+PAGEADD=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=No
+FONT=No
+
+[Section]
+Index=0
+Name="noise"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=320
+TabSize 1=320
+TabSize 2=320
+TabSize 3=320
+
+[Page]
+Index=0
+Section=0
+Print=False
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=105,19
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

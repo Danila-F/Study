@@ -1,0 +1,20 @@
+************************
+* DERATING_DEFAULT 100
+************************
+* DERATING FORMAT IS 
+* BEGIN DEVICETYPE
+*    PARAMETER_NAME   DERATING PERCENTAGE
+*    PARAMETER_NAME   DERATING PERCENTAGE
+*     ...
+* END
+*	...
+******************************************************************
+* IF A PARTICULAR PARAMETER'S DERATING PERCENTAGE IS NOT GIVEN 
+* THEN SET IT TO THE DERATING_DEFAULT VALUE.
+* IF THE DERATING_DEFAULT IS NOT GIVEN, SET DERATING_DEFAULT = 100
+******************************************************************
+
+DEFAULT 100
+
+
+;$SpiceType=AMBIGUOUS

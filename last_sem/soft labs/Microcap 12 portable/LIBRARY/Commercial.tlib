@@ -1,0 +1,130 @@
+;**************************************************************
+;   Bias Tolerance Template Library for Worst Case Analysis   *
+;**************************************************************
+; Syntax:
+;BEGIN devicetype
+	;BEGIN bias_tol_type;alt1;alt2
+		; Name   [pos=value[%]] [neg=value[%]] [rnd=value[%]]
+	;END
+;END
+;
+; Example:
+; BEGIN CAP
+	; BEGIN DRIFT;AGING;LIFE
+		; Ceramic type II	      neg=0.8% rnd=5.0%
+		; Fixed_Glass_CMS          		rnd=0.5%
+	; END 
+
+	; BEGIN TEMPERATURE
+		; Ceramic type II 	rnd=5.0%
+	; END 
+
+; END
+;
+; Note 1: Pos or neg or both must be zero or missing from each template
+; Note 2: Tolerances may be a percentage or a positive number
+;
+; Usage:
+; In the Worst Case dialog box, right click in any Bias tolerance 
+; field. From the pop-up list select a tolerance. The selected neg, 
+; pos and rnd tolerances can then be applied to the selected part 
+; parameter or to all similar parameters.
+
+; Sources for the data below
+; 1) Wikipedia
+; 2) Vishay Electronics
+; 3) Demo Only 
+
+
+; Resistors
+BEGIN RES
+	BEGIN DRIFT;AGING;LIFE
+
+	END DRIFT;AGING;LIFE
+END 
+
+; Capacitors
+BEGIN CAP
+	BEGIN DRIFT;AGING;LIFE
+		; Source https://en.wikipedia.org/wiki/Ceramic_capacitor#/media/File:Delta-Cap-versus-Zeit-engl.png
+		Ceramic_II_NPO_10KHrs				rnd=0%
+		Ceramic_II_XR7_10KHrs				neg=-8%
+		Ceramic_II_Z5U_10KHrs				neg=-20%
+		Ceramic_II_Y5V_10KHrs				neg=-25%
+
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic       rnd=10%
+   END DRIFT;AGING;LIFE
+	
+	BEGIN RADIATION
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic   pos=12%
+	END RADIATION
+
+	BEGIN LOWTEMP
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic    neg=28% 
+	END LOWTEMP
+
+	BEGIN HIGHTEMP
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic    pos=17% 
+	END HIGHTEMP
+
+	BEGIN VACUUM
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic      neg=20%
+	END VACUUM
+END 
+
+; Inductors
+BEGIN IND
+	BEGIN DRIFT;AGING;LIFE
+		; Demo Only
+		Air          neg=4.5% rnd=3.0%
+	   Iron         neg=4.5% rnd=3.0%
+	END DRIFT;AGING;LIFE
+END
+
+; Bipolar NPN Transistors
+BEGIN NPN
+	BEGIN DRIFT;AGING;LIFE
+		; Demo Only
+		BF   			rnd=25%        
+		RC   			rnd=25%        
+	END DRIFT;AGING;LIFE
+END
+
+; Bipolar PNP Transistors
+BEGIN PNP
+	BEGIN DRIFT;AGING;LIFE
+		; Demo Only
+		BF   			rnd=25%        
+		RC   			rnd=25%        
+	END DRIFT;AGING;LIFE
+END
+
+BEGIN NJF
+	BEGIN DRIFT;AGING;LIFE
+		; Demo Only
+		VTO  			rnd=0.1        
+	END DRIFT;AGING;LIFE
+END
+
+BEGIN PJF
+	BEGIN DRIFT;AGING;LIFE
+		; Demo Only
+		VTO  			rnd=0.1        
+	END DRIFT;AGING;LIFE
+END
+
+; Diodes
+BEGIN D
+	BEGIN DRIFT;AGING;LIFE
+		; Demo Only
+		BV_Std             rnd=1%        
+	END DRIFT;AGING;LIFE
+END 
+
+
+;$SpiceType=AMBIGUOUS

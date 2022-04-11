@@ -1,0 +1,562 @@
+[Main]
+FileType=CIR
+Version=9.00
+Program=Micro-Cap
+Screen=1280,1024
+MCAPVersion=9.0.1.0
+Key ID=208 332 945
+NLCnt=14
+TXCnt=6
+
+[shapedef]
+Name=Inductor
+Line=42,0,48,0
+Line=0,0,5,0
+Arc=5,-7,17,7 , 11,-7,5,0
+Arc=13,-7,25,7 , 19,-7,13,0
+Arc=29,-7,41,7 , 35,-7,29,0
+Arc=21,-7,33,7 , 27,-7,21,0
+Arc=6,-7,18,7 , 18,0,12,-7
+Arc=14,-7,26,7 , 26,0,20,-7
+Arc=22,-7,34,7 , 34,0,28,-7
+Arc=30,-7,42,7 , 42,0,36,-7
+Line=11,-7,12,-7
+Line=19,-7,20,-7
+Line=27,-7,28,-7
+Line=35,-7,36,-7
+Arc=13,-4,17,2 , 13,-1,15,2
+Arc=29,-4,33,2 , 29,-1,31,2
+Arc=21,-4,25,2 , 21,-1,23,2
+Arc=14,-4,18,2 , 16,2,18,-1
+Arc=30,-4,34,2 , 32,2,34,-1
+Arc=22,-4,26,2 , 24,2,26,-1
+Line=15,2,16,2
+Line=23,2,24,2
+Line=31,2,32,2
+Line=5,5,9,5
+Line=41,5,41,9
+Line=39,7,43,7
+Current=32,8,16,8
+
+[shapedef]
+Name=IOFV
+Root="IOFV.Root",-2,-2,0
+
+[shapedef]
+Name=VOFV
+Root="VOFV.Root",-2,-2,0
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Minus.root
+Line=-2,0,2,0
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Vsrc.root
+Root="Plus.root",41,6,0
+Root="Minus.root",41,40,0
+Line=48,0,48,12
+Line=48,36,48,48
+Ellipse=36,12,61,36
+Current=64,16,64,32
+
+[shapedef]
+Name=OFV.Root
+Root="Plus.root",6,6,0
+Ellipse=-2,-2,2,2
+Ellipse=-2,46,2,50
+
+[shapedef]
+Name=Isource.Root
+Ellipse=-12,12,12,36
+Line=0,0,0,24
+PolyClosed=3 ,Solid
+PolyLine=-4,24
+PolyLine=4,24
+PolyLine=0,32
+Line=0,32,0,48
+Current=16,16,16,32
+
+[shapedef]
+Name=VOFV.Root
+Line=0,0,0,0
+Line=0,48,0,48
+Root="Vsrc.root",36,0,0
+Root="OFV.Root",-2,-2,0
+Current=64,16,64,32
+
+[shapedef]
+Name=IOFV.Root
+Root="Isource.Root",36,0,0
+Root="OFV.Root",-2,-2,0
+Current=64,16,64,32
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[compdef]
+Name=Inductor
+Definition=Inductor
+Shape=Inductor
+Mask=7681
+memo=Inductor
+Label Offset=18,9,11,12
+PinCnt=2
+Pin="Plus",6,0,-5,-9
+Pin="Minus",0,0,-3,-9
+
+[compdef]
+Name=IofV
+Definition=IofV
+Shape=IOFV
+Mask=4096
+memo=Linear IofV constant dependent source 
+Label Offset=63,11,-31,60
+PinCnt=4
+Pin="Plus Output",6,0,-18,-3
+Pin="Minus Output",6,6,-12,17
+Pin="Plus Input",0,0,-36,-4
+Pin="Minus Input",0,6,-32,17
+
+[compdef]
+Name=VofV
+Definition=VofV
+Shape=VOFV
+Mask=4096
+memo=Linear VofV constant dependent source 
+Label Offset=62,11,-30,59
+PinCnt=4
+Pin="Plus Output",6,0,-18,-3
+Pin="Minus Output",6,6,-9,18
+Pin="Plus Input",0,0,-31,-3
+Pin="Minus Input",0,6,-29,18
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-23, 132,132,924,737
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Arial
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Arial
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=#000000
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=4,6,64,47
+
+[Wire]
+Grids=14,22,21,22
+
+[Comp]
+Name=Ground
+Grid=27,22
+Rot=3
+
+[Comp]
+Name=Inductor
+Grid=38,28
+Rot=3
+
+[Attr]
+ONV=-25,-30,PART,l1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=10,-32,INDUCTANCE,1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FLUX,
+Height=-16
+
+[Attr]
+ONV=0,33,FREQ,
+Height=-16
+
+[Attr]
+ONV=10,28,MODEL,
+Color=#008080
+
+[Attr]
+ONV=0,55,COST,
+Height=-16
+
+[Attr]
+ONV=0,66,POWER,
+Height=-16
+
+[Wire]
+Grids=38,28,43,28
+
+[Wire]
+Grids=38,22,43,22
+
+[Comp]
+Name=IofV
+Grid=21,22
+
+[Attr]
+ONV=19,19,PART,G1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=63,22,VALUE,SCALE
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,COST,
+Height=-16
+
+[Attr]
+ONV=0,33,POWER,
+Height=-16
+
+[Comp]
+Name=Ground
+Grid=21,28
+Rot=7
+
+[Comp]
+Name=VofV
+Grid=43,28
+Rot=4
+
+[Attr]
+ONV=20,-30,PART,E2
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=66,-31,VALUE,1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,COST,
+Height=-16
+
+[Attr]
+ONV=0,33,POWER,
+Height=-16
+
+[Wire]
+Grids=50,28,56,28
+
+[Wire]
+Grids=49,28,50,28
+
+[Wire]
+Grids=43,22,49,22
+
+[Wire]
+Grids=27,28,38,28
+
+[Wire]
+Grids=27,22,38,22
+
+[Grid Text]
+Text=".HELP SCALE "Scale factor to multiply the derivative by""
+Grid=15,39
+Height=-13
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text="PINA"
+Grid=14,22
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="PINB"
+Grid=50,28
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="V(PINB) = SCALE*d(V(PINA))/dT"
+Grid=27,32
+Height=-13
+Color=#008080
+CBorder=NONE
+
+[Grid Text]
+Text=".PARAMETERS(SCALE=1)"
+Grid=15,36
+Height=-13
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="DIFFERENTIATOR MACRO"
+Grid=19,17
+Height=-19
+Color=#FF00FF
+CBorder=NONE
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=0.6666666666666666
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=No
+META=No
+INFO=Yes
+HELP=Yes
+LINK=No
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=No
+BORDER=No
+TITLE=No
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=No
+DISABLE=No
+TOFRONT=No
+TOBACK=No
+SELNEXT=No
+PAGEADD=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=No
+FONT=No
+
+[Section]
+Index=0
+Name="dif"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=320
+TabSize 1=320
+TabSize 2=320
+TabSize 3=320
+
+[Page]
+Index=0
+Section=0
+Print=False
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+SB 3=0,11
+Scale 3=0.6666666666666666
+Grid=70,14
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

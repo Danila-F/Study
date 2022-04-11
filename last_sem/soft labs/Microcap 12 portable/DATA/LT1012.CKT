@@ -1,0 +1,55 @@
+*
+* Linear Technology LT1012 op amp model (with calls for LT1024)
+* Written: 09-05-1989 16:53:38 Type: Bipolar npn input, internal comp.
+* Typical specs:
+* Vos=1.0E-05, Ib=3.0E-11, Ios=2.0E-11, GBP=6.0E+05Hz, Phase mar.= 70 deg,
+* SR(+)=2.0E-01V/us, SR(-)=1.9E-01V/us, Av= 126 dB, CMMR= 132 dB,
+* Vsat(+)=1.00V, Vsat(-)=1.00V, Isc=+/-12.5mA, Iq= 380uA
+* (input differential mode clamp active)
+*
+* Connections: + - V+V-O
+.subckt LT1012 3 2 7 4 6
+* input
+rc1 7  80 8.842E+03
+rc2 7  90 8.842E+03
+q1  80 2  10 qm1
+q2  90 3  11 qm2
+ddm1 2  3  dm2
+ddm2 3  2  dm2
+c1  80 90 5.460E-12
+re1 10 12 2.246E+02
+re2 11 12 2.246E+02
+iee 12 4  6.000E-06
+re  12 0  3.333E+07
+ce  12 0  1.579E-12
+* intermediate
+gcm 0  8  12 0  2.841E-11
+ga  8  0  80 90 1.131E-04
+r2  8  0  1.000E+05
+c2  1  8  3.000E-11
+gb  1  0  8  0  1.960E+02
+* output
+ro1 1  6  1.000E+02
+ro2 1  0  9.000E+02
+rc  17 0  1.063E-04
+gc  0  17 6  0  9.408E+03
+d1  1  17 dm1
+d2  17 1  dm1
+d3  6  13 dm2
+d4  14 6  dm2
+vc  7  13 1.785E+00
+ve  14 4  1.785E+00
+ip  7  4  3.740E-04
+dsub 4  7  dm2
+* models
+.model qm1 npn (is=8.000E-16 bf=7.500E+04)
+.model qm2 npn (is=8.003E-16 bf=1.500E+05)
+.model dm1 d   (is=1.179E-19)
+.model dm2 d   (is=8.000E-16)
+.ends LT1012
+*
+.subckt LT1024 3 2 7 4 6
+x_LT1024  3 2 7 4 6 LT1012
+.ends  LT1024
+*
+* - - - - - * fini LT1012 family * - - - - - * [oamm vn01 9/89]

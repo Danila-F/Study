@@ -1,0 +1,595 @@
+[Main]
+FileType=CIR
+Version=9.00
+Program=Micro-Cap
+Screen=1280,1024
+MCAPVersion=9.0.1.0
+Key ID=208 332 945
+NLCnt=16
+TXCnt=6
+
+[shapedef]
+Name=Resistor
+PolyOpen=12 
+PolyLine=0,0
+PolyLine=0,0
+PolyLine=12,0
+PolyLine=14,-4
+PolyLine=18,4
+PolyLine=22,-4
+PolyLine=26,4
+PolyLine=30,-4
+PolyLine=34,4
+PolyLine=36,0
+PolyLine=48,0
+PolyLine=48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=Lines
+Line=56,0,48,0
+Arc=0,-12,8,12 , 0,0,4,12
+Arc=0,-12,8,12 , 4,-12,0,0
+Arc=0,-12,8,12 , 4,12,8,0
+Arc=0,-12,8,12 , 8,0,4,-12
+Arc=40,-12,48,12 , 48,0,44,-12
+Arc=40,-12,48,12 , 44,12,48,0
+Line=4,0,-8,0
+Line=4,-12,44,-12
+Line=4,12,44,12
+Line=-8,48,4,48
+Line=4,12,4,48
+Line=44,12,44,48
+Line=44,48,56,48
+Current=-8,8,0,8
+Current=56,8,48,8
+
+[shapedef]
+Name=VOFV
+Root="VOFV.Root",-2,-2,0
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Minus.root
+Line=-2,0,2,0
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Vsrc.root
+Root="Plus.root",41,6,0
+Root="Minus.root",41,40,0
+Line=48,0,48,12
+Line=48,36,48,48
+Ellipse=36,12,61,36
+Current=64,16,64,32
+
+[shapedef]
+Name=OFV.Root
+Root="Plus.root",6,6,0
+Ellipse=-2,-2,2,2
+Ellipse=-2,46,2,50
+
+[shapedef]
+Name=VOFV.Root
+Line=0,0,0,0
+Line=0,48,0,48
+Root="Vsrc.root",36,0,0
+Root="OFV.Root",-2,-2,0
+Current=64,16,64,32
+
+[compdef]
+Name=VofV
+Definition=VofV
+Shape=VOFV
+Mask=4096
+memo=Linear VofV constant dependent source 
+Label Offset=62,11,-30,59
+PinCnt=4
+Pin="Plus Output",6,0,-18,-3
+Pin="Minus Output",6,6,-9,18
+Pin="Plus Input",0,0,-31,-3
+Pin="Minus Input",0,6,-29,18
+
+[compdef]
+Name=Resistor
+Definition=Resistor
+Shape=Resistor
+Mask=7937
+memo=Resistor
+Label Offset=18,6,8,11
+PinCnt=2
+Pin="Plus",6,0,-10,-4
+Pin="Minus",0,0,-14,-4
+
+[compdef]
+Name=TLine
+Definition=Tline
+Shape=Lines
+Mask=5632
+memo=Transmission Line - Ideal or Lossy
+Label Offset=10,15,-8,12
+PinCnt=4
+Pin="A+",-1,0,-10,-5
+Pin="A-",-1,6,-11,18
+Pin="B+",7,0,0,-5
+Pin="B-",7,6,-6,18
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-23, 132,132,924,737
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Arial
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Arial
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=#000000
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=4,5,64,46
+
+[Comp]
+Name=VofV
+Grid=17,24
+
+[Attr]
+ONV=62,11,PART,E1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=62,26,VALUE,1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,33,POWER,
+Color=#FF0000
+
+[Comp]
+Name=VofV
+Grid=42,24
+
+[Attr]
+ONV=62,11,PART,E3
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=62,26,VALUE,1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,33,POWER,
+Color=#FF0000
+
+[Comp]
+Name=Resistor
+Grid=42,30
+Rot=3
+
+[Attr]
+ONV=-24,-26,PART,R2
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=-22,-41,RESISTANCE,50
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FREQ,
+Color=#FF0000
+
+[Attr]
+ONV=0,33,MODEL,
+Color=#FF0000
+
+[Attr]
+ONV=0,44,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,55,POWER,
+Color=#FF0000
+
+[Comp]
+Name=TLine
+Grid=36,24
+Rot=6
+
+[Attr]
+ONV=-31,-8,PART,T1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=-69,-28,VALUE,ZO=50 TD=delay
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,MODEL,
+Color=#FF0000
+
+[Attr]
+ONV=0,33,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,44,POWER,
+Color=#FF0000
+
+[Wire]
+Grids=17,30,23,30
+
+[Wire]
+Grids=23,30,29,30
+
+[Wire]
+Grids=42,30,48,30
+
+[Wire]
+Grids=37,30,42,30
+
+[Wire]
+Grids=29,30,37,30
+
+[Wire]
+Grids=23,24,29,24
+
+[Wire]
+Grids=37,24,42,24
+
+[Comp]
+Name=Ground
+Grid=23,30
+Rot=1
+
+[Wire]
+Grids=11,24,17,24
+
+[Wire]
+Grids=48,24,51,24
+
+[Comp]
+Name=Resistor
+Grid=17,30
+Rot=3
+
+[Attr]
+ONV=-24,-26,PART,R3
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=-30,-41,RESISTANCE,1E9
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FREQ,
+Color=#FF0000
+
+[Attr]
+ONV=0,33,MODEL,
+Color=#FF0000
+
+[Attr]
+ONV=0,44,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,55,POWER,
+Color=#FF0000
+
+[Grid Text]
+Text=".HELP DELAY "Delay in seconds""
+Grid=18,40
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text=".PARAMETERS(DELAY=10ns)"
+Grid=18,37
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="Out"
+Grid=51,24
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="In"
+Grid=11,24
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="DELAY MACRO"
+Grid=22,12
+Height=-19
+Color=#FF00FF
+CBorder=NONE
+
+[Grid Text]
+Text="This macro provides a time delay in transient analysis or a phaseþshift in AC analysis.  The only parameter that needs to beþspecified is the value of the delay in seconds."
+Grid=15,19
+Color=#008080
+CBorder=NONE
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=0.6666666666666666
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=No
+META=No
+INFO=Yes
+HELP=Yes
+LINK=Yes
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=No
+BORDER=No
+TITLE=No
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=No
+DISABLE=No
+TOFRONT=No
+TOBACK=No
+SELNEXT=No
+PAGEADD=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=No
+FONT=No
+
+[Section]
+Index=0
+Name="delay"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=320
+TabSize 1=320
+TabSize 2=320
+TabSize 3=320
+
+[Page]
+Index=0
+Section=0
+Print=False
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+SB 3=0,2
+Scale 3=0.6666666666666666
+Grid=81,38
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

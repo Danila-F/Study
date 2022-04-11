@@ -1,0 +1,313 @@
+[Main]
+FileType=CIR
+Version=8.01
+Program=Micro-Cap
+Screen=1920,1200
+MCAPVersion=8.0.9.0
+Key ID=Demo
+NLCnt=6
+TXCnt=4
+
+[shapedef]
+Name=VOFV
+Root="VOFV.Root",-2,-2,0
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Minus.root
+Line=-2,0,2,0
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Vsrc.root
+Root="Plus.root",41,6,0
+Root="Minus.root",41,40,0
+Line=48,0,48,12
+Line=48,36,48,48
+Ellipse=36,12,61,36
+Current=64,16,64,32
+
+[shapedef]
+Name=OFV.Root
+Root="Plus.root",6,6,0
+Ellipse=-2,-2,2,2
+Ellipse=-2,46,2,50
+
+[shapedef]
+Name=VOFV.Root
+Line=0,0,0,0
+Line=0,48,0,48
+Root="Vsrc.root",36,0,0
+Root="OFV.Root",-2,-2,0
+Current=64,16,64,32
+
+[compdef]
+Name=VofV
+Definition=VofV
+Shape=VOFV
+Mask=4096
+memo=Linear VofV constant dependent source 
+Label Offset=62,11,-30,59
+PinCnt=4
+Pin="Plus Output",6,0,-18,-3
+Pin="Minus Output",6,6,-9,18
+Pin="Plus Input",0,0,-31,-3
+Pin="Minus Input",0,6,-29,18
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-30, 154,203,1832,896
+Default Object=Color=4
+Default Object Font=Height=-15,FStyle=0,Color=4,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=15
+Select Color=9
+Select Box Color=4
+Grid Text Color=Height=-12,FStyle=0,Color=1,Name=Arial
+Component Color=12
+Attribute Text=Height=-12,FStyle=0,Color=2,Name=Arial
+Wire Color=2
+Pin Connection=Height=-10,FStyle=0,Color=9,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=13,Name=Arial
+Node Voltage Color=0
+Dynamic AC Voltage Color=56
+Text Banner Text=Height=-15,FStyle=0,Color=1,Name=Arial
+Title Block Background=7
+Current=Height=-11,FStyle=0,Color=12,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=9,Name=Arial
+Digital Path Color=9
+Title Block=Height=-15,FStyle=0,Color=0,Name=Arial
+Digital 0 Color=0
+Digital R Color=11
+Digital F Color=11
+Digital 1 Color=9
+Digital X Color=7
+Digital Z Color=8
+SpiceType=AMBIGUOUS
+Block Select Color=41
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=False
+Title_Block_Border=False
+Title_Block=False
+
+[Comp]
+Name=VofV
+Grid=35,15
+
+[Attr]
+ONV=62,11,PART,E1
+
+[Attr]
+ONV=68,20,VALUE,coef
+Style=8192
+
+[Comp]
+Name=Ground
+Grid=35,21
+Rot=7
+
+[Comp]
+Name=Ground
+Grid=41,21
+Rot=7
+
+[Wire]
+Grids=32,15,35,15
+
+[Wire]
+Grids=41,15,44,15
+
+[Wire]
+Grids=44,15,45,15
+
+[Grid Text]
+Text=".parameters(coef=1)"
+Grid=30,28
+CBorder=NONE
+
+[Grid Text]
+Text="MACRO for multiplying voltage by a coefficient"
+Grid=26,9
+CBorder=NONE
+
+[Grid Text]
+Text="out"
+Grid=44,15
+CBorder=NONE
+
+[Grid Text]
+Text="in"
+Grid=32,15
+CBorder=NONE
+
+[Schematic]
+Page 0=0
+TabSize 0=340
+Page 1=0
+TabSize 1=340
+Page 2=0
+TabSize 2=340
+Page 3=0
+TabSize 3=340
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+View=304
+GridUser=10
+
+[Tools]
+Pos=Top
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=Yes
+META=No
+INFO=Yes
+HELP=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=Yes
+GRID=Yes
+BORDER=Yes
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FILPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+TOFRONT=Yes
+TOBACK=Yes
+PAGEADD=Yes
+PAGEDEL=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=Yes
+COLOR=No
+FONT=No
+
+[Page]
+Index=0
+Print=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=99,60
+
+[Page]
+Index=1
+Type=Text
+Print=False
+Name=Text
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Page]
+Index=2
+Type=Text
+Print=False
+Name=Models
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Page]
+Index=3
+Type=Info
+Print=False
+Name=Info
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Text Area]
+Page=1
+Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=0
+
+
+[Text Area]
+Page=2
+Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=0
+
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Optimize]
+Format=3

@@ -1,0 +1,5788 @@
+[Main]
+FileType=CIR
+Version=10.01
+Program=Micro-Cap
+Component Version=10.00
+Shape Version=10.01
+Screen=1600,1200
+MCAPVersion=10.0.0.0
+Key ID=167 488 975
+NLCnt=163
+TXCnt=29
+
+[shapedef]
+Name=Balun
+Line=0,0,8,0
+Line=0,48,8,48
+Rectangle=8,-16,56,64
+FColor=None
+Line=64,0,56,0
+Line=64,48,56,48
+Text="d"
+TextInfo=12,-6,20,9 , -11,0,"Arial"
+Text="c"
+TextInfo=12,41,20,56 , -11,0,"Arial"
+Text="+"
+TextInfo=46,-6,55,9 , -11,0,"Arial"
+Text="_"
+TextInfo=46,36,54,51 , -11,0,"Arial"
+
+[shapedef]
+Name=Battery
+Line=0,0,22,0
+Line=22,-3,22,3
+Line=26,-7,26,7
+Line=26,0,48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=Capacitor
+Line=0,0,22,0
+Line=22,-8,22,8
+Line=26,-8,26,8
+Line=26,0,48,0
+Current=32,12,16,12
+
+[shapedef]
+Name=EVOFV
+Root="Vsource.root",0,0,0
+Root="TextEv.Root",20,-2,0
+
+[shapedef]
+Name=FIOFI
+Root="ISource",0,0,0
+Root="TextF.Root",-19,20,0
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=ISource
+Ellipse=-12,12,12,36
+FColor=None
+Line=0,0,0,24
+PolyClosed=3
+PolyLine=-4,24
+PolyLine=4,24
+PolyLine=0,32
+Line=0,32,0,48
+Current=16,16,16,32
+
+[shapedef]
+Name=Minus.root
+Line=-2,0,2,0
+
+[shapedef]
+Name=Mos1.root
+Line=0,0,10,0
+Line=10,-8,10,8
+Rectangle=12,-12,14,12
+Current=32,-24,32,-16
+Current=32,24,32,16
+Current=0,-8,8,-8
+PolyOpen=3
+PolyLine=24,-24
+PolyLine=24,-8
+PolyLine=13,-8
+PolyOpen=3
+PolyLine=24,24
+PolyLine=24,8
+PolyLine=13,8
+
+[shapedef]
+Name=NMOS
+Root="Mos1.root",0,0,0
+Line=14,0,24,0
+PolyClosed=3
+PolyLine=16,0
+PolyLine=20,4
+PolyLine=20,-4
+Current=32,-4,24,-4
+
+[shapedef]
+Name=OFV.Root
+Root="Plus.root",8,8,0
+Ellipse=-2,-2,2,2
+FColor=None
+Ellipse=-2,46,2,50
+FColor=None
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Resistor
+PolyOpen=12
+PolyLine=0,0
+PolyLine=0,0
+PolyLine=12,0
+PolyLine=14,-4
+PolyLine=18,4
+PolyLine=22,-4
+PolyLine=26,4
+PolyLine=30,-4
+PolyLine=34,4
+PolyLine=36,0
+PolyLine=48,0
+PolyLine=48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=SPICE_V
+Root="Vsource.root",0,0,0
+
+[shapedef]
+Name=TextEv.Root
+Line=0,5,0,0
+Line=0,0,8,0
+Line=4,0,4,2
+Line=8,0,8,5
+
+[shapedef]
+Name=TextF.Root
+Line=0,0,5,0
+Line=0,0,0,8
+Line=2,4,0,4
+
+[shapedef]
+Name=VOFV
+Root="VOFV.Root",0,0,0
+
+[shapedef]
+Name=VOFV.Root
+Line=0,0,0,0
+Line=0,48,0,48
+Root="Vsrc.root",0,0,0
+Root="OFV.Root",0,0,0
+
+[shapedef]
+Name=Vsource.root
+Line=0,0,12,0
+Line=36,0,48,0
+Ellipse=12,-12,36,12
+FColor=None
+Line=7,5,7,9
+Root="Plus.root",41,7,0
+Current=32,16,16,16
+
+[shapedef]
+Name=Vsrc.root
+Root="Plus.root",43,8,0
+Root="Minus.root",43,40,0
+Line=48,0,48,12
+Line=48,36,48,48
+Ellipse=36,12,61,36
+FColor=None
+Current=64,16,64,32
+
+[compdef]
+Name=Voltage Source
+Definition=VSpice
+Shape=SPICE_V
+Mask=4864
+Used=51
+memo=Voltage Source
+Label Offset=19,13,15,13
+PinCnt=2
+Pin="Plus",6,0,-5,-6
+Pin="Minus",0,0,-20,-6
+
+[compdef]
+Name=Resistor
+Definition=Resistor
+Shape=Resistor
+Mask=6913
+Used=221
+memo=Resistor
+Label Offset=18,6,8,11
+PinCnt=2
+Pin="Plus",6,0,-10,-4
+Pin="Minus",0,0,-14,-4
+
+[compdef]
+Name=NMOS
+Definition=NMOS
+Shape=NMOS
+Mask=4608
+Used=42
+memo=NMOS
+Label Offset=29,1,7,25
+PinCnt=4
+Pin="Drain",3,-3,8,9
+Pin="Gate",0,0,-20,-4
+Pin="Source",3,3,8,4
+Pin="Body",3,0,8,-1
+
+[compdef]
+Name=Battery
+Definition=Battery
+Shape=Battery
+Mask=4097
+Used=25
+memo=Battery
+Label Offset=19,7,10,13
+PinCnt=2
+Pin="Plus",6,0,-4,-5
+Pin="Minus",0,0,-10,-5
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+Used=179
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[compdef]
+Name=Balun
+Definition=Macro
+Shape=Balun
+Mask=4736
+Used=6
+memo=Ideal balun macro
+Label Offset=25,65,18,17
+PinCnt=4
+Pin="Diff",a,0,0,-10,-1
+Pin="Common",a,0,6,-34,-1
+Pin="Plus",a,8,0,-3,-1
+Pin="Minus",a,8,6,-3,-1
+
+[compdef]
+Name=EVOFV
+Definition=EVofV
+Shape=EVOFV
+Mask=4096
+memo=SPICE dependent VofV source
+Label Offset=18,12,16,13
+PinCnt=2
+Pin="Plus",6,0,-6,-5
+Pin="Minus",0,0,-20,-6
+
+[compdef]
+Name=FIOFI
+Definition=FIofI
+Shape=FIOFI
+Mask=5120
+memo=SPICE dependent IofI source
+Label Offset=15,13,-29,13
+PinCnt=2
+Pin="Plus",0,0,7,12
+Pin="Minus",0,6,7,3
+
+[compdef]
+Name=Capacitor
+Definition=Capacitor
+Shape=Capacitor
+Mask=7425
+Used=60
+memo=Capacitor
+Label Offset=16,12,12,12
+PinCnt=2
+Pin="Plus",6,0,-3,-5
+Pin="Minus",0,0,-14,-5
+
+[compdef]
+Name=VofV
+Definition=VofV
+Shape=VOFV
+Mask=5120
+Used=9
+memo=Linear VofV constant dependent source
+Label Offset=62,11,-30,59
+PinCnt=4
+Pin="Plus Output",6,0,-18,-3
+Pin="Minus Output",6,6,-9,18
+Pin="Plus Input",0,0,-31,-3
+Pin="Minus Input",0,6,-29,18
+
+[Circuit]
+Window Placement=3,3, 0,971, -4,-27, 0,0,793,787
+Default Object=Color=#000080
+Default Object Font=Height=-34,FStyle=0,Color=#FF00FF,Name=Comic Sans MS
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#0000FF,Name=Verdana
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Verdana
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=Height=-11,FStyle=0,Color=#000000,Name=Arial
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+Grid Color=#000000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+NodeVoltageFormat=3
+PathDelayFormat=3
+WarningFormat=3
+GridTextFormulaFormat=3
+Window Placement in Transient Analysis=1,2, 0,952, -4,-27, 1058,0,1587,958
+Window Placement in Transient Probe=3,1, 0,1009, -4,-27, 795,0,1590,1037
+Window Placement in AC Analysis=1,2, 160,1009, -4,-27, 110,145,1561,854
+Window Placement in HmDistortion Analysis=1,2, 0,1009, -4,-27, 0,0,793,787
+Window Placement in ImDistortion Analysis=1,2, 0,1005, -4,-27, 1058,0,1587,1033
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=False
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=True
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Picture
+CBorder=None
+Grids=3,80,72,165
+Section=1
+Rot=0
+KeepAspectRatio=True
+
+[Attr]
+ON=0,0,FILE
+V=MIXER_MOS3.EMF
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=4,23,25,44
+Section=1
+
+[Comp]
+Name=Voltage Source
+Grid=11,61
+Rot=3
+Section=1
+
+[Attr]
+ON=-29,-13,PART
+V=VRF
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-184,-41,VALUE
+V=DC 0 AC 1 0 Sin 0 {vdbm(-50)} 2.41G 0 0 0
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,Saved_Pulse
+V=DC 0 AC 1 0 Pulse 0 5 100n 10n 10n 400n 1u
+Style=256
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,Saved_Sin
+V=DC 0 AC 1 0 Sin 0 {vdbm(-50)} 2.41G 0 0 0
+Style=256
+Font=Comic Sans MS
+
+[Comp]
+Name=Voltage Source
+Grid=10,35
+Rot=3
+Section=1
+
+[Attr]
+ON=-42,-29,PART
+V=VLO
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-301,-41,VALUE
+V=DC 0 AC 1 0 Sin 0 {vdbm(plo)} 2.4G
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,Saved_Sin
+V=DC 0 AC 1 0 Sin 0 {vdbm(plo)} 2.4G
+Style=256
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,Saved_Pulse
+V=DC 0 AC 1 0 Pulse 1 -1 .2n 1p 1p .575n 1.15n
+Style=256
+Font=Comic Sans MS
+
+[Attr]
+ON=0,11,Saved_Define
+V=DC 0 AC 1 0 Sin 0 VDBM 2.4G 50 2.4G 0
+Style=256
+
+[Comp]
+Name=Resistor
+Grid=113,19
+Rot=3
+Section=1
+
+[Attr]
+ON=9,-43,PART
+V=RL
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=8,-25,RESISTANCE
+V=50
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Comp]
+Name=Resistor
+Grid=20,55
+Rot=6
+Section=1
+
+[Attr]
+ON=-34,6,PART
+V=RS
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-42,-22,RESISTANCE
+V=50
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=11,55,14,55
+Section=1
+
+[Comp]
+Name=Resistor
+Grid=20,30
+Rot=1
+Section=1
+
+[Attr]
+ON=8,11,PART
+V=R1
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=8,25,RESISTANCE
+V=50
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=10,26,10,29
+Section=1
+
+[Comp]
+Name=NMOS
+Grid=47,26
+Section=1
+
+[Attr]
+ON=29,1,PART
+V=M1
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-22,-36,VALUE
+V=L=L1 W=W100
+Font=Comic Sans MS
+
+[Attr]
+ON=24,-16,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Comp]
+Name=Battery
+Grid=68,8
+Rot=3
+Section=1
+
+[Attr]
+ON=-26,-27,PART
+V=V1
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-30,-41,VALUE
+V=3.3
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=50,2,58,2
+Section=1
+
+[Wire]
+Grids=58,2,68,2
+Section=1
+
+[Comp]
+Name=Ground
+Grid=68,8
+Rot=1
+Section=1
+
+[Comp]
+Name=Ground
+Grid=109,75
+Rot=1
+Section=1
+
+[Comp]
+Name=Resistor
+Grid=50,12
+Rot=3
+Section=1
+
+[Attr]
+ON=15,-40,PART
+V=R2
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=12,-22,RESISTANCE
+V=500
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=50,12,50,14
+Section=1
+
+[Wire]
+Grids=50,2,50,6
+Section=1
+
+[Comp]
+Name=NMOS
+Grid=92,26
+Rot=6
+Section=1
+COff=23,661,174,83,-2
+
+[Attr]
+ON=-47,1,PART
+V=M2
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-75,-34,VALUE
+V=L=L1 W=W100
+Font=Comic Sans MS
+
+[Attr]
+ON=-71,-16,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Comp]
+Name=Resistor
+Grid=89,11
+Rot=3
+Section=1
+
+[Attr]
+ON=12,-45,PART
+V=R3
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=9,-29,RESISTANCE
+V=500
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=89,11,89,20
+Section=1
+
+[Wire]
+Grids=89,2,89,5
+Section=1
+
+[Wire]
+Grids=68,2,89,2
+Section=1
+
+[Comp]
+Name=NMOS
+Grid=53,43
+Section=1
+
+[Attr]
+ON=0,-26,PART
+V=M3
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=29,-20,VALUE
+V=L=L1 W=W200
+Font=Comic Sans MS
+
+[Attr]
+ON=40,-1,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Comp]
+Name=NMOS
+Grid=86,43
+Rot=6
+Section=1
+COff=23,566,359,106,11
+
+[Attr]
+ON=-47,1,PART
+V=M4
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-122,15,VALUE
+V=L=L1 W=W200
+Font=Comic Sans MS
+
+[Attr]
+ON=-74,29,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=56,32,56,40
+Section=1
+
+[Wire]
+Grids=50,32,56,32
+Section=1
+
+[Wire]
+Grids=50,29,50,32
+Section=1
+
+[Wire]
+Grids=83,32,83,40
+Section=1
+
+[Wire]
+Grids=83,32,89,32
+Section=1
+
+[Wire]
+Grids=89,29,89,32
+Section=1
+
+[Wire]
+Grids=56,46,56,51
+Section=1
+
+[Wire]
+Grids=83,46,83,51
+Section=1
+
+[Wire]
+Grids=56,51,69,51
+Section=1
+
+[Comp]
+Name=NMOS
+Grid=72,65
+Rot=6
+Section=1
+COff=8,552,496,5,-17
+COff=8,552,544,-59,-5
+COff=8,552,520,-21,9
+COff=23,469,535,-15,-19
+
+[Attr]
+ON=-47,1,PART
+V=M5
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-107,15,VALUE
+V=L=L1 W=W200
+Font=Comic Sans MS
+
+[Attr]
+ON=-74,29,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=69,51,69,62
+Section=1
+
+[Wire]
+Grids=69,65,69,68
+Section=1
+
+[Wire]
+Grids=86,43,90,43
+Section=1
+
+[Comp]
+Name=NMOS
+Grid=65,26
+Rot=6
+Section=1
+COff=23,443,175,81,3
+
+[Attr]
+ON=-47,1,PART
+V=M6
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-77,-33,VALUE
+V=L=L1 W=W100
+Font=Comic Sans MS
+
+[Attr]
+ON=-78,-16,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=62,29,62,32
+Section=1
+
+[Comp]
+Name=NMOS
+Grid=74,26
+Section=1
+COff=23,570,172,2,4
+
+[Attr]
+ON=29,1,PART
+V=M7
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-22,-36,VALUE
+V=L=L1 W=W100
+Font=Comic Sans MS
+
+[Attr]
+ON=24,-16,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=77,32,83,32
+Section=1
+
+[Wire]
+Grids=77,29,77,32
+Section=1
+
+[Wire]
+Grids=62,20,62,23
+Section=1
+
+[Wire]
+Grids=62,20,89,20
+Section=1
+
+[Wire]
+Grids=77,14,77,23
+Section=1
+
+[Wire]
+Grids=50,14,50,23
+Section=1
+
+[Wire]
+Grids=65,26,69,26
+Section=1
+
+[Wire]
+Grids=95,26,95,35
+Section=1
+
+[Wire]
+Grids=56,32,62,32
+Section=1
+
+[Comp]
+Name=NMOS
+Grid=106,69
+Section=1
+COff=8,872,528,13,-7
+COff=8,872,576,-13,5
+COff=8,872,552,-11,15
+COff=23,877,532,-17,-13
+
+[Attr]
+ON=-1,-29,PART
+V=M8
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=29,-20,VALUE
+V=L=L1 W=W200
+Font=Comic Sans MS
+
+[Attr]
+ON=40,-1,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=109,49,109,65
+Section=1
+
+[Wire]
+Grids=72,65,104,65
+Section=1
+
+[Wire]
+Grids=104,69,106,69
+Section=1
+
+[Wire]
+Grids=109,72,109,75
+Section=1
+
+[Wire]
+Grids=43,26,47,26
+Section=1
+
+[Comp]
+Name=Ground
+Grid=22,61
+Rot=7
+Section=1
+
+[Comp]
+Name=Balun
+Grid=26,55
+Section=1
+
+[Attr]
+ON=25,65,PART
+V=X2
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=17,15,FILE
+V=Balun
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=20,55,22,55
+Section=1
+
+[Wire]
+Grids=34,55,38,55
+Section=1
+
+[Wire]
+Grids=11,61,22,61
+Section=1
+
+[Wire]
+Grids=77,14,93,14
+Section=1
+
+[Wire]
+Grids=50,14,77,14
+Section=1
+
+[Comp]
+Name=Ground
+Grid=104,20
+Rot=7
+Section=1
+
+[Wire]
+Grids=43,26,43,30
+Section=1
+
+[Wire]
+Grids=43,35,95,35
+Section=1
+
+[Wire]
+Grids=69,26,69,38
+Section=1
+
+[Wire]
+Grids=92,26,95,26
+Section=1
+
+[Wire]
+Grids=109,69,109,72
+Section=1
+
+[Wire]
+Grids=89,20,89,23
+Section=1
+
+[Wire]
+Grids=69,26,74,26
+Section=1
+
+[Wire]
+Grids=90,43,90,61
+Section=1
+
+[Wire]
+Grids=89,20,93,20
+Section=1
+
+[Wire]
+Grids=104,20,113,20
+Section=1
+
+[Wire]
+Grids=15,26,18,26
+
+[Wire]
+Grids=50,7,52,7
+
+[Comp]
+Name=EVOFV
+Grid=50,27
+Rot=3
+
+[Attr]
+ON=-32,-27,PART
+V=E1
+Style=8192
+
+[Attr]
+ON=-65,-41,VALUE
+V=Diff 0 .5
+Style=8192
+
+[Comp]
+Name=Battery
+Grid=50,15
+Rot=3
+
+[Attr]
+ON=-26,-27,PART
+V=V1
+Style=8192
+
+[Attr]
+ON=-18,-41,VALUE
+V=0
+
+[Wire]
+Grids=50,27,50,29
+
+[Wire]
+Grids=42,29,50,29
+
+[Wire]
+Grids=50,7,50,9
+
+[Comp]
+Name=FIOFI
+Grid=18,26
+Rot=6
+
+[Attr]
+ON=-30,13,PART
+V=F1
+Style=8192
+
+[Attr]
+ON=-52,27,VALUE
+V=V1 -.5
+Style=8192
+
+[Comp]
+Name=Ground
+Grid=18,32
+Rot=7
+
+[Wire]
+Grids=18,26,24,26
+
+[Comp]
+Name=EVOFV
+Grid=50,48
+Rot=3
+
+[Attr]
+ON=-32,-27,PART
+V=E2
+Style=8192
+
+[Attr]
+ON=-65,-41,VALUE
+V=Diff 0 .5
+Style=8192
+
+[Wire]
+Grids=50,48,50,50
+
+[Wire]
+Grids=50,50,52,50
+
+[Comp]
+Name=Battery
+Grid=50,35
+Rot=5
+
+[Attr]
+ON=10,-27,PART
+V=V2
+Style=8192
+
+[Attr]
+ON=10,-41,VALUE
+V=0
+
+[Wire]
+Grids=50,35,50,36
+
+[Comp]
+Name=FIOFI
+Grid=24,26
+
+[Attr]
+ON=15,13,PART
+V=F2
+Style=8192
+
+[Attr]
+ON=15,27,VALUE
+V=V2 -.5
+Style=8192
+
+[Wire]
+Grids=18,32,24,32
+
+[Comp]
+Name=Resistor
+Grid=50,15
+Rot=7
+
+[Attr]
+ON=-24,11,PART
+V=R2
+Style=8192
+
+[Attr]
+ON=-24,25,RESISTANCE
+V=1u
+Style=8192
+
+[Comp]
+Name=Resistor
+Grid=50,36
+Rot=7
+
+[Attr]
+ON=-24,11,PART
+V=R3
+Style=8192
+
+[Attr]
+ON=-24,25,RESISTANCE
+V=1u
+Style=8192
+
+[Comp]
+Name=Resistor
+Grid=32,26
+Rot=1
+
+[Attr]
+ON=8,11,PART
+V=R1
+Style=8192
+
+[Attr]
+ON=8,25,RESISTANCE
+V=1G
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Grids=24,26,32,26
+
+[Wire]
+Grids=24,32,32,32
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=2,1,81,58
+
+[Wire]
+Grids=50,43,50,55
+Section=1
+
+[Wire]
+Grids=50,43,53,43
+Section=1
+
+[Comp]
+Name=NMOS
+Grid=106,46
+Section=1
+
+[Attr]
+ON=-11,-23,PART
+V=M9
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-22,-36,VALUE
+V=L=L1 W=W200
+Font=Comic Sans MS
+
+[Attr]
+ON=24,-16,MODEL
+V=NMOS1
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Comp]
+Name=Ground
+Grid=109,46
+Rot=4
+Section=1
+
+[Comp]
+Name=Resistor
+Grid=109,40
+Rot=3
+Section=1
+
+[Attr]
+ON=12,-45,PART
+V=R6
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=9,-29,RESISTANCE
+V=500
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=109,40,109,43
+Section=1
+
+[Wire]
+Grids=104,43,109,43
+Section=1
+
+[Comp]
+Name=Ground
+Grid=69,68
+Rot=1
+Section=1
+
+[Comp]
+Name=Resistor
+Grid=92,43
+Rot=4
+Section=1
+
+[Attr]
+ON=18,-20,PART
+V=R7
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=10,8,RESISTANCE
+V=3000
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=90,43,92,43
+Section=1
+
+[Wire]
+Grids=69,51,83,51
+Section=1
+
+[Comp]
+Name=Resistor
+Grid=92,55
+Rot=4
+Section=1
+
+[Attr]
+ON=18,-20,PART
+V=R8
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=10,8,RESISTANCE
+V=3000
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=50,55,92,55
+Section=1
+
+[Wire]
+Grids=104,46,104,55
+Section=1
+
+[Wire]
+Grids=98,55,104,55
+Section=1
+
+[Wire]
+Grids=104,43,104,46
+Section=1
+
+[Comp]
+Name=Capacitor
+Grid=50,55
+Rot=6
+Section=1
+
+[Attr]
+ON=-33,-27,PART
+V=C1
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-37,10,CAPACITANCE
+V=10n
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,CHARGE
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,66,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Comp]
+Name=Capacitor
+Grid=50,61
+Rot=6
+Section=1
+
+[Attr]
+ON=-20,-19,PART
+V=C2
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-37,10,CAPACITANCE
+V=10n
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,CHARGE
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,66,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=38,55,44,55
+Section=1
+
+[Wire]
+Grids=34,61,38,61
+Section=1
+
+[Wire]
+Grids=50,61,90,61
+Section=1
+
+[Wire]
+Grids=20,36,20,40
+Section=1
+
+[Comp]
+Name=Battery
+Grid=35,30
+Section=1
+
+[Attr]
+ON=14,-23,PART
+V=V2
+Font=Comic Sans MS
+
+[Attr]
+ON=16,-27,VALUE
+V=2.5
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=10,35,10,40
+Section=1
+
+[Wire]
+Grids=10,40,20,40
+Section=1
+
+[Wire]
+Grids=20,26,20,30
+Section=1
+
+[Comp]
+Name=Ground
+Grid=10,40
+Rot=7
+Section=1
+
+[Wire]
+Grids=98,43,104,43
+Section=1
+
+[Comp]
+Name=VofV
+Grid=98,14
+Section=1
+
+[Attr]
+ON=62,11,PART
+V=E1
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=68,23,VALUE
+V=1
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=20,26,27,26
+Section=1
+
+[Comp]
+Name=Battery
+Grid=35,36
+Section=1
+
+[Attr]
+ON=6,1,PART
+V=V3
+Font=Comic Sans MS
+
+[Attr]
+ON=16,10,VALUE
+V=2.5
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Comp]
+Name=Resistor
+Grid=22,55
+Rot=7
+Section=1
+
+[Attr]
+ON=-24,11,PART
+V=R9
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-24,25,RESISTANCE
+V=50
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=22,55,26,55
+Section=1
+
+[Wire]
+Grids=22,61,26,61
+Section=1
+
+[Comp]
+Name=Resistor
+Grid=19,26
+Rot=2
+Section=1
+
+[Attr]
+ON=-34,-20,PART
+V=R10
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=-36,8,RESISTANCE
+V=50
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,FREQ
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,MODEL
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,55,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=10,26,13,26
+Section=1
+
+[Wire]
+Grids=19,26,20,26
+Section=1
+
+[Wire]
+Grids=43,38,69,38
+Section=1
+
+[Wire]
+Grids=93,14,98,14
+Section=1
+
+[Wire]
+Grids=93,20,98,20
+Section=1
+
+[Wire]
+Grids=38,61,44,61
+Section=1
+
+[Wire]
+Grids=104,65,104,69
+Section=1
+
+[Wire]
+Grids=109,65,109,66
+Section=1
+
+[Wire]
+Grids=104,46,106,46
+Section=1
+
+[Wire]
+Grids=104,65,109,65
+Section=1
+
+[Wire]
+Grids=50,26,50,29
+Section=1
+
+[Wire]
+Grids=62,26,62,29
+Section=1
+
+[Wire]
+Grids=77,26,77,29
+Section=1
+
+[Wire]
+Grids=89,26,89,29
+Section=1
+
+[Wire]
+Grids=56,43,56,46
+Section=1
+
+[Wire]
+Grids=83,43,83,46
+Section=1
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=6,51,25,65
+Section=1
+
+[Wire]
+Grids=104,13,104,14
+Section=1
+
+[Wire]
+Grids=104,13,109,13
+Section=1
+
+[Wire]
+Grids=109,13,113,13
+Section=1
+
+[Wire]
+Grids=113,19,113,20
+Section=1
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=96,9,117,25
+Section=1
+
+[Object]
+Object=Picture
+CBorder=None
+Grids=77,81,147,167
+Section=1
+Rot=0
+KeepAspectRatio=True
+
+[Attr]
+ON=0,0,FILE
+V=MIXER_MOS3_CG_VS_PLO.EMF
+
+[Comp]
+Name=Balun
+Grid=27,30
+Section=1
+
+[Attr]
+ON=25,65,PART
+V=X1
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=17,15,FILE
+V=Balun
+Style=8192
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,COST
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,POWER
+V
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,PACKAGE
+V
+Font=Comic Sans MS
+
+[Wire]
+Grids=20,40,27,40
+Section=1
+
+[Wire]
+Grids=27,26,27,30
+Section=1
+
+[Wire]
+Grids=27,36,27,40
+Section=1
+
+[Wire]
+Grids=41,30,43,30
+Section=1
+
+[Wire]
+Grids=43,30,43,35
+Section=1
+
+[Wire]
+Grids=41,36,41,38
+Section=1
+
+[Wire]
+Grids=41,38,43,38
+Section=1
+
+[Grid Text]
+Text="USING BSIM3 DEVICES"
+Grid=60,46
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="IFP"
+Grid=93,20
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="http://www.ek.isy.liu.se/courses/tsek03/LAB3_Mixer_2010.pdf"
+Grid=5,68
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="VCC"
+Grid=58,2
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="IF"
+Grid=109,13
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="RFP"
+Grid=38,55
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="LOP"
+Grid=43,26
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE PDBM(V) (10*LOG(V^2/4/50/1E-3))"
+Grid=54,73
+Height=-13
+Color=#008000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="IF PORT"
+Grid=105,9
+Color=#FF0000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="LO PORT"
+Grid=14,23
+Color=#FF0000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE L1 .35u"
+Grid=5,75
+Color=#FF0000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE W200 200u"
+Grid=5,73
+Color=#FF0000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE VDBM(PRF)  { 2*SQRT(1E-3*POW(10,PRF/10)*50) }"
+Grid=54,75
+Height=-13
+Color=#008000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+Fill Pattern=Horizontal
+
+[Grid Text]
+Text="Common"
+Grid=42,29
+Color=#800000
+CBorder=None
+
+[Grid Text]
+Text="Plus"
+Grid=52,7
+Color=#800000
+CBorder=None
+
+[Grid Text]
+Text="Diff"
+Grid=15,26
+Color=#800000
+CBorder=None
+
+[Grid Text]
+Text="Minus"
+Grid=52,50
+Color=#800000
+CBorder=None
+
+[Grid Text]
+Text="BALUN MACRO"
+Grid=16,10
+Height=-19
+Color=#FF00FF
+Font=Arial
+CBorder=None
+
+[Grid Text]
+Text="VCC"
+Grid=109,34
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="IFN"
+Grid=93,14
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="LON"
+Grid=43,38
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="RFN"
+Grid=38,61
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE W100 100u"
+Grid=5,71
+Color=#FF0000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE PRF -50"
+Grid=5,79
+Color=#FF0000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE PLO 5"
+Grid=5,77
+Color=#FF0000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE CG(PIN)  Y_LEVEL(H1,1,1,PIN)-(PIN)"
+Grid=54,77
+Height=-13
+Color=#008000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="RF"
+Grid=22,55
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="                                              Results in dBm"
+Text="                                  LIU(CDNS)                 MC10"
+Text="CG(at PLO=5dbm        15                               9.0"
+Text="CG(optimum)               15 (PLO=5)          11.3 (PLO=10)"
+Text="P1DB                           -9.8                           -10.6"
+Text="IIP3                            0.23                            3.9"
+Grid=2,17
+Height=-14
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Grid Text]
+Text="RF PORT"
+Grid=13,51
+Color=#FF0000
+Font=Comic Sans MS
+Section=1
+CBorder=None
+
+[Schematic]
+CurrentSection 0=1
+CurrentSection 1=1
+CurrentSection 2=1
+CurrentSection 3=1
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic","GroundArrow","Main1","Main11","Main111","Main2"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+CalcVoltage=True
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+FILESAVEASOLD=No
+BOM=No
+FILEPCB=No
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+FLAG=Yes
+INFO=Yes
+HELP=Yes
+HELP_SPICE=No
+LINK=Yes
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=Yes
+BORDER=No
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+CIR_MAKEMACRO=No
+CLEARCUTWIRE=No
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+REPLACE=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=Yes
+DISABLE=Yes
+TOFRONT=Yes
+TOBACK=Yes
+SELNEXT=No
+PAGEADD=No
+PAGEADDTEXT=No
+ADDSECTION=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=Yes
+FONT=Yes
+DM_LAST=No
+DM_RMS=No
+DM_AVG=No
+DM_PEAK=No
+GRID_NONE=No
+GRID_NORMAL=No
+GRID_BOLD_5=No
+GRID_BOLD_6=No
+GRID_BOLD_USER=No
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+RENAMEDEFINE=No
+RENAMECMP=No
+ATTALIGN=No
+RESETNODEPOS=No
+FIT2STANDARD=No
+NODESNAP=No
+MOVETEXT=No
+TEXTINC=No
+TOGGLETEXT=No
+TOGGLEMODE=No
+TOLERANCE=No
+ALIGNLEFT=No
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNBOTTOM=No
+
+[Section]
+Index=0
+Name="Balun"
+Type=Macro
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=450
+TabSize 1=450
+TabSize 2=450
+TabSize 3=450
+
+[Section]
+Index=1
+Name="MIXER_MOS3"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=425
+TabSize 1=425
+TabSize 2=425
+TabSize 3=425
+
+[Page]
+Index=0
+Section=0
+Print=True
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=59,79
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Page]
+Index=0
+Section=1
+Print=True
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=62,65
+
+[Page]
+Index=1
+Section=1
+Type=Text
+Print=False
+Enable=True
+Name=Text
+SB 0=0,3
+
+[Page]
+Index=2
+Section=1
+Type=Text
+Print=False
+Enable=True
+Name=Models
+SB 0=0,27
+
+[Page]
+Index=3
+Section=1
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+Background Color=#FFFFFF
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+Background Color=#FFFFFF
+
+[Text Area]
+Section=1
+Page=1
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+Background Color=#FFFFFF
+Text=
+Text=				P1db			ip3         CG(at PLO=5dbm and PIN = -33dbm)
+Text=CDNS      -9.8, 3.0		0.23,10.0	15.00
+Text=mc10		-10.5.-2.4		3.90,12.9    9.00 (WITH VT=1.1 U0=1500)
+
+[Text Area]
+Section=1
+Page=2
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+Background Color=#FFFFFF
+Text=
+Text=.MODEL DMOD D ()
+Text=.MODEL NMOS1 NMOS (LEVEL=8 A0=5.128e-01 A1=0.000e+00 A2=1.000e+00 AGS=3.172e-02
+Text=+ ALPHA0=0.000e+00 AT=3.300e+04 B0=1.876e-07 B1=0.000e+00 BETA0=2.840e+01
+Text=+ CAPMOD=2.000e+00 CDSC=6.673e-04 CDSCB=2.693e-04 CDSCD=0.000e+00 CF=0.000e+00
+Text=+ CGBO=1.400e-10 CGDL=0.000e+00 CGDO=3.400e-10 CGSL=0.000e+00 CGSO=3.400e-10
+Text=+ CIT=3.623e-05 CJ=4.500e-04 CJSW=6.000e-10 CKAPPA=6.000e-01 CLC=1.000e-15
+Text=+ CLE=6.000e-01 DELTA=1.500e-02 DLC=1.196e-07 DROUT=5.000e-01 DSUB=5.000e-01
+Text=+ DVT0=3.117e+00 DVT0W=0.000e+00 DVT1=7.769e-01 DVT1W=0.000e+00 DVT2=-2.25e-01
+Text=+ DVT2W=0.000e+00 DWB=1.626e-08 DWC=1.497e-08 DWG=0.000e+00 ELM=5.000e+00
+Text=+ EM=4.100e+07 ETA0=2.973e-02 ETAB=-3.57e-02 JS=2.000e-05 K1=9.304e-01
+Text=+ K2=-4.27e-02 K3=1.471e+01 K3B=-3.75e+00 KETA=-1.82e-02 KT1=-4.68e-01
+Text=+ KT1L=0.000e+00 KT2=-3.94e-02 LINT=1.196e-07 LL=0.000e+00 LLN=1.000e+00
+Text=+ LW=0.000e+00 LWL=0.000e+00 LWN=1.000e+00 MJ=4.800e-01 MJSW=3.200e-01
+Text=+ MOBMOD=1.000e+00 NCH=9.025e+16 NFACTOR=9.701e-01 NLX=6.344e-08 NOIA=1.000e+20
+Text=+ NOIB=5.000e+04 NOIC=-1.40e-12 PB=9.200e-01 PBSW=9.200e-01 PCLM=8.119e-01
+Text=+ PDIBLC1=4.519e-02 PDIBLC2=5.807e-03 PDIBLCB=1.323e-01 PRT=2.302e+03
+Text=+ PRWB=0.000e+00 PRWG=0.000e+00 PSCBE1=3.499e+08 PSCBE2=4.367e-05
+Text=+ PVAG=2.966e-01 RDSW=1.256e+03 RSH=4.000e+01 TOX=1.700e-08 TT=0.000e+00
+Text=+ U0=1500 UA=3.975e-10 UA1=2.588e-09 UB=1.699e-18 UB1=-3.97e-18 UC=3.678e-11
+Text=+ UC1=-3.40e-11 UTE=-1.50e+00 VOFF=-1.65e-01 VSAT=9.397e+04 VTH0=1.1
+Text=+ W0=1.763e-06 WINT=1.497e-08 WL=0.000e+00 WLN=1.000e+00 WW=0.000e+00
+Text=+ WWL=0.000e+00 WWN=1.000e+00 XJ=3.000e-07 XPART=1.000e+00)
+Text=.MODEL IM1 IND ( )
+Text=
+Text=.MODEL CM1 CAP ( )
+Text=
+Text=.MODEL RM1 RES ( )
+
+[Transient]
+Window Placement=0,1, -1,-1, -4,-27, 0,0,793,958
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Window Placement in Probe=0,1, -1,-1, -4,-27, 0,0,795,1037
+Title=MIXER_MOS3.CIR PLO=-10
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=True
+OperPointOnly=False
+AutoScaleRanges=True
+FixedTimeStep=False
+DoPSS=True
+PSS_Periods="1"
+PSS_Iterations="3"
+PSS_Error="1u"
+PSS_ShowPlots=True
+FFT_NPts="131072"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=3
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=96
+MonExprYWidth=188
+MonRangeXWidth=131
+MonRangeYWidth=171
+AnimateWait=None
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Low="TSTART"
+Num Out High="TMAX"
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Format=3
+Num Out HideNonSelected=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[APage]
+Analysis=Transient
+Name="Main"
+
+[AC]
+Window Placement=2,3, -1,-1, -4,-27, 130,130,1383,829
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Title
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=True
+AutoScaleRanges=True
+FFT_NPts="8192"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=3
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=142
+MonExprYWidth=260
+MonRangeXWidth=90
+MonRangeYWidth=90
+AnimateWait=None
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n$date $time"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Noise=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Low="FMIN"
+Num Out High="FMAX"
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Format=3
+Num Out HideNonSelected=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[APage]
+Analysis=AC
+Name="Main"
+
+[HmDistortion]
+Window Placement=0,1, -1,-1, -4,-27, 793,0,1586,1005
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Title
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=False
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=True
+AutoScaleRanges=True
+DoPSS=True
+PSS_Periods="1"
+PSS_Iterations="5"
+PSS_Error="1u"
+PSS_ShowPlots=True
+FFT_Min="0"
+FFT_NPts="16384"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=6
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=142
+MonExprYWidth=260
+MonRangeXWidth=90
+MonRangeYWidth=90
+AnimateWait=None
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n$date $time"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Format=3
+Num Out HideNonSelected=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[APage]
+Analysis=HmDistortion
+Name="Main"
+
+[ImDistortion]
+Window Placement=1,1, -1,-1, -4,-27, 793,0,1586,1005
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Title=MIXER_MOS3.CIR VIN=1m...32m F2=2.42G
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=False
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=True
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=True
+AutoScaleRanges=True
+DoPSS=True
+PSS_Periods="1"
+PSS_Iterations="2"
+PSS_Error="1N"
+PSS_ShowPlots=True
+FFT_Min="0"
+FFT_NPts="1024"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=5
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=142
+MonExprYWidth=260
+MonRangeXWidth=90
+MonRangeYWidth=90
+AnimateWait=None
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n$date $time"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Window Placement=0,1, -1,-1, -1,-1, 338,338,1596,1070
+Num Out Format=3
+Num Out HideNonSelected=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[APage]
+Analysis=ImDistortion
+Name="Main"
+
+[Monte Carlo Options]
+Analysis=Transient
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Monte Carlo Options]
+Analysis=AC
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Monte Carlo Options]
+Analysis=HmDistortion
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Monte Carlo Options]
+Analysis=ImDistortion
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Performance]
+Analysis=Transient
+Window Placement=0,1, -1,-1, -4,-27, 793,0,1586,958
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Title=Y_Level(db(harm(v(if),1e7)/.702m),1,1,1e7) vs PLO
+AutoTitle=Yes
+ShowWin=True
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=True
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Waveform Header=True
+Num Out HideNonSelected=False
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[AObject]
+Object=PTag
+EndPoint=ArrowF
+CBorder=#000080
+w=0
+AliasID1=1
+Pos=-4,-2.909824633162458,9.338959212376938,7.115384615384615
+Font=Height=-34,FStyle=0,Color=#FF00FF,Name=Comic Sans MS
+Format=3
+FormatY=3
+Text="High_Y(Y_Level(db(harm(v(if),1e7)/.702m),1,1,1e7),1)"
+
+[AObject]
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=3.220815752461327,13.42307692307692,0,0
+Font=Height=-34,FStyle=0,Color=#FF00FF,Name=Comic Sans MS
+Text="Conversion Gain(dB) vs PLO(dBm)"
+
+[Performance WaveForm]
+;Transient
+PMExpression=Y_Level(db(harm(v(if),1e7)/.702m),1,1,1e7)
+XData=1000
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+DPS=Open Bubbles
+CS=Normal
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+LWdth=3
+PlotNum=1
+AliasID=1
+Enable=0
+Auto Scale X=No
+Auto Scale Y=Yes
+Range Min X=-10
+Range Min Y=-10
+Range Max X=10
+Range Max Y=10
+Range Grid X=5
+Range Grid Y=2
+Range Bold X=0
+Range Bold Y=0
+LinearX=True
+LinearY=True
+
+[Performance]
+Analysis=HmDistortion
+Window Placement=0,1, -1,-1, -4,-27, 0,0,793,1005
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Title=H1 vs PIN
+AutoTitle=Yes
+ShowWin=True
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+Label Color Background=#FFFFFF
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=True
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=False
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out File Auto=True
+Num Out File
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n$date $time"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Group by=F
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Variable Header=True
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[Performance WaveForm]
+;HmDistortion
+Designator=Simple
+WhatToPlotY=H1P(dBm)
+WhatToPlot=PIN(dBm)
+SteppingCase 21=All
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+DPS=Open Bubbles
+CS=Normal
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=True
+LWdth=3
+PlotNum=1
+AliasID=1
+Enable=0
+Auto Scale X=Yes
+Auto Scale Y=Yes
+Range Min X=-10
+Range Min Y=-10
+Range Max X=10
+Range Max Y=10
+Range Grid X=7.5
+Range Grid Y=6
+Range Bold X=0
+Range Bold Y=0
+LinearX=True
+LinearY=True
+Show Labels=True
+Labels Default Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+
+[DistNumOut]
+F=0
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VIN(dB)=1
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VIN=2
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+VOUT(dB)=3
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VOUT=4
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN(dB)=5
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN(dBm)=6
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN=7
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT(dB)=8
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT(dBm)=9
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT=10
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+VIN_RMS(dB)=11
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VIN_RMS=12
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+VOUT_RMS(dB)=13
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VOUT_RMS=14
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN_RMS(dB)=15
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN_RMS(dBm)=16
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN_RMS=17
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT_RMS(dB)=18
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT_RMS(dBm)=19
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT_RMS=20
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1V(%)=21
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1V(dB)=22
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1V=23
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P(%)=24
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P(dB)=25
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P(dBm)=26
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P=27
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2V(%)=28
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2V(dB)=29
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2V=30
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2P(%)=31
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2P(dB)=32
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2P(dBm)=33
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2P=34
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3V(%)=35
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3V(dB)=36
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3V=37
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3P(%)=38
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3P(dB)=39
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3P(dBm)=40
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3P=41
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4V(%)=42
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4V(dB)=43
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4V=44
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4P(%)=45
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4P(dB)=46
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4P(dBm)=47
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4P=48
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5V(%)=49
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5V(dB)=50
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5V=51
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5P(%)=52
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5P(dB)=53
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5P(dBm)=54
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5P=55
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6V(%)=56
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6V(dB)=57
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6V=58
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6P(%)=59
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6P(dB)=60
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6P(dBm)=61
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6P=62
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7V(%)=63
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7V(dB)=64
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7V=65
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7P(%)=66
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7P(dB)=67
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7P(dBm)=68
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7P=69
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8V(%)=70
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8V(dB)=71
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8V=72
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8P(%)=73
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8P(dB)=74
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8P(dBm)=75
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8P=76
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9V(%)=77
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9V(dB)=78
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9V=79
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9P(%)=80
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9P(dB)=81
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9P(dBm)=82
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9P=83
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3_RMSP(%)=84
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3_RMSP(dB)=85
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3_RMSP(dBm)=86
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3_RMSP=87
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4_RMSV(%)=88
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4_RMSV(dB)=89
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4_RMSV=90
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4_RMSP(%)=91
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4_RMSP(dB)=92
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4_RMSP(dBm)=93
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H4_RMSP=94
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5_RMSV(%)=95
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5_RMSV(dB)=96
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5_RMSV=97
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5_RMSP(%)=98
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5_RMSP(dB)=99
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5_RMSP(dBm)=100
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H5_RMSP=101
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6_RMSV(%)=102
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6_RMSV(dB)=103
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6_RMSV=104
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6_RMSP(%)=105
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6_RMSP(dB)=106
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6_RMSP(dBm)=107
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H6_RMSP=108
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7_RMSV(%)=109
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7_RMSV(dB)=110
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7_RMSV=111
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7_RMSP(%)=112
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7_RMSP(dB)=113
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7_RMSP(dBm)=114
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H7_RMSP=115
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8_RMSV(%)=116
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8_RMSV(dB)=117
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8_RMSV=118
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8_RMSP(%)=119
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8_RMSP(dB)=120
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8_RMSP(dBm)=121
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H8_RMSP=122
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9_RMSV(%)=123
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9_RMSV(dB)=124
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9_RMSV=125
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9_RMSP(%)=126
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9_RMSP(dB)=127
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9_RMSP(dBm)=128
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H9_RMSP=129
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDV(%)=130
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDV(dB)=131
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDV=132
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDP(%)=133
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDP(dB)=134
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDP(dBm)=135
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDP=136
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDNV(%)=137
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDNV(dB)=138
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDNV=139
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDNP(%)=140
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDNP(dB)=141
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDNP(dBm)=142
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+THDNP=143
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SINADV(%)=144
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SINADV(dB)=145
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SINADV=146
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SINADP(%)=147
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SINADP(dB)=148
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SINADP(dBm)=149
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SINADP=150
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SNRV(%)=151
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SNRV(dB)=152
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SNRV=153
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SNRP(%)=154
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SNRP(dB)=155
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+SNRP(dBm)=156
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+SNRP=157
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1_RMSV(%)=158
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1_RMSV(dB)=159
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1_RMSV=160
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1_RMSP(%)=161
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1_RMSP(dB)=162
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1_RMSP(dBm)=163
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1_RMSP=164
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2_RMSV(%)=165
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2_RMSV(dB)=166
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2_RMSV=167
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2_RMSP(%)=168
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2_RMSP(dB)=169
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2_RMSP(dBm)=170
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H2_RMSP=171
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3_RMSV(%)=172
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3_RMSV(dB)=173
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H3_RMSV=174
+Show=False
+ScaleUnits="Auto"
+
+[Performance]
+Analysis=ImDistortion
+Window Placement=0,1, -1,-1, -4,-27, 0,0,793,1005
+Font=Height=-24,FStyle=0,Color=#0000FF,Name=Comic Sans MS
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Title=H1 vs PIN,IM3 vs PIN
+AutoTitle=Yes
+ShowWin=True
+Grid Color=#000000
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+Label Color Background=#FFFFFF
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=True
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=False
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Show IM2 Intercept=False
+Show IM3 Intercept=True
+Show 1dBCompressionPoint=True
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out File Auto=True
+Num Out File
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n$date $time"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Variable Header=True
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[AObject]
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Formula=True
+Pos=-28.69565217391305,29.15393654524089,0,0
+Font=Height=-34,FStyle=0,Color=#FF00FF,Name=Comic Sans MS
+Text="POWER CONVERSION GAIN (DBM) = [CG(-25)]"
+
+[AObject]
+Object=Text
+CFill=#FFFFFF
+CBorder=None
+w=0
+AliasID1=1
+Pos=-10.58595481767839,-2.554047915418474,0,0
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+Text="P1dBm -10.6,-2.6"
+LabelWaveform=True
+
+[AObject]
+Object=Text
+CFill=#FFFFFF
+CBorder=None
+w=1
+AliasID1=3
+Pos=3.868620412803907,12.90052731506383,0,0
+Font=Height=-15,FStyle=0,Color=#FF0000,Name=Arial
+Text="IP3=3.9,12.9"
+LabelWaveform=True
+
+[Performance WaveForm]
+;ImDistortion
+WhatToPlotY=H1P(dBm)(F2-F1 + 2F2-F1-FL) / 1
+WhatToPlot=PIN(dBm)
+SteppingCase 21=All
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+DPS=Open Bubbles
+CS=Normal
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+LWdth=3
+PlotNum=1
+AliasID=1
+Enable=0
+Auto Scale X=Yes
+Auto Scale Y=Yes
+Range Min X=-45
+Range Min Y=-120
+Range Max X=30
+Range Max Y=80
+Range Grid X=15
+Range Grid Y=40
+Range Bold X=0
+Range Bold Y=0
+LinearX=True
+LinearY=True
+Show Labels=True
+Labels Default Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+
+[Performance WaveForm]
+;ImDistortion
+WhatToPlotY=IM3P(dBm)(F2-F1 + 2F2-F1-FL) / 1
+WhatToPlot=PIN(dBm)
+SteppingCase 21=All
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+DPS=Open Bubbles
+CS=Normal
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+LWdth=3
+PlotNum=1
+AliasID=3
+Enable=0
+Auto Scale X=Yes
+Auto Scale Y=Yes
+Range Min X=-45
+Range Min Y=-120
+Range Max X=30
+Range Max Y=80
+Range Grid X=15
+Range Grid Y=40
+Range Bold X=0
+Range Bold Y=0
+LinearX=True
+LinearY=True
+Show Labels=True
+Labels Default Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+
+[DistNumOut]
+VIN=0
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+VOUT(dB)=1
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VOUT=2
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN(dB)=3
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN=4
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT(dB)=5
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT(dBm)=6
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT=7
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1V(dB)=8
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1V=9
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P(dB)=10
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P(dBm)=11
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P=12
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P(%)=13
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VIN_RMS(dB)=14
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VIN_RMS=15
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+VOUT_RMS(dB)=16
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VOUT_RMS=17
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN_RMS(dB)=18
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+PIN_RMS=19
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT_RMS(dB)=20
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT_RMS(dBm)=21
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+POUT_RMS=22
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+IM3P(2F2-F1-FL) / 1=23
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+IM3P(dBm)(2F2-F1-FL) / 1=24
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+IM3P(dB)(2F2-F1-FL) / 1=25
+Show=True
+ScaleUnits="Auto"
+
+[DistNumOut]
+IM3P(%)(2F2-F1-FL) / 1=26
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+VIN_RMS(dBm)=27
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P(dB)=28
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P(dBm)=29
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+H1P=30
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+IM3P(%)(2F2-F1-FL) / 1=31
+Show=False
+ScaleUnits="Auto"
+
+[DistNumOut]
+IM3P(dBm)(2F2-F1-FL) / 1=32
+Show=True
+ScaleUnits="Auto"
+
+[Limits]
+Analysis=Transient
+TRange=100n
+TStep=400p/100
+NPts=51
+Temp=27
+RetraceRuns=1
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+
+[WaveForm]
+Analysis=Transient
+Plt=1
+AliasID=1
+XExp=T
+YExp=V(RF)
+XRng=1e-7
+YRng=0,-0.00075
+Options=LINEARX,LINEARY
+Range Grid X=2e-8
+Range Grid Y=0.00015
+Enable=Enable
+CS=Normal
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+AliasID=3
+XExp=T
+YExp=V(IF)
+XRng=1e-7
+YRng=0,-0.0005
+Options=LINEARX,LINEARY
+Range Grid X=2e-8
+Range Grid Y=0.0001
+Enable=Enable
+CS=Normal
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=3
+AliasID=2
+XExp=F
+YExp=db(harm(v(if),1e7)/.702m)
+XRng=1e8
+YRng=1,-1
+Options=LINEARX,LINEARY
+Range Grid X=1e7
+Range Grid Y=0.5
+Enable=Enable
+CS=Normal
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+LWdth=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=AC
+FRange=1E10,1E6
+NPts=1001
+Temp=27
+MaxChng=5
+NInput=NONE
+NOutput=2
+Sweep type=Log
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+
+[WaveForm]
+Analysis=AC
+Plt=1
+AliasID=1
+XExp=F
+YExp=db(v(IF))
+XRng=1e10,1e6
+YRng=-288.8,-292.8
+Options=LINEARY
+Range Grid X=1.9998e9
+Range Grid Y=0.8
+Enable=Enable
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+Plt=2
+AliasID=2
+XExp=F
+YExp=ph(v(IF))
+XRng=1e10,1e6
+YRng=190,140
+Options=LINEARY
+Range Grid X=1.9998e9
+Range Grid Y=10
+Enable=Enable
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+AliasID=-1
+Options=LINEARY
+Enable=Enable
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=HmDistortion
+F0=2500e6
+ISource=VRF
+ISourceAmp=100m,10m,1.2
+ResLoad=RL
+NoiseFreqRange=100K,1
+Temp=27
+Cycles=50
+THDStopTol=1u
+TStepRatio=1m
+Harmonics=7
+NTPts=51
+NFPts=51
+FreqMethod=List
+AmpMethod=Log
+PlaceText=True
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+
+[WaveForm]
+Analysis=HmDistortion
+Plt=1
+AliasID=1
+XExp=F
+YExp=HARM(V(RL))
+XRng=25000000000
+YRng=15.8489,1.58489e-5
+Options=LINEARX
+Range Grid X=2.5e9
+Enable=Enable
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=HmDistortion
+Plt=2
+AliasID=2
+XExp=T
+YExp=V(RL)
+XRng=TMAX
+YRng=0.075,-0.3
+Options=LINEARX,LINEARY
+Range Grid X=1e-10
+Range Grid Y=0.075
+Enable=Enable
+CS=Normal
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=HmDistortion
+Plt=3
+AliasID=3
+XExp=F
+YExp=THD(HARM(V(RL)))
+XRng=2.5e+010
+YRng=3000
+Options=LINEARX,LINEARY
+Range Grid X=2.5e9
+Range Grid Y=600
+Enable=Enable
+CS=Normal
+Line Color=#008000
+Text Color=#008000
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=HmDistortion
+AliasID=-1
+XExp=F
+YExp=THDN(HARM(V(RL)))
+XRng=2.5e+010
+YRng=3000
+Options=LINEARX,LINEARY
+Range Grid X=2.5e9
+Range Grid Y=600
+Enable=Enable
+CS=Normal
+Line Color=#FF00FF
+Text Color=#FF00FF
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=HmDistortion
+AliasID=-1
+XExp=F
+YExp=HARM(I(VRF))
+XRng=25000000000
+YRng=1,1e-10
+Options=LINEARX
+Range Grid X=2.5e9
+Enable=Enable
+CS=Normal
+Line Color=#000000
+Text Color=#000000
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=HmDistortion
+AliasID=-1
+XExp=F
+YExp=HARM(I(VRF))
+XRng=2.5e10
+YRng=1,1e-20
+Options=LINEARX
+Range Grid X=2.5e9
+Enable=Enable
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=ImDistortion
+F1=2.40G
+F2=2.41G
+LOSource=VLO
+ISource=VRF
+F1Level=1
+F2Level=200m,VDBM(-40),1.2
+SourceRes=RS
+ResLoad=RL
+NoiseFreqRange=100K,1
+Temp=27
+Cycles=10
+TStepRatio=5M
+NTPts=51
+NFPts=51
+AmpMethod=Log
+PlaceText=True
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+
+[WaveForm]
+Analysis=ImDistortion
+Plt=1
+AliasID=1
+XExp=F
+YExp=HARM(V(RL))
+XRng=9.64e9,1e7
+YRng=1000,1e-12
+Options=LINEARX
+Range Grid X=9.64e8
+Enable=Enable
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=ImDistortion
+Plt=2
+AliasID=2
+XExp=T
+YExp=V(RL)
+XRng=1.25e-7
+YRng=0.5,-0.75
+Options=LINEARX,LINEARY
+Range Grid X=2.5e-8
+Range Grid Y=0.25
+Enable=Enable
+CS=Normal
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=ImDistortion
+Plt=3
+AliasID=3
+XExp=F
+YExp=HARM(I(VRF))
+XRng=9.64e9,1e7
+YRng=10000,1e-16
+Options=LINEARX
+Range Grid X=9.64e8
+Enable=Enable
+Line Color=#008000
+Text Color=#008000
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=ImDistortion
+AliasID=-1
+XExp=F
+YExp=HARM(I(VRF))
+XRng=1.02e10,5e7
+YRng=10000,1e-16
+Options=LINEARX
+Range Grid X=1.02e9
+Enable=Enable
+Line Color=#FF00FF
+Text Color=#FF00FF
+Rainbow=True
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=ImDistortion
+Plt=4
+AliasID=4
+XExp=F
+YExp=HARM(V(RFP,RFN))
+XRng=9.64e9,1e7
+YRng=10000,1e-16
+Options=LINEARX
+Range Grid X=9.64e8
+Enable=Enable
+Line Color=#000000
+Text Color=#000000
+Rainbow=False
+LWdth=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=1
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=DynamicAC
+Temp=27
+FreqList=1E6
+SliderPer=10
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+Temp=27
+SliderPer=10
+PlaceText=True
+TextGrid=2,18
+
+[Pane]
+Analysis=Transient
+CurrentPage 0="Main"
+
+[Pane]
+Analysis=AC
+CurrentPage 0="Main"
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=HmDistortion
+CurrentPage 0="Main"
+
+[Pane]
+Analysis=ImDistortion
+CurrentPage 0="Main"
+
+[Stepping]
+Analysis=Transient
+Index=1
+Status=On
+Parameter Type=Symbolic
+Name=PLO
+From=-10
+To=20
+Value=2
+
+[Stepping]
+Analysis=ImDistortion
+Index=1
+Parameter Type=Model
+Name=NMOS NMOS1
+Param=VTH0
+From=1
+To=1.2
+Value=.1
+
+[Watch]
+Analysis=Transient
+Format=3
+ExprPercentWidth=80
+
+[Watch]
+Analysis=AC
+Format=3
+ExprPercentWidth=80
+
+[Watch]
+Analysis=HmDistortion
+Format=3
+ExprPercentWidth=80
+
+[Watch]
+Analysis=ImDistortion
+Format=3
+ExprPercentWidth=80
+
+[TF]
+Input Source
+Place Text=False
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

@@ -1,0 +1,107 @@
+[Main]
+FileType=tbk
+Version=11.00
+Program=Micro-Cap
+Count=4
+
+[shapedef]
+Name=Example
+Rectangle=-16,-56,528,124
+FColor=None
+Text="Title: #TITLE"
+TextInfo=-9,33,65,49 , -13,0,"Arial"
+Line=-16,28,528,28
+Line=-16,52,528,52
+Line=-16,76,528,76
+Line=-16,100,528,100
+Text="Designed by: #DESIGNED"
+TextInfo=-9,57,146,74 , -13,0,"Arial"
+Text="Checked by: #CHECKED"
+TextInfo=-9,81,139,98 , -13,0,"Arial"
+Text="Approved by: #APPROVED"
+TextInfo=-9,105,152,122 , -13,0,"Arial"
+Text="Spectrum Software\n1021 S. Wolfe Rd.\nSunnyvale, CA 94086\n(408) 738-4387"
+TextInfo=-8,-48,129,17 , -13,4,"Arial"
+Line=192,28,192,124
+Text="Desc: #DESCRIPTION"
+TextInfo=199,33,332,50 , -13,0,"Arial"
+Text="Doc No: #DOC_N"
+TextInfo=199,57,304,74 , -13,0,"Arial"
+Text="Date: #DATE"
+TextInfo=199,81,277,98 , -13,0,"Arial"
+Text="Sheet: #SHEET of #MAXSHEET"
+TextInfo=199,105,386,122 , -13,0,"Arial"
+Line=344,52,344,100
+Text="Revision: #Revision"
+TextInfo=351,57,466,74 , -13,0,"Arial"
+Text="Status: #STATUS"
+TextInfo=351,81,454,98 , -13,0,"Arial"
+Picture=316,-29,512,8
+BColor=None
+FColor="<Picture>logo2.gif",Fit_to_Size
+
+[shapedef]
+Name=DefaultOld
+Rectangle=-24,-25,232,76
+FColor=None
+Text="#Field1"
+TextInfo=-20,-21,28,-3 , -15,0,"Arial"
+Text="#Field2"
+TextInfo=-20,2,9,13 , -8,0,"Arial"
+Text="#Field3"
+TextInfo=-20,20,7,31 , -8,0,"Arial"
+Text="#Field4"
+TextInfo=-20,41,9,52 , -8,0,"Arial"
+Text="#Field5"
+TextInfo=-20,60,7,71 , -8,0,"Arial"
+Line=-24,16,232,16
+Line=-24,56,232,56
+Line=-24,36,232,36
+
+[shapedef]
+Name=Default
+Rectangle=-24,-26,520,154
+FColor=None
+Text="Title: #TITLE"
+TextInfo=-17,63,57,79 , -13,0,"Arial"
+Line=-24,58,520,58
+Line=-24,82,520,82
+Line=-24,106,520,106
+Line=-24,130,520,130
+Text="Designed by: #DESIGNED"
+TextInfo=-17,87,138,104 , -13,0,"Arial"
+Text="Checked by: #CHECKED"
+TextInfo=-17,111,131,128 , -13,0,"Arial"
+Text="Approved by: #APPROVED"
+TextInfo=-17,135,144,152 , -13,0,"Arial"
+Text="#COMPANY"
+TextInfo=-16,-18,57,-2 , -13,4,"Arial"
+Line=184,58,184,154
+Text="Desc: #DESCRIPTION"
+TextInfo=191,63,324,80 , -13,0,"Arial"
+Text="Doc No: #DOC_N"
+TextInfo=191,87,296,104 , -13,0,"Arial"
+Text="Date: #DATE"
+TextInfo=191,111,269,128 , -13,0,"Arial"
+Text="Sheet: #SHEET of #MAXSHEET"
+TextInfo=191,135,378,152 , -13,0,"Arial"
+Line=336,82,336,130
+Text="Revision: #Revision"
+TextInfo=343,87,458,104 , -13,0,"Arial"
+Text="Status: #STATUS"
+TextInfo=343,111,446,128 , -13,0,"Arial"
+
+[shapedef]
+Name=Star
+PolyOpen=11
+PolyLine=86,0
+PolyLine=65,62
+PolyLine=0,62
+PolyLine=53,101
+PolyLine=33,163
+PolyLine=86,124
+PolyLine=139,163
+PolyLine=118,101
+PolyLine=171,62
+PolyLine=106,62
+PolyLine=86,0

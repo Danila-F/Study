@@ -1,0 +1,214 @@
+;**************************************************************
+;   Bias Tolerance Template Library for Worst Case Analysis   *
+;**************************************************************
+; Syntax:
+;BEGIN devicetype
+	;BEGIN bias_tol_type,alt1,alt2
+		; Name   [pos=value[%]] [neg=value[%]] [rnd=value[%]]
+	;END
+;END
+;
+; Example:
+; BEGIN CAP
+	; BEGIN DRIFT,AGING,LIFE
+		; Ceramic type II	      neg=0.8% rnd=5.0%
+		; Fixed_Glass_CMS          		rnd=0.5%
+	; END 
+
+	; BEGIN TEMPERATURE
+		; Ceramic type II 	rnd=5.0%
+	; END 
+
+; END
+;
+; Note 1: Pos or neg or both must be zero or missing from each template
+; Note 2: Tolerances may be a percentage or a positive number
+;
+; Usage:
+; In the Worst Case dialog box, right click in any Bias tolerance 
+; field. From the pop-up list select a tolerance. The selected neg, 
+; pos and rnd tolerances can then be applied to the selected part 
+; parameter or to all similar parameters.
+
+; Resistors
+BEGIN RES
+	BEGIN DRIFT,AGING,LIFE
+
+		;Source: http://www.ttelectronicsresistors.com/datasheets/CC.pdf
+		Carbon_Comp_1K_Hrs_25C					rnd=8%
+
+		;Source: http://www.vishay.com/docs/28809/driftcalculation.pdf
+		Vishay_SMD_1KHrs_125	         	 	rnd=0.25%
+		Vishay_Leaded_ThinFilm_1KHrs_155		rnd=0.50%
+
+		; Source http://www.rcmicro.es/pdf/Vishay_Resistors_RNC90Y.pdf
+		Bulk_Metal_Foil_2KHrs_QPL RNC90Y		rnd=.05%
+		Bulk_Metal_Foil_2KHrs_Non-QPL S555	rnd=.15%
+
+		; Source http://www.susumu-usa.com/pdf/RG_Data_Sheet.pdf
+		Susumu_Chip_Thin_Film						rnd=.25%
+
+		; Vishay at:
+		; Source: https://www.ieee.li/pdf/essay/basics_of_linear_fixed_resistors.pdf
+		Carbon_Film		rnd=2%
+		Metal_Film		rnd=.3%
+		Thick_Film		rnd=2%
+		Metal_Foil		rnd=.05%
+		Carbon_Comp		neg=3%
+		Wire_Wound		rnd=5%
+		Power_Metal		rnd=2%
+
+	END
+
+	BEGIN TEMPERATURE
+		; Vishay at:
+		; Source: https://www.ieee.li/pdf/essay/basics_of_linear_fixed_resistors.pdf
+		Carbon_Film		neg=.08%
+		Metal_Film		rnd=.003%
+		Thick_Film		rnd=.012%
+		Metal_Foil		rnd=.003%
+		Carbon_Comp		neg=.08%
+		Wire_Wound		rnd=.01%
+		Power_Metal		rnd=.015%
+
+		; Source http://www.rcmicro.es/pdf/Vishay_Resistors_RNC90Y.pdf
+		Bulk_Metal_Foil_-55_125_QPL RNC90Y		rnd=.05%
+		Bulk_Metal_Foil_-55_125_Non-QPL S555	rnd=.05%
+
+		; Source http://www.susumu-usa.com/pdf/RG_Data_Sheet.pdf
+		Susumu_Chip_Thin_Film						rnd=.25%
+	END
+
+	BEGIN MOISTURE
+		; Source http://www.susumu-usa.com/pdf/RG_Data_Sheet.pdf
+		Susumu_Chip_Thin_Film						rnd=.25%
+	END
+
+	BEGIN RADIATION,NUCLEAR
+		; Demo Only
+		Carbon_Film		neg=.1%
+		Metal_Film		rnd=.02%
+		Thick_Film		rnd=.15%
+	END
+END 
+
+; Capacitors
+BEGIN CAP
+	BEGIN DRIFT,AGING,LIFE
+		; Source https://en.wikipedia.org/wiki/Ceramic_capacitor#/media/File:Delta-Cap-versus-Zeit-engl.png
+		Ceramic_II_NPO_10KHrs				rnd=0%
+		Ceramic_II_XR7_10KHrs				neg=-8%
+		Ceramic_II_Z5U_10KHrs				neg=-20%
+		Ceramic_II_Y5V_10KHrs				neg=-25%
+
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic            rnd=10%
+   END
+	
+	BEGIN RADIATION,NUCLEAR
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic            pos=12%
+	END 
+
+	BEGIN LOWTEMP
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic            neg=28% 
+	END 
+
+	BEGIN HIGHTEMP
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic            pos=17% 
+	END 
+
+	BEGIN VACUUM
+		;Tantalum Electrolytic Vishay
+		Tantalum_Electrolytic            neg=20%
+	END 
+END 
+
+; Inductors
+BEGIN IND
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		Air          neg=4.5% rnd=3.0%
+	   Iron         neg=4.5% rnd=3.0%
+	END
+END
+
+; Bipolar NPN Transistors
+BEGIN NPN
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		BF   			rnd=25%        
+		RC   			rnd=25%        
+	END
+END
+
+; Bipolar PNP Transistors
+BEGIN PNP
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		BF   			rnd=25%        
+		RC   			rnd=25%        
+	END
+END
+
+BEGIN NJF
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		VTO  			rnd=0.1        
+	END
+END
+
+BEGIN PJF
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		VTO  			rnd=0.1        
+	END
+END
+
+; Diodes
+BEGIN D
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		BV_Std             rnd=1%        
+	END
+END 
+
+; NMOS
+BEGIN NMOS
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		ID             rnd=10%        
+	END
+END 
+
+; PMOS
+BEGIN PMOS
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		ID             rnd=10%        
+	END
+END 
+
+; IGBT
+
+BEGIN NIGBT
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		IC             rnd=10%        
+	END
+END
+
+; Opamps
+BEGIN OPA
+	BEGIN DRIFT,AGING,LIFE
+		; Demo Only
+		VPMAX             rnd=10%        
+	END
+END 
+
+
+
+
+;$SpiceType=AMBIGUOUS

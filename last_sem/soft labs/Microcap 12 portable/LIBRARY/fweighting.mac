@@ -1,0 +1,929 @@
+[Main]
+FileType=CIR
+Version=10.01
+Program=Micro-Cap
+Component Version=10.00
+Shape Version=10.01
+Screen=1024,768
+MCAPVersion=10.0.0.0
+Key ID=167 488 975
+NLCnt=6
+TXCnt=5
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=LFVOFV
+Root="VOFV.Root",0,0,0
+Root="TextL.Root",41,20,0
+Root="TextF.Root",48,20,0
+
+[shapedef]
+Name=Minus.root
+Line=-2,0,2,0
+
+[shapedef]
+Name=OFV.Root
+Root="Plus.root",8,8,0
+Ellipse=-2,-2,2,2
+FColor=None
+Ellipse=-2,46,2,50
+FColor=None
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=TextF.Root
+Line=0,0,5,0
+Line=0,0,0,8
+Line=2,4,0,4
+
+[shapedef]
+Name=TextL.Root
+Line=0,0,0,8
+Line=0,8,5,8
+
+[shapedef]
+Name=VOFV.Root
+Line=0,0,0,0
+Line=0,48,0,48
+Root="Vsrc.root",0,0,0
+Root="OFV.Root",0,0,0
+
+[shapedef]
+Name=Vsrc.root
+Root="Plus.root",43,8,0
+Root="Minus.root",43,40,0
+Line=48,0,48,12
+Line=48,36,48,48
+Ellipse=36,12,61,36
+FColor=None
+Current=64,16,64,32
+
+[compdef]
+Name=LFVofV
+Definition=LFVofV
+Shape=LFVOFV
+Mask=4096
+memo=Laplace formula VofV source (E.g. LAPLACE=1/(1+.0001*S+1e-8*S*S))
+Label Offset=63,13,-30,59
+PinCnt=4
+Pin="Plus Output",6,0,-15,-3
+Pin="Minus Output",6,6,-12,17
+Pin="Plus Input",0,0,-29,-3
+Pin="Minus Input",0,6,-33,17
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-27, 0,0,807,419
+Default Object=Color=#000080
+Default Object Font=Height=-21,FStyle=4,Color=#000000,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Verdana
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Verdana
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=Height=-11,FStyle=0,Color=#000000,Name=Arial
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+Grid Color=#000000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+NodeVoltageFormat=3
+PathDelayFormat=3
+WarningFormat=3
+GridTextFormulaFormat=3
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=False
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=21,4,82,39
+
+[Comp]
+Name=LFVofV
+Grid=39,22
+
+[Attr]
+ON=63,13,PART
+V=E1
+Style=8192
+
+[Attr]
+ON=63,27,LAPLACE
+V=Type
+Style=12288
+
+[Attr]
+ON=0,22,NUMBER_OF_DATAPOINTS
+V=8192
+
+[Comp]
+Name=Ground
+Grid=39,28
+Rot=7
+
+[Comp]
+Name=Ground
+Grid=45,28
+Rot=7
+
+[Wire]
+Grids=45,22,50,22
+
+[Wire]
+Grids=34,22,39,22
+
+[Grid Text]
+Text="FWeighting Macro"
+Grid=44,8
+Color=#FF00FF
+CBorder=None
+
+[Grid Text]
+Text="Out"
+Grid=50,22
+CBorder=None
+
+[Grid Text]
+Text="In"
+Grid=34,22
+CBorder=None
+
+[Grid Text]
+Text=".PARAMETERS(Type=A)"
+Grid=28,12
+Color=#008000
+Font=Arial
+CBorder=None
+
+[Grid Text]
+Text=".Help Type "Selects the frequency weighting scale.  Must be A, B, C, or D.""
+Grid=28,15
+Color=#0000FF
+Font=Arial
+CBorder=None
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=0.6666666666666666
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic","GroundArrow"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+CalcVoltage=True
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+FILESAVEASOLD=No
+BOM=No
+FILEPCB=No
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=No
+META=No
+INFO=Yes
+HELP=Yes
+HELP_SPICE=No
+LINK=No
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=No
+BORDER=No
+TITLE=No
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+CIR_MAKEMACRO=No
+CLEARCUTWIRE=No
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+REPLACE=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=No
+DISABLE=No
+TOFRONT=No
+TOBACK=No
+SELNEXT=No
+PAGEADD=No
+PAGEADDTEXT=No
+ADDSECTION=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=No
+FONT=No
+DM_LAST=No
+DM_RMS=No
+DM_AVG=No
+DM_PEAK=No
+GRID_NONE=No
+GRID_NORMAL=No
+GRID_BOLD_5=No
+GRID_BOLD_6=No
+GRID_BOLD_USER=No
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+RENAMEDEFINE=No
+RENAMECMP=No
+ATTALIGN=No
+RESETNODEPOS=No
+FIT2STANDARD=No
+NODESNAP=No
+MOVETEXT=No
+TEXTINC=No
+TOGGLETEXT=No
+TOGGLEMODE=No
+TOLERANCE=No
+ALIGNLEFT=No
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNBOTTOM=No
+
+[Section]
+Index=0
+Name="FWeighting"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=425
+TabSize 1=425
+TabSize 2=425
+TabSize 3=425
+
+[Page]
+Index=0
+Section=0
+Print=True
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+SB 3=125,0
+Scale 3=0.6666666666666666
+Grid=91,38
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+Background Color=#FFFFFF
+Text=
+Text=.define Ka 7.39705e9
+Text=.define A (Ka*s^4)/((s+129.4)^2 * (s+676.7) * (s+4636) * (s+76655)^2)
+Text=
+Text=.define Kb 5.99185e9
+Text=.define B (Kb*s^3)/((s+129.4)^2 * (s+995.9) * (s+76655)^2)
+Text=
+Text=.define Kc 5.91797e9
+Text=.define C (Kc*s^2)/((s+129.4)^2 * (s+76655)^2)
+Text=
+Text=.define Kd 91104.32
+Text=.define D (Kd*s*(s^2+6532*s+4.0975e7))/((s+1776.3) * (s+7288.5) * (s^2+21514*s+3.8836e8))
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+Background Color=#FFFFFF
+
+[AC]
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Title=A-Weighting.cir
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=True
+AutoScaleRanges=False
+FFT_NPts="1024"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+AnimateWait=0
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Noise=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Low="FMIN"
+Num Out High="FMAX"
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Format=3
+Num Out HideNonSelected=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=No
+TOBACK=No
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+
+[APage]
+Analysis=AC
+Name="Main"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=20760.30879268163,-11.02783725910064,0,0
+Font=Height=-21,FStyle=4,Color=#008000,Name=Arial
+Text="B"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=23.0271026772035,-42.65524625267666,0,0
+Font=Height=-21,FStyle=4,Color=#0000FF,Name=Arial
+Text="A"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=22.68052631670789,-23.09421841541755,0,0
+Font=Height=-21,FStyle=4,Color=#008000,Name=Arial
+Text="B"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=21.89199804356485,-3.008565310492503,0,0
+Font=Height=-21,FStyle=4,Color=#FF0000,Name=Arial
+Text="C"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=22.56616393183875,-17.09850107066381,0,0
+Font=Height=-21,FStyle=4,Color=#000000,Name=Arial
+Text="D"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=20655.62875170737,-1.734475374732332,0,0
+Font=Height=-21,FStyle=4,Color=#000000,Name=Arial
+Text="D"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=20655.62875170737,-8.17987152034261,0,0
+Font=Height=-21,FStyle=4,Color=#0000FF,Name=Arial
+Text="A"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=23438.14093454818,-11.02783725910064,0,0
+Font=Height=-21,FStyle=4,Color=#FF0000,Name=Arial
+Text="C"
+
+[AObject]
+Analysis=AC
+Object=Text
+CBorder=None
+w=0
+AliasID1=1
+Pos=22170.41766837017,-11.02783725910064,0,0
+Font=Height=-21,FStyle=4,Color=#000000,Name=Arial
+Text="+"
+
+[Monte Carlo Options]
+Analysis=AC
+Status=Off
+Zero Tolerance=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Limits]
+Analysis=AC
+FRange=20k,10
+NPts=1001
+Temp=27
+MaxChng=5
+NInput=NONE
+NOutput=2
+Sweep type=Log
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+
+[WaveForm]
+Analysis=AC
+Plt=1
+AliasID=1
+XExp=F
+YExp=db(v(AOut))
+XRng=100000,10
+YRng=20,-50
+Options=LINEARY
+Range Grid X=3998
+Range Grid Y=10
+Enable=Enable
+CS=Normal
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+LWdth=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+Plt=1
+AliasID=3
+XExp=F
+YExp=db(v(BOut))
+XRng=100000,10
+YRng=20,-50
+Options=LINEARY
+Range Grid X=3998
+Range Grid Y=10
+Enable=Enable
+CS=Normal
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+LWdth=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+Plt=1
+AliasID=4
+XExp=F
+YExp=db(v(COut))
+XRng=100000,10
+YRng=20,-50
+Options=LINEARY
+Range Grid X=3998
+Range Grid Y=10
+Enable=Enable
+CS=Normal
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+LWdth=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+Plt=1
+AliasID=5
+XExp=F
+YExp=db(v(DOut))
+XRng=100000,10
+YRng=20,-50
+Options=LINEARY
+Range Grid X=3998
+Range Grid Y=10
+Enable=Enable
+CS=Normal
+Line Color=#000000
+Text Color=#000000
+Rainbow=False
+LWdth=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+AliasID=2
+XExp=F
+YExp=ph(v(OUT))
+XRng=100000,10
+YRng=Auto
+Options=LINEARY
+Range Grid X=3998
+Enable=Enable
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+AliasID=-1
+XRng=20000,10
+Options=LINEARY
+Range Grid X=3998
+Enable=Enable
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+CurrentPage 0="Main"
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[Pane]
+Analysis=ImDistortion
+
+[Watch]
+Analysis=AC
+Format=3
+ExprPercentWidth=80
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

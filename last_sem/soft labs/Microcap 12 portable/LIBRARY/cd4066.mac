@@ -1,0 +1,1184 @@
+[Main]
+FileType=CIR
+Version=10.01
+Program=Micro-Cap
+Component Version=10.00
+Shape Version=10.01
+Screen=1920,1200
+MCAPVersion=11.0.0.8
+Key ID=1 169 355 002
+NLCnt=71
+TXCnt=15
+
+[shapedef]
+Name=Mos1.root
+Line=0,0,10,0
+Line=10,-8,10,8
+Rectangle=12,-12,14,12
+Current=32,-24,32,-16
+Current=32,24,32,16
+Current=0,-8,8,-8
+PolyOpen=3
+PolyLine=24,-24
+PolyLine=24,-8
+PolyLine=13,-8
+PolyOpen=3
+PolyLine=24,24
+PolyLine=24,8
+PolyLine=13,8
+
+[shapedef]
+Name=NMOS
+Root="Mos1.root",0,0,0
+Line=14,0,24,0
+PolyClosed=3
+PolyLine=16,0
+PolyLine=20,4
+PolyLine=20,-4
+Current=32,-4,24,-4
+
+[shapedef]
+Name=PMOS
+Root="Mos1.root",0,0,0
+Line=14,0,24,0
+PolyClosed=3
+PolyLine=16,-4
+PolyLine=16,4
+PolyLine=20,0
+Current=32,-4,24,-4
+
+[compdef]
+Name=NMOS
+Definition=NMOS
+Shape=NMOS
+Mask=4096
+Used=19
+memo=NMOS
+Label Offset=29,1,7,25
+PinCnt=4
+Pin="Drain",3,-3,8,9
+Pin="Gate",0,0,-20,-4
+Pin="Source",3,3,8,4
+Pin="Body",3,0,8,-1
+
+[compdef]
+Name=PMOS
+Definition=PMOS
+Shape=PMOS
+Mask=5632
+Used=17
+memo=PMOS
+Label Offset=29,0,-18,26
+PinCnt=4
+Pin="Drain",3,-3,7,8
+Pin="Gate",0,0,-19,-2
+Pin="Source",3,3,7,4
+Pin="Body",3,0,7,0
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-30, 220,290,1646,1006
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Anchor Color=#000000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Arial
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Arial
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block Border=#000000
+Disabled	Color=#C0C0C0
+KeyWord Color=#000000
+Error	Color=#000000
+Search Color=#FFFF00
+Grid Color=#000000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+Block Select Color=#51F998
+NodeVoltageFormat=2
+PathDelayFormat=2
+WarningFormat=3
+GridTextFormulaFormat=3
+Window Placement in Transient Analysis=0,1, -1,-1, -4,-30, 953,0,1906,1031
+SpiceType=PSPICE
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Comp]
+Name=NMOS
+Grid=27,50
+Rot=4
+
+[Attr]
+ON=-2,-33,PART
+V=MN6
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=145U L=2.4U AD= 600P AS= 600P PD=75U PS=145U
+
+[Attr]
+ON=30,-17,MODEL
+V=MHCNEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=NMOS
+Grid=42,39
+Rot=2
+
+[Attr]
+ON=-53,-13,PART
+V=MN5
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=42U L=2.4U AD= 170P AS= 170P PD= 20U PS=  42U
+
+[Attr]
+ON=-48,-41,MODEL
+V=MHCNEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=PMOS
+Grid=27,39
+Rot=4
+
+[Attr]
+ON=-1,-22,PART
+V=MP5
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=85U L=2.4U AD= 355P AS= 355P PD= 40U PS=  85U
+
+[Attr]
+ON=10,16,MODEL
+V=MHCPEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Grids=42,39,44,39
+
+[Wire]
+Grids=30,47,35,47
+
+[Wire]
+Grids=39,36,50,36
+
+[Wire]
+Grids=30,36,32,36
+
+[Wire]
+Grids=30,42,30,47
+
+[Wire]
+Grids=39,42,39,44
+
+[Wire]
+Grids=50,39,52,39
+
+[Wire]
+Grids=52,39,52,44
+
+[Wire]
+Grids=39,44,52,44
+
+[Wire]
+Grids=39,44,39,47
+
+[Wire]
+Grids=55,39,58,39
+
+[Wire]
+Grids=39,39,39,42
+
+[Wire]
+Grids=30,50,30,53
+
+[Wire]
+Grids=30,53,30,56
+
+[Wire]
+Grids=25,50,27,50
+
+[Wire]
+Grids=25,39,25,50
+
+[Comp]
+Name=NMOS
+Grid=19,25
+Rot=4
+
+[Attr]
+ON=29,-16,PART
+V=MN1
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=56U L=2.4U AD= 225P AS= 225P PD=70U PS=56U
+
+[Attr]
+ON=29,-31,MODEL
+V=MHCNEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=PMOS
+Grid=19,14
+Rot=4
+
+[Attr]
+ON=4,-23,PART
+V=MP1
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=88U L=2.4U AD= 350P AS= 350P PD=100U PS=88U
+
+[Attr]
+ON=32,-7,MODEL
+V=MHCPEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Grids=22,19,24,19
+
+[Wire]
+Grids=22,17,22,19
+
+[Wire]
+Grids=22,25,22,28
+
+[Wire]
+Grids=54,42,54,53
+
+[Wire]
+Grids=54,42,58,42
+
+[Wire]
+Grids=52,33,52,36
+
+[Wire]
+Grids=52,36,58,36
+
+[Wire]
+Grids=22,11,22,14
+
+[Wire]
+Grids=22,9,22,11
+
+[Wire]
+Grids=22,9,23,9
+
+[Wire]
+Grids=19,14,19,19
+
+[Wire]
+Grids=12,19,15,19
+
+[Wire]
+Grids=19,19,19,25
+
+[Comp]
+Name=NMOS
+Grid=37,25
+Rot=4
+
+[Attr]
+ON=29,-16,PART
+V=MN4
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=150U L=2.4U AD= 400P AS= 400P PD=100U PS= 150U
+
+[Attr]
+ON=29,-31,MODEL
+V=MHCNEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=PMOS
+Grid=37,14
+Rot=4
+
+[Attr]
+ON=4,-23,PART
+V=MP4
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=350U L=2.4U AD= 900P AS= 900P PD=200U PS= 350U
+
+[Attr]
+ON=31,-5,MODEL
+V=MHCPEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Grids=40,17,40,18
+
+[Wire]
+Grids=40,25,40,28
+
+[Wire]
+Grids=40,11,40,14
+
+[Wire]
+Grids=40,9,40,11
+
+[Wire]
+Grids=37,14,37,19
+
+[Wire]
+Grids=22,19,22,22
+
+[Wire]
+Grids=32,5,32,9
+
+[Wire]
+Grids=32,9,40,9
+
+[Wire]
+Grids=44,22,44,39
+
+[Wire]
+Grids=40,22,44,22
+
+[Wire]
+Grids=44,39,47,39
+
+[Wire]
+Grids=22,28,40,28
+
+[Wire]
+Grids=22,28,22,56
+
+[Wire]
+Grids=22,56,25,56
+
+[Wire]
+Grids=30,56,30,61
+
+[Wire]
+Grids=25,19,25,25
+
+[Wire]
+Grids=25,25,37,25
+
+[Wire]
+Grids=25,39,27,39
+
+[Wire]
+Grids=61,39,63,39
+
+[Comp]
+Name=PMOS
+Grid=61,39
+Rot=6
+
+[Attr]
+ON=-33,35,PART
+V=MP7
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=1900U L=2.4U AD=2500P AS=2500P PD=10U PS=1900U
+
+[Attr]
+ON=-15,15,MODEL
+V=MHCPEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=NMOS
+Grid=47,39
+
+[Attr]
+ON=-5,-22,PART
+V=MN7
+Style=8192
+
+[Attr]
+ON=0,0,VALUE
+V=W=576U L=2.4U AD=1200P AS=1200P PD= 10U PS= 576U
+
+[Attr]
+ON=-30,13,MODEL
+V=MHCNEN
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Grids=50,36,52,36
+
+[Wire]
+Grids=50,42,54,42
+
+[Wire]
+Grids=25,25,25,39
+
+[Wire]
+Grids=37,19,63,19
+
+[Wire]
+Grids=37,19,37,25
+
+[Wire]
+Grids=63,19,63,39
+
+[Wire]
+Grids=15,19,19,19
+
+[Wire]
+Grids=24,19,25,19
+
+[Wire]
+Grids=23,9,32,9
+
+[Wire]
+Grids=25,56,30,56
+
+[Wire]
+Grids=40,18,40,22
+
+[Wire]
+Grids=35,47,39,47
+
+[Wire]
+Grids=32,36,39,36
+
+[Wire]
+Grids=54,53,54,61
+
+[Grid Text]
+Text="_8"
+Grid=32,36
+CBorder=None
+
+[Grid Text]
+Text="_5"
+Grid=35,47
+CBorder=None
+
+[Grid Text]
+Text="_4"
+Grid=40,18
+CBorder=None
+
+[Grid Text]
+Text="_60"
+Grid=25,56
+CBorder=None
+
+[Grid Text]
+Text="_50"
+Grid=23,9
+CBorder=None
+
+[Grid Text]
+Text="_3"
+Grid=24,19
+CBorder=None
+
+[Grid Text]
+Text="_2"
+Grid=15,19
+CBorder=None
+
+[Grid Text]
+Text="NE"
+Grid=12,19
+CBorder=None
+
+[Grid Text]
+Text="VCC"
+Grid=32,5
+CBorder=None
+
+[Grid Text]
+Text="NY"
+Grid=52,33
+CBorder=None
+
+[Grid Text]
+Text="NZ"
+Grid=54,61
+CBorder=None
+
+[Grid Text]
+Text="GND"
+Grid=30,61
+CBorder=None
+
+[Grid Text]
+Text="VCC"
+Grid=30,39
+CBorder=None
+
+[Grid Text]
+Text="VCC"
+Grid=55,39
+CBorder=None
+
+[Grid Text]
+Text="_9"
+Grid=54,53
+CBorder=None
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=0.5
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Polarity","Euro","Electrolytic","GroundArrow","DeMorgan","Main1","Main11","Main2","Main12","Main111","Main1111","Main11111","Main21","Main111111","Main1111111","Main11111111","Main111111111","Main1111111111","Main11111111111"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+CalcVoltage=True
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+FILESAVEASOLD=No
+BOM=No
+FILEPCB=No
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+STAR=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+POLYOPEN=No
+FLAG=Yes
+INFO=Yes
+HELP=Yes
+HELP_SPICE=No
+LINK=Yes
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=Yes
+BORDER=No
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+CIR_MAKEMACRO=No
+CLEARCUTWIRE=No
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+REPLACE=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=Yes
+DISABLE=Yes
+TOFRONT=Yes
+TOBACK=Yes
+SELNEXT=No
+PAGEADD=No
+PAGEADDTEXT=No
+ADDSECTION=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=Yes
+FONT=Yes
+DM_LAST=No
+DM_RMS=No
+DM_AVG=No
+DM_PEAK=No
+GRID_NONE=No
+GRID_NORMAL=No
+GRID_BOLD_5=No
+GRID_BOLD_6=No
+GRID_BOLD_USER=No
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+RENAMEDEFINE=No
+RENAMECMP=No
+ATTALIGN=No
+RESETNODEPOS=No
+FIT2STANDARD=No
+NODESNAP=No
+MOVETEXT=No
+TEXTINC=No
+TOGGLETEXT=No
+TOGGLEMODE=No
+TOLERANCE=No
+ALIGNLEFT=No
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNBOTTOM=No
+
+[Section]
+Index=0
+Name="CD4066"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=425
+TabSize 1=425
+TabSize 2=425
+TabSize 3=425
+
+[Page]
+Index=0
+Section=0
+Print=True
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=0.5
+Grid=14,32
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+SB 0=0,46
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Text=
+Text=.MODEL CD4007N NMOS (
+Text=+ LEVEL=1 VTO=1.5 KP=6*320u L=10u W=30u GAMMA=0 PHI=.6 LAMBDA=10m
+Text=+ IS=16.64p CBD=2.0p CBS=2.0p CGSO=0.1p CGDO=0.1p
+Text=+ PB=.8 TOX=1200n)
+Text=
+Text=.MODEL CD4007P PMOS (
+Text=+ LEVEL=1 VTO=-1.9 KP=6*110u L=10U W=60U GAMMA=0 PHI=.6 LAMBDA=40m
+Text=+ IS=16.64P CBD=4.0P CBS=4.0P CGSO=0.2P CGDO=0.2P
+Text=+ PB=.8 TOX=1200N)
+Text=
+Text=.SUBCKT HC4066pck 2 3 4 1 0
+Text=XHC4066   20  30  40  10  90      SWI2
+Text=XPK14  3  4 90 90 90 90  0 90 90 90 90 90  2  1
+Text=+     30 40 90 90 90 90 90 90 90 90 90 90 20 10 pk14
+Text=.ENDS
+Text=
+Text=.SUBCKT SWI2  20 30 40 80 90
+Text=* INP = 20 Y = 30 Z = 40 VCC = 80  GND = 90
+Text=*XINP  20  25  80  90      INP2N
+Text=****Version 1.04 Inserted inverter****
+Text=XINP  20  250      80  90  INP2N
+Text=XINV  250  25      80  90  INV4N
+Text=XAS   25   30  40  80  90  SWITCH2N
+Text=.ENDS
+Text=
+Text=
+Text=.SUBCKT INP2N  2  3  50  60
+Text=*IN=2, OUT=3, VCC=50, GND=60
+Text=R1  2  4  100
+Text=MP1 4 50 50 50  MHCPEN W= 20U L=2.4U AD=100P AS=100P PD=40U PS= 20U
+Text=MN1 4 60 60 60  MHCNEN W= 35U L=2.4U AD=260P AS=260P PD=70U PS= 20U
+Text=MP2 3  4 50 50  MHCPEN W=176U L=2.4U AD=580P AS=580P PD=10U PS=200U
+Text=MN2 3  4 60 60  MHCNEN W=112U L=2.4U AD=325P AS=580P PD=10U PS=150U
+Text=.ENDS
+Text=
+Text=.SUBCKT INV4N   2  3  50  60
+Text=*IN=2, OUT=3, VCC=50, GND=60
+Text=MP1 3  2 50 50  MHCPEN W=  88U L=2.4U AD= 350P AS= 350P PD=100U PS=  88U
+Text=MN1 3  2 60 60  MHCNEN W=  56U L=2.4U AD= 225P AS= 225P PD= 70U PS=  56U
+Text=.ENDS
+Text=
+Text=.SUBCKT SWITCH2N  2  8  9  50  60
+Text=* ANALOG SWITCH
+Text=* INPUT= 2   Y= 8   Z= 9  VCC= 50   GND= 60
+Text=MP1 3  2  50  50  MHCPEN W=88U L=2.4U AD= 350P AS= 350P PD=100U PS=88U
+Text=MN1 3  2  60  60  MHCNEN W=56U L=2.4U AD= 225P AS= 225P PD=70U PS=56U
+Text=MP4 4  3  50  50  MHCPEN W=350U L=2.4U AD= 900P AS= 900P PD=200U PS= 350U
+Text=MN4 4  3  60  60  MHCNEN W=150U L=2.4U AD= 400P AS= 400P PD=100U PS= 150U
+Text=MP5 5  3   8  50  MHCPEN W=85U L=2.4U AD= 355P AS= 355P PD= 40U PS=  85U
+Text=MN5 5  4   8   5  MHCNEN W=42U L=2.4U AD= 170P AS= 170P PD= 20U PS=  42U
+Text=MN6 5  3  60  60  MHCNEN W=145U L=2.4U AD= 600P AS= 600P PD= 75U PS= 145U
+Text=
+Text=MP7 9  3   8  50  MHCPEN W=1900U L=2.4U AD=2500P AS=2500P PD= 10U PS=1900U
+Text=MN7 9  4   8   5  MHCNEN W= 576U L=2.4U AD=1200P AS=1200P PD= 10U PS= 576U
+Text=.ENDS
+Text=
+Text=
+Text=.MODEL MHCNEN NMOS (LEVEL=3 DELTA=0.315 ETA=0.025 GAMMA=0.94 KAPPA=0.0
+Text=+ KP=45.3E-6 LD=0.52E-6 NSUB=2.8E15 PHI=0.65 RD=5 RS=15 THETA=0.054
+Text=+ TOX=51.5E-9 VMAX=150E3 VTO=1.3 WD=0.0 XJ=0.11E-6)
+Text=***********************************************
+Text=*        NOMINAL P-Channel transistor         *
+Text=*           UCB-3 Parameter Set               *
+Text=*         HIGH-SPEED CMOS Logic Family        *
+Text=*               10-Jan.-1995                  *
+Text=***********************************************
+Text=.MODEL MHCPEN PMOS (LEVEL=3 DELTA=2.24 ETA=0.322 GAMMA=0.92 KAPPA=0.0
+Text=+ KP=22.1E-6 LD=0.23E-6 NSUB=3.3E16 PHI=0.65 RD=5 RS=15 THETA=0.108
+Text=+ TOX=51.5E-9 VMAX=970E3 VTO=-1.3 WD=0.0 XJ=0.63E-6)
+Text=
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+
+[Transient]
+Window Placement=0,1, -1,-1, -4,-30, 0,0,953,1031
+Font=Height=-18,FStyle=0,Color=#0000FF,Name=Comic Sans MS
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Anchor Color=#000000
+Select Box Color=#000080
+Title
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot
+Tracker Foreground=Height=-19,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=False
+TagFormatX=2
+TagFormatY=2
+FormulaFormat=2
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=No
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-19,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=True
+OperPointOnly=False
+AutoScaleRanges=False
+FixedTimeStep=False
+DoPSS=False
+PSS_Periods="1"
+PSS_Iterations="5"
+PSS_Error="1u"
+PSS_ShowPlots=True
+FFT_NPts="8192"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=1
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=142
+MonExprYWidth=314
+MonRangeXWidth=90
+MonRangeYWidth=90
+AnimateWait=None
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n$date $time"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=False
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Allow Dup Y Expr=False
+Num Out Low="TSTART"
+Num Out High="TMAX"
+Num Out Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Num Out Format=2
+Num Out HideNonSelected=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+Print Individual Pages=False
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+STAR=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+POLYCLOS=No
+POLYOPEN=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+ALIGNLEFT=No
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNBOTTOM=No
+
+[APage]
+Analysis=Transient
+Name="Main"
+
+[Monte Carlo Options]
+Analysis=Transient
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Limits]
+Analysis=Transient
+TRange=999N
+TStep=.1N
+NPts=51
+Temp=27
+RetraceRuns=1
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+
+[WaveForm]
+Analysis=Transient
+Plt=2
+AliasID=3
+XExp=V(VIS)
+YExp=-V(NZ,NY)/I(V3)
+XRng=10,0
+YRng=80,0
+Options=LINEARX,LINEARY
+Range Grid X=1
+Range Grid Y=10
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+LWdth=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=2
+SFmtY=2
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+Temp=27
+SliderPer=1
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+CurrentPage 0="Main"
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=HmDistortion
+
+[Pane]
+Analysis=ImDistortion
+
+[Stepping]
+Analysis=Transient
+Index=1
+Status=On
+Method=List
+Parameter Type=Symbolic
+Name=VCC
+From=4.5, 6, 9
+
+[Watch]
+Analysis=Transient
+Format=3
+ExprPercentWidth=80
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

@@ -1,0 +1,10 @@
+Nuhertz Filter SOlutions 14.0.0
+
+
+Replace filter_solutions.exe with one provided.
+
+Run as admin ( once to allow license setup) , entering anythign you'd like for user and password. ( must be atleast one character each)
+
+Enjoy.
+
+

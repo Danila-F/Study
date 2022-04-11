@@ -1,0 +1,858 @@
+[Main]
+FileType=CIR
+Version=8.01
+Program=Micro-Cap
+Screen=1024,768
+MCAPVersion=8.0.4.0
+Key ID=208 332 945
+NLCnt=7
+TXCnt=11
+
+[shapedef]
+Name=SPICE_V
+Root="Vsource.root",0,-12,0
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Vsource.root
+Line=0,0,12,0
+Line=36,0,48,0
+Ellipse=12,-12,36,12
+Line=7,5,7,9
+Root="Plus.root",39,5,0
+Current=32,16,16,16
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Timer
+Line=0,16,24,16
+Rectangle=24,-8,136,40
+Line=136,0,160,0
+Line=136,16,160,16
+Line=136,32,160,32
+Ellipse=72,8,88,24
+Line=80,16,80,8
+Line=80,16,88,16
+
+[compdef]
+Name=Timer
+Definition=Timer
+Shape=Timer
+Mask=20480
+memo=Tracks timer events, stores times and counts
+Label Offset=34,41,11,59
+PinCnt=4
+Pin="ELAPSED",20,0,-74,6
+Pin="COUNT",20,2,-62,6
+Pin="LAST",20,4,-53,6
+Pin="RESET",0,2,26,6
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[compdef]
+Name=Voltage Source
+Definition=VSpice
+Shape=SPICE_V
+Mask=4864
+memo=Voltage Source
+Label Offset=19,13,15,13
+PinCnt=2
+Pin="Plus",6,0,-5,-6
+Pin="Minus",0,0,-20,-6
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-23, 198,198,1024,650
+Default Object=Color=4
+Default Object Font=Height=-15,FStyle=0,Color=4,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=15
+Select Color=9
+Select Box Color=4
+Grid Text Color=Height=-12,FStyle=0,Color=1,Name=Arial
+Component Color=12
+Attribute Text=Height=-12,FStyle=0,Color=2,Name=Arial
+Wire Color=2
+Pin Connection=Height=-10,FStyle=0,Color=9,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=13,Name=Arial
+Node Voltage Color=0
+Dynamic AC Voltage Color=56
+Text Banner Text=Height=-15,FStyle=0,Color=1,Name=Arial
+Title Block Background=7
+Current=Height=-11,FStyle=0,Color=12,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=9,Name=Arial
+Digital Path Color=9
+Title Block=Height=-15,FStyle=0,Color=0,Name=Arial
+Digital 0 Color=0
+Digital R Color=11
+Digital F Color=11
+Digital 1 Color=9
+Digital X Color=7
+Digital Z Color=8
+SpiceType=AMBIGUOUS
+Block Select Color=41
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+
+[Comp]
+Name=Timer
+Style=ShowPinText
+Grid=42,28
+
+[Attr]
+ONV=26,-23,PART,Timer1
+Style=8192
+
+[Attr]
+ONV=0,0,INPUTEXPR,(V(In) > 2.5) * (t >= {StepWidth})
+
+[Attr]
+ONV=34,56,ELAPSED_SCALE,1
+
+[Attr]
+ONV=34,71,INCREMENT,{Increment}
+
+[Attr]
+ONV=34,86,INITIAL,{Initial}
+
+[Attr]
+ONV=34,101,MIN,-1e9
+
+[Attr]
+ONV=34,116,MAX,1e9
+
+[Comp]
+Name=Ground
+Grid=32,33
+Rot=7
+
+[Wire]
+Grids=62,30,64,30
+
+[Comp]
+Name=Voltage Source
+Grid=32,33
+Rot=3
+
+[Attr]
+ONV=-28,-37,PART,V1
+Style=8192
+
+[Attr]
+ONV=-67,-22,VALUE,CountPul
+Style=8192
+
+[Attr]
+ONV=0,0,Saved_Pulse,DC 0 AC 1 0 Pulse 2 5 0 0 0 {1M /2} {1M }
+Style=256
+
+[Wire]
+Grids=38,30,42,30
+
+[Comp]
+Name=Voltage Source
+Grid=38,36
+Rot=3
+
+[Attr]
+ONV=17,-36,PART,V2
+Style=8192
+
+[Attr]
+ONV=17,-21,VALUE,ResetPul
+Style=8192
+
+[Attr]
+ONV=0,0,Saved_Pulse,DC 0 AC 1 0 Pulse 0 5 Period STEPWidth/1000 STEPWidth/1000 STEPWidth/10 Period
+Style=256
+
+[Comp]
+Name=Ground
+Grid=38,36
+Rot=7
+
+[Grid Text]
+Text=".define ResetPul DC 0 AC 1 0 Pulse 0 5 {Period} {StepWidth/1000} {StepWidth/1000} {StepWidth/10} {Period}"
+Grid=25,49
+CBorder=NONE
+
+[Grid Text]
+Text=".define CountPul DC 0 AC 1 0 Pulse 0 5 0 0 0 {StepWidth/2} {StepWidth}"
+Grid=25,46
+CBorder=NONE
+
+[Grid Text]
+Text=".define Period ({StepWidth}*{Steps})"
+Grid=25,43
+CBorder=NONE
+
+[Grid Text]
+Text=".Help Increment "This sets the increment value for each step of the staircase.""
+Grid=34,14
+CBorder=NONE
+
+[Grid Text]
+Text="Reset"
+Grid=38,30
+CBorder=NONE
+
+[Grid Text]
+Text="In"
+Grid=32,27
+CBorder=NONE
+
+[Grid Text]
+Text="Out"
+Grid=64,30
+CBorder=NONE
+
+[Grid Text]
+Text=".parameters(Increment=1,StepWidth=1m,Steps=10,Initial=0)"
+Grid=34,12
+CBorder=NONE
+
+[Grid Text]
+Text=".Help StepWidth "This sets the width in seconds of each step.""
+Grid=34,16
+CBorder=NONE
+
+[Grid Text]
+Text=".Help Steps "This sets the number of steps in the staircase waveform.""
+Grid=34,18
+CBorder=NONE
+
+[Grid Text]
+Text=".Help Initial "This sets the initial step value of the waveform.""
+Grid=34,20
+CBorder=NONE
+
+[Schematic]
+Page 0=0
+TabSize 0=320
+Page 1=0
+TabSize 1=320
+Page 2=0
+TabSize 2=320
+Page 3=0
+TabSize 3=320
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+View=304
+GridUser=10
+
+[Tools]
+Pos=Top
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=Yes
+META=No
+INFO=Yes
+HELP=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=Yes
+GRID=Yes
+BORDER=Yes
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FILPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+TOFRONT=Yes
+TOBACK=Yes
+PAGEADD=Yes
+PAGEDEL=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=Yes
+COLOR=Yes
+FONT=Yes
+
+[Page]
+Index=0
+Print=False
+Name=Page 1
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=49,31
+
+[Page]
+Index=1
+Type=Text
+Print=False
+Name=Text
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Page]
+Index=2
+Type=Text
+Print=False
+Name=Models
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Page]
+Index=3
+Type=Info
+Print=False
+Name=Info
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Text Area]
+Page=1
+Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=0
+
+
+[Text Area]
+Page=2
+Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=0
+
+
+[Transient]
+Font=Height=-15,FStyle=0,Color=12,Name=Arial
+WinBackGround Color=15
+Select Color=9
+Select Box Color=4
+Title
+AutoTitle=Yes
+ShowWin=False
+Grid Color=8
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=0,Name=Arial
+Tracker Background=11
+Baseline color=12
+Static Grids=False
+MinorLog25=Off
+LabelMinor=Off
+Graph Background=15
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=7
+Cursor Select Color Secondary=9
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=0,Name=Arial
+Data Point Labels Color Back=11
+FFT_NPts="1024"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+AnimateWait=0
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Limits=True
+Num Out Write Values=True
+Num Out Write Operating Point=True
+Num Out Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+
+[Tools]
+Pos=Top
+SELECT=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+POLYCLOS=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+AOUTPUT=Yes
+PKEY=No
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+COLOR=Yes
+FONT=Yes
+
+[AC]
+Font=Height=-15,FStyle=0,Color=12,Name=Arial
+WinBackGround Color=15
+Select Color=9
+Select Box Color=4
+Title
+AutoTitle=Yes
+ShowWin=False
+Grid Color=8
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=0,Name=Arial
+Tracker Background=11
+Baseline color=12
+Static Grids=False
+MinorLog25=Off
+LabelMinor=Off
+Graph Background=15
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=7
+Cursor Select Color Secondary=9
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=0,Name=Arial
+Data Point Labels Color Back=11
+FFT_NPts="1024"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+AnimateWait=0
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Limits=True
+Num Out Write Values=True
+Num Out Write Operating Point=True
+Num Out Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+
+[DC]
+Font=Height=-15,FStyle=0,Color=12,Name=Arial
+WinBackGround Color=15
+Select Color=9
+Select Box Color=4
+Title
+AutoTitle=Yes
+ShowWin=False
+Grid Color=8
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=0,Name=Arial
+Tracker Background=11
+Baseline color=12
+Static Grids=False
+MinorLog25=Off
+LabelMinor=Off
+Graph Background=15
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=7
+Cursor Select Color Secondary=9
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=0,Name=Arial
+Data Point Labels Color Back=11
+PrinterAutoTile=No
+PrinterBlackBorder=No
+AnimateWait=0
+AnimateWaitTime=500
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Limits=True
+Num Out Write Values=True
+Num Out Write Operating Point=True
+Num Out Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+
+[Monte Carlo Options]
+Analysis=Transient
+Status=Off
+Zero Tolerance=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Monte Carlo Options]
+Analysis=AC
+Status=Off
+Zero Tolerance=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Monte Carlo Options]
+Analysis=DC
+Status=Off
+Zero Tolerance=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Limits]
+Analysis=Transient
+TRange=6
+TStep=0
+NPts=51
+Temp=27
+OPT=120
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+
+[WaveForm]
+Analysis=Transient
+Plt=1
+AliasID=1
+XExp=T
+YExp=v(1)
+XRng=6
+YRng=5
+Options=LINEARX,LINEARY
+Range Grid X=1.2
+Range Grid Y=1
+Line Color=12
+Text Color=12
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[WaveForm]
+Analysis=Transient
+AliasID=-1
+XRng=Auto
+YRng=Auto
+Options=LINEARX,LINEARY
+Line Color=9
+Text Color=9
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[WaveForm]
+Analysis=Transient
+AliasID=-1
+XRng=Auto
+YRng=Auto
+Options=LINEARX,LINEARY
+Line Color=2
+Text Color=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[Limits]
+Analysis=AC
+Sweep type=Auto
+OPT=0
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+
+[WaveForm]
+Analysis=AC
+Plt=1
+AliasID=-1
+Options=LINEARY
+Line Color=12
+Text Color=12
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[WaveForm]
+Analysis=AC
+Plt=2
+AliasID=-1
+Options=LINEARY
+Line Color=9
+Text Color=9
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[WaveForm]
+Analysis=AC
+AliasID=-1
+Options=LINEARY
+Line Color=2
+Text Color=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[Limits]
+Analysis=DC
+OPT=0
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Sweep1 type=Auto
+Sweep2 type=None
+
+[WaveForm]
+Analysis=DC
+Plt=1
+AliasID=-1
+Options=LINEARX,LINEARY
+Line Color=12
+Text Color=12
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[WaveForm]
+Analysis=DC
+AliasID=-1
+Options=LINEARX,LINEARY
+Line Color=9
+Text Color=9
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[WaveForm]
+Analysis=DC
+AliasID=-1
+Options=LINEARX,LINEARY
+Line Color=2
+Text Color=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Optimize]
+Format=3
+
+[Optimize]
+Analysis=Transient
+Method=Standard_Powell
+Update_Plot=False
+
+[Optimize]
+Analysis=AC
+Method=Standard_Powell
+Update_Plot=False
+
+[Optimize]
+Analysis=DC
+Method=Standard_Powell
+Update_Plot=False
+
+[Watch]
+Analysis=Transient
+Format=3
+ExprPercentWidth=80
+
+[Watch]
+Analysis=AC
+Format=3
+ExprPercentWidth=80
+
+[Watch]
+Analysis=DC
+Format=3
+ExprPercentWidth=80
+
+[TF]
+Input Source
+Place Text=False
+
+[SENS]
+Multiple=False
+Parameter Type=Component

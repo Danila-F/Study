@@ -1,0 +1,63 @@
+************************
+* DERATING_DEFAULT 100
+************************
+* DERATING FORMAT IS 
+* BEGIN DEVICETYPE
+*    PARAMETER_NAME   DERATING PERCENTAGE
+*    PARAMETER_NAME   DERATING PERCENTAGE
+*     ...
+* END
+*	...
+******************************************************************
+* IF A PARTICULAR PARAMETER'S DERATING PERCENTAGE IS NOT GIVEN 
+* THEN SET IT TO THE DERATING_DEFAULT VALUE.
+* IF THE DERATING_DEFAULT IS NOT GIVEN, SET DERATING_DEFAULT = 100
+******************************************************************
+
+DEFAULT 100
+
+BEGIN V
+ 	VI   75
+END
+
+BEGIN RES
+ 	PDM  50
+	TB   100
+END
+
+BEGIN CAP
+ 	CI   80
+	CV   75
+END
+
+BEGIN IND
+ 	LI   80
+	LV   75
+END
+
+
+BEGIN D
+ 	PDM  50
+	IF   80
+	TJ   80
+	VR	  80
+END
+
+BEGIN NPN
+	IB    80
+	IC	   60
+	PDM	50
+	VCB	50
+	VCE	50
+	TJ		75
+END ; NPN
+
+BEGIN PNP
+	IB    80
+	IC	   60
+	PDM	50
+	VCB	50
+	VCE	50
+	TJ		75
+END ; PNP
+;$SpiceType=AMBIGUOUS

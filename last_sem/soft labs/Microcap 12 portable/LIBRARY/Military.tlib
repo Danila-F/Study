@@ -1,0 +1,98 @@
+;**************************************************************
+;   Bias Tolerance Template Library for Worst Case Analysis   *
+;**************************************************************
+; Syntax:
+;BEGIN devicetype
+	;BEGIN bias_tol_type;alt1;alt2
+		; Name   [pos=value[%]] [neg=value[%]] [rnd=value[%]]
+	;END
+;END
+;
+; Example:
+; BEGIN CAP
+	; BEGIN DRIFT,AGING,LIFE
+		; Ceramic type II	      neg=0.8% rnd=5.0%
+		; Fixed_Glass_CMS          		rnd=0.5%
+	; END 
+
+	; BEGIN TEMPERATURE
+		; Ceramic type II 	rnd=5.0%
+	; END 
+
+; END
+;
+; Note 1: Pos or neg or both must be zero or missing from each template
+; Note 2: Tolerances may be a percentage or a positive number
+;
+; Usage:
+; In the Worst Case dialog box, right click in any Bias tolerance 
+; field. From the pop-up list select a tolerance. The selected neg, 
+; pos and rnd tolerances can then be applied to the selected part 
+; parameter or to all similar parameters.
+
+; Sources for the data below
+
+; US Department of Defense
+; http://everyspec.com/MIL-HDBK/MIL-HDBK-1500-1799/MIL_HDBK_1547_1904/
+; MIL-HDBK-1547A. DEPARTMENT OF DEFENSE HANDBOOK ELECTRONIC PARTS, MATERIALS, AND PROCESSES FOR SPACE AND LAUNCH VEHICLES (November 1997)
+
+; Resistors
+BEGIN RES
+	BEGIN DRIFT,AGING,LIFE
+		Carbon_Comp_RCR			 		rnd=15%
+		Fixed_Film_RLR			    		rnd=3%
+		Fixed_Film_RM			    		rnd=7%
+		Fixed_Metal_Film_RSC     		rnd=1.5%
+		Variable_NonWirewound_RJR     rnd=30%
+		Variable_Wirewound_RTR     	rnd=20%
+		Wirewound_Powertype_RWR       rnd=5%
+	END
+END 
+
+; Capacitors
+BEGIN CAP
+	BEGIN DRIFT,AGING,LIFE
+		Ceramic_CKS              		rnd=21%
+		Ceramic_HVR              		rnd=21%
+		Fixed_Film_CRH          		rnd=2%
+		Fixed_Glass_CYR          		rnd=0.5%
+		Fixed_Glass_CMS          		rnd=0.5%
+		Tantalum_Foil_CLR    		   rnd=15%
+		Tantalum_Fixed_Electrolytic   rnd=10%
+		Tantalum_Tantalum_Fixed   		rnd=10%
+   END
+
+END 
+
+
+; Bipolar NPN Transistors
+BEGIN NPN
+	BEGIN DRIFT,AGING,LIFE
+		BF	rnd=25%
+	END
+END
+
+; Bipolar PNP Transistors
+BEGIN PNP
+	BEGIN DRIFT,AGING,LIFE
+		BF	rnd=25%
+	END
+END
+
+; NJF
+BEGIN NJF
+	BEGIN DRIFT,AGING,LIFE
+		VTO rnd=0.1
+	END
+END
+; NJF
+
+BEGIN PJF
+	BEGIN DRIFT,AGING,LIFE
+		VTO 	rnd=0.1
+	END
+END
+
+
+
+;$SpiceType=AMBIGUOUS

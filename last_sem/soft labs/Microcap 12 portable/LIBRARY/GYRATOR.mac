@@ -1,0 +1,421 @@
+[Main]
+FileType=CIR
+Version=9.00
+Program=Micro-Cap
+Screen=1280,1024
+MCAPVersion=9.0.1.0
+Key ID=208 332 945
+NLCnt=9
+TXCnt=7
+
+[shapedef]
+Name=VOFI
+Root="VOFI.Root",-1,0,0
+
+[shapedef]
+Name=Minus.root
+Line=-2,0,2,0
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Vsrc.root
+Root="Plus.root",41,6,0
+Root="Minus.root",41,40,0
+Line=48,0,48,12
+Line=48,36,48,48
+Ellipse=36,12,61,36
+Current=64,16,64,32
+
+[shapedef]
+Name=OFI.Root
+Line=0,0,0,4
+Line=0,44,0,48
+Rectangle=-1,4,1,44
+Root="Plus.root",6,6,0
+
+[shapedef]
+Name=VOFI.Root
+Root="Vsrc.root",36,0,0
+Root="OFI.Root",-1,0,0
+Current=64,16,64,32
+
+[compdef]
+Name=VofI
+Definition=VofI
+Shape=VOFI
+Mask=4096
+memo=Linear VofI constant dependent source 
+Label Offset=62,11,-30,59
+PinCnt=4
+Pin="Plus Output",6,0,-15,-3
+Pin="Minus Output",6,6,-15,17
+Pin="Plus Input",0,0,-27,-3
+Pin="Minus Input",0,6,-33,17
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-23, 132,132,924,737
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Arial
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Arial
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=#000000
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=2,10,79,57
+
+[Wire]
+Grids=21,36,31,36
+
+[Wire]
+Grids=37,22,45,22
+
+[Wire]
+Grids=37,36,45,36
+
+[Wire]
+Grids=21,22,31,22
+
+[Comp]
+Name=VofI
+Grid=31,36
+Rot=4
+
+[Attr]
+ONV=66,-41,PART,H1
+Color=#FF0000
+
+[Attr]
+ONV=66,-30,VALUE,-1/G
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,COST,
+Height=-16
+
+[Attr]
+ONV=0,33,POWER,
+Height=-16
+
+[Comp]
+Name=VofI
+Grid=37,22
+Rot=6
+
+[Attr]
+ONV=-79,9,PART,H2
+Color=#FF0000
+
+[Attr]
+ONV=-88,15,VALUE,1/G
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,COST,
+Height=-16
+
+[Attr]
+ONV=0,33,POWER,
+Height=-16
+
+[Wire]
+Grids=31,28,31,30
+
+[Wire]
+Grids=37,28,37,30
+
+[Grid Text]
+Text=".HELP G "Transformation factor. Req = 1/(R*G*G), Leq = C/(G*G), Ceq = L*G*G""
+Grid=4,44
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text="OUTB"
+Grid=45,36
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="OUTA"
+Grid=45,22
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="INB"
+Grid=21,36
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="INA"
+Grid=21,22
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text=".PARAMETERS(G=1)"
+Grid=29,40
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="Gyrator Macro"
+Grid=25,19
+Height=-19
+Color=#FF00FF
+CBorder=NONE
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=0.6666666666666666
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=No
+META=No
+INFO=Yes
+HELP=Yes
+LINK=No
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=No
+BORDER=No
+TITLE=No
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=No
+DISABLE=No
+TOFRONT=No
+TOBACK=No
+SELNEXT=No
+PAGEADD=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=No
+FONT=No
+
+[Section]
+Index=0
+Name="gyrator"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=320
+TabSize 1=320
+TabSize 2=320
+TabSize 3=320
+
+[Page]
+Index=0
+Section=0
+Print=False
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+SB 3=0,66
+Scale 3=0.6666666666666666
+Grid=81,57
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

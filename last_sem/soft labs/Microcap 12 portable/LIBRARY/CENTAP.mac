@@ -1,0 +1,949 @@
+[Main]
+FileType=CIR
+Version=9.00
+Program=Micro-Cap
+Screen=1280,1024
+MCAPVersion=9.0.1.0
+Key ID=208 332 945
+NLCnt=69
+TXCnt=24
+
+[shapedef]
+Name=Inductor
+Line=42,0,48,0
+Line=0,0,5,0
+Arc=5,-7,17,7 , 11,-7,5,0
+Arc=13,-7,25,7 , 19,-7,13,0
+Arc=29,-7,41,7 , 35,-7,29,0
+Arc=21,-7,33,7 , 27,-7,21,0
+Arc=6,-7,18,7 , 18,0,12,-7
+Arc=14,-7,26,7 , 26,0,20,-7
+Arc=22,-7,34,7 , 34,0,28,-7
+Arc=30,-7,42,7 , 42,0,36,-7
+Line=11,-7,12,-7
+Line=19,-7,20,-7
+Line=27,-7,28,-7
+Line=35,-7,36,-7
+Arc=13,-4,17,2 , 13,-1,15,2
+Arc=29,-4,33,2 , 29,-1,31,2
+Arc=21,-4,25,2 , 21,-1,23,2
+Arc=14,-4,18,2 , 16,2,18,-1
+Arc=30,-4,34,2 , 32,2,34,-1
+Arc=22,-4,26,2 , 24,2,26,-1
+Line=15,2,16,2
+Line=23,2,24,2
+Line=31,2,32,2
+Line=5,5,9,5
+Line=41,5,41,9
+Line=39,7,43,7
+Current=32,8,16,8
+
+[shapedef]
+Name=Kshape
+Line=0,16,4,16
+Line=8,16,12,16
+Line=16,16,20,16
+Line=24,16,28,16
+Line=32,16,36,16
+Line=40,16,44,16
+Line=15,12,19,12
+Line=24,12,28,12
+Line=32,12,36,12
+Arc=0,4,8,12 , 0,8,4,12
+Line=8,12,12,12
+Arc=36,4,44,12 , 40,12,44,8
+Arc=0,20,8,28 , 4,20,0,24
+Arc=36,20,44,28 , 44,24,40,20
+Line=8,20,12,20
+Line=16,20,20,20
+Line=24,20,28,20
+Line=32,20,36,20
+
+[compdef]
+Name=Inductor
+Definition=Inductor
+Shape=Inductor
+Mask=7681
+memo=Inductor
+Label Offset=18,9,11,12
+PinCnt=2
+Pin="Plus",6,0,-5,-9
+Pin="Minus",0,0,-3,-9
+
+[compdef]
+Name=3B7
+Definition=K
+Shape=Kshape
+Mask=4224
+memo=MnZn Ferrite Material Bs=3800G H=2 Oe
+Label Offset=15,24,-4,8
+PinCnt=0
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-23, 132,132,924,737
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Arial
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Arial
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=#000000
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Rectangle
+CBorder=#008080
+Grids=7,4,98,53
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=81,26,80,26
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=84,35,94,35
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,35,81,35
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,34,80,35
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=85,34,80,34
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=85,33,85,34
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=84,33,85,33
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,33,81,33
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,32,80,33
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=85,32,80,32
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=85,31,85,32
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=84,31,85,31
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,31,81,31
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,30,80,31
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=89,30,80,30
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=89,28,94,28
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=89,26,89,30
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=84,26,89,26
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,25,80,26
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=85,25,80,25
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=85,24,85,25
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=84,24,85,24
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,24,81,24
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=80,23,80,24
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=94,23,80,23
+
+[Object]
+Object=Rectangle
+CBorder=#008000
+Grids=58,21,81,37
+
+[Object]
+Object=Rectangle
+CBorder=#008000
+Grids=55,18,84,40
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=55,34,49,34
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,34,58,34
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,33,59,34
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,33,59,33
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,32,54,33
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=55,32,54,32
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,32,58,32
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,31,59,32
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,31,59,31
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,30,54,31
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=55,30,54,30
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,30,58,30
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,29,59,30
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,29,59,29
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,28,54,29
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=55,28,54,28
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,28,58,28
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,27,59,28
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,27,59,27
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,26,54,27
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=55,26,54,26
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,26,58,26
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,25,59,26
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,25,59,25
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=54,24,54,25
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=55,24,54,24
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,24,58,24
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=59,23,59,24
+
+[Object]
+Object=Line
+CBorder=#0000FF
+Grids=49,23,59,23
+
+[Comp]
+Name=Inductor
+Grid=19,29
+Rot=3
+
+[Attr]
+ONV=-31,-37,PART,LP
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=-27,-28,INDUCTANCE,L1
+Style=8192
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=0,22,FLUX,
+Color=#FF0000
+
+[Attr]
+ONV=0,33,FREQ,
+Color=#FF0000
+
+[Attr]
+ONV=0,32,MODEL,
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=0,55,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,66,POWER,
+Color=#FF0000
+
+[Comp]
+Name=Inductor
+Grid=32,29
+Rot=3
+
+[Attr]
+ONV=12,-36,PART,LS1
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=15,-32,INDUCTANCE,L2
+Style=8192
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=0,22,FLUX,
+Color=#FF0000
+
+[Attr]
+ONV=0,33,FREQ,
+Color=#FF0000
+
+[Attr]
+ONV=0,32,MODEL,
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=0,55,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,66,POWER,
+Color=#FF0000
+
+[Comp]
+Name=Inductor
+Grid=32,35
+Rot=3
+
+[Attr]
+ONV=12,-32,PART,LS2
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=16,-33,INDUCTANCE,L3
+Style=8192
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=0,22,FLUX,
+Color=#FF0000
+
+[Attr]
+ONV=0,33,FREQ,
+Color=#FF0000
+
+[Attr]
+ONV=0,32,MODEL,
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=0,55,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,66,POWER,
+Color=#FF0000
+
+[Wire]
+Grids=11,23,19,23
+
+[Wire]
+Grids=32,23,39,23
+
+[Wire]
+Grids=11,29,19,29
+
+[Wire]
+Grids=32,29,39,29
+
+[Wire]
+Grids=32,35,39,35
+
+[Comp]
+Name=3B7
+Grid=23,24
+
+[Attr]
+ONV=13,-13,PART,K0
+Style=8192
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=-8,33,INDUCTORS,LP LS1 LS2
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=0,32,COUPLING,.999
+Height=-16
+Color=#000000
+
+[Attr]
+ONV=0,33,MODEL,
+Color=#FF0000
+
+[Attr]
+ONV=0,44,COST,
+Color=#FF0000
+
+[Attr]
+ONV=0,55,POWER,
+Color=#FF0000
+
+[Wire]
+Grids=39,35,44,35
+
+[Wire]
+Grids=39,29,44,29
+
+[Wire]
+Grids=39,23,44,23
+
+[Grid Text]
+Text=".HELP L1 "Primary inductance""
+Grid=14,43
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text="PinA"
+Grid=11,23
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="PinB"
+Grid=11,29
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="PinC"
+Grid=39,35
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="PinD"
+Grid=39,29
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="A CENTER-TAPPED 5 TERMINAL TRANSFORMER MACRO"
+Grid=22,13
+Height=-16
+Color=#008080
+CBorder=NONE
+
+[Grid Text]
+Text=".parameters(L1=1m,L2=1m,L3=1m)"
+Grid=14,41
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="L1"
+Grid=61,29
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="L2"
+Grid=77,25
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="L3"
+Grid=77,33
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="Physical model"
+Grid=64,17
+Height=-16
+Color=#008080
+CBorder=NONE
+
+[Grid Text]
+Text="n12 = sqrt(L1/L2)"
+Grid=61,43
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text="n13 = sqrt(L1/L3)"
+Grid=61,45
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text="n23 = sqrt(L2/L3)"
+Grid=61,47
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text="pin5"
+Grid=90,23
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="pin4"
+Grid=90,28
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="pin3"
+Grid=90,35
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="pin1"
+Grid=49,23
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="pin2"
+Grid=49,34
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="Electrical model"
+Grid=19,17
+Height=-16
+Color=#008080
+CBorder=NONE
+
+[Grid Text]
+Text="PinE"
+Grid=39,23
+Height=-16
+Color=#FF0000
+CBorder=NONE
+
+[Grid Text]
+Text="CENTAP MACRO"
+Grid=35,10
+Height=-19
+Color=#FF00FF
+CBorder=NONE
+
+[Grid Text]
+Text=".HELP L2 "Secondary inductance 1""
+Grid=14,45
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text=".HELP L3 "Secondary inductance 2""
+Grid=14,47
+Color=#008000
+CBorder=NONE
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=No
+META=No
+INFO=Yes
+HELP=Yes
+LINK=No
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=No
+BORDER=No
+TITLE=No
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=No
+DISABLE=No
+TOFRONT=No
+TOBACK=No
+SELNEXT=No
+PAGEADD=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=No
+FONT=No
+
+[Section]
+Index=0
+Name="centap"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=320
+TabSize 1=320
+TabSize 2=320
+TabSize 3=320
+
+[Page]
+Index=0
+Section=0
+Print=False
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=63,57
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

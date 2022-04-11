@@ -1,0 +1,1027 @@
+[Main]
+FileType=CIR
+Version=9.00
+Program=Micro-Cap
+Screen=1920,1200
+MCAPVersion=9.0.6.1
+Key ID=208 332 945
+NLCnt=60
+TXCnt=22
+
+[shapedef]
+Name=Resistor
+PolyOpen=12 
+PolyLine=0,0
+PolyLine=0,0
+PolyLine=12,0
+PolyLine=14,-4
+PolyLine=18,4
+PolyLine=22,-4
+PolyLine=26,4
+PolyLine=30,-4
+PolyLine=34,4
+PolyLine=36,0
+PolyLine=48,0
+PolyLine=48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=Capacitor
+Line=0,0,22,0
+Line=22,-8,22,8
+Line=26,-8,26,8
+Line=26,0,48,0
+Current=32,12,16,12
+
+[shapedef]
+Name=Diode
+Root="Diode.root",0,-8,0
+
+[shapedef]
+Name=NFV
+Root="Vsource.root",0,-12,0
+Root="TextN.Root",20,-6,1
+Root="TextF.Root",20,1,1
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Diode.root
+Line=0,0,20,0
+Line=28,0,48,0
+Rectangle=18,-8,20,8,SOLID
+PolyClosed=3 ,Solid
+PolyLine=20,0
+PolyLine=28,-8
+PolyLine=28,8
+Current=32,16,16,16
+
+[shapedef]
+Name=Vsource.root
+Line=0,0,12,0
+Line=36,0,48,0
+Ellipse=12,-12,36,12
+Line=7,5,7,9
+Root="Plus.root",39,5,0
+Current=32,16,16,16
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=TextF.Root
+Line=0,0,5,0
+Line=0,0,0,8
+Line=2,4,0,4
+
+[shapedef]
+Name=TextN.Root
+Line=0,8,0,0
+Line=0,0,5,8
+Line=5,8,5,0
+
+[compdef]
+Name=NFV
+Definition=NFV
+Shape=NFV
+Mask=4864
+memo=Analog behavioral voltage source (E.g. VALUE=I(R2)*V(3,4)^2)
+Label Offset=18,12,16,13
+PinCnt=2
+Pin="Plus",6,0,-8,-4
+Pin="Minus",0,0,-21,-6
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=257
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[compdef]
+Name=Resistor
+Definition=Resistor
+Shape=Resistor
+Mask=6145
+memo=Resistor
+Label Offset=18,6,8,11
+PinCnt=2
+Pin="Plus",6,0,-10,-4
+Pin="Minus",0,0,-14,-4
+
+[compdef]
+Name=Capacitor
+Definition=Capacitor
+Shape=Capacitor
+Mask=7425
+memo=Capacitor
+Label Offset=16,12,12,12
+PinCnt=2
+Pin="Plus",6,0,-3,-5
+Pin="Minus",0,0,-14,-5
+
+[compdef]
+Name=Diode
+Definition=Diode
+Shape=Diode
+Mask=5889
+memo=Diode
+Label Offset=17,10,12,12
+PinCnt=2
+Pin="Anode",6,0,-9,-8
+Pin="Cathode",0,0,-20,-8
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-30, 22,29,1492,745
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Arial
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Arial
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=#000000
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+SpiceType=AMBIGUOUS
+Block Select Color=#51F998
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=True
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Grids=7,6,90,79
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=51,22,51,29
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=51,29,56,29
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=56,29,56,22
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=56,22,51,22
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=46,34,63,34
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=46,34,46,18
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=28,29,28,22
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=33,29,28,29
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=33,22,33,29
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=28,22,33,22
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=23,34,23,18
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Grids=23,34,38,34
+
+[Comp]
+Name=NFV
+Grid=38,51
+Rot=3
+
+[Attr]
+ONV=-31,-28,PART,E2
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=-323,-43,VALUE,.5E7*(VIL+VIH)-1E7*(V(INP)-V(INM))+1E7*V(A)*(VIH-VIL)/(VOH-VOL)
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FREQ,
+Height=-16
+
+[Attr]
+ONV=0,33,DERIVATIVE,Default
+Height=-16
+
+[Attr]
+ONV=0,44,COST,
+Height=-16
+
+[Attr]
+ONV=0,55,POWER,
+Height=-16
+
+[Comp]
+Name=Ground
+Grid=38,51
+Rot=1
+
+[Comp]
+Name=Resistor
+Grid=40,39
+
+[Attr]
+ONV=18,6,PART,R1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=15,21,RESISTANCE,1E9
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FREQ,
+Height=-16
+
+[Attr]
+ONV=0,32,MODEL,
+Color=#FF0000
+
+[Attr]
+ONV=0,44,COST,
+Height=-16
+
+[Attr]
+ONV=0,55,POWER,
+Height=-16
+
+[Comp]
+Name=Capacitor
+Grid=48,45
+Rot=7
+
+[Attr]
+ONV=-28,12,PART,C1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=-33,29,CAPACITANCE,10F
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,CHARGE,
+Height=-16
+
+[Attr]
+ONV=0,33,FREQ,
+Height=-16
+
+[Attr]
+ONV=0,32,MODEL,
+Color=#FF0000
+
+[Attr]
+ONV=0,55,COST,
+Height=-16
+
+[Attr]
+ONV=0,66,POWER,
+Height=-16
+
+[Wire]
+Grids=38,51,48,51
+
+[Comp]
+Name=Diode
+Grid=55,45
+Rot=3
+
+[Attr]
+ONV=-27,-32,PART,D1
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,16,VALUE,
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,32,MODEL,D1
+Color=#FF0000
+
+[Attr]
+ONV=0,33,COST,
+Height=-16
+
+[Attr]
+ONV=0,44,POWER,
+Height=-16
+
+[Comp]
+Name=Diode
+Grid=63,39
+Rot=7
+
+[Attr]
+ONV=-30,16,PART,D2
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,16,VALUE,
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,32,MODEL,D2
+Color=#FF0000
+
+[Attr]
+ONV=0,33,COST,
+Height=-16
+
+[Attr]
+ONV=0,44,POWER,
+Height=-16
+
+[Wire]
+Grids=55,51,63,51
+
+[Wire]
+Grids=38,39,38,45
+
+[Wire]
+Grids=38,39,40,39
+
+[Wire]
+Grids=48,39,55,39
+
+[Wire]
+Grids=46,39,48,39
+
+[Wire]
+Grids=48,39,48,45
+
+[Comp]
+Name=NFV
+Grid=70,48
+Rot=3
+
+[Attr]
+ONV=-31,-28,PART,E3
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=-134,-43,VALUE,.5*(VOL+VOH)-V(A)*SIGN
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FREQ,
+Height=-16
+
+[Attr]
+ONV=0,33,DERIVATIVE,Default
+Height=-16
+
+[Attr]
+ONV=0,44,COST,
+Height=-16
+
+[Attr]
+ONV=0,55,POWER,
+Height=-16
+
+[Wire]
+Grids=19,51,28,51
+
+[Wire]
+Grids=19,45,28,45
+
+[Wire]
+Grids=70,51,80,51
+
+[Comp]
+Name=Resistor
+Grid=72,39
+
+[Attr]
+ONV=18,6,PART,R2
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=18,21,RESISTANCE,ROUT
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FREQ,
+Height=-16
+
+[Attr]
+ONV=0,32,MODEL,
+Color=#FF0000
+
+[Attr]
+ONV=0,44,COST,
+Height=-16
+
+[Attr]
+ONV=0,55,POWER,
+Height=-16
+
+[Wire]
+Grids=70,39,72,39
+
+[Wire]
+Grids=78,39,80,39
+
+[Comp]
+Name=NFV
+Grid=55,51
+Rot=3
+
+[Attr]
+ONV=-31,-31,PART,E4
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=-71,-43,VALUE,.5*(VOH-VOL)
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FREQ,
+Height=-16
+
+[Attr]
+ONV=0,33,DERIVATIVE,Default
+Height=-16
+
+[Attr]
+ONV=0,44,COST,
+Height=-16
+
+[Attr]
+ONV=0,55,POWER,
+Height=-16
+
+[Comp]
+Name=NFV
+Grid=63,51
+Rot=3
+
+[Attr]
+ONV=-30,-28,PART,E5
+Style=8192
+Color=#FF0000
+
+[Attr]
+ONV=-75,-43,VALUE,-.5*(VOH-VOL)
+Color=#FF0000
+
+[Attr]
+ONV=0,22,FREQ,
+Height=-16
+
+[Attr]
+ONV=0,33,DERIVATIVE,Default
+Height=-16
+
+[Attr]
+ONV=0,44,COST,
+Height=-16
+
+[Attr]
+ONV=0,55,POWER,
+Height=-16
+
+[Wire]
+Grids=70,48,70,51
+
+[Wire]
+Grids=70,39,70,42
+
+[Wire]
+Grids=25,22,28,22
+
+[Wire]
+Grids=56,22,58,22
+
+[Wire]
+Grids=48,29,51,29
+
+[Wire]
+Grids=23,29,24,29
+
+[Wire]
+Grids=25,29,26,29
+
+[Wire]
+Grids=27,29,28,29
+
+[Wire]
+Grids=23,22,24,22
+
+[Wire]
+Grids=28,30,28,31
+
+[Wire]
+Grids=28,32,28,33
+
+[Wire]
+Grids=33,30,33,31
+
+[Wire]
+Grids=33,32,33,33
+
+[Wire]
+Grids=46,29,47,29
+
+[Wire]
+Grids=46,22,47,22
+
+[Wire]
+Grids=48,22,49,22
+
+[Wire]
+Grids=51,30,51,31
+
+[Wire]
+Grids=51,32,51,33
+
+[Wire]
+Grids=56,30,56,31
+
+[Wire]
+Grids=56,32,56,33
+
+[Wire]
+Grids=50,22,51,22
+
+[Comp]
+Name=Ground
+Grid=70,51
+Rot=7
+
+[Wire]
+Grids=48,51,55,51
+
+[Wire]
+Grids=48,45,48,46
+
+[Wire]
+Grids=55,39,63,39
+
+[Grid Text]
+Text=".HELP VIL "Lower limit of input state change voltage""
+Grid=19,61
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text=".Parameters(VIL=-1,VIH=1,VOL=-10,VOH=10,Rout=1,Sign=1)"
+Grid=19,57
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="Inp"
+Grid=19,45
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="Out"
+Grid=80,39
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="VIL"
+Grid=26,37
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="VIH"
+Grid=31,37
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="VOH"
+Grid=19,23
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="VOL"
+Grid=19,30
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="Inverting Versionþ     (Sign=-1)"
+Grid=20,16
+Height=-15
+Color=#008080
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="Non-inverting Versionþ   (Sign=1)"
+Grid=42,16
+Height=-15
+Color=#008080
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="VIL"
+Grid=49,37
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="VIH"
+Grid=55,37
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="VOL"
+Grid=41,30
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="VOH"
+Grid=41,23
+Height=-16
+Color=#FF0000
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="COMPARATOR MACRO"
+Grid=31,11
+Height=-19
+Color=#FF00FF
+CBorder=NONE
+
+[Grid Text]
+Text=".HELP VIH "Upper limit of input state change voltage""
+Grid=19,64
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text=".HELP VOL "Lower limit of output voltage""
+Grid=19,67
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text=".HELP VOH "Upper limit of output voltage""
+Grid=19,70
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text=".HELP ROUT "Output resistance of circuit""
+Grid=19,73
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text=".HELP SIGN "-1 for inverting version, 1 for non-inverting version""
+Grid=19,76
+Height=-16
+Color=#008000
+CBorder=NONE
+
+[Grid Text]
+Text="Inm"
+Grid=19,51
+Height=-16
+Color=#800080
+Font=Courier New
+CBorder=NONE
+
+[Grid Text]
+Text="A"
+Grid=55,39
+CBorder=NONE
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic","Main1","Main11","GroundArrow"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=No
+META=No
+INFO=Yes
+HELP=Yes
+LINK=No
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=No
+BORDER=No
+TITLE=No
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=No
+DISABLE=No
+TOFRONT=No
+TOBACK=No
+SELNEXT=No
+PAGEADD=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=No
+FONT=No
+
+[Section]
+Index=0
+Name="comparator"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=320
+TabSize 1=320
+TabSize 2=320
+TabSize 3=320
+
+[Page]
+Index=0
+Section=0
+Print=False
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=28,109
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=132
+4/13/2009
+Changed the T_ABS parameter in both diode models to 27 so that there would be no temperature modification in the macro.
+
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=60
+.MODEL D1 D (N=.001 T_ABS=27)
+.MODEL D2 D (N=.001 T_ABS=27)
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

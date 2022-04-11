@@ -1,0 +1,318 @@
+[Main]
+FileType=CIR
+Version=8.01
+Program=Micro-Cap
+Screen=1920,1200
+MCAPVersion=8.0.9.0
+Key ID=Demo
+NLCnt=5
+TXCnt=4
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Minus.root
+Line=-2,0,2,0
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Vsrc.root
+Root="Plus.root",41,6,0
+Root="Minus.root",41,40,0
+Line=48,0,48,12
+Line=48,36,48,48
+Ellipse=36,12,61,36
+Current=64,16,64,32
+
+[shapedef]
+Name=OFV.Root
+Root="Plus.root",6,6,0
+Ellipse=-2,-2,2,2
+Ellipse=-2,46,2,50
+
+[shapedef]
+Name=VOFV.Root
+Line=0,0,0,0
+Line=0,48,0,48
+Root="Vsrc.root",36,0,0
+Root="OFV.Root",-2,-2,0
+Current=64,16,64,32
+
+[shapedef]
+Name=ZVofV
+Root="VOFV.Root",-2,-2,0
+Line=44,22,44,20
+Line=44,20,52,20
+Line=52,20,44,28
+Line=44,28,52,28
+Line=52,28,52,26
+
+[compdef]
+Name=ZVofV
+Definition=ZLFVofV
+Shape=ZVofV
+Mask=4096
+memo=Z transform VofV source (E.g. ZEXP=(.10*(Z+1))/(1+.5*Z+.3*Z*Z))
+Label Offset=65,11,-29,61
+PinCnt=4
+Pin="Plus Output",6,0,-17,-3
+Pin="Minus Output",6,6,-19,17
+Pin="Plus Input",0,0,-22,-3
+Pin="Minus Input",0,6,-30,17
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1793
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-30, 242,319,1920,1012
+Default Object=Color=4
+Default Object Font=Height=-15,FStyle=0,Color=4,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=15
+Select Color=9
+Select Box Color=4
+Grid Text Color=Height=-12,FStyle=0,Color=1,Name=Arial
+Component Color=12
+Attribute Text=Height=-12,FStyle=0,Color=2,Name=Arial
+Wire Color=2
+Pin Connection=Height=-10,FStyle=0,Color=9,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=13,Name=Arial
+Node Voltage Color=0
+Dynamic AC Voltage Color=56
+Text Banner Text=Height=-15,FStyle=0,Color=1,Name=Arial
+Title Block Background=7
+Current=Height=-11,FStyle=0,Color=12,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=9,Name=Arial
+Digital Path Color=9
+Title Block=Height=-15,FStyle=0,Color=0,Name=Arial
+Digital 0 Color=0
+Digital R Color=11
+Digital F Color=11
+Digital 1 Color=9
+Digital X Color=7
+Digital Z Color=8
+SpiceType=AMBIGUOUS
+Block Select Color=41
+TitleBlock Field_1=$name
+TitleBlock Field_2=$user $company
+TitleBlock Field_3
+TitleBlock Field_4=$date
+TitleBlock Field_5=Page $page of $maxpage
+TitleBlock One Title=False
+Title_Block_Border=False
+Title_Block=False
+
+[Comp]
+Name=ZVofV
+Grid=22,16
+
+[Attr]
+ONV=65,11,PART,E1
+
+[Attr]
+ONV=67,22,ZEXP,1/z
+Style=8192
+
+[Attr]
+ONV=65,41,CLOCK FREQUENCY,fsampl
+
+[Comp]
+Name=Ground
+Grid=22,22
+Rot=7
+
+[Comp]
+Name=Ground
+Grid=28,22
+Rot=7
+
+[Wire]
+Grids=17,16,22,16
+
+[Wire]
+Grids=28,16,33,16
+
+[Grid Text]
+Text=".parameters(fsampl=11025)"
+Grid=16,31
+CBorder=NONE
+
+[Grid Text]
+Text=""Z" macromodel ...delay element for discrete-time systems"
+Grid=9,10
+CBorder=NONE
+
+[Grid Text]
+Text="out"
+Grid=33,16
+CBorder=NONE
+
+[Grid Text]
+Text="in"
+Grid=17,16
+CBorder=NONE
+
+[Schematic]
+Page 0=0
+TabSize 0=340
+Page 1=0
+TabSize 1=340
+Page 2=0
+TabSize 2=340
+Page 3=0
+TabSize 3=340
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+PrinterScale=1
+View=304
+GridUser=10
+
+[Tools]
+Pos=Top
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+FLAG=Yes
+META=No
+INFO=Yes
+HELP=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=Yes
+GRID=Yes
+BORDER=Yes
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FILPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+TOFRONT=Yes
+TOBACK=Yes
+PAGEADD=Yes
+PAGEDEL=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=Yes
+COLOR=No
+FONT=No
+
+[Page]
+Index=0
+Print=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=16,31
+
+[Page]
+Index=1
+Type=Text
+Print=False
+Name=Text
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Page]
+Index=2
+Type=Text
+Print=False
+Name=Models
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Page]
+Index=3
+Type=Info
+Print=False
+Name=Info
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Grid=0,0
+
+[Text Area]
+Page=1
+Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=0
+
+
+[Text Area]
+Page=2
+Font=Height=-15,FStyle=0,Color=4,Name=Courier New
+Comment Color=8
+Background Color=15
+Len=0
+
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Optimize]
+Format=3

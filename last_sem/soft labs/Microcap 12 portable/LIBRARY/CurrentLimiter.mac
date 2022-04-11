@@ -1,0 +1,468 @@
+[Main]
+FileType=CIR
+Version=9.00
+Program=Micro-Cap
+Screen=1920,1200
+MCAPVersion=11.0.0.2
+Key ID=1 011 649 689
+NLCnt=10
+TXCnt=7
+
+[shapedef]
+Name=IOFV.Root
+Root="Isource.Root",36,0,0
+Root="OFV.Root",-2,-2,0
+
+[shapedef]
+Name=Isource.Root
+Ellipse=-12,12,12,36
+Line=0,0,0,24
+PolyClosed=3,SOLID
+PolyLine=-4,24
+PolyLine=4,24
+PolyLine=0,32
+Line=0,32,0,48
+Current=16,16,16,32
+
+[shapedef]
+Name=NTIOFV
+Root="IOFV.Root",-2,-2,0
+Root="TextN.Root",21,20,0
+Root="TextT.Root",27,20,0
+
+[shapedef]
+Name=OFV.Root
+Root="Plus.root",6,6,0
+Ellipse=-2,-2,2,2
+Ellipse=-2,46,2,50
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=Resistor
+PolyOpen=12
+PolyLine=0,0
+PolyLine=0,0
+PolyLine=12,0
+PolyLine=14,-4
+PolyLine=18,4
+PolyLine=22,-4
+PolyLine=26,4
+PolyLine=30,-4
+PolyLine=34,4
+PolyLine=36,0
+PolyLine=48,0
+PolyLine=48,0
+Current=32,8,16,8
+
+[shapedef]
+Name=TextN.Root
+Line=0,8,0,0
+Line=0,0,5,8
+Line=5,8,5,0
+
+[shapedef]
+Name=TextT.Root
+Line=0,0,5,0
+Line=2,0,2,8
+
+[compdef]
+Name=NTIofV
+Definition=NTIofV
+Shape=NTIOFV
+Mask=4096
+memo=Analog behavioral IofV table source
+Label Offset=64,13,-30,60
+PinCnt=4
+Pin="Plus Output",6,0,-15,-3
+Pin="Minus Output",6,6,-12,17
+Pin="Plus Input",0,0,-29,-3
+Pin="Minus Input",0,6,-33,17
+
+[compdef]
+Name=Resistor
+Definition=Resistor
+Shape=Resistor
+Mask=6401
+Used=225
+memo=Resistor
+Label Offset=18,6,8,11
+PinCnt=2
+Pin="Plus",6,0,-10,-4
+Pin="Minus",0,0,-14,-4
+
+[Circuit]
+Window Placement=2,3, -1,-1, -4,-30, 132,132,924,737
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#800000,Name=Arial
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Arial
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=#000000
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Disabled	Color=#C0C0C0
+KeyWord Color=#000000
+Error	Color=#000000
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+Block Select Color=#51F998
+SpiceType=AMBIGUOUS
+Title_Block_Border=False
+Title_Block=False
+Show Nodes=False
+Show Voltages=True
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Rectangle
+CBorder=#008000
+Grids=4,5,64,46
+
+[Comp]
+Name=NTIofV
+Grid=26,20
+COff=8,608,309,-2,22
+
+[Attr]
+ONV=64,13,PART,G1
+Height=-10
+
+[Attr]
+ONV=64,20,TABLE,T1
+Style=12288
+Height=-10
+
+[Attr]
+ONV=0,0,COST,
+Height=-10
+
+[Attr]
+ONV=0,0,POWER,
+Height=-10
+
+[Attr]
+ONV=0,0,PACKAGE,
+Height=-10
+
+[Wire]
+Grids=26,26,32,26
+
+[Wire]
+Grids=26,20,32,20
+
+[Comp]
+Name=Resistor
+Grid=44,26
+Rot=3
+
+[Attr]
+ONV=11,-42,PART,R1
+Style=8192
+Height=-10
+
+[Attr]
+ONV=8,-27,RESISTANCE,1E15
+Style=8192
+Height=-10
+
+[Attr]
+ONV=0,22,FREQ,
+Height=-10
+
+[Attr]
+ONV=0,33,MODEL,
+Height=-10
+
+[Attr]
+ONV=0,44,COST,
+Height=-10
+
+[Attr]
+ONV=0,55,POWER,
+Height=-10
+
+[Attr]
+ONV=0,0,PACKAGE,
+Height=-10
+
+[Wire]
+Grids=32,20,44,20
+
+[Wire]
+Grids=32,26,44,26
+
+[Wire]
+Grids=32,26,32,30
+
+[Wire]
+Grids=32,15,32,20
+
+[Grid Text]
+Text="N"
+Grid=32,30
+CBorder=None
+
+[Grid Text]
+Text="P"
+Grid=32,15
+CBorder=None
+
+[Grid Text]
+Text=".HELP VMAX "Voltage at which current limiting starts""
+Grid=19,40
+Color=#008000
+CBorder=None
+
+[Grid Text]
+Text="Current Limiter Macro"
+Grid=21,9
+Height=-19
+Color=#FF00FF
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE T1 (-VMAX,-IMAX) (0,0) (VMAX,IMAX) "
+Grid=19,36
+Height=-10
+Color=#FF0000
+CBorder=None
+
+[Grid Text]
+Text=".PARAMETERS(VMAX=28, IMAX=20m)"
+Grid=19,34
+Height=-10
+Color=#FF0000
+CBorder=None
+
+[Grid Text]
+Text=".HELP IMAX "Current limit""
+Grid=19,42
+Color=#008000
+CBorder=None
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=0.66666666666666663
+PrinterScale=1
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic","Main1","Main11","GroundArrow"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+CalcVoltage=True
+DisplayMeasure=Last
+
+[Tools]
+Pos=Top
+PROBE=Yes
+SELECT=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+FLAG=Yes
+INFO=Yes
+HELP=Yes
+LINK=Yes
+REGION_ENABLE=Yes
+DIGTRC=No
+DIGTRC2=No
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CROSS=No
+GRID=Yes
+BORDER=No
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=Yes
+DISABLE=Yes
+TOFRONT=Yes
+TOBACK=Yes
+SELNEXT=No
+PAGEADD=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=Yes
+FONT=Yes
+
+[Section]
+Index=0
+Name="CurrentLimiter"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=320
+TabSize 1=320
+TabSize 2=320
+TabSize 3=320
+
+[Page]
+Index=0
+Section=0
+Print=False
+Enable=True
+Name=Main
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=0.66666666666666663
+Grid=78,24
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+
+[Text Area]
+Section=0
+Page=1
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Text Area]
+Section=0
+Page=2
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#808080
+Background Color=#FFFFFF
+Len=0
+
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=Distortion
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

@@ -1,0 +1,90 @@
+;**************************************************************
+;   Bias Tolerance Template Library for Worst Case Analysis   *
+;**************************************************************
+; Syntax:
+;BEGIN devicetype
+	;BEGIN bias_tol_type;alt1;alt2
+		; Name   [pos=value[%]] [neg=value[%]] [rnd=value[%]]
+	;END
+;END
+;
+; Example:
+; BEGIN CAP
+	; BEGIN DRIFT,AGING,LIFE
+		; Ceramic type II	      neg=0.8% rnd=5.0%
+		; Fixed_Glass_CMS          		rnd=0.5%
+	; END 
+
+	; BEGIN TEMPERATURE
+		; Ceramic type II 	rnd=5.0%
+	; END 
+
+; END
+;
+; Note 1: Pos or neg or both must be zero or missing from each template
+; Note 2: Tolerances may be a percentage or a positive number
+;
+; Usage:
+; In the Worst Case dialog box, right click in any Bias tolerance 
+; field. From the pop-up list select a tolerance. The selected neg, 
+; pos and rnd tolerances can then be applied to the selected part 
+; parameter or to all similar parameters.
+
+; Sources for the data below
+
+; ECSS European Space Agency
+; ECSS-Q-TM-30-12A(12October2010)
+
+; Resistors
+BEGIN RES
+	BEGIN DRIFT,AGING,LIFE
+		;ECCS standards ECSS-Q-TM-30-12A(12October2010).doc
+		; 125 degrees C; 10 years
+		Metal_Film_RNC	         	rnd=1.1%
+		Metal_Film_RLR          	rnd=2.2%
+		Metal_Foil_RNC90          	rnd=0.08%
+		Wire_Wound_RWR          	rnd=1.2%
+		ChipThinFilm_RM		    	rnd=0.44%
+	END
+END 
+
+; Capacitors
+BEGIN CAP
+	BEGIN DRIFT,AGING,LIFE
+		;ECCS standards ECSS-Q-TM-30-12A(12October2010).doc ECSS-Q-TM-30-12A(12October2010).doc
+		; 110 degrees C; 10 years
+		General_Type_I              rnd=0.57%
+		General_Type_II             rnd=1.14%
+	   Solid_Tantalum              rnd=1.67%
+	   Non_Solid_Tantalum          rnd=37%
+		Film_polycarbonate          rnd=1.8%
+		Film_polyethylene	          rnd=5.0%
+		Glass								 rnd=0.13%
+		Mica                        rnd=0.33%
+   END
+END 
+
+; Bipolar NPN Transistors
+BEGIN NPN
+	BEGIN DRIFT,AGING,LIFE
+		BF		rnd=25%
+	END
+END
+
+; Bipolar PNP Transistors
+BEGIN PNP
+	BEGIN DRIFT,AGING,LIFE
+		BF		rnd=25%
+	END
+END
+
+; Diodes
+BEGIN D
+	BEGIN DRIFT,AGING,LIFE
+		;ECCS standards ECSS-Q-TM-30-12A(12October2010).doc
+		BV_RF              neg=.2%
+	END
+END 
+
+
+;$SpiceType=AMBIGUOUS

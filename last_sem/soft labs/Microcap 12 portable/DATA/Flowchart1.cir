@@ -1,0 +1,824 @@
+[Main]
+FileType=CIR
+Version=12.00
+Program=Micro-Cap
+Component Version=10.00
+Shape Version=11.00
+Screen=1920,1200
+MCAPVersion=12.0.2.2
+Key ID=Demo
+NLCnt=28
+TXCnt=8
+
+[Circuit]
+Window Placement=2,3, -1,-1, -8,-31, 122,312,1695,1005
+Default Object=Color=#008000
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+Default Object GridSnap=No
+NodeVoltageFormat=3
+CurrentFormat=3
+PowerFormat=3
+PathDelayFormat=3
+WarningFormat=3
+GridTextFormulaFormat=3
+SpiceType=AMBIGUOUS
+Title_Block_Border=None
+Title_Block=False
+Show Nodes=False
+Show Voltages=False
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Connection Warnings=True
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=536,384,712,272
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=712,112,456,112
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=712,184,712,112
+GridSnap=True
+
+[Object]
+Object=FC_Terminator
+FT=SLD
+CFill=#0000FF
+CBorder=#008000
+Px=376,504,536,600
+GridSnap=True
+
+[Attr]
+ON=68,41,VALUE
+V=End
+Style=8192
+Height=-14
+Color=#FFFF00
+Font=Comic Sans MS
+
+[Object]
+Object=FC_ManualOperation
+FT=GRAD
+CFill=#FFFF00
+CFill2=#FF0000
+CBorder=#008000
+Px=624,184,800,272
+GridSnap=True
+
+[Attr]
+ON=68,37,VALUE
+V=Repair
+Style=8192
+Height=-14
+Font=Comic Sans MS
+
+[Object]
+Object=FC_Decision
+FT=SLD
+CFill=#00FF00
+CBorder=#008000
+Px=376,304,536,456
+GridSnap=True
+
+[Attr]
+ON=53,69,VALUE
+V=Defects?
+Style=8192
+Height=-14
+Font=Comic Sans MS
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=456,112,456,168
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=360,112,456,112
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=360,736,360,112
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=232,736,360,736
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=208,720,232,736
+GridSnap=True
+
+[Object]
+Object=FC_Delay
+FT=SLD
+CFill=#FFFF00
+CBorder=#008000
+Px=128,392,288,480
+GridSnap=True
+
+[Object]
+Object=FC_Process
+FT=SLD
+CFill=#FFFF00
+CBorder=#008000
+Px=128,272,288,352
+GridSnap=True
+
+[Attr]
+ON=0,0,VALUE
+V
+Style=8192
+Height=-14
+Font=Comic Sans MS
+
+[Object]
+Object=FC_Terminator
+FT=SLD
+CFill=#00FF00
+CBorder=#008000
+Px=128,32,288,112
+GridSnap=True
+
+[Object]
+Object=FC_Preparation
+FT=SLD
+CFill=#FFFF00
+CBorder=#008000
+Px=144,144,272,240
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=88,192,144,192
+
+[Object]
+Object=Line
+CBorder=#008000
+Px=88,552,88,192
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=128,552,88,552
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Px=208,112,208,144
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Px=208,480,208,512
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Px=208,240,208,272
+GridSnap=True
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Px=208,352,208,392
+GridSnap=True
+
+[Object]
+Object=FC_Process
+FT=SLD
+CFill=#FFFF00
+CBorder=#008000
+Px=128,512,288,592
+GridSnap=True
+
+[Attr]
+ON=0,0,VALUE
+V
+Style=8192
+Height=-14
+Font=Comic Sans MS
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#000080
+Px=208,592,208,640
+GridSnap=True
+
+[Object]
+Object=FC_Process
+FT=SLD
+CFill=#FFFF00
+CBorder=#008000
+Px=128,640,288,720
+GridSnap=True
+
+[Attr]
+ON=6,33,VALUE
+V=Put in inspection queue
+Style=8192
+Height=-14
+Font=Comic Sans MS
+
+[Object]
+Object=FC_Process
+FT=SLD
+CFill=#FFFF00
+CBorder=#008000
+Px=376,168,536,248
+GridSnap=True
+
+[Attr]
+ON=10,33,VALUE
+V=Trim leads and inspect
+Style=8192
+Height=-14
+Font=Comic Sans MS
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=456,248,456,304
+
+[Object]
+Object=Line
+EndPoint=ArrowF
+CBorder=#008000
+Px=456,456,456,504
+
+[Grid Text]
+Text="Flowchart symbols are at Options menu / Mode / Flowchart "
+Text="and also on the Main toolbar to the right of the graphics objects."
+Text=""
+Text="1) Use CTRL+left mouse drag to create a copy of similar elements "
+Text="to simplify object selection and internal settings like Grid Snap."
+Text=""
+Text="2) Use shift key while creating lines to keep the line vertical  or "
+Text="horizontal."
+Text=""
+Text="3) Keep Grid Snap on for all objects, including lines."
+Text=""
+Text="4) Use the object Label field for text that moves with the object."
+Text=""
+Text="5) Draw the next object before the line that connnects them,"
+Text="then draw the line using object control points as line endpoints. "
+Text="That way the line segments between objects will be orthogonal."
+Text=""
+Text="6) Fill objects with Solid or Gradient to make it easier to move "
+Text="the object. Unfilled objects must be grabbed on the lines comprising "
+Text="the object and that's harder to do."
+Text=""
+Text="7) Good description of flowcharts: "
+Text="https://www.rff.com/flowchart_shapes.php"
+Px=568,824
+Height=-14
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="No"
+Px=480,464
+Height=-14
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="Yes"
+Px=552,360
+Height=-14
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="Start"
+Px=192,80
+Height=-14
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="Load board "
+Text="onto fixture"
+Px=176,200
+Height=-14
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="Stuff through-hole "
+Text="components"
+Px=160,320
+Height=-14
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="Put water in "
+Text="wavesolder kanban"
+Px=160,448
+Height=-14
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="Load board into"
+Text="wavesolder"
+Px=168,560
+Height=-14
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=1
+GridUser=10
+ShapeGroups="Main","Euro","Polarity","Main1","Main11","Electrolytic","GroundArrow","DeMorgan"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+CalcVoltage=True
+DisplayMeasure=Last
+ShareScales=True
+
+[Tools]
+Pos=Top
+FILESAVEASOLD=No
+BOM=No
+FILEPCB=No
+PROBE=Yes
+SELECT=Yes
+PAN=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+FLOWCHART=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+TRIANGLE=No
+STAR=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=Yes
+PARALLELOGRAM=No
+FC_PROCESS=No
+FC_ALT_PROCESS=No
+FC_DECISION=No
+FC_DATA=No
+FC_PREDEFPROCESS=No
+FC_INTERNALSTORAGE=No
+FC_DOCUMENT=No
+FC_MULTIDOCUMENT=No
+FC_TERMINATOR=No
+FC_PREPARATION=No
+FC_MANUALINPUT=No
+FC_MANUALOPERATION=No
+FC_CONNECTOR=No
+FC_OFFPAGECONNECTOR=No
+FC_PUNCHCARD=No
+FC_PUNCHEDTAPE=No
+FC_SUMMING_JUNCTION=No
+FC_OR=No
+FC_COLLATE=No
+FC_SORT=No
+FC_EXTRACT=No
+FC_MERGE=No
+FC_STORED_DATA=No
+FC_DELAY=No
+FC_SAS=No
+FC_MAGNETIC_DISK=No
+FC_DAS=No
+FC_DISPLAY=No
+SPREAD_SHEET=Yes
+POLYCLOS=No
+POLYOPEN=No
+FLAG=Yes
+INFO=Yes
+HELP=Yes
+HELP_SPICE=No
+LINK=Yes
+CHECK=Yes
+REGION_ENABLE=Yes
+TITLE_BLOCK=Yes
+DIGTRC=No
+DIGTRC2=No
+BUILD_COMMAND=Yes
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CONNWARN=Yes
+CROSS=Yes
+GRID=Yes
+BORDER=Yes
+BORDERONE=Yes
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+CIR_MAKEMACRO=No
+CLEARCUTWIRE=No
+CLIPBOARDCIRPAGE2BMM=No
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+REPLACE=No
+MODEL=Yes
+CIR2CKT=Yes
+ATTDISP=Yes
+ENABLE=Yes
+DISABLE=Yes
+ENABLE_WITH=Yes
+TOFRONT=Yes
+TOBACK=Yes
+SELNEXT=Yes
+PAGEADD=Yes
+PAGEADDTEXT=No
+ADDSECTION=No
+PAGEDEL=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALECIR=Yes
+GOTOFLAG=Yes
+UPLEVEL=Yes
+COLOR=Yes
+FONT=Yes
+STYLE=Yes
+DM_LAST=No
+DM_RMS=No
+DM_AVG=No
+DM_PEAK=No
+GRID_NONE=No
+GRID_NORMAL=No
+GRID_BOLD_5=No
+GRID_BOLD_6=No
+GRID_BOLD_USER=No
+GRAPH_PAPER=No
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+RENAMEDEFINE=No
+RENAMECMP=No
+ATTALIGN=No
+RESETNODEPOS=No
+FIT2STANDARD=No
+NODESNAP=No
+MOVETEXT=No
+TEXTINC=No
+TOGGLETEXT=No
+TOGGLEMODE=No
+TOLERANCE=No
+ALIGNAB=No
+ALIGNLEFT=Yes
+ALIGNCENTER=No
+ALIGNRIGHT=Yes
+ALIGNTOP=Yes
+ALIGNMIDDLES=No
+ALIGNBOTTOM=Yes
+
+[Section]
+Index=0
+Name="Flowchart1"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=425
+TabSize 1=425
+TabSize 2=425
+TabSize 3=425
+
+[Page]
+Index=0
+Section=0
+Print=True
+Enable=True
+Name=Main
+PrinterScale=1
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=1
+Px=682,425
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Anchor Color=#000000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#0000FF,Name=Verdana
+Grid Text RTF=False
+Grid Text Angle=0
+Grid Text GridSnap=True
+Grid Text PinIt=False
+Grid Text JustifyH=Left
+Grid Text JustifyV=Bottom
+Grid GradientColor2=None
+Grid OutlineThickness=1
+Grid OutlineColor=None
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Verdana
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Pin Marker Color=#008000
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=Height=-11,FStyle=0,Color=#000000,Name=Arial
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block Border=#000000
+Disabled	Color=#C0C0C0
+Search Color=#FFFF00
+Grid Color=#000000
+Graph Paper=#E4E4E4
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+Block Select Color=#51F998
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+WinBackGround Color=#FFFFFF
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+WinBackGround Color=#FFFFFF
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+WinBackGround Color=#FFFFFF
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+
+[Text Area]
+Section=0
+Page=1
+
+[Text Area]
+Section=0
+Page=2
+Text=* Schematic File
+Text=*
+Text=* Syntax:
+Text=* .MODEL <model name> [AKO:<reference model name>] <ModelType>
+Text=* +([<parameter name>=<value>][LOT[/#][/GAUSS|/UNIFORM|/WCASE]=[<tol>[%]] |[-<low>%,<high>%]][DEV[/#][/GAUSS|/UNIFORM|/WCASE]=[<tol>[%]]...)
+Text=* ModelType must be one of OPA,D,NPN,NMOS,NJF,PUL,SIN,TRN,CORE,GASFET,VSWITCH,ISWITCH,CAP,IND,RES,PNP,PMOS,PJF,DOUTPUT,DINPUT,UADC,UDAC,UGATE,UTGATE,UEFF,UGFF,UDLY,UPLD,UROM,URAM,UBGT,UIO,LPNP,NIGBT,I,V
+Text=*
+Text=*Examples:
+Text=* .MODEL 2N2222A NPN(BF=150 IS=1E-14)
+Text=* .model M1 NMOS(KP=2.5E-5 VTO=1.345 CGDO=14.67p CGBO=4.566p)
+Text=* .MODEL DK D(IS=1E-18)
+Text=* .model 2N2222A AKO:2N2222 NPN (BF=55 ISE=10F)
+Text=* .Model BJT1 NPN (RE=12 LOT/1/GAUSS=30% DEV/2/UNIFORM=2%)
+Text=*
+Text=* A .cir file is typically found in the data directory
+Text=*
+
+[InfoPage]
+InfoPage=True
+Warnings=True
+System=True
+Defines=True
+Array=True
+Model=True
+Measure=True
+MacroSubckt=True
+NotUsed=True
+ComponentCounts=True
+VariablizePaths=False
+DontShowPaths=False
+SimulationLog=True
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+
+[Pane]
+Analysis=HmDistortion
+
+[Pane]
+Analysis=ImDistortion
+
+[Pane]
+Analysis=Stability
+
+[WCTolerance]
+Var Width=100
+Nominal Width=72
+Tol Width=152
+Tol Name=Drift
+Col Width Neq=50
+Col Width Pos=50
+Col Width Rnd=50
+
+[WCFiles]
+UseFile=<Library>Standard.tlib
+AVAILABLE_FILE=<Library>Standard.tlib
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=HmDistortion
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=ImDistortion
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=Stability
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DynamicAC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DynamicDC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0

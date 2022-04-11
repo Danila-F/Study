@@ -1,0 +1,74 @@
+:Base RFSim99>main
+:Title RFSim99
+1 Введениие RFSim99
+2 Общее представление=IDoverview
+2 Ограничения RFSim99=IDlimitations
+2 Новые возможности=IDfuture
+1 Начало
+2 Основы
+3 Редактор схем=IDstarting
+3 Размещение компонентов=IDGSplacecomps
+3 Добавление соединительных проводов=IDGSwires
+3 Добавление заземления=IDGSground
+3 Добавление портов измерения=IDGSports
+3 Старт моделирования=IDGSsimulation
+3 Квадратный сеточный дисплей=IDGSsquaregrid
+3 Полярный дисплей=IDGSpolar
+3 Дисплей круговой диаграммы сопротивлений=IDGSsmith
+3 Числовой дисплей=IDGSnumeric
+2 Дополнительно
+3 Пример согласующей цепи=IDgsmatch
+3 Пример схемы фильтра=IDfilterex
+3 Пример анализа допуска=idgstolerance
+3 Пример параметра S=IDgssparameter
+3 Пример автосоответствия=idgsautomatch
+3 Пример круговой стабильности=IDgsstabilitycircle
+1 Схематический сбор данных
+2 Размещение компонентов=IDPlacing
+2 Составление, Ориентация=IDorientation
+2 Соединение=IDwires
+2 Порты измерения=IDports
+2 Старт моделирования=IDSimstart
+2 Печать=IDprinting
+2 Установки редактора схем=IDschemaprefs
+1 Моделирование
+2 Окно диаграммы=IDGraphwin
+2 Изменение диаграммы=IDgraphtype
+2 Использование настройки=IDtune
+2 Анализ допуска=idtolerance
+2 стабилизация круга=idstability
+2 Печать=IDPrinting
+2 Установки выходных графиков=IDgraphprefs
+1 Составные элементы
+2 Резистор=IDresistor
+2 Конденсатор=IDcapacitor
+2 Катушка индуктивности=IDinductor
+2 Линия электропередачи=IDtransmissionline
+2 Трансформатор=IDtransformer
+2 Файлы параметра S=IDsparameter
+2 Op-Amp=IDopamp
+1 Помошники проекта
+2 Помошник соответствия=IDmatch
+2 Помошник аттенюатора=IDatten
+2 Помошник фильтра=IDfilter
+2 Автосоответствие=idautomatch
+1 Калькулятор
+2 Резонанс/Реактанс=IDresonance
+2 Обратные потери / VSWR=IDreturnloss
+2 Уровень сигналов=IDsiglevel
+2 Частота / длинна волны=IDfreq
+2 Тепловой шум=IDnoise
+1 Компоненты
+2 Катушка индуктивности=IDindcalc
+2 Конденсатор=IDcapcalc
+2 Линия электропередачи=IDtxlncalc
+2 Соединитель=IDcouplercalc
+2 Разветвитель=IDsplittercalc
+1 Полезные советы
+2 Использование помошника соответствия, чтобы 
+согласовать комплексное сопротивление=IDhtcomplexmatch
+2 Анализ балансных схем=IDhtbalanced
+2 Верхние и нижние пределы допуска=idhttolerancehint
+1 Лицензионное соглашение и оговорка
+2 Лицензионное соглашение=idlicenceagree
+2 Оговорка=IDdisclaimer

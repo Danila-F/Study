@@ -1,0 +1,2744 @@
+[Main]
+FileType=CIR
+Version=12.00
+Program=Micro-Cap
+Component Version=10.00
+Shape Version=11.00
+Screen=1920,1200
+MCAPVersion=12.0.2.2
+Key ID=Demo
+NLCnt=14
+TXCnt=7
+
+[shapedef]
+Name=Ground
+Line=0,0,12,0
+Line=12,-8,12,8
+Line=18,-4,18,4
+Line=24,0,24,0
+
+[shapedef]
+Name=Mos1.root
+Line=0,0,10,0
+Line=10,-8,10,8
+Rectangle=12,-12,14,12
+Current=32,-24,32,-16
+Current=32,24,32,16
+Current=0,-8,8,-8
+PolyOpen=3
+PolyLine=24,-24
+PolyLine=24,-8
+PolyLine=13,-8
+PolyOpen=3
+PolyLine=24,24
+PolyLine=24,8
+PolyLine=13,8
+
+[shapedef]
+Name=NMOS
+Root="Mos1.root",0,0,0
+Line=14,0,24,0
+PolyClosed=3
+PolyLine=16,0
+PolyLine=20,4
+PolyLine=20,-4
+Current=32,-4,24,-4
+
+[shapedef]
+Name=Plus.root
+Line=-2,0,2,0
+Line=0,-2,0,2
+
+[shapedef]
+Name=SPICE_V
+Root="Vsource.root",0,0,0
+
+[shapedef]
+Name=Vsource.root
+Line=0,0,12,0
+Line=36,0,48,0
+Ellipse=12,-12,36,12
+FColor=None
+Line=7,5,7,9
+Root="Plus.root",41,7,0
+Current=32,16,16,16
+
+[compdef]
+Name=Voltage Source
+Definition=VSpice
+Shape=SPICE_V
+Mask=4865
+Used=45
+memo=Voltage Source
+Label Offset=19,13,15,13
+PinCnt=2
+Pin="Plus",6,0,-5,-6
+Pin="Minus",0,0,-20,-6
+
+[compdef]
+Name=Ground
+Definition=Ground
+Shape=Ground
+Mask=1537
+Used=272
+memo=Ground
+Label Offset=0,0,0,0
+PinCnt=1
+Pin="PinA",0,0,-3,-7
+
+[compdef]
+Name=NMOS
+Definition=NMOS
+Shape=NMOS
+Mask=5376
+memo=NMOS
+Label Offset=29,1,7,25
+PinCnt=4
+Pin="Drain",3,-3,8,9
+Pin="Gate",0,0,-20,-4
+Pin="Source",3,3,8,4
+Pin="Body",3,0,8,-1
+
+[TitleBlockDef]
+Name=DefaultOld
+Rectangle=-24,-25,232,76
+FColor=None
+Text="#Field1"
+TextInfo=-20,-21,28,-3 , -15,0,"Arial"
+Text="#Field2"
+TextInfo=-20,2,9,13 , -8,0,"Arial"
+Text="#Field3"
+TextInfo=-20,20,7,31 , -8,0,"Arial"
+Text="#Field4"
+TextInfo=-20,41,9,52 , -8,0,"Arial"
+Text="#Field5"
+TextInfo=-20,60,7,71 , -8,0,"Arial"
+Line=-24,16,232,16
+Line=-24,56,232,56
+Line=-24,36,232,36
+
+[Circuit]
+Window Placement=2,3, -1,-1, -8,-31, 0,0,1054,735
+Default Object=Color=#000080
+Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Default Object Apply Border To Text=No
+Default Object Apply Fill To Text=No
+Default Object GridSnap=No
+NodeVoltageFormat=3
+CurrentFormat=3
+PowerFormat=3
+PathDelayFormat=3
+WarningFormat=3
+GridTextFormulaFormat=3
+Window Placement in Transient Analysis=2,3, -1,-1, -4,-27, 78,78,1357,758
+Window Placement in AC Analysis=2,3, -1,-1, -4,-27, 156,156,1435,806
+Window Placement in DC Analysis=2,3, -1,-1, -8,-31, 156,156,1435,806
+SpiceType=AMBIGUOUS
+Title_Block_Border=None
+Title_Block=False
+Show Nodes=False
+Show Voltages=True
+Show Current=False
+Show Power=False
+Show Condition=False
+Show Pin Connections=False
+Show Connection Warnings=False
+Show Cross=False
+Show Attribute Text=True
+Show Grid Text=True
+
+[Object]
+Object=TitleBlock
+CFill=#FFFF00
+CBorder=#00FF00
+Px=80,80,560,208
+Rot=0
+KeepAspectRatio=True
+OneTitle=False
+Placement=BottomRight
+
+[Attr]
+ON=0,0,NAME
+V=DefaultOld
+Font=Arial
+
+[Attr]
+ON=0,11,#Field1
+V=$name
+Font=Arial
+
+[Attr]
+ON=0,22,#Field2
+V=$user $company
+Font=Arial
+
+[Attr]
+ON=0,33,#Field3
+V
+Font=Arial
+
+[Attr]
+ON=0,44,#Field4
+V=$date
+Font=Arial
+
+[Attr]
+ON=0,55,#Field5
+V=Page $page of $maxpage
+Font=Arial
+
+[Comp]
+Name=Voltage Source
+Px=120,344
+Rot=3
+
+[Attr]
+ON=17,-26,PART
+V=VG
+Style=8192
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=-120,-41,VALUE
+V=3
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,COST
+V
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,POWER
+V
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=0,0,Saved_Pulse
+V=DC 0 AC 1 0 Pulse 0 5 100n 10n 10n 400n 1u
+Style=256
+Height=-16
+Font=Comic Sans MS
+
+[Comp]
+Name=Voltage Source
+Px=352,320
+Rot=3
+
+[Attr]
+ON=19,-35,PART
+V=VD
+Style=8192
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=-31,-41,VALUE
+V=10
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=0,22,COST
+V
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,POWER
+V
+Height=-16
+Font=Comic Sans MS
+
+[Comp]
+Name=Ground
+Px=192,344
+Rot=7
+
+[Comp]
+Name=NMOS
+Px=168,296
+
+[Attr]
+ON=38,-37,PART
+V=M1
+Style=8192
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=38,-11,VALUE
+V=WL1
+Style=12288
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=37,14,MODEL
+V=N_50n
+Style=12288
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=0,33,COST
+V
+Height=-16
+Font=Comic Sans MS
+
+[Attr]
+ON=0,44,POWER
+V
+Height=-16
+Font=Comic Sans MS
+
+[Wire]
+Pxs=120,296,168,296
+
+[Wire]
+Pxs=192,320,192,344
+
+[Wire]
+Pxs=120,344,192,344
+
+[Wire]
+Pxs=192,344,352,344
+
+[Wire]
+Pxs=352,232,352,272
+
+[Wire]
+Pxs=192,232,352,232
+
+[Wire]
+Pxs=192,232,192,272
+
+[Wire]
+Pxs=192,296,192,320
+
+[Wire]
+Pxs=352,320,352,344
+
+[Grid Text]
+Text="This circuit illustrates how to optimize the parameter"
+Text="fit for a BSIM4 IV plot. Run DC, CTRL+F11, then press"
+Text="the Optimize button to see the process. It optimizes "
+Text="the values of W and VTH0 to fit an IV curve."
+Text=""
+Text="This circuit is also used in the OPT_CURVES_BSIM4.MDL "
+Text="file to do the same optimization."
+Px=72,216
+Height=-21
+Color=#008000
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="OPTIMIZER TEST SET"
+Px=416,312
+Height=-13
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE VT0 0.22"
+Px=416,288
+Height=-13
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+Enable=FALSE
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE WL1 W=5U L=1U"
+Px=416,272
+Height=-13
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+Enable=FALSE
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE VT0 700m"
+Px=416,344
+Height=-13
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text=".DEFINE WL1 W=20U L=1U"
+Px=416,328
+Height=-13
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="ORIGINAL(CORRECT) SET"
+Px=416,256
+Height=-13
+Font=Comic Sans MS
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+Enable=FALSE
+CBorder=None
+
+[Schematic]
+CurrentSection 0=0
+CurrentSection 1=0
+CurrentSection 2=0
+CurrentSection 3=0
+Splitter.xs=0
+Splitter.ys=0
+TextQuad=4099
+Scale=0.5
+GridUser=10
+ShapeGroups="Main","Euro","DeMorgan","Polarity","Electrolytic","Main1","Main11","GroundArrow"
+CalcRMS=False
+CalcAVG=False
+CalcPeak=False
+CalcVoltage=True
+DisplayMeasure=Last
+ShareScales=True
+
+[Tools]
+Pos=Top
+FILESAVEASOLD=No
+BOM=No
+FILEPCB=No
+PROBE=Yes
+SELECT=Yes
+PAN=Yes
+COMP=Yes
+TEXT=Yes
+WIRE=Yes
+WIRED=Yes
+BUS=Yes
+GRAPHIC=Yes
+FLOWCHART=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+TRIANGLE=No
+STAR=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+PARALLELOGRAM=No
+FC_PROCESS=No
+FC_ALT_PROCESS=No
+FC_DECISION=No
+FC_DATA=No
+FC_PREDEFPROCESS=No
+FC_INTERNALSTORAGE=No
+FC_DOCUMENT=No
+FC_MULTIDOCUMENT=No
+FC_TERMINATOR=No
+FC_PREPARATION=No
+FC_MANUALINPUT=No
+FC_MANUALOPERATION=No
+FC_CONNECTOR=No
+FC_OFFPAGECONNECTOR=No
+FC_PUNCHCARD=No
+FC_PUNCHEDTAPE=No
+FC_SUMMING_JUNCTION=No
+FC_OR=No
+FC_COLLATE=No
+FC_SORT=No
+FC_EXTRACT=No
+FC_MERGE=No
+FC_STORED_DATA=No
+FC_DELAY=No
+FC_SAS=No
+FC_MAGNETIC_DISK=No
+FC_DAS=No
+FC_DISPLAY=No
+SPREAD_SHEET=Yes
+POLYCLOS=No
+POLYOPEN=No
+FLAG=Yes
+INFO=Yes
+HELP=Yes
+HELP_SPICE=No
+LINK=Yes
+CHECK=Yes
+REGION_ENABLE=Yes
+TITLE_BLOCK=Yes
+DIGTRC=No
+DIGTRC2=No
+BUILD_COMMAND=Yes
+DIGALL=No
+GRIDTEXT=Yes
+COMPTEXT=Yes
+NODE=Yes
+MEASURED=Yes
+NODEV=Yes
+CURRENT=Yes
+POWER=Yes
+CONDITIN=Yes
+PIN=Yes
+CONNWARN=Yes
+CROSS=No
+GRID=Yes
+BORDER=No
+BORDERONE=Yes
+TITLE=Yes
+RUBBER=Yes
+PROPERTY=Yes
+STEP=Yes
+MIRROR=Yes
+ROTATE=Yes
+FLIPY=Yes
+FLIPX=Yes
+CIR_MAKEMACRO=No
+CLEARCUTWIRE=No
+CLIPBOARDCIRPAGE2BMM=No
+FINDCOMP=Yes
+FIND=Yes
+REPEAT=No
+REPLACE=No
+MODEL=Yes
+CIR2CKT=No
+ATTDISP=No
+ENABLE=Yes
+DISABLE=Yes
+ENABLE_WITH=Yes
+TOFRONT=Yes
+TOBACK=Yes
+SELNEXT=No
+PAGEADD=No
+PAGEADDTEXT=No
+ADDSECTION=No
+PAGEDEL=No
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALECIR=Yes
+GOTOFLAG=No
+UPLEVEL=Yes
+COLOR=Yes
+FONT=Yes
+STYLE=Yes
+DM_LAST=No
+DM_RMS=No
+DM_AVG=No
+DM_PEAK=No
+GRID_NONE=No
+GRID_NORMAL=No
+GRID_BOLD_5=No
+GRID_BOLD_6=No
+GRID_BOLD_USER=No
+GRAPH_PAPER=No
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+RENAMEDEFINE=No
+RENAMECMP=No
+ATTALIGN=No
+RESETNODEPOS=No
+FIT2STANDARD=No
+NODESNAP=No
+MOVETEXT=No
+TEXTINC=No
+TOGGLETEXT=No
+TOGGLEMODE=No
+TOLERANCE=No
+ALIGNAB=No
+ALIGNLEFT=No
+ALIGNCENTER=Yes
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNMIDDLES=Yes
+ALIGNBOTTOM=No
+
+[Section]
+Index=0
+Name="OPT_CURVES_BSIM4"
+Type=Main
+Enable=True
+CurrentPage 0=0
+CurrentPage 1=0
+CurrentPage 2=0
+CurrentPage 3=0
+TabSize 0=400
+TabSize 1=400
+TabSize 2=400
+TabSize 3=400
+
+[Page]
+Index=0
+Section=0
+Print=True
+Enable=True
+Name=Main
+PrinterScale=1
+Scale 0=1
+Scale 1=1
+Scale 2=1
+Scale 3=0.5
+Px=267,393
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Anchor Color=#000000
+Select Box Color=#000080
+Grid Text Color=Height=-12,FStyle=0,Color=#FF0000,Name=Verdana
+Grid Text RTF=False
+Grid Text Angle=0
+Grid Text GridSnap=True
+Grid Text PinIt=False
+Grid Text JustifyH=Left
+Grid Text JustifyV=Bottom
+Grid GradientColor2=None
+Grid OutlineThickness=1
+Grid OutlineColor=None
+Component Color=#0000FF
+Attribute Text=Height=-12,FStyle=0,Color=#008000,Name=Verdana
+Wire Color=#008000
+Bus Color=#008000
+Pin Connection=Height=-10,FStyle=0,Color=#FF0000,Name=Arial
+Pin Marker Color=#008000
+Node Number=Height=-11,FStyle=0,Color=#FF00FF,Name=Arial
+Node Voltage Color=Height=-11,FStyle=0,Color=#000000,Name=Arial
+Dynamic AC Voltage Color=#E4E4E4
+Text Banner Text=Height=-15,FStyle=0,Color=#800000,Name=Arial
+Title Block Background=#C0C0C0
+Current=Height=-11,FStyle=0,Color=#0000FF,Name=Arial
+Power/Condition=Height=-11,FStyle=0,Color=#FF0000,Name=Arial
+Digital Path Color=#FF0000
+Title Block Border=#000000
+Disabled	Color=#C0C0C0
+Search Color=#FFFF00
+Grid Color=#000000
+Graph Paper=#E4E4E4
+Digital 0 Color=#000000
+Digital R Color=#FFFF00
+Digital F Color=#FFFF00
+Digital 1 Color=#FF0000
+Digital X Color=#C0C0C0
+Digital Z Color=#808080
+Block Select Color=#51F998
+
+[Page]
+Index=1
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Text
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+WinBackGround Color=#FFFFFF
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+
+[Page]
+Index=2
+Section=0
+Type=Text
+Print=False
+Enable=True
+Name=Models
+Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Comment Color=#008000
+WinBackGround Color=#FFFFFF
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+
+[Page]
+Index=3
+Section=0
+Type=Info
+Print=False
+Enable=True
+Name=Info
+Font=Height=-15,FStyle=0,Color=#000080,Name=Courier New
+Comment Color=#000000
+WinBackGround Color=#FFFFFF
+Disabled	Color=#C0C0C0
+KeyWord Color=#0000FF
+Error	Color=#FF0000
+Search Color=#FFFF00
+
+[Text Area]
+Section=0
+Page=1
+
+[Text Area]
+Section=0
+Page=2
+Text=* 1 um Level 3 models from the CMOS Circuit Design, Layout, and
+Text=* Simulation, Second Edtion, see cmosedu.com
+Text=*
+Text=* LTspice uses actual sizes (not scaled lengths and widths)
+Text=* Vdd=5V
+Text=
+Text=.MODEL N_1u NMOS LEVEL  = 3
+Text=+ TOX    = 200E-10         NSUB   = 1E17            GAMMA  = 0.5
+Text=+ PHI    = 0.7             VTO    = 0.8             DELTA  = 3.0
+Text=+ UO     = 650             ETA    = 3.0E-6          THETA  = 0.1
+Text=+ KP     = 120E-6          VMAX   = 1E5             KAPPA  = 0.3
+Text=+ RSH    = 0               NFS    = 1E12            TPG    = 1
+Text=+ XJ     = 500E-9          LD     = 100E-9
+Text=+ CGDO   = 200E-12         CGSO   = 200E-12         CGBO   = 1E-10
+Text=+ CJ     = 400E-6          PB     = 1               MJ     = 0.5
+Text=+ CJSW   = 300E-12         MJSW   = 0.5
+Text=*
+Text=.MODEL P_1u PMOS LEVEL  = 3
+Text=+ TOX    = 200E-10         NSUB   = 1E17            GAMMA  = 0.6
+Text=+ PHI    = 0.7             VTO    = -0.9            DELTA  = 0.1
+Text=+ UO     = 250             ETA    = 0               THETA  = 0.1
+Text=+ KP     = 40E-6           VMAX   = 5E4             KAPPA  = 1
+Text=+ RSH    = 0               NFS    = 1E12            TPG    = -1
+Text=+ XJ     = 500E-9          LD     = 100E-9
+Text=+ CGDO   = 200E-12         CGSO   = 200E-12         CGBO   = 1E-10
+Text=+ CJ     = 400E-6          PB     = 1               MJ     = 0.5
+Text=+ CJSW   = 300E-12         MJSW   = 0.5
+Text=
+Text=*** Short channel models from CMOS Circuit Design, Layout, and Simulation, 2e
+Text=* 50nm BSIM4 models Vdd=1V
+Text=
+Text=.MODEL N_50N NMOS (LEVEL=14 A0=2 AGIDL=0.0002 AGS=1E-020 AIGBACC=0.012
+Text=+ AIGBINV=0.014 AIGC=0.017 AIGSD=0.017 ALPHA0=0.074 ALPHA1=0.005 AT=53000
+Text=+ B0=-1E-020 BETA0=30 BGIDL=2.1E+009 BIGBACC=0.0028 BIGBINV=0.004 BIGC=0.0028
+Text=+ BIGSD=0.0028 BVD=10 CDSC=0.0002 CGBO=2.56E-011 CGDL=2.495E-10 CGDO=6.238E-010
+Text=+ CGIDL=0.0002 CGSL=2.495E-10 CGSO=6.238E-010 CIGBACC=0.002 CIGBINV=0.004
+Text=+ CIGC=0.002 CIGSD=0.002 CJD=0.0005 CJS=0.0005 CJSWD=5E-010 CJSWGD=5E-010
+Text=+ CJSWGS=3E-010 CJSWS=5E-010 CKAPPAD=0.02 CKAPPAS=0.02 DELTA=0.01 DMCG=0E-006
+Text=+ DMCGT=0E-007 DMCI=0E-006 DMDG=0E-006 DROUT=0.45 DSUB=2 DVT0=2.8 DVT1=0.52
+Text=+ DVT1W=0 DVT2=-0.032 DVT2W=0 DVTP0=1E-007 DVTP1=0.05 DWJ=0.0E-008 EGIDL=0.8
+Text=+ ETA0=0.15 ETAB=0 FPROUT=0.2 GBMIN=1E-010 GEOMOD=1 IGBMOD=1 IGCMOD=1
+Text=+ IJTHDFWD=0.01 IJTHDREV=0.001 IJTHSFWD=0.01 IJTHSREV=0.001 JSD=0.0001
+Text=+ JSS=0.0001 JSWD=1E-011 JSWGD=1E-010 JSWGS=1E-010 JSWS=1E-011 K1=0.35 K2=0.05
+Text=+ K3=0 KETA=0.04 KT1=-0.21 KT1L=0.0 KT2=-0.042 LINT=1.2E-008 LPE0=5.75E-008
+Text=+ LPEB=2.3E-010 MINV=0.05 MJD=0.5 MJS=0.5 MJSWD=0.33 MJSWGD=0.33 MJSWGS=0.33
+Text=+ MJSWS=0.33 NDEP=2.8E+018 NFACTOR=1.2 NGATE=5E+020 NJD=1 NOFF=0.9 NSD=1E+020
+Text=+ PBD=1 PBSWD=1 PBSWGD=1 PBSWGS=1 PCLM=0.18 PDIBLC1=0.028 PDIBLC2=0.022
+Text=+ PDIBLCB=-0.005 PDITS=0.2 PDITSD=0.23 PDITSL=2.3E+006 PRWB=6.8E-011 PRWG=0
+Text=+ PSCBE1=8.14E+008 PSCBE2=1E-007 PVAG=1E-020 RBDB=15 RBODYMOD=1 RBPB=5 RBPD=15
+Text=+ RBPS=15 RBSB=15 RDSW=150 RDW=150 RGATEMOD=1 RSH=3 RSHG=0.4 RSW=150 TCJ=0.001
+Text=+ TCJSW=0.001 TCJSWG=0.001 TNOM=27 TOXE=1.4E-009 TOXM=1.4E-009 TOXP=7E-010
+Text=+ TOXREF=1.4E-009 TPB=0.005 TPBSW=0.005 TPBSWG=0.005 U0=0.032 UA=1.6E-010
+Text=+ UA1=1E-009 UB=1.1E-017 UB1=-3.5E-019 UC=-3E-011 UC1=0 VFB=-0.55 VOFF=-0.15
+Text=+ VOFFCV=0.02 VSAT=1.1E+005 VTH0={vt0} W0=2.5e-006 WINT=5E-009 XGL=0E-008
+Text=+ XGW=0E-007 XJ=2E-008 XJBVD=1 XRCRG2=5 XTID=3)
+Text=.model  P_50n  pmos  level = 14
+Text=
+Text=+binunit = 1            paramchk= 1            mobmod  = 0
+Text=+capmod  = 2            igcmod  = 1            igbmod  = 1            geomod  = 1
+Text=+diomod  = 1            rdsmod  = 0            rbodymod= 1            rgatemod= 1
+Text=+permod  = 1            acnqsmod= 0            trnqsmod= 0
+Text=
+Text=+tnom    = 27           toxe    = 1.4e-009     toxp    = 7e-010       toxm    = 1.4e-009
+Text=+epsrox  = 3.9          wint    = 5e-009       lint    = 1.2e-008
+Text=+ll      = 0            wl      = 0            lln     = 1            wln     = 1
+Text=+lw      = 0            ww      = 0            lwn     = 1            wwn     = 1
+Text=+lwl     = 0            wwl     = 0            xpart   = 0            toxref  = 1.4e-009
+Text=
+Text=+vth0    = -0.22        k1      = 0.39         k2      = 0.05         k3      = 0
+Text=+k3b     = 0            w0      = 2.5e-006     dvt0    = 3.9          dvt1    = 0.635
+Text=+dvt2    = -0.032       dvt0w   = 0            dvt1w   = 0            dvt2w   = 0
+Text=+dsub    = 0.7          minv    = 0.05         voffl   = 0            dvtp0   = 0.5e-008
+Text=+dvtp1   = 0.05         lpe0    = 5.75e-008    lpeb    = 2.3e-010     xj      = 2e-008
+Text=+ngate   = 5e+020       ndep    = 2.8e+018     nsd     = 1e+020       phin    = 0
+Text=+cdsc    = 0.000258     cdscb   = 0            cdscd   = 6.1e-008     cit     = 0
+Text=+voff    = -0.15        nfactor = 2            eta0    = 0.15         etab    = 0
+Text=+vfb     = 0.55         u0      = 0.0095       ua      = 1.6e-009     ub      = 8e-018
+Text=+uc      = 4.6e-013     vsat    = 90000        a0      = 1.2          ags     = 1e-020
+Text=+a1      = 0            a2      = 1            b0      = -1e-020      b1      = 0
+Text=+keta    = -0.047       dwg     = 0            dwb     = 0            pclm    = 0.55
+Text=+pdiblc1 = 0.03         pdiblc2 = 0.0055       pdiblcb = 3.4e-008     drout   = 0.56
+Text=+pvag    = 1e-020       delta   = 0.014        pscbe1  = 8.14e+008    pscbe2  = 9.58e-007
+Text=+fprout  = 0.2          pdits   = 0.2          pditsd  = 0.23         pditsl  = 2.3e+006
+Text=+rsh     = 3            rdsw    = 250          rsw     = 160          rdw     = 160
+Text=+rdswmin = 0            rdwmin  = 0            rswmin  = 0            prwg    = 3.22e-008
+Text=+prwb    = 6.8e-011     wr      = 1            alpha0  = 0.074        alpha1  = 0.005
+Text=+beta0   = 30           agidl   = 0.0002       bgidl   = 2.1e+009     cgidl   = 0.0002
+Text=+egidl   = 0.8
+Text=
+Text=+aigbacc = 0.012        bigbacc = 0.0028       cigbacc = 0.002
+Text=+nigbacc = 1            aigbinv = 0.014        bigbinv = 0.004        cigbinv = 0.004
+Text=+eigbinv = 1.1          nigbinv = 3            aigc    = 0.69         bigc    = 0.0012
+Text=+cigc    = 0.0008       aigsd   = 0.0087       bigsd   = 0.0012       cigsd   = 0.0008
+Text=+nigc    = 1            poxedge = 1            pigcd   = 1            ntox    = 1
+Text=
+Text=+xrcrg1  = 12           xrcrg2  = 5
+Text=+cgso    = 7.43e-010    cgdo    = 7.43e-010    cgbo    = 2.56e-011    cgdl    = 1e-014
+Text=+cgsl    = 1e-014       ckappas = 0.5          ckappad = 0.5          acde    = 1
+Text=+moin    = 15           noff    = 0.9          voffcv  = 0.02
+Text=
+Text=+kt1     = -0.19        kt1l    = 0            kt2     = -0.052        ute     = -1.5
+Text=+ua1     = -1e-009      ub1     = 2e-018       uc1     = 0             prt     = 0
+Text=+at      = 33000
+Text=
+Text=+fnoimod = 1            tnoimod = 0
+Text=
+Text=+jss     = 0.0001       jsws    = 1e-011       jswgs   = 1e-010       njs     = 1
+Text=+ijthsfwd= 0.01         ijthsrev= 0.001        bvs     = 10           xjbvs   = 1
+Text=+jsd     = 0.0001       jswd    = 1e-011       jswgd   = 1e-010       njd     = 1
+Text=+ijthdfwd= 0.01         ijthdrev= 0.001        bvd     = 10           xjbvd   = 1
+Text=+pbs     = 1            cjs     = 0.0005       mjs     = 0.5          pbsws   = 1
+Text=+cjsws   = 5e-010       mjsws   = 0.33         pbswgs  = 1            cjswgs  = 3e-010
+Text=+mjswgs  = 0.33         pbd     = 1            cjd     = 0.0005       mjd     = 0.5
+Text=+pbswd   = 1            cjswd   = 5e-010       mjswd   = 0.33         pbswgd  = 1
+Text=+cjswgd  = 5e-010       mjswgd  = 0.33         tpb     = 0.005        tcj     = 0.001
+Text=+tpbsw   = 0.005        tcjsw   = 0.001        tpbswg  = 0.005        tcjswg  = 0.001
+Text=+xtis    = 3            xtid    = 3
+Text=
+Text=+dmcg    = 5e-006       dmci    = 5e-006       dmdg    = 5e-006       dmcgt   = 6e-007
+Text=+dwj     = 4.5e-008     xgw     = 3e-007       xgl     = 4e-008
+Text=
+Text=+rshg    = 0.4          gbmin   = 1e-010       rbpb    = 5            rbpd    = 15
+Text=+rbps    = 15           rbdb    = 15           rbsb    = 15           ngcon   = 1
+Text=
+Text=
+Text=
+Text=
+Text=
+Text=(LEVEL=14)
+
+[InfoPage]
+InfoPage=True
+Warnings=True
+System=True
+Defines=True
+Array=True
+Model=True
+Measure=True
+MacroSubckt=True
+NotUsed=True
+ComponentCounts=True
+VariablizePaths=False
+DontShowPaths=False
+SimulationLog=True
+
+[Transient]
+WinID=1
+Window Placement=2,3, -1,-1, -4,-27, 78,78,1357,758
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Anchor Color=#000000
+Select Box Color=#000080
+Title
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+CurveFit color=#FF0000
+CurveFit Weight=2
+CurveFit Pattern=Dash
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+EndMode=SCALE
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=True
+OperPointOnly=False
+AutoScaleRanges=False
+FixedTimeStep=False
+DoPSS=False
+PSS_Periods="1"
+PSS_Iterations="5"
+PSS_Error="1u"
+PSS_ShowPlots=True
+FFT_NPts="1024"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=3
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=142
+MonExprYWidth=260
+MonRangeXWidth=90
+MonRangeYWidth=90
+AnimateWait=None
+AnimateWaitTime=500
+AnimatePressAfter=0
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Measurement Values=True
+Num Out Write Tolerance Detail=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Allow Dup Y Expr=False
+Num Out Low="TSTART"
+Num Out High="TMAX"
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Format=3
+Num Out HideNonSelected=False
+Num Out UseActualDataPoints=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+Print Individual Pages=False
+
+[Tools]
+Pos=Top
+SELECT=Yes
+PAN=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+TRIANGLE=No
+STAR=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+PARALLELOGRAM=No
+POLYCLOS=No
+POLYOPEN=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=No
+PLUS=No
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=No
+BASELINE=No
+HORIZCUR=No
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=No
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=No
+RESTORESCALE=No
+COLOR=No
+FONT=No
+STYLE=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+CURVEFIT=No
+ADD_MARKER=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+ALIGNLEFT=No
+ALIGNCENTER=Yes
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNMIDDLES=Yes
+ALIGNBOTTOM=No
+
+[AC]
+WinID=2
+Window Placement=2,3, -1,-1, -4,-27, 156,156,1435,806
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Anchor Color=#000000
+Select Box Color=#000080
+Title
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+CurveFit color=#FF0000
+CurveFit Weight=2
+CurveFit Pattern=Dash
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+EndMode=SCALE
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+OperPoint=True
+AutoScaleRanges=False
+FFT_NPts="1024"
+FFT_IncludeDCHarmonic=False
+FFT_AutoScale_Harmonics="10"
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=3
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=142
+MonExprYWidth=260
+MonRangeXWidth=90
+MonRangeYWidth=90
+AnimateWait=None
+AnimateWaitTime=500
+AnimatePressAfter=0
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=True
+Num Out Write Branch Header=True
+Num Out Write Models=True
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Operating Point=True
+Num Out Write Measurement Values=True
+Num Out Write Tolerance Detail=True
+Num Out Write Noise=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Allow Dup Y Expr=False
+Num Out Low="FMIN"
+Num Out High="FMAX"
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Format=3
+Num Out HideNonSelected=False
+Num Out UseActualDataPoints=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+Print Individual Pages=False
+
+[Tools]
+Pos=Top
+SELECT=Yes
+PAN=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+TRIANGLE=No
+STAR=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+PARALLELOGRAM=No
+POLYCLOS=No
+POLYOPEN=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=No
+PLUS=No
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=No
+BASELINE=No
+HORIZCUR=No
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=No
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=No
+RESTORESCALE=No
+COLOR=No
+FONT=No
+STYLE=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+CURVEFIT=No
+ADD_MARKER=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+ALIGNLEFT=No
+ALIGNCENTER=Yes
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNMIDDLES=Yes
+ALIGNBOTTOM=No
+
+[DC]
+WinID=3
+Window Placement=2,3, -1,-1, -8,-31, 156,156,1435,806
+Font=Height=-15,FStyle=0,Color=#0000FF,Name=Arial
+WinBackGround Color=#FFFFFF
+Select Color=#FF0000
+Anchor Color=#000000
+Select Box Color=#000080
+Title=CURVES_BSIM4.CIR VG=0.4
+AutoTitle=Yes
+Grid Color=#808080
+Grid Weight=1
+Grid Pattern=Dot6
+Tracker Foreground=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Tracker Background=#FFFF00
+Baseline color=#0000FF
+BaseLine Weight=1
+CurveFit color=#FF0000
+CurveFit Weight=2
+CurveFit Pattern=Dash
+Static Grids=False
+PlusMark=False
+MinorLog25=Off
+LabelMinor=Off
+DataPoints=False
+Token=False
+Ruler=False
+XAxisGrids=True
+YAxisGrids=True
+MinorLogGrids=True
+BaseLine=False
+AlignZ=True
+Align Cursors=True
+TagFormatX=3
+TagFormatY=3
+FormulaFormat=3
+EndMode=SCALE
+Graph Background=#FFFFFF
+Tracker Intercept=False
+Tracker Mouse=True
+Tracker Cursor=True
+Tracker Cursor BranchInfo=False
+Horizontal Cursor=False
+Same Y Scales=Yes
+Enable X Scaling=True
+Enable Y Scaling=True
+Keep X Scales The Same=False
+Number of Grids X=5
+Number of Grids Y=5
+Cursor Select Color Primary=#C0C0C0
+Cursor Select Color Secondary=#FF0000
+Data Point Labels Color Fore=Height=-15,FStyle=0,Color=#000000,Name=Arial
+Data Point Labels Color Back=#FFFF00
+AutoScaleRanges=True
+PrinterAutoTile=No
+PrinterBlackBorder=No
+MonMaxShow=2
+MonPageWidth=66
+MonPlotWidth=21
+MonExprXWidth=96
+MonExprYWidth=118
+MonRangeXWidth=71
+MonRangeYWidth=123
+AnimateWait=None
+AnimateWaitTime=500
+AnimatePressAfter=0
+Save_For_Future=No
+Reduce_Display=1
+Reduce_Save=1
+Reduce_ThrowDataOut=0
+Num Out Header Left
+Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name"
+Num Out Header Right
+Num Out Delimiter=32
+Num Out Write=True
+Num Out Write Main Header=True
+Num Out Write Limits=False
+Num Out Write Branch Header=True
+Num Out Write Models=False
+Num Out Write Zero Models=True
+Num Out Write Undefined Models=True
+Num Out Write Measurement Values=True
+Num Out Write Tolerance Detail=True
+Num Out Write Values=True
+Num Out Write Waveform Header=True
+Num Out Allow Dup Y Expr=False
+Num Out Low="DCMIN"
+Num Out High="DCMAX"
+Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
+Num Out Window Placement=2,3, -1,-1, -4,-27, 156,156,1435,806
+Num Out Format=3
+Num Out HideNonSelected=False
+Num Out UseActualDataPoints=False
+AutoSaveWave=False
+Wave Format=16E
+State Variables Format=5E
+Print Individual Pages=False
+
+[Tools]
+Pos=Top
+SELECT=Yes
+PAN=Yes
+GRAPHIC=Yes
+LINE=No
+ELLIPSE=No
+RECT=No
+DIAM=No
+ARC=No
+PIE=No
+TRIANGLE=No
+STAR=No
+LEFTBRK=No
+RIGHTBRK=No
+BOTHBRK=No
+META=No
+PARALLELOGRAM=No
+POLYCLOS=No
+POLYOPEN=No
+SCALE=Yes
+CURSOR=Yes
+MEASUREH=Yes
+MEASUREV=Yes
+TAG=Yes
+PTAG=Yes
+TEXT=Yes
+PROPERTY=Yes
+START=Yes
+STOP=Yes
+PAUSE=Yes
+RESUME=No
+DATAPTS=Yes
+TOKENS=Yes
+RULER=Yes
+PLUS=Yes
+XAXIS=Yes
+YAXIS=Yes
+MINORLOG=Yes
+LOG25=Yes
+BASELINE=Yes
+HORIZCUR=Yes
+GOTOX=Yes
+GOTOY=Yes
+GOTOPERF=Yes
+GOTOBRNC=Yes
+CLEAR_ACCUMULATED=Yes
+PDELETE_ALL_PLOTS=Yes
+NEXT=Yes
+NEXTIN=Yes
+PEAK=Yes
+VALLEY=Yes
+HIGH=Yes
+LOW=Yes
+INFLECTN=Yes
+GHIGH=Yes
+GLOW=Yes
+BOTTOM=Yes
+TOP=Yes
+WAVEFORMBUFFER=Yes
+AOUTPUT=Yes
+PKEY=Yes
+ENXSCALE=Yes
+ENYSCALE=Yes
+ZOOMIN=Yes
+ZOOMOUT=Yes
+AUTOSCALE=Yes
+RESTORESCALE=No
+COLOR=Yes
+FONT=Yes
+STYLE=Yes
+SELNEXT=No
+NORMALIZE=No
+NORMALIZE_MIN=No
+NORMALIZE_MAX=No
+ADD_TAG_LEFT=No
+ADD_TAG_RIGHT=No
+ADD_HORZ_TAG=No
+ADD_VERT_TAG=No
+ALIGN_CURSORS=No
+ALIGN_CURSORSZ=No
+CURSORTOCLIPBOARD=No
+TRACKER_CURSOR=No
+TRACKER_CURSOR_BRANCHINFO=No
+TRACKER_INTERCEPT=No
+TRACKER_MOUSE=No
+TOFRONT=Yes
+TOBACK=Yes
+SPLITCIRTEXTH=No
+SPLITCIRTEXTV=No
+SPACE_SPLITTERS_EVENLY=No
+NORMALCIR=No
+LABEL_WAVEFORM=No
+LABEL_DATA_POINTS=No
+WFB_ADD_TO_LIMITS=No
+ENVELOPE=No
+SAMEYSCALES=No
+KEEPXSCALESTHESAME=No
+CURVEFIT=No
+ADD_MARKER=No
+SHOWWATCH=No
+BP=No
+TOGGLEMODE=No
+REMOVEALLTEXT=No
+AUTOSCALEX=No
+LABELALLMINOR=No
+ALIGNLEFT=No
+ALIGNCENTER=Yes
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNMIDDLES=Yes
+ALIGNBOTTOM=No
+
+[APage]
+Analysis=DC
+Name="MAIN"
+
+[Monte Carlo Options]
+Analysis=Transient
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Monte Carlo Options]
+Analysis=AC
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Monte Carlo Options]
+Analysis=DC
+Status=Off
+Zero Tolerance=False
+Eliminate Outliers=False
+Distribution=Normal
+Number of Runs=10
+Seed=0
+
+[Limits]
+Analysis=Transient
+TMax=1u
+TStep=0
+NPts=51
+Temp=27
+RetraceRuns=1
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+IgnoreExprErrors=False
+
+[WaveForm]
+Analysis=Transient
+Plt=1
+AliasID=1
+XExp=T
+YExp=v(1)
+XRng=Auto
+YRng=Auto
+Options=LINEARX,LINEARY
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+Plt=1
+AliasID=2
+XExp=T
+YExp=v(2)
+XRng=Auto
+YRng=Auto
+Options=LINEARX,LINEARY
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=Transient
+AliasID=-1
+Options=LINEARX,LINEARY
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=AC
+FRange=1E8,1Meg
+NPts=51
+Temp=27
+MaxChng=5
+NInput=NONE
+NOutput=2
+Sweep type=Auto
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+IgnoreExprErrors=False
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+DisplayValuesInProbe=DC
+
+[WaveForm]
+Analysis=AC
+Plt=1
+AliasID=1
+XExp=F
+YExp=db(v(1))
+XRng=Auto
+YRng=Auto
+Options=LINEARY
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+Plt=2
+AliasID=2
+XExp=F
+YExp=ph(v(1))
+XRng=Auto
+YRng=Auto
+Options=LINEARY
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=AC
+AliasID=-1
+Options=LINEARY
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#008000
+Text Color=#008000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=DC
+I2Range=1,.4,.2
+I2=VG
+I1Range=1,0,5m
+I1=VD
+NPts=51
+Temp=27
+MaxChng=5
+StateVar=Zero
+RunOption=Normal
+Temperature Type=Linear
+Accumulate Plots=False
+IgnoreExprErrors=False
+Sweep1 type=Linear
+Sweep2 type=Linear
+
+[WaveForm]
+Analysis=DC
+Plt=1
+AliasID=1
+XExp=DCINPUT1
+YExp=ID(M1)
+XRng=1
+YRng=0.0002,-5e-5
+Options=LINEARX,LINEARY
+Range Grid X=0.2
+Range Grid Y=5e-5
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#0000FF
+Text Color=#0000FF
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[WaveForm]
+Analysis=DC
+AliasID=2
+XExp=DCINPUT1
+YExp=M1._W
+XRng=1
+YRng=9e-5,1.5e-5
+Options=LINEARX,LINEARY
+Range Grid X=0.2
+Range Grid Y=1.5e-5
+Enable=Enable
+DPS=Filled Bubbles
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+LWdth=2
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=3
+SFmtY=3
+NOFmtX=3
+NOFmtY=3
+
+[Limits]
+Analysis=DynamicAC
+FirstValueDisplay=Mag
+SecondValueDisplay=PhaseDeg
+PlaceText=True
+
+[Limits]
+Analysis=DynamicDC
+PlaceText=True
+
+[Pane]
+Analysis=Transient
+
+[Pane]
+Analysis=AC
+
+[Pane]
+Analysis=DC
+CurrentPage 0="MAIN"
+
+[Pane]
+Analysis=HmDistortion
+
+[Pane]
+Analysis=ImDistortion
+
+[Pane]
+Analysis=Stability
+
+[Optimize]
+Analysis=DC
+Format=3
+Find[0]=NMOS N_50N(VTH0)
+Low[0]=0
+Initial[0]=300m
+High[0]=10
+Find[1]=M1(value.w)
+Low[1]=0
+Initial[1]=45u
+High[1]=1m
+ThatCnt=211
+That[0]=Equates
+Function[0]=Y_Level(ID(M1),1,1,0.000)
+To[0]=10.000f
+That[1]=Equates
+Function[1]=Y_Level(ID(M1),1,1,20.000m)
+To[1]=4.781u
+That[2]=Equates
+Function[2]=Y_Level(ID(M1),1,1,40.000m)
+To[2]=8.884u
+That[3]=Equates
+Function[3]=Y_Level(ID(M1),1,1,60.000m)
+To[3]=12.320u
+That[4]=Equates
+Function[4]=Y_Level(ID(M1),1,1,80.000m)
+To[4]=15.105u
+That[5]=Equates
+Function[5]=Y_Level(ID(M1),1,1,100.000m)
+To[5]=17.263u
+That[6]=Equates
+Function[6]=Y_Level(ID(M1),1,1,120.000m)
+To[6]=18.680u
+That[7]=Equates
+Function[7]=Y_Level(ID(M1),1,1,140.000m)
+To[7]=19.666u
+That[8]=Equates
+Function[8]=Y_Level(ID(M1),1,1,160.000m)
+To[8]=20.327u
+That[9]=Equates
+Function[9]=Y_Level(ID(M1),1,1,180.000m)
+To[9]=20.758u
+That[10]=Equates
+Function[10]=Y_Level(ID(M1),1,1,200.000m)
+To[10]=21.047u
+That[11]=Equates
+Function[11]=Y_Level(ID(M1),1,1,220.000m)
+To[11]=21.246u
+That[12]=Equates
+Function[12]=Y_Level(ID(M1),1,1,240.000m)
+To[12]=21.414u
+That[13]=Equates
+Function[13]=Y_Level(ID(M1),1,1,260.000m)
+To[13]=21.560u
+That[14]=Equates
+Function[14]=Y_Level(ID(M1),1,1,280.000m)
+To[14]=21.694u
+That[15]=Equates
+Function[15]=Y_Level(ID(M1),1,1,300.000m)
+To[15]=21.819u
+That[16]=Equates
+Function[16]=Y_Level(ID(M1),1,1,320.000m)
+To[16]=21.938u
+That[17]=Equates
+Function[17]=Y_Level(ID(M1),1,1,340.000m)
+To[17]=22.054u
+That[18]=Equates
+Function[18]=Y_Level(ID(M1),1,1,360.000m)
+To[18]=22.168u
+That[19]=Equates
+Function[19]=Y_Level(ID(M1),1,1,380.000m)
+To[19]=22.280u
+That[20]=Equates
+Function[20]=Y_Level(ID(M1),1,1,400.000m)
+To[20]=22.391u
+That[21]=Equates
+Function[21]=Y_Level(ID(M1),1,1,420.000m)
+To[21]=22.501u
+That[22]=Equates
+Function[22]=Y_Level(ID(M1),1,1,440.000m)
+To[22]=22.610u
+That[23]=Equates
+Function[23]=Y_Level(ID(M1),1,1,460.000m)
+To[23]=22.719u
+That[24]=Equates
+Function[24]=Y_Level(ID(M1),1,1,480.000m)
+To[24]=22.827u
+That[25]=Equates
+Function[25]=Y_Level(ID(M1),1,1,500.000m)
+To[25]=22.935u
+That[26]=Equates
+Function[26]=Y_Level(ID(M1),1,1,520.000m)
+To[26]=23.043u
+That[27]=Equates
+Function[27]=Y_Level(ID(M1),1,1,540.000m)
+To[27]=23.151u
+That[28]=Equates
+Function[28]=Y_Level(ID(M1),1,1,560.000m)
+To[28]=23.258u
+That[29]=Equates
+Function[29]=Y_Level(ID(M1),1,1,580.000m)
+To[29]=23.365u
+That[30]=Equates
+Function[30]=Y_Level(ID(M1),1,1,600.000m)
+To[30]=23.472u
+That[31]=Equates
+Function[31]=Y_Level(ID(M1),1,1,620.000m)
+To[31]=23.579u
+That[32]=Equates
+Function[32]=Y_Level(ID(M1),1,1,640.000m)
+To[32]=23.686u
+That[33]=Equates
+Function[33]=Y_Level(ID(M1),1,1,660.000m)
+To[33]=23.793u
+That[34]=Equates
+Function[34]=Y_Level(ID(M1),1,1,680.000m)
+To[34]=23.899u
+That[35]=Equates
+Function[35]=Y_Level(ID(M1),1,1,700.000m)
+To[35]=24.006u
+That[36]=Equates
+Function[36]=Y_Level(ID(M1),1,1,720.000m)
+To[36]=24.112u
+That[37]=Equates
+Function[37]=Y_Level(ID(M1),1,1,740.000m)
+To[37]=24.219u
+That[38]=Equates
+Function[38]=Y_Level(ID(M1),1,1,760.000m)
+To[38]=24.325u
+That[39]=Equates
+Function[39]=Y_Level(ID(M1),1,1,780.000m)
+To[39]=24.431u
+That[40]=Equates
+Function[40]=Y_Level(ID(M1),1,1,800.000m)
+To[40]=24.538u
+That[41]=Equates
+Function[41]=Y_Level(ID(M1),1,1,820.000m)
+To[41]=24.644u
+That[42]=Equates
+Function[42]=Y_Level(ID(M1),1,1,840.000m)
+To[42]=24.750u
+That[43]=Equates
+Function[43]=Y_Level(ID(M1),1,1,860.000m)
+To[43]=24.856u
+That[44]=Equates
+Function[44]=Y_Level(ID(M1),1,1,880.000m)
+To[44]=24.962u
+That[45]=Equates
+Function[45]=Y_Level(ID(M1),1,1,900.000m)
+To[45]=25.068u
+That[46]=Equates
+Function[46]=Y_Level(ID(M1),1,1,920.000m)
+To[46]=25.174u
+That[47]=Equates
+Function[47]=Y_Level(ID(M1),1,1,940.000m)
+To[47]=25.280u
+That[48]=Equates
+Function[48]=Y_Level(ID(M1),1,1,960.000m)
+To[48]=25.386u
+That[49]=Equates
+Function[49]=Y_Level(ID(M1),1,1,980.000m)
+To[49]=25.492u
+That[50]=Equates
+Function[50]=Y_Level(ID(M1),1,1,1.000)
+To[50]=25.598u
+That[51]=Equates
+Function[51]=Y_Level(ID(M1),1,1,0.000)
+To[51]=10.000f
+Branch[51]DCVar2Case=1
+That[52]=Equates
+Function[52]=Y_Level(ID(M1),1,1,20.000m)
+To[52]=8.149u
+Branch[52]DCVar2Case=1
+That[53]=Equates
+Function[53]=Y_Level(ID(M1),1,1,40.000m)
+To[53]=15.720u
+Branch[53]DCVar2Case=1
+That[54]=Equates
+Function[54]=Y_Level(ID(M1),1,1,60.000m)
+To[54]=22.715u
+Branch[54]DCVar2Case=1
+That[55]=Equates
+Function[55]=Y_Level(ID(M1),1,1,80.000m)
+To[55]=29.134u
+Branch[55]DCVar2Case=1
+That[56]=Equates
+Function[56]=Y_Level(ID(M1),1,1,100.000m)
+To[56]=34.980u
+Branch[56]DCVar2Case=1
+That[57]=Equates
+Function[57]=Y_Level(ID(M1),1,1,120.000m)
+To[57]=40.067u
+Branch[57]DCVar2Case=1
+That[58]=Equates
+Function[58]=Y_Level(ID(M1),1,1,140.000m)
+To[58]=44.591u
+Branch[58]DCVar2Case=1
+That[59]=Equates
+Function[59]=Y_Level(ID(M1),1,1,160.000m)
+To[59]=48.559u
+Branch[59]DCVar2Case=1
+That[60]=Equates
+Function[60]=Y_Level(ID(M1),1,1,180.000m)
+To[60]=51.982u
+Branch[60]DCVar2Case=1
+That[61]=Equates
+Function[61]=Y_Level(ID(M1),1,1,200.000m)
+To[61]=54.871u
+Branch[61]DCVar2Case=1
+That[62]=Equates
+Function[62]=Y_Level(ID(M1),1,1,220.000m)
+To[62]=57.093u
+Branch[62]DCVar2Case=1
+That[63]=Equates
+Function[63]=Y_Level(ID(M1),1,1,240.000m)
+To[63]=58.868u
+Branch[63]DCVar2Case=1
+That[64]=Equates
+Function[64]=Y_Level(ID(M1),1,1,260.000m)
+To[64]=60.250u
+Branch[64]DCVar2Case=1
+That[65]=Equates
+Function[65]=Y_Level(ID(M1),1,1,280.000m)
+To[65]=61.297u
+Branch[65]DCVar2Case=1
+That[66]=Equates
+Function[66]=Y_Level(ID(M1),1,1,300.000m)
+To[66]=62.074u
+Branch[66]DCVar2Case=1
+That[67]=Equates
+Function[67]=Y_Level(ID(M1),1,1,320.000m)
+To[67]=62.615u
+Branch[67]DCVar2Case=1
+That[68]=Equates
+Function[68]=Y_Level(ID(M1),1,1,340.000m)
+To[68]=63.051u
+Branch[68]DCVar2Case=1
+That[69]=Equates
+Function[69]=Y_Level(ID(M1),1,1,360.000m)
+To[69]=63.411u
+Branch[69]DCVar2Case=1
+That[70]=Equates
+Function[70]=Y_Level(ID(M1),1,1,380.000m)
+To[70]=63.718u
+Branch[70]DCVar2Case=1
+That[71]=Equates
+Function[71]=Y_Level(ID(M1),1,1,400.000m)
+To[71]=63.991u
+Branch[71]DCVar2Case=1
+That[72]=Equates
+Function[72]=Y_Level(ID(M1),1,1,420.000m)
+To[72]=64.237u
+Branch[72]DCVar2Case=1
+That[73]=Equates
+Function[73]=Y_Level(ID(M1),1,1,440.000m)
+To[73]=64.471u
+Branch[73]DCVar2Case=1
+That[74]=Equates
+Function[74]=Y_Level(ID(M1),1,1,460.000m)
+To[74]=64.695u
+Branch[74]DCVar2Case=1
+That[75]=Equates
+Function[75]=Y_Level(ID(M1),1,1,480.000m)
+To[75]=64.912u
+Branch[75]DCVar2Case=1
+That[76]=Equates
+Function[76]=Y_Level(ID(M1),1,1,500.000m)
+To[76]=65.123u
+Branch[76]DCVar2Case=1
+That[77]=Equates
+Function[77]=Y_Level(ID(M1),1,1,520.000m)
+To[77]=65.331u
+Branch[77]DCVar2Case=1
+That[78]=Equates
+Function[78]=Y_Level(ID(M1),1,1,540.000m)
+To[78]=65.535u
+Branch[78]DCVar2Case=1
+That[79]=Equates
+Function[79]=Y_Level(ID(M1),1,1,560.000m)
+To[79]=65.737u
+Branch[79]DCVar2Case=1
+That[80]=Equates
+Function[80]=Y_Level(ID(M1),1,1,580.000m)
+To[80]=65.938u
+Branch[80]DCVar2Case=1
+That[81]=Equates
+Function[81]=Y_Level(ID(M1),1,1,600.000m)
+To[81]=66.137u
+Branch[81]DCVar2Case=1
+That[82]=Equates
+Function[82]=Y_Level(ID(M1),1,1,620.000m)
+To[82]=66.335u
+Branch[82]DCVar2Case=1
+That[83]=Equates
+Function[83]=Y_Level(ID(M1),1,1,640.000m)
+To[83]=66.531u
+Branch[83]DCVar2Case=1
+That[84]=Equates
+Function[84]=Y_Level(ID(M1),1,1,660.000m)
+To[84]=66.727u
+Branch[84]DCVar2Case=1
+That[85]=Equates
+Function[85]=Y_Level(ID(M1),1,1,680.000m)
+To[85]=66.922u
+Branch[85]DCVar2Case=1
+That[86]=Equates
+Function[86]=Y_Level(ID(M1),1,1,700.000m)
+To[86]=67.117u
+Branch[86]DCVar2Case=1
+That[87]=Equates
+Function[87]=Y_Level(ID(M1),1,1,720.000m)
+To[87]=67.310u
+Branch[87]DCVar2Case=1
+That[88]=Equates
+Function[88]=Y_Level(ID(M1),1,1,740.000m)
+To[88]=67.504u
+Branch[88]DCVar2Case=1
+That[89]=Equates
+Function[89]=Y_Level(ID(M1),1,1,760.000m)
+To[89]=67.696u
+Branch[89]DCVar2Case=1
+That[90]=Equates
+Function[90]=Y_Level(ID(M1),1,1,780.000m)
+To[90]=67.889u
+Branch[90]DCVar2Case=1
+That[91]=Equates
+Function[91]=Y_Level(ID(M1),1,1,800.000m)
+To[91]=68.080u
+Branch[91]DCVar2Case=1
+That[92]=Equates
+Function[92]=Y_Level(ID(M1),1,1,820.000m)
+To[92]=68.272u
+Branch[92]DCVar2Case=1
+That[93]=Equates
+Function[93]=Y_Level(ID(M1),1,1,840.000m)
+To[93]=68.463u
+Branch[93]DCVar2Case=1
+That[94]=Equates
+Function[94]=Y_Level(ID(M1),1,1,860.000m)
+To[94]=68.654u
+Branch[94]DCVar2Case=1
+That[95]=Equates
+Function[95]=Y_Level(ID(M1),1,1,880.000m)
+To[95]=68.844u
+Branch[95]DCVar2Case=1
+That[96]=Equates
+Function[96]=Y_Level(ID(M1),1,1,900.000m)
+To[96]=69.034u
+Branch[96]DCVar2Case=1
+That[97]=Equates
+Function[97]=Y_Level(ID(M1),1,1,920.000m)
+To[97]=69.224u
+Branch[97]DCVar2Case=1
+That[98]=Equates
+Function[98]=Y_Level(ID(M1),1,1,940.000m)
+To[98]=69.414u
+Branch[98]DCVar2Case=1
+That[99]=Equates
+Function[99]=Y_Level(ID(M1),1,1,960.000m)
+To[99]=69.603u
+Branch[99]DCVar2Case=1
+That[100]=Equates
+Function[100]=Y_Level(ID(M1),1,1,980.000m)
+To[100]=69.792u
+Branch[100]DCVar2Case=1
+That[101]=Equates
+Function[101]=Y_Level(ID(M1),1,1,1.000)
+To[101]=69.980u
+Branch[101]DCVar2Case=1
+That[102]=Equates
+Function[102]=Y_Level(ID(M1),1,1,0.000)
+To[102]=10.000f
+Branch[102]DCVar2Case=2
+That[103]=Equates
+Function[103]=Y_Level(ID(M1),1,1,20.000m)
+To[103]=9.518u
+Branch[103]DCVar2Case=2
+That[104]=Equates
+Function[104]=Y_Level(ID(M1),1,1,40.000m)
+To[104]=18.588u
+Branch[104]DCVar2Case=2
+That[105]=Equates
+Function[105]=Y_Level(ID(M1),1,1,60.000m)
+To[105]=27.211u
+Branch[105]DCVar2Case=2
+That[106]=Equates
+Function[106]=Y_Level(ID(M1),1,1,80.000m)
+To[106]=35.386u
+Branch[106]DCVar2Case=2
+That[107]=Equates
+Function[107]=Y_Level(ID(M1),1,1,100.000m)
+To[107]=43.115u
+Branch[107]DCVar2Case=2
+That[108]=Equates
+Function[108]=Y_Level(ID(M1),1,1,120.000m)
+To[108]=50.248u
+Branch[108]DCVar2Case=2
+That[109]=Equates
+Function[109]=Y_Level(ID(M1),1,1,140.000m)
+To[109]=56.937u
+Branch[109]DCVar2Case=2
+That[110]=Equates
+Function[110]=Y_Level(ID(M1),1,1,160.000m)
+To[110]=63.181u
+Branch[110]DCVar2Case=2
+That[111]=Equates
+Function[111]=Y_Level(ID(M1),1,1,180.000m)
+To[111]=68.982u
+Branch[111]DCVar2Case=2
+That[112]=Equates
+Function[112]=Y_Level(ID(M1),1,1,200.000m)
+To[112]=74.341u
+Branch[112]DCVar2Case=2
+That[113]=Equates
+Function[113]=Y_Level(ID(M1),1,1,220.000m)
+To[113]=79.115u
+Branch[113]DCVar2Case=2
+That[114]=Equates
+Function[114]=Y_Level(ID(M1),1,1,240.000m)
+To[114]=83.454u
+Branch[114]DCVar2Case=2
+That[115]=Equates
+Function[115]=Y_Level(ID(M1),1,1,260.000m)
+To[115]=87.363u
+Branch[115]DCVar2Case=2
+That[116]=Equates
+Function[116]=Y_Level(ID(M1),1,1,280.000m)
+To[116]=90.847u
+Branch[116]DCVar2Case=2
+That[117]=Equates
+Function[117]=Y_Level(ID(M1),1,1,300.000m)
+To[117]=93.913u
+Branch[117]DCVar2Case=2
+That[118]=Equates
+Function[118]=Y_Level(ID(M1),1,1,320.000m)
+To[118]=96.443u
+Branch[118]DCVar2Case=2
+That[119]=Equates
+Function[119]=Y_Level(ID(M1),1,1,340.000m)
+To[119]=98.596u
+Branch[119]DCVar2Case=2
+That[120]=Equates
+Function[120]=Y_Level(ID(M1),1,1,360.000m)
+To[120]=100.398u
+Branch[120]DCVar2Case=2
+That[121]=Equates
+Function[121]=Y_Level(ID(M1),1,1,380.000m)
+To[121]=101.876u
+Branch[121]DCVar2Case=2
+That[122]=Equates
+Function[122]=Y_Level(ID(M1),1,1,400.000m)
+To[122]=103.067u
+Branch[122]DCVar2Case=2
+That[123]=Equates
+Function[123]=Y_Level(ID(M1),1,1,420.000m)
+To[123]=103.954u
+Branch[123]DCVar2Case=2
+That[124]=Equates
+Function[124]=Y_Level(ID(M1),1,1,440.000m)
+To[124]=104.676u
+Branch[124]DCVar2Case=2
+That[125]=Equates
+Function[125]=Y_Level(ID(M1),1,1,460.000m)
+To[125]=105.270u
+Branch[125]DCVar2Case=2
+That[126]=Equates
+Function[126]=Y_Level(ID(M1),1,1,480.000m)
+To[126]=105.765u
+Branch[126]DCVar2Case=2
+That[127]=Equates
+Function[127]=Y_Level(ID(M1),1,1,500.000m)
+To[127]=106.190u
+Branch[127]DCVar2Case=2
+That[128]=Equates
+Function[128]=Y_Level(ID(M1),1,1,520.000m)
+To[128]=106.554u
+Branch[128]DCVar2Case=2
+That[129]=Equates
+Function[129]=Y_Level(ID(M1),1,1,540.000m)
+To[129]=106.891u
+Branch[129]DCVar2Case=2
+That[130]=Equates
+Function[130]=Y_Level(ID(M1),1,1,560.000m)
+To[130]=107.206u
+Branch[130]DCVar2Case=2
+That[131]=Equates
+Function[131]=Y_Level(ID(M1),1,1,580.000m)
+To[131]=107.505u
+Branch[131]DCVar2Case=2
+That[132]=Equates
+Function[132]=Y_Level(ID(M1),1,1,600.000m)
+To[132]=107.792u
+Branch[132]DCVar2Case=2
+That[133]=Equates
+Function[133]=Y_Level(ID(M1),1,1,620.000m)
+To[133]=108.068u
+Branch[133]DCVar2Case=2
+That[134]=Equates
+Function[134]=Y_Level(ID(M1),1,1,640.000m)
+To[134]=108.339u
+Branch[134]DCVar2Case=2
+That[135]=Equates
+Function[135]=Y_Level(ID(M1),1,1,660.000m)
+To[135]=108.605u
+Branch[135]DCVar2Case=2
+That[136]=Equates
+Function[136]=Y_Level(ID(M1),1,1,680.000m)
+To[136]=108.867u
+Branch[136]DCVar2Case=2
+That[137]=Equates
+Function[137]=Y_Level(ID(M1),1,1,700.000m)
+To[137]=109.126u
+Branch[137]DCVar2Case=2
+That[138]=Equates
+Function[138]=Y_Level(ID(M1),1,1,720.000m)
+To[138]=109.382u
+Branch[138]DCVar2Case=2
+That[139]=Equates
+Function[139]=Y_Level(ID(M1),1,1,740.000m)
+To[139]=109.636u
+Branch[139]DCVar2Case=2
+That[140]=Equates
+Function[140]=Y_Level(ID(M1),1,1,760.000m)
+To[140]=109.888u
+Branch[140]DCVar2Case=2
+That[141]=Equates
+Function[141]=Y_Level(ID(M1),1,1,780.000m)
+To[141]=110.139u
+Branch[141]DCVar2Case=2
+That[142]=Equates
+Function[142]=Y_Level(ID(M1),1,1,800.000m)
+To[142]=110.388u
+Branch[142]DCVar2Case=2
+That[143]=Equates
+Function[143]=Y_Level(ID(M1),1,1,820.000m)
+To[143]=110.636u
+Branch[143]DCVar2Case=2
+That[144]=Equates
+Function[144]=Y_Level(ID(M1),1,1,840.000m)
+To[144]=110.883u
+Branch[144]DCVar2Case=2
+That[145]=Equates
+Function[145]=Y_Level(ID(M1),1,1,860.000m)
+To[145]=111.130u
+Branch[145]DCVar2Case=2
+That[146]=Equates
+Function[146]=Y_Level(ID(M1),1,1,880.000m)
+To[146]=111.375u
+Branch[146]DCVar2Case=2
+That[147]=Equates
+Function[147]=Y_Level(ID(M1),1,1,900.000m)
+To[147]=111.619u
+Branch[147]DCVar2Case=2
+That[148]=Equates
+Function[148]=Y_Level(ID(M1),1,1,920.000m)
+To[148]=111.863u
+Branch[148]DCVar2Case=2
+That[149]=Equates
+Function[149]=Y_Level(ID(M1),1,1,940.000m)
+To[149]=112.106u
+Branch[149]DCVar2Case=2
+That[150]=Equates
+Function[150]=Y_Level(ID(M1),1,1,960.000m)
+To[150]=112.348u
+Branch[150]DCVar2Case=2
+That[151]=Equates
+Function[151]=Y_Level(ID(M1),1,1,980.000m)
+To[151]=112.589u
+Branch[151]DCVar2Case=2
+That[152]=Equates
+Function[152]=Y_Level(ID(M1),1,1,1.000)
+To[152]=112.830u
+Branch[152]DCVar2Case=2
+That[153]=Equates
+Function[153]=Y_Level(ID(M1),1,1,0.000)
+To[153]=10.000f
+Branch[153]DCVar2Case=3
+That[154]=Equates
+Function[154]=Y_Level(ID(M1),1,1,20.000m)
+To[154]=9.909u
+Branch[154]DCVar2Case=3
+That[155]=Equates
+Function[155]=Y_Level(ID(M1),1,1,40.000m)
+To[155]=19.468u
+Branch[155]DCVar2Case=3
+That[156]=Equates
+Function[156]=Y_Level(ID(M1),1,1,60.000m)
+To[156]=28.678u
+Branch[156]DCVar2Case=3
+That[157]=Equates
+Function[157]=Y_Level(ID(M1),1,1,80.000m)
+To[157]=37.538u
+Branch[157]DCVar2Case=3
+That[158]=Equates
+Function[158]=Y_Level(ID(M1),1,1,100.000m)
+To[158]=46.048u
+Branch[158]DCVar2Case=3
+That[159]=Equates
+Function[159]=Y_Level(ID(M1),1,1,120.000m)
+To[159]=54.093u
+Branch[159]DCVar2Case=3
+That[160]=Equates
+Function[160]=Y_Level(ID(M1),1,1,140.000m)
+To[160]=61.790u
+Branch[160]DCVar2Case=3
+That[161]=Equates
+Function[161]=Y_Level(ID(M1),1,1,160.000m)
+To[161]=69.137u
+Branch[161]DCVar2Case=3
+That[162]=Equates
+Function[162]=Y_Level(ID(M1),1,1,180.000m)
+To[162]=76.136u
+Branch[162]DCVar2Case=3
+That[163]=Equates
+Function[163]=Y_Level(ID(M1),1,1,200.000m)
+To[163]=82.787u
+Branch[163]DCVar2Case=3
+That[164]=Equates
+Function[164]=Y_Level(ID(M1),1,1,220.000m)
+To[164]=88.975u
+Branch[164]DCVar2Case=3
+That[165]=Equates
+Function[165]=Y_Level(ID(M1),1,1,240.000m)
+To[165]=94.815u
+Branch[165]DCVar2Case=3
+That[166]=Equates
+Function[166]=Y_Level(ID(M1),1,1,260.000m)
+To[166]=100.310u
+Branch[166]DCVar2Case=3
+That[167]=Equates
+Function[167]=Y_Level(ID(M1),1,1,280.000m)
+To[167]=105.460u
+Branch[167]DCVar2Case=3
+That[168]=Equates
+Function[168]=Y_Level(ID(M1),1,1,300.000m)
+To[168]=110.265u
+Branch[168]DCVar2Case=3
+That[169]=Equates
+Function[169]=Y_Level(ID(M1),1,1,320.000m)
+To[169]=114.615u
+Branch[169]DCVar2Case=3
+That[170]=Equates
+Function[170]=Y_Level(ID(M1),1,1,340.000m)
+To[170]=118.624u
+Branch[170]DCVar2Case=3
+That[171]=Equates
+Function[171]=Y_Level(ID(M1),1,1,360.000m)
+To[171]=122.298u
+Branch[171]DCVar2Case=3
+That[172]=Equates
+Function[172]=Y_Level(ID(M1),1,1,380.000m)
+To[172]=125.638u
+Branch[172]DCVar2Case=3
+That[173]=Equates
+Function[173]=Y_Level(ID(M1),1,1,400.000m)
+To[173]=128.648u
+Branch[173]DCVar2Case=3
+That[174]=Equates
+Function[174]=Y_Level(ID(M1),1,1,420.000m)
+To[174]=131.232u
+Branch[174]DCVar2Case=3
+That[175]=Equates
+Function[175]=Y_Level(ID(M1),1,1,440.000m)
+To[175]=133.509u
+Branch[175]DCVar2Case=3
+That[176]=Equates
+Function[176]=Y_Level(ID(M1),1,1,460.000m)
+To[176]=135.492u
+Branch[176]DCVar2Case=3
+That[177]=Equates
+Function[177]=Y_Level(ID(M1),1,1,480.000m)
+To[177]=137.196u
+Branch[177]DCVar2Case=3
+That[178]=Equates
+Function[178]=Y_Level(ID(M1),1,1,500.000m)
+To[178]=138.640u
+Branch[178]DCVar2Case=3
+That[179]=Equates
+Function[179]=Y_Level(ID(M1),1,1,520.000m)
+To[179]=139.782u
+Branch[179]DCVar2Case=3
+That[180]=Equates
+Function[180]=Y_Level(ID(M1),1,1,540.000m)
+To[180]=140.740u
+Branch[180]DCVar2Case=3
+That[181]=Equates
+Function[181]=Y_Level(ID(M1),1,1,560.000m)
+To[181]=141.543u
+Branch[181]DCVar2Case=3
+That[182]=Equates
+Function[182]=Y_Level(ID(M1),1,1,580.000m)
+To[182]=142.217u
+Branch[182]DCVar2Case=3
+That[183]=Equates
+Function[183]=Y_Level(ID(M1),1,1,600.000m)
+To[183]=142.790u
+Branch[183]DCVar2Case=3
+That[184]=Equates
+Function[184]=Y_Level(ID(M1),1,1,620.000m)
+To[184]=143.270u
+Branch[184]DCVar2Case=3
+That[185]=Equates
+Function[185]=Y_Level(ID(M1),1,1,640.000m)
+To[185]=143.702u
+Branch[185]DCVar2Case=3
+That[186]=Equates
+Function[186]=Y_Level(ID(M1),1,1,660.000m)
+To[186]=144.098u
+Branch[186]DCVar2Case=3
+That[187]=Equates
+Function[187]=Y_Level(ID(M1),1,1,680.000m)
+To[187]=144.466u
+Branch[187]DCVar2Case=3
+That[188]=Equates
+Function[188]=Y_Level(ID(M1),1,1,700.000m)
+To[188]=144.814u
+Branch[188]DCVar2Case=3
+That[189]=Equates
+Function[189]=Y_Level(ID(M1),1,1,720.000m)
+To[189]=145.143u
+Branch[189]DCVar2Case=3
+That[190]=Equates
+Function[190]=Y_Level(ID(M1),1,1,740.000m)
+To[190]=145.462u
+Branch[190]DCVar2Case=3
+That[191]=Equates
+Function[191]=Y_Level(ID(M1),1,1,760.000m)
+To[191]=145.773u
+Branch[191]DCVar2Case=3
+That[192]=Equates
+Function[192]=Y_Level(ID(M1),1,1,780.000m)
+To[192]=146.078u
+Branch[192]DCVar2Case=3
+That[193]=Equates
+Function[193]=Y_Level(ID(M1),1,1,800.000m)
+To[193]=146.377u
+Branch[193]DCVar2Case=3
+That[194]=Equates
+Function[194]=Y_Level(ID(M1),1,1,820.000m)
+To[194]=146.672u
+Branch[194]DCVar2Case=3
+That[195]=Equates
+Function[195]=Y_Level(ID(M1),1,1,840.000m)
+To[195]=146.963u
+Branch[195]DCVar2Case=3
+That[196]=Equates
+Function[196]=Y_Level(ID(M1),1,1,860.000m)
+To[196]=147.252u
+Branch[196]DCVar2Case=3
+That[197]=Equates
+Function[197]=Y_Level(ID(M1),1,1,880.000m)
+To[197]=147.538u
+Branch[197]DCVar2Case=3
+That[198]=Equates
+Function[198]=Y_Level(ID(M1),1,1,900.000m)
+To[198]=147.823u
+Branch[198]DCVar2Case=3
+That[199]=Equates
+Function[199]=Y_Level(ID(M1),1,1,920.000m)
+To[199]=148.105u
+Branch[199]DCVar2Case=3
+That[200]=Equates
+Function[200]=Y_Level(ID(M1),1,1,940.000m)
+To[200]=148.386u
+Branch[200]DCVar2Case=3
+That[201]=Equates
+Function[201]=Y_Level(ID(M1),1,1,960.000m)
+To[201]=148.665u
+Branch[201]DCVar2Case=3
+That[202]=Equates
+Function[202]=Y_Level(ID(M1),1,1,980.000m)
+To[202]=148.943u
+Branch[202]DCVar2Case=3
+That[203]=Equates
+Function[203]=Y_Level(ID(M1),1,1,1.000)
+To[203]=149.220u
+Branch[203]DCVar2Case=3
+POWELL_TOL=1e-4
+POWELL_RelPercentTol=.1
+POWELL_PercentTol=1m
+HOOKE_TOL=1e-4
+HOOKE_PercentTol=1m
+HOOKE_RHO=.3
+HOOKE_EPSILON=1e-9
+HOOKE_ITERMAX=1000
+DE_MAXITER=200
+DE_IPRINT=50
+DE_PCROS=.9
+DE_FACT=.5
+DE_MULTIPLIER=5
+InitialRangeFactor=2
+InitializeEach=False
+Method=LM
+Update_Plot=True
+Minimize_Plot=False
+StartWith=Initial
+GridSize=4
+NumberOfTrys=10
+Log=False
+Show Log=False
+
+[Watch]
+Analysis=Transient
+Format=3
+ExprPercentWidth=80
+
+[Watch]
+Analysis=AC
+Format=3
+ExprPercentWidth=80
+
+[Watch]
+Analysis=DC
+Format=3
+ExprPercentWidth=80
+
+[WCTolerance]
+Var Width=100
+Nominal Width=72
+Tol Width=152
+Tol Name=Drift
+Col Width Neq=50
+Col Width Pos=50
+Col Width Rnd=50
+Tol Name=aaa
+Col Width Neq=50
+Col Width Pos=50
+Col Width Rnd=50
+Tol Name=ccc
+Col Width Neq=50
+Col Width Pos=50
+Col Width Rnd=50
+Tol Name=ddd
+Col Width Neq=50
+Col Width Pos=50
+Col Width Rnd=50
+
+[WCFiles]
+UseFile=<Library>Standard.tlib
+AVAILABLE_FILE=<Library>Standard.tlib
+
+[Slider]
+Analysis=DC
+Link="NMOS MM20(A2)"
+Min="19.0085"
+Max="76.034"
+Default
+Format=3
+Method=Linear
+Show=False
+Font=Height=-15,FStyle=0,Color=#000000,Name=Arial
+StepSize="10%"
+MRUDockID=59421
+Floating=False
+LocalOffset=False
+Rect=1710,71,1824,231
+
+[Slider]
+Analysis=DC
+Link="NMOS MM20(A1)"
+Min="3.01105"
+Max="12.0442"
+Default
+Format=3
+Method=Linear
+Show=False
+Font=Height=-15,FStyle=0,Color=#000000,Name=Arial
+StepSize="10%"
+MRUDockID=59421
+Floating=False
+LocalOffset=False
+Rect=1598,71,1712,231
+
+[Slider]
+Analysis=DC
+Link="NMOS MM20(BET)"
+Min="0.00096075"
+Max="0.003843"
+Default
+Format=3
+Method=Linear
+Show=False
+Font=Height=-15,FStyle=0,Color=#000000,Name=Arial
+StepSize="10%"
+MRUDockID=59421
+Floating=False
+LocalOffset=False
+Rect=1598,71,1724,231
+
+[OPMethods]
+Analysis=Transient
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=AC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=HmDistortion
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=ImDistortion
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=Stability
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DynamicAC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
+
+[OPMethods]
+Analysis=DynamicDC
+Standard Newton-Raphson=0,0
+Source Stepping=0,0
+Diagonal Gmin Stepping=0,0
+Junction Gmin Stepping=0,0
+Pseudo Transient=0,0
