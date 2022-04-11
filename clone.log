@@ -1,0 +1,12 @@
+12:43:46.983361 exec-cmd.c:237          trace: resolved executable dir: C:/Program Files/Git/mingw64/bin
+12:43:46.983361 git.c:455               trace: built-in: git clone https://gitserver/repo.git
+12:43:47.077590 run-command.c:666       trace: run_command: git remote-https origin https://gitserver/repo.git
+Cloning into 'repo'...
+12:43:47.140643 exec-cmd.c:237          trace: resolved executable dir: C:/Program Files/Git/mingw64/libexec/git-core
+12:43:47.156217 git.c:744               trace: exec: git-remote-https origin https://gitserver/repo.git
+12:43:47.156217 run-command.c:666       trace: run_command: git-remote-https origin https://gitserver/repo.git
+12:43:47.250462 exec-cmd.c:237          trace: resolved executable dir: C:/Program Files/Git/mingw64/libexec/git-core
+12:43:47.266119 http.c:781              == Info: Couldn't find host gitserver in the (nil) file; using defaults
+12:43:49.667552 http.c:781              == Info: Could not resolve host: gitserver
+12:43:49.667552 http.c:781              == Info: Closing connection 0
+fatal: unable to access 'https://gitserver/repo.git/': Could not resolve host: gitserver
