@@ -1,0 +1,53 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~Diploma.PrjPcb|ReportField=ProjectFullPath~D:\BSUIR\Diploma\__SHEMPEL__\Diploma\Diploma.PrjPcb|ReportField=Title~Bill of Materials For Project [Diploma.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~174|ReportField=ReportTime~11:50:51|ReportField=ReportDate~29.04.2021|ReportField=ReportDateTime~29.04.2021 11:50:51|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~Соколов|ReportField=CheckedBy~Смирнова|ReportField=CompanyName~|ReportField=CurrentDate~29.04.2021|ReportField=CurrentTime~11:50:49|ReportField=Date~|ReportField=DocumentFullPathAndName~D:\BSUIR\Diploma\__SHEMPEL__\Diploma\main.SchDoc|ReportField=DocumentName~main.SchDoc|ReportField=DocumentNumber~ГУИР.123456.001 Э3|ReportField=DrawnBy~Соколов|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~25.04.2021|ReportField=Organization~БГУИР, 750701|ReportField=ProjectName~Diploma.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~1|ReportField=SheetTotal~1|ReportField=Time~|ReportField=Title~|ReportField=Title1str~Дистанционная система|ReportField=Title2str~управления климатом дома|ReportField=DocumentCode~|ReportField=ListNumber~1|ReportField=ModifiedNumber~|ReportField=Пров.~Смирнова|ReportField=Разраб.~Шемпель|ReportField=DataSourceFileName~Diploma.PrjPcb|ReportField=DataSourceFullPath~D:\BSUIR\Diploma\__SHEMPEL__\Diploma\Diploma.PrjPcb|ReportField=PCBConfigurationName~Sources|ReportField=Item~|ReportField=ItemRevision~|ReportField=ItemAndRevision~|ReportField=ItemRevisionBase~|ReportField=ItemRevisionLevel1~|ReportField=ItemRevisionLevel2~|ReportField=ItemRevisionLevel1AndBase~|ReportField=ItemRevisionLevel2AndLevel1~
+1|beeper_HPA17F||BA1||beeper_HPA17F|1
+2|cap_1mkF||C1, C14, C21, C26, C27, C28, C29||cap_1mkF|7
+3|cap_pol_100mkF||C2, C8||cap_pol_100mkF|2
+4|pol_10mkF||C3, C7||cap_pol_10mkF|2
+5|pol_1mkF||C4, C5, C6, C9, C13||cap_pol_1mkF|5
+6|cap_100nF||C10||cap_100nF|1
+7|33pF||C11, C12, C22, C23, C24, C25||cap_33pF|6
+8|cap_10pF||C15, C16, C17||cap_10pF|3
+9|cap_33pF||C18, C19, C20||cap_33pF|3
+10|stu_MIC29302WT||DD1||stu_MIC29302WT|1
+11|NCP1117ST50T3G|No Description Available|DD2|SOT223-3_ONS|NCP1117ST50T3G|1
+12|MAX232CSE+|No Description Available|DD3|21-0041_S16+3_MXM|MAX232CSE+|1
+13|PCF8574DGVR|Remote 8-Bit I/O Expander for I2C-Bus|DD4, DD5, DD8|DGV20|PCF8574DGVR|3
+14|ATMEGA32U4RC-AU|No Description Available|DD6|44ML_ATM|ATMEGA32U4RC-AU|1
+15|SIM900A||DD7||SIM900A|1
+16|||DD9, DD13, DD14, DD15, DD17, DD21, DD22, DD23, DD24, DD25, R16, R17, R18, R19, R20, R21, R22, R23, R24, R25, R26, R27, R28, R29, R30, R31, R32, R33, R34, R35, R36, R37, R38, R39, R40, R41, R42, R43, R44, R45, R46, R47, R48, R49, R50, R51, R52, R53, R54, R55, R56, R57, R58, R59, R60, R61, R62, R63, R64, R65, R66||KR1850VE35, K589IR12, KR580BA86, K589IR12, KR1533TM9, KR1533TM9, K556RT7, KR1533ID7, KR1533ID7, K589IR12, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510, res_510|61
+17|K533LA3||DD10||K533LA3|1
+18|KR1533TM2||DD11||KR1533TM2|1
+19|K533LN1||DD12||K533LN1|1
+20|K514ID2||DD16, DD18, DD26, DD27||K514ID2|4
+21|KR1533LA9||DD19, DD20||KR1533LA9|2
+22|fu||FU1, FU2||fu|2
+23|semisigment||HL1, HL2, HL3, HL4||semisigment|4
+24|inductor_10uH||L1||inductor_10uH|1
+25|res_47k||R1, R6, R12, R13||res_47k|4
+26|res_100K||R2||res_100K|1
+27|res_1M||R3||res_1M|1
+28|res_510||R4, R14, R15||res_510|3
+29|res_4.7k||R5, R10, R11||res_4.7k|3
+30|res_22||R7, R8, R9||res_22|3
+31|SW-SPST|Single-Pole, Single-Throw Switch|S1|SPST-2|SW-SPST|1
+32|SW-SPDT|SPDT Subminiature Toggle Switch, Right Angle Mounting, Vertical Actuation|S2|TL36WW15050|SW-SPDT|1
+33|button_keypad||SB1, SB2, SB3, SB4, SB5, SB6, SB7, SB8, SB9||button_keypad|9
+34|diode_M7||VD1, VD2||diode_M7|2
+35|diode_red||VD3, VD4||diode_red|2
+36|M7||VD5, VD6, VD7, VD8||diode_M7|4
+37|red_GNL-3012HD||VD9, VD10, VD11, VD12||diode_red|4
+38|BC547||VT1, VT2, VT3, VT4||BC547, BC547, BC547, trans_BC547|4
+39|trans||VT5||trans|1
+40|switcher||X1, X2, X3, X4||switcher|4
+41|power_supply_jack||XS1||power_supply_jack|1
+42|LCD_connector||XS2||LCD_connector|1
+43|conn_Keypad||XS3||conn_Keypad|1
+44|BH-10||XS4||RS-232|1
+45|VS1833B||XS5||VS1833B|1
+46|usb_typeA||XS6||usb_typeA|1
+47|conn_Battery_CR2032||XS7||conn_Battery_CR2032|1
+48|SIM5051-6-0-18-00-A|No Description Available|XS8|SIM5051-6-0-18-00-A_GCT|SIM5051-6-0-18-00-A|1
+49|antenn_connector||XS9||antenn_connector|1
+50|ds1013||XS10||temperature_sensors_connector|1
+51|crystal_8mhz||ZQ1||crystal_8mhz|1
+52|HC-49S||ZQ2||crystal_8mhz|1
