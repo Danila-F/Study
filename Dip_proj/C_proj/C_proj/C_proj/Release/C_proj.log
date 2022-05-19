@@ -1,0 +1,10 @@
+﻿  belt.c
+  Proj_02.c
+C:\Study\Dip_proj\C_proj\C_proj\C_proj\Proj_02.c(46,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Study\Dip_proj\C_proj\C_proj\C_proj\Proj_02.c(59,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Study\Dip_proj\C_proj\C_proj\C_proj\Proj_02.c(35,8): warning C4101: resB: неиспользованная локальная переменная
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 13 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  C_proj.vcxproj -> C:\Study\Dip_proj\C_proj\C_proj\Release\C_proj.exe

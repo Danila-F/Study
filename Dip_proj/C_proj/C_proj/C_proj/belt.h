@@ -176,6 +176,14 @@ blob_t blobCreate(
 	size_t size		/*!< [in] размер */
 );
 
+/*!	\brief Очистка и освобождение блоба
+
+	Выполняется очистка и освобождение блоба blob.
+*/
+void blobClose(
+	blob_t blob		/*!< [in] блоб */
+);
+
 /*!	\brief Длина состояния функций CTR
 
 	Возвращается длина состояния (в октетах) функций шифрования в режиме CTR.
@@ -232,4 +240,13 @@ err_t beltCTR(
 	const octet key[],		/*!< [in] ключ */
 	size_t len,				/*!< [in] длина ключа */
 	const octet iv[16]		/*!< [in] синхропосылка */
+);
+
+err_t beltCTRB(
+	octet* dest,			/*!< [out] шифртекст / открытый текст */
+	const octet* src,		/*!< [in] открытый текст / шифртекст */
+	const octet key[],		/*!< [in] ключ */
+	size_t len,				/*!< [in] длина ключа */
+	const octet iv[16],		/*!< [in] синхропосылка */
+	blob_t* state			/*!< [in] состояние шифратора */
 );

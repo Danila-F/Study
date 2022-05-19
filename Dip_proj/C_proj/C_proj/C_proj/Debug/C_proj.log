@@ -1,2 +1,5 @@
 ﻿  Proj_02.c
+C:\Study\Dip_proj\C_proj\C_proj\C_proj\Proj_02.c(46,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Study\Dip_proj\C_proj\C_proj\C_proj\Proj_02.c(59,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Study\Dip_proj\C_proj\C_proj\C_proj\Proj_02.c(35,8): warning C4101: resB: неиспользованная локальная переменная
   C_proj.vcxproj -> C:\Study\Dip_proj\C_proj\C_proj\Debug\C_proj.exe

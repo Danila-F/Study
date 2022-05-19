@@ -32,5 +32,38 @@ err_t main()
 			iv						/*!< [in] синхропосылка */
 		);
 
-    return(res);
+	err_t resB;
+	char destB[8] = { 0 };
+	char srcB[8] = "12345678";
+	size_t countB = 8;
+	size_t lenB = 16;
+	const octet keyB[16] = "8765432112345678";
+	const octet ivB[16] = "1111111111111111";
+	// создать состояние
+	void* stateB = blobCreate(beltCTR_keep());
+	beltCTRStart(stateB, keyB, lenB, ivB);
+	// зашифровать
+	for (int i = 0; i < countB; i++)
+	{
+		//resB = beltCTRB(destB + i, srcB + i, keyB, 
+			//lenB, ivB, stateB);
+		beltCTRStepE(srcB + i, 1, stateB);
+	}
+	// завершить
+	blobClose(stateB);
+
+	// создать состояние
+	void* stateBE = blobCreate(beltCTR_keep());
+	beltCTRStart(stateBE, keyB, lenB, ivB);
+	// расшифровать
+	for (int i = 0; i < countB; i++)
+	{
+		//resB = beltCTRB(destB + i, srcB + i, keyB, 
+			//lenB, ivB, stateB);
+		beltCTRStepE(srcB + i, 1, stateBE);
+	}
+	// завершить
+	blobClose(stateBE);
+
+    return(0);
 }

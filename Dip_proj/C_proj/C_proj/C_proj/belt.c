@@ -648,3 +648,22 @@ err_t beltCTR(void* dest, const void* src, size_t count,
 	blobClose(state);
 	return ERR_OK;
 }
+
+err_t beltCTRB(octet* dest, const octet* src, const octet key[],
+	size_t len, const octet iv[16], blob_t* state)
+{
+	// проверить входные данные
+	if (len != 16 && len != 24 && len != 32 ||
+		!memIsValid(src, 1) ||
+		!memIsValid(key, len) ||
+		!memIsValid(iv, 16) ||
+		!memIsValid(dest, 1))
+		return ERR_BAD_INPUT;
+	if (state == 0)
+		return ERR_OUTOFMEMORY;
+	// зашифровать
+	beltCTRStart(state, key, len, iv);
+	memmove(dest, src, 1);
+	beltCTRStepE(dest, 1, state);
+	return ERR_OK;
+}
