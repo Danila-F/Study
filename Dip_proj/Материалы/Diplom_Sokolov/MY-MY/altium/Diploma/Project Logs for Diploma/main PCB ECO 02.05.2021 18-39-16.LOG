@@ -1,0 +1,5 @@
+Added Component: Designator=XS1(conn_DCJ200-10)
+Added Pin To Net: NetName=+5 Pin=XS1-1
+Added Pin To Net: NetName=NetC3_2 Pin=XS1-2
+Added Pin To Net: NetName=+5 Pin=XS1-3
+Added Member To Class: ClassName=main Member=Component XS1 DCJ200-10
