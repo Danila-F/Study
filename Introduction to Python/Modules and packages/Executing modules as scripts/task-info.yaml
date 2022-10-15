@@ -1,0 +1,57 @@
+type: edu
+files:
+- name: task.py
+  visible: true
+  placeholders:
+  - offset: 65
+    length: 38
+    placeholder_text: '# Call func() from the imported module'
+    initial_state:
+      length: 38
+      offset: 65
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: kIrCcjkicVvy4nL54Zkghk145IGEuBrv8xmPrCH/jMI=
+  - offset: 127
+    length: 69
+    placeholder_text: print('This should be printed ONLY when task.py is called directly.')
+    initial_state:
+      length: 69
+      offset: 127
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: eferBCJRUpIZ4ayufvWxuSzxvyxK+MoYXDHuKgRndPwfSFXYG8XfTQ3z89hPXXSG4ZEm6Xb4EAJM27GtakJ1RyozLCTKg4acSl4cpS9k/0X9YRB4KygqfBagbGeBeJMwyNCHAGZYjd5JnjwSRpNyCQ==
+  encrypted_text: ZZAe7Q81OUDVqZsAwu6CCUpv6pJwlEJyfTrHQbqpKuGBG9OYNmh3Y6yYy+Gl7HRcYCM9bkRmr3cdaNdM4OsYaftR+4QqBwAdAHTG7h2cQvMaBGBsFUTB4lyB+sSiYEeUAzJYBJxR52AVe6MhyXJZD9XvCAYKSyNBqXvxvKxM8EffumRmQsPK4dCpynli3vXJled3FY6+psboYCZ0JcahA4vPiSQ4x8JlLM6XpRQXxsizHZ1nw1z7OtHeOhBG7oRq2/WzzI1Cj2e8h+rdUkY86Q==
+  learner_created: false
+- name: tests/test_task.py
+  visible: false
+  encrypted_text: XIlL2u+4gqNTqO7La77YdUL7aR8p/B/NVC9K2/TYHAWK22uLUBp28ANR3W4OFrX+ej8/1BAo3yBnGv5RV0bbqQvKfDcRREzunedhf+qo8755hxa6jgb4aS6pzDaotvBDmEXRs5cudldgG6D77GQiKBUBV0NnRACkYTDq9NC56+AHvIK+0lKuqztNbq925fAJMn8Y5kDUbW73JgiILp/uvIIQuU4EV5WcHoNP6vPtvPPb8G6je8dDlZckNk2yAzPiyZMrXPFT98LoGKB9utnZPz91A523ROCR+iYUoXYxNIN+0tb3oJ9vJpirwcgCxm2JkEbsNS/jKcz7JjYMQlyQp7TwHRXKSVaq+sWVoJvwEpv4L23bYjGt68zOoH+9D0wuOvrKdG3we3OR9RhMuLEOZ4EejfCQEz+62cI4vunswj6Dbo2NMygBlEqyzi1YF5+3KSE93cmqcKQDkLZkMHGqmPiMxyROAy20B4h7QULYXSm0rYa+z+LPrUXp2DOox7SN1kH4sQPean9DYvREk041pUfzlDOIx7I3lq9Xi8L0J3aRBsKu2h8OkrxrEsjegzIclCDx5rZDE3oxWBcljIqm9OirtyuPbMadBc0hUTYRSA39Q8eZMmpuIPAo/qAq9yrI+5rK40GQp2inDdq5Exny5qE4tcADuEi3dTAdUX/Uzux96CJ+rxQy6wEsEQDIcUqM76e4BmMYbtAy9nK6/t0ngSG40UvJT9IgWoVtJRpk0dqEE06iXyLjpm+ftnb3lB0oGBDqAOu8SBOfypJz/FVNkiNkERUUB2QxDJfGyUiWgnNweAx0toO9oJtyWR+PTlUq8JVuNxi+bIXE4yxX/upxjqe85N9pTrtyN0cHWRF/NfBkjdCy2IhMx62aTZFJLUk3C9rd1nr7PBXvt6/1bxHrV8vtFC4T0u5WoPCGh48o8JnCvhygv9vXHqvRvHhe2D5QIuEB9vstssi4RgYeM3P4NtSs3VOsiNcEBq2hPa+UdIKPphIl36c+rRtSWuCvyJjtRHNm221kH63Zunvys+RqNwOfbDqV+rks8Ci5ZakpRFBnGwcpNLsUBvbXLgeupTX9H5tozMaGloI/CbpKe209eWxz4/I9NYuQoQV7QT7JK34bqZdQQsLvNU71BRKjS97q1Ux1bOWz6fVZHQ8+LFhkHRUhB+pyw9fquFYVcl+DzLPcp6tjtlCOOTUXb5ZmVPTTalJfKb03KznrQhf0y5YrzdP2ciseq0x6TaahYshR0+e+PIYBMeSFzXPICDR8hbvz/+zQiBkfyRLM5KLHAkWKwbSpx5vTiIVo1mk+jH0UR8RPvS4aJAaxNOFyXxAKBAirs8NU5fgXXaqCMVqRy8rJbWqxRzq0KDorw51uS3QE3qViQT+O25j60ayj9v0OK/QmgEr7wKPgLd5LaxXAcASMkbUY59+5IulU9+IRPeGf0ZS6yt9yJ2wR4rWLU7pci6YBfZc15nz8cLyHLD200VnxgvSg1XGMnvjc+60HrV8YczjGUiPtpj9yjUrXNEYsdqFV
+  learner_created: false
+- name: __init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+- name: tests/__init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+- name: some_module.py
+  visible: true
+  placeholders:
+  - offset: 174
+    length: 35
+    placeholder_text: print('This should not be printed')
+    initial_state:
+      length: 35
+      offset: 174
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: eferBCJRUpIZ4ayufvWxuSzxvyxK+MoYXDHuKgRndPwfSFXYG8XfTQ3z89hPXXSGRhTbUNUG35ABRGQlmW7IurfLnYBvEwRV5ijGOLOFcdQ=
+  encrypted_text: g/eN64d904gjY2lcInQATg+p+gz6F1s+/UlFWVh7lM8Es7lhsgQNJ/Ymt4+NT5jckN+NZsopcUKCnE/Ie0AQQvgP8RNwBDLcxaBvZTpFSKePD6q0d//XOMavSkKR2fyu68AsExjqQEUCPFNzBYx4sQguUy3Omo4imyyMy6nJ+gfUK9L7W/4hmU8FOcxTZAsJDyr0PvuMdXCig4HeJWS+D5x/eVt48ljAfd801aenDNVgjnztI0BCav3EFssedUkZNuWeZZQaiGKlI0swSk4WmFW3u6Hl68MsXAo4m/bxAUs=
+  learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfRlDlldKfuq-cHMNFfHMER61P1PRIan7KG6yp1GvaweDI7GA/viewform?usp=pp_url&entry.2103429047=Modules+and+Packages+/+Executing+modules+as+scripts
+status: Unchecked
+record: -1

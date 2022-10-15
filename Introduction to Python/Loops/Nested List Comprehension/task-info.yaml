@@ -1,0 +1,32 @@
+type: edu
+files:
+- name: task.py
+  visible: true
+  placeholders:
+  - offset: 33
+    length: 6
+    placeholder_text: '''TODO'''
+    initial_state:
+      length: 6
+      offset: 33
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: o0aoaUkDTEjccc94olPs54JYZOWbwwHA9WLYKSd3r8TVeX1AEsFYoWazDPAhJD21
+  encrypted_text: HtnZyC0JsnaEeQorL1xoPuN5b3KeFlpd+jbMVRZF5T+3DKDPb2lH4etuaLFdwsRDtcav2CbENLEXDqoJxZ12K/0clmywIcpyhhOJrp3lBVQ=
+  learner_created: false
+- name: tests/test_task.py
+  visible: false
+  encrypted_text: XIlL2u+4gqNTqO7La77YdQTjn1YHMq4gonGgZk0sm4dx1LnCAlATjxpg2INh2AG7+fJpAaEC9N7LCrqpTa87WfiP6N2/PfHXD7G3CNrIzmToC1GNUzXAgFp9Y6TH/w/VSfLtj8YNMIxboYc/8K84ihNVd1dtYJ2iioWF9my9gAkOsbDzjpnPXBO5BaB0ecXR+0OikDBmkgZRfLfK+dXfofEmNcOH8yzE9mfKyIYuhNt+F1H/aYOkivK/A0sVn/rMrLyAR/eWIrEzLeyI/4b2xtTs+xEnqpOA/cAnjufJkTiHE6Xv2GFnkNtHJ3aXHM2FX7wcmqh9bnbDjspedpFIETZhyAl+vda+Mjzh4lbmYKmlfw+YOHQkXdvd+m42p35jxs1H3UmOwv8DX6JGy2E0uVsygAvRAchDQxApCWyc4P9dE2KArQiEw/Dp5Zgq2avXq9YPQzMpsTjG3859lmFvViO0Ft6slYRO0EbWxFq6hWaQ4ASn4pExycRIDzS37LQeikrNbY+3ELA6aaqGQO+0PIgyOXjGtGImhi+PyFBjfo3+4oJEL0o5ZqGkHPSfpQva3IpdOIjSTOK1d2lBTGgSNWhedF6YToFTohODbcEMVlW6tQY8ilg+WCS1PrS5r5DP
+  learner_created: false
+- name: __init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+- name: tests/__init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfRlDlldKfuq-cHMNFfHMER61P1PRIan7KG6yp1GvaweDI7GA/viewform?usp=pp_url&entry.2103429047=Loops+/+Nested+List+Comprehension
+status: Unchecked
+record: -1

@@ -1,0 +1,32 @@
+type: edu
+files:
+- name: task.py
+  visible: true
+  placeholders:
+  - offset: 32
+    length: 28
+    placeholder_text: '# TODO: add a docstring here'
+    initial_state:
+      length: 28
+      offset: 32
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: t5ig5LBHcd3PD8BB2fPRe0vG0faFzvg5fVcoM5j0e/7dgSOVV3UO8xWy9mbvx+AYUhUJyc1xjf/8U2GEDfa7Sw==
+  encrypted_text: yLm3DUodRzr5QlvZcPHKaTcBowuy5OnclweoVa/wr8Er9DOMDREn+8+d3991qM0SQRsc3MXfu/lvIAJQzeAsYFphn3U+6y7karQbK2E/GS3fP7fmDysemltaUP5wKXyDP6SVUJRzVDme2cPXWV5yIIGCCrszYjODSCHdrofDfRiX7yeN4TFzDp7lCmesZunLZKHETQHkb1xiVhV8M5aW56P3aOARWNXoBBg8tsyBHKgTtqHBTBK144YmFwvl9CeaOXuRSQGZXNKEWOW+lBhWVA==
+  learner_created: false
+- name: tests/test_task.py
+  visible: false
+  encrypted_text: XIlL2u+4gqNTqO7La77YdQTjn1YHMq4gonGgZk0sm4edX0BfXimORVBpG0GrRLjkd2cZprgxPJbTXQq+7obIp3jGxxmlcSOmI3B+rsPjn44WTycDGtXgLvCwEoeo+By7iQl/qQyYtjoAq8oowDhawCHRZbH6XAYeZ//IupUysd5aGHV6MKgabMo4soAsK9Ti8zXGj22WcZT1IWPhLtoxGPmjtPEfebHsYDHKGV0COq3aNjjlKABAM5X73/ZuvxRgCNyNJ2rmsnfWbwkdDSB9VaMMukGG0NCd8RzV2ooISaFkj2fUkzBO//SIlWkClwPjRGGl3gGtr4BkSj9b5MohQ1tUDZoXxcX1IIwrDIc3q2fx2wIf6y8WyVFLfD5gFs7O2lYsbML34vtuIxjAqbf7YZLfMiT9WlQPmxfH9K8rXE7ZC8K6wLhfXomrnfxhRppQC1U4UESNVLcLwEX80JDYxsladL9vZFtMfHL5N2eL9GMe0ddk5Zz3BKmumGD2PAQZO0CvsFnxr0u5oIgoTBEpoMJj1daLu1JUz9rMVZ6T5Wn1kPrIy/zXNJiEkTGZVlb6BsUC/x69VCWsHuntjpj8YvkwS7jSSI8UQv9KqyofInGJgZ9IScOe5CvgBySUcSbnhO2yTxpXjm5srPKDXU1/ryrtVEcHdwXmf1X/h2MNKdS7jhWE6BQMgkBuOgBo1V+hK+gz20TugDLnkEPyhPDUFdQoXXC6q9EMZLF5Bw95fKz0UCIVQq9vxjEYluvXLxhOtIfOshRKENEhh23qojtk1vjw4y70iCear2Uzy3BIBpI/pjOVEWPsG4PLV9i1DgEM2pao3TAzj3Ri/CXB7JSiW2D8JBp5X58jBh7eNvX8FQSATxGJBmvxXYE2WkJea2RD/UCc6VSms2c0GxuCat6OuQ==
+  learner_created: false
+- name: __init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+- name: tests/__init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfRlDlldKfuq-cHMNFfHMER61P1PRIan7KG6yp1GvaweDI7GA/viewform?usp=pp_url&entry.2103429047=Functions+/+Docstrings
+status: Unchecked
+record: -1

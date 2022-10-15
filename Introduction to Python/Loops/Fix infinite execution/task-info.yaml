@@ -1,0 +1,34 @@
+type: edu
+files:
+- name: task.py
+  visible: true
+  placeholders:
+  - offset: 146
+    length: 6
+    placeholder_text: '# TODO'
+    initial_state:
+      length: 6
+      offset: 146
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: fQosKnXmMQG+jvq1zHKTkw==
+  encrypted_text: eTPyWS3tW9PlDlN0jH+QaXM5qUWwo8RYpq0sry/o/v3j9NwKqmdYHExrZVUd1hDMS+PFo3N1+S5rZWnTNIh9RbQn6NkIbxuH00lOAHg9kZFwHp3VKE/z/xioq/NkOf0tRBt3EKR9Juv8aEiCkYXMpgKznTtpMe/ZlxvSDuPOWSmLGaadZ7fgWT9Zn6asFjHTy+tRQMlNcbnJMA+DkIwffV5dcNPjLcolQo3yraWY93x8TiCDiSSt2H8y1E8Mh8gWJZjRD7W3AqBqpRJt1G6/nk6Z8fgE5/6HZlKj70dInPUQLsgcVZBuwZHhu0vUpH4WiZPUqL4jj+AaH0YWrkqEmDw4Wuo5VVU/cVXxQofJr0DvCuiIe7pBzs9H0/G9ETcCmI1jhkQa6POzYazmn8JiGDzyS5He0pnDNuiFCkRjKPX/ej53aPJgrFdcMEKgMg9k
+  learner_created: false
+- name: tests/test_task.py
+  visible: false
+  encrypted_text: XIlL2u+4gqNTqO7La77YdUL7aR8p/B/NVC9K2/TYHAVxSARFdRAZ2St0LZI8vC2xclLRZWr9GEDuuHtiEo29ELTs8XhcqzznoMZ3bDKL2jkbWVOSdRfbImAwToYV+qI/Xj+jHn6gZxYqdk3l/MueI5TzAB9Zd4ZSFc36UbnGrf9Stii8fvDO8DaUUC/1dh6K73NsprTXIzQ+YqBPFkunPdEstiWWlrT5A/STHNPRTu2Nd5SveOed5amcPqbyEb7/6dT6TBvCCjKUTzFVGdg9L1g40DLlzatatE1OQxL7MZ+TBftzMmbN9r8wnJQIVkbtkL+zMblv/soslnhYPc4Sh7CCoOUL6JcgG0OqhKamyMLlZ4fTZOh+XvEgQuSK6D2zJu/KIq9KWbALtUVXU0hYjcNhI+wcjaqNoF/QZSrXlUktL4NZfAZODwhpt0SH7Fc7lgkZ8gfjDCP4gOBfL/r+YG+U0UUa+hOF+DwxiT2uI5JunKKIgHzKVtv1VybCcIHkIl5ZVg3MM1cyCrUDQeZPYLgOTaqrNFAcgoW09KXTFON7P4zFuR+R/dchbb9jcLK/mQNUfwT7/GUsSdNk9rIwVGIvu86w4F18GoQnV1wXqd7QZaYJds+jCq42o7a4iCpWo4rYEuRaLsbmA1yIPzqt85c7/plvRCIu5btx1vBneBS66Yn6drBMRfJx/chDFZ/a
+  learner_created: false
+- name: __init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+- name: tests/__init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+- name: stop_run.png
+  visible: false
+  learner_created: false
+status: Unchecked
+record: -1

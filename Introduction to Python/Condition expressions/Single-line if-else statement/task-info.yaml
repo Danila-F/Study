@@ -1,0 +1,35 @@
+type: edu
+files:
+- name: task.py
+  visible: true
+  placeholders:
+  - offset: 115
+    length: 83
+    placeholder_text: |-
+      if my_random_number > 50:
+          print(my_random_number)
+      else:
+          print("Too small!")
+    initial_state:
+      length: 83
+      offset: 115
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: pIKazqTfz3BfTsv1OT3D0wo+bT+qJiY5j3mvqmKgTzN+q4ZA7H23WBhUcuBRi2G0oORJBwd2ax2GJNXUoaZ0LBXSbTEiwde/JfcVq4BsL0w=
+  encrypted_text: qfsGgOCumdmJ4tbXi5aT9eFlezxeMTHRVmB5MwfW+7FmvDchpSBbfmPxS7y8SdR+9ahw1Kr2WFB4NMeWFkncG296DSANgdf2MMH7m/DfyhjORjDhfyn4bire+W09s7gbZGs4lUG5JYqoykjIcj8BMhoj4qm2mhX7TTct2uUA+iDqIKe/ufWbaIgxUpZajmkuIHZXqoFa8+zUZbPv0XUuhi03IQTVLo8HAjPtefA9w881BEhcGaClv+53Wh7YbSJMLByRF/z/3r+jy+p8sxMJXA==
+  learner_created: false
+- name: tests/test_task.py
+  visible: false
+  encrypted_text: XIlL2u+4gqNTqO7La77YdUL7aR8p/B/NVC9K2/TYHAX5yUWcKtc9gD26Te2uBi4jNyMc6F4sGS2F/NsG3kesgLVBK9uCfEzM9FZftQs/SMe0j9TlwBbNSi6HlO2lRWx8YK5JadRGsjMv/0pC2NzRjwicSmuqx7BAWItXU7PZKjTkbwiL+u15dZlwKxIRgx8t7d9JIVqEcca470DeEIAB4Ib31PkZoSQy6FlCSFRxrCwWZnwKEcz2XepF4JW8xUfYBltmntx8VZW5z1fWGGpFv7jBIckrum8KNx0Pff1zhuQW63r2ouv0Ec07khyTMnGVncxaRBZFknol9INNk5ezqlkfYT+GIas29koO53QL4H+MziG8G7msCt2x8ssSSRlRsNcdVkPSoIxQPaMFOYWb9AbPIYIEySC3L27oafMIqXrhi7GI7z9M6+zlXNBA6r1ncpHN1SsDkxgX7efp7vPRCbopUJjMvV1Uk0Q2kfFmnocu7eGXM0Sgdv2gy6pzHH6ldQkJ9JAmr0tI3JRclJI/y137vQxNzmexwiSNWGuEZlBgZxjWpBmSY9hjkW0BfFEkB0sjWdUDkrv+0t5pW+Wx+YXIWI03tn80KBj/fx7EQQc=
+  learner_created: false
+- name: __init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+- name: tests/__init__.py
+  visible: false
+  encrypted_text: BPrPxsoPO0ddRfXxWyDgbA==
+  learner_created: false
+status: Unchecked
+record: -1
